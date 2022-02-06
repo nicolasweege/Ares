@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float playerShotSpeed = 5f;
+    private Rigidbody2D playerShotRb2D;
+
+    private void Start()
     {
-        
+        playerShotRb2D = GetComponent<Rigidbody2D>();
+
+        playerShotRb2D.velocity = new Vector2(0, playerShotSpeed);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        switch (other.gameObject.tag)
+        {
+            case "ShotCollider":
+                Destroy(gameObject);
+                break;
+
+            case "Enemy1Shot":
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                break;
+        }
     }
 }
