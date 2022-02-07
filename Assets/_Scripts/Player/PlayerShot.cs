@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-    [SerializeField] private float playerShotSpeed = 5f;
+    [SerializeField] private float playerShotSpeed = 10f;
     private Rigidbody2D playerShotRb2D;
 
     private void Start()
@@ -19,6 +19,11 @@ public class PlayerShot : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "ShotCollider":
+                Destroy(gameObject);
+                break;
+
+            case "Enemy1":
+                Destroy(other.gameObject);
                 Destroy(gameObject);
                 break;
 

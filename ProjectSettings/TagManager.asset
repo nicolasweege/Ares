@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PlayerShot
   - ShotCollider
+  - Enemy1
+  - Enemy1Shot
+  - PlayerCollider
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - UI
   - Player
   - PlayerShot
-  - 
-  - 
+  - Enemy1
+  - Enemy1Shot
   - 
   - 
   - 
@@ -43,9 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 4065877639
+  - name: Enemy1
+    uniqueID: 1307419071
     locked: 0
   - name: PlayerShot
     uniqueID: 678046025
+    locked: 0
+  - name: Player
+    uniqueID: 4065877639
+    locked: 0
+  - name: Enemy1Shot
+    uniqueID: 3974682491
     locked: 0

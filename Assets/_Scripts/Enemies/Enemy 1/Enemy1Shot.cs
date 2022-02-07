@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Enemy1Shot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float enemy1ShotSpeed = 5f;
+    private Rigidbody2D enemy1ShotRb2D;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        enemy1ShotRb2D = GetComponent<Rigidbody2D>();
+
+        enemy1ShotRb2D.velocity = new Vector2(0f, -enemy1ShotSpeed);
     }
 }

@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 4334783836991956000, guid: 77e8d3c5dd97d934b88c6e21de392841, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131015768432569103}
   - component: {fileID: 5565119435820294826}
-  - component: {fileID: -3682880910317080972}
+  - component: {fileID: 936526623287948254}
   - component: {fileID: 4521564585405971865}
   m_Layer: 6
   m_Name: Player
@@ -149,7 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &-3682880910317080972
+  playerSpeed: 5
+  playerShotPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
+  shotStartPosition: {fileID: 1546371908465108044}
+--- !u!70 &936526623287948254
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +165,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: 0.056177855}
+  m_Size: {x: 0.5, y: 0.7855027}
   m_Direction: 0
 --- !u!50 &4521564585405971865
 Rigidbody2D:
@@ -210,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6490875460299119224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.528, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1131015768432569103}
