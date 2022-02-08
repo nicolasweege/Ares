@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerShotSpeed: 10
+  damageAnimationPrefab: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
 --- !u!70 &5665722100170480529
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

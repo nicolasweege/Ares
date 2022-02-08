@@ -14,7 +14,7 @@ public class Enemy1Shot : MonoBehaviour
         enemy1ShotRb2D.velocity = new Vector2(0f, -enemy1ShotSpeed);
     }
 
-    private void onTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)
         {

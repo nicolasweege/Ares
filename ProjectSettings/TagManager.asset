@@ -9,6 +9,7 @@ TagManager:
   - Enemy1
   - Enemy1Shot
   - PlayerCollider
+  - PlayerShotCollider
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - UI
   - Player
   - Player Shot
-  - Enemy 1
-  - Enemy 1 Shot
+  - Enemy1
+  - Enemy1 Shot
   - Shot Collider
   - 
   - 
@@ -49,12 +50,18 @@ TagManager:
   - name: Enemy1
     uniqueID: 1307419071
     locked: 0
-  - name: PlayerShot
+  - name: Player Shot
     uniqueID: 678046025
     locked: 0
   - name: Player
     uniqueID: 4065877639
     locked: 0
-  - name: Enemy1Shot
+  - name: Enemy1 Shot
     uniqueID: 3974682491
+    locked: 0
+  - name: Damage Animation
+    uniqueID: 3138669063
+    locked: 0
+  - name: Enemy1 Explosion Animation
+    uniqueID: 2999701529
     locked: 0

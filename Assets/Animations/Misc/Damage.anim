@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Animation
+  m_Name: Damage
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: b97cd2114b3de97479a19be8221234b5, type: 3}
+      value: {fileID: 370836429328893637, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - time: 0.083333336
+      value: {fileID: 4671811295830470272, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - time: 0.16666667
+      value: {fileID: 948163715620176575, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - time: 0.25
+      value: {fileID: -4805785122848415202, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - time: 0.33333334
+      value: {fileID: 1339527205791033982, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,13 +48,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: b97cd2114b3de97479a19be8221234b5, type: 3}
+    - {fileID: 370836429328893637, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - {fileID: 4671811295830470272, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - {fileID: 948163715620176575, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - {fileID: -4805785122848415202, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
+    - {fileID: 1339527205791033982, guid: d620ff48b934dab4e8132ba6b41d9aa6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.083333336
+    m_StopTime: 0.4166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -65,4 +77,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.33333334
+    functionName: DestroyAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

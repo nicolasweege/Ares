@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerShot : MonoBehaviour
 {
     [SerializeField] private float playerShotSpeed = 10f;
+    [SerializeField] private GameObject damageAnimationPrefab;
+    [SerializeField] private int defaultDamage = 1;
     private Rigidbody2D playerShotRb2D;
 
     private void Start()
@@ -18,16 +20,18 @@ public class PlayerShot : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "ShotCollider":
+            case "PlayerShotCollider":
                 Destroy(gameObject);
                 break;
 
             case "Enemy1":
-                Destroy(other.gameObject);
+                Instantiate(damageAnimationPrefab, transform.position, transform.rotation);
+                other.GetComponent<Enemy1>().LoseLife(defaultDamage);
                 Destroy(gameObject);
                 break;
 
             case "Enemy1Shot":
+                Instantiate(damageAnimationPrefab, transform.position, transform.rotation);
                 Destroy(other.gameObject);
                 Destroy(gameObject);
                 break;

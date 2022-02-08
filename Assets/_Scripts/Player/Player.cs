@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private GameObject playerShotPrefab;
     [SerializeField] private Transform shotStartPosition;
+    [SerializeField] private GameObject damageAnimationPrefab;
     private Rigidbody2D playerRb2D;
     private PlayerInputActions playerInputActions;
 
@@ -44,20 +45,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void onTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy1")
-        {
-            Debug.Log("Collider");
-        }
-
         switch (other.gameObject.tag)
         {
-            case "Enemy1":
-                Destroy(other.gameObject);
-                break;
-
             case "Enemy1Shot":
+                Instantiate(damageAnimationPrefab, other.GetComponent<Transform>().position, other.GetComponent<Transform>().rotation);
                 Destroy(other.gameObject);
                 break;
         }

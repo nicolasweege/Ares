@@ -9,6 +9,8 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] private Transform shotStartPosition;
     [SerializeField] private int timeToCount = 0;
     [SerializeField] private int timeToShoot = 120;
+    [SerializeField] private int enemy1Health = 2;
+    [SerializeField] private GameObject enemy1ExplosionAnimationPrefab;
     private Rigidbody2D enemy1Rb2D;
 
     private void Start()
@@ -22,14 +24,25 @@ public class Enemy1 : MonoBehaviour
     {
         timeToCount++;
 
-        if (timeToCount == timeToShoot)
+        if (timeToCount >= timeToShoot)
         {
             Instantiate(enemy1ShotPrefab, shotStartPosition.position, shotStartPosition.rotation);
             timeToCount = 0;
         }
+
+        if (enemy1Health <= 0)
+        {
+            Instantiate(enemy1ExplosionAnimationPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 
-    private void onTriggerEnter2D(Collider2D other)
+    public int LoseLife(int damage)
+    {
+        return enemy1Health -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)
         {

@@ -112,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131015768432569103}
   - component: {fileID: 5565119435820294826}
-  - component: {fileID: 936526623287948254}
+  - component: {fileID: 3643124730240130694}
   - component: {fileID: 4521564585405971865}
   m_Layer: 6
   m_Name: Player
@@ -152,7 +152,8 @@ MonoBehaviour:
   playerSpeed: 5
   playerShotPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   shotStartPosition: {fileID: 1546371908465108044}
---- !u!70 &936526623287948254
+  damageAnimationPrefab: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
+--- !u!70 &3643124730240130694
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,8 +166,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.056177855}
-  m_Size: {x: 0.5, y: 0.7855027}
+  m_Offset: {x: 0.00348714, y: 0.07671648}
+  m_Size: {x: 0.77199477, y: 0.77199477}
   m_Direction: 0
 --- !u!50 &4521564585405971865
 Rigidbody2D:

@@ -82,6 +82,8 @@ MonoBehaviour:
   shotStartPosition: {fileID: 6982913048755518968}
   timeToCount: 0
   timeToShoot: 30
+  enemy1Health: 2
+  enemy1ExplosionAnimationPrefab: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
 --- !u!70 &5376568305171802168
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
