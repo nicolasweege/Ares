@@ -46,6 +46,11 @@ public class Player : MonoBehaviour
 
     private void onTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Enemy1")
+        {
+            Debug.Log("Collider");
+        }
+
         switch (other.gameObject.tag)
         {
             case "Enemy1":
