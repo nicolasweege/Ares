@@ -17,10 +17,10 @@ TagManager:
   - Water
   - UI
   - Player
-  - PlayerShot
-  - Enemy1
-  - Enemy1Shot
-  - 
+  - Player Shot
+  - Enemy 1
+  - Enemy 1 Shot
+  - Shot Collider
   - 
   - 
   - 
