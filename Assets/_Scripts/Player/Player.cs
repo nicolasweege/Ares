@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         playerInputActions.Player.Shoot.performed += Shoot;
     }
 
-    private void Shoot(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void Shoot(InputAction.CallbackContext context)
     {
         Instantiate(playerShotPrefab, shotStartPosition.position, shotStartPosition.rotation);
     }
