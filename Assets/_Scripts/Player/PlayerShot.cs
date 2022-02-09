@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShot : MonoBehaviour
 {
     [SerializeField] private float playerShotSpeed = 10f;
-    [SerializeField] private GameObject damageAnimationPrefab;
+    [SerializeField] private GameObject damageAnimation;
     [SerializeField] private int defaultDamage = 1;
     private Rigidbody2D playerShotRb2D;
 
@@ -27,13 +27,13 @@ public class PlayerShot : MonoBehaviour
             case "Enemy1":
                 Enemy1 enemy1Script = other.GetComponent<Enemy1>();
 
-                Instantiate(damageAnimationPrefab, transform.position, transform.rotation);
+                Instantiate(damageAnimation, transform.position, transform.rotation);
                 enemy1Script.LoseLife(defaultDamage);
                 Destroy(gameObject);
                 break;
 
             case "Enemy1Shot":
-                Instantiate(damageAnimationPrefab, transform.position, transform.rotation);
+                Instantiate(damageAnimation, transform.position, transform.rotation);
                 Destroy(other.gameObject);
                 Destroy(gameObject);
                 break;

@@ -151,9 +151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 3
   playerSpeed: 5
-  playerShotPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
+  playerShot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   shotStartPosition: {fileID: 1546371908465108044}
-  damageAnimationPrefab: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
+  damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
 --- !u!70 &3643124730240130694
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

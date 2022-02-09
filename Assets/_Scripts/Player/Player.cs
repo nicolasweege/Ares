@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int playerHealth = 3;
     [SerializeField] private float playerSpeed = 5f;
-    [SerializeField] private GameObject playerShotPrefab;
+    [SerializeField] private GameObject playerShot;
     [SerializeField] private Transform shotStartPosition;
-    [SerializeField] private GameObject damageAnimationPrefab;
+    [SerializeField] private GameObject damageAnimation;
     private Rigidbody2D playerRb2D;
     private PlayerInputActions playerInputActions;
 
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext context)
     {
-        Instantiate(playerShotPrefab, shotStartPosition.position, shotStartPosition.rotation);
+        Instantiate(playerShot, shotStartPosition.position, shotStartPosition.rotation);
     }
 
     private void Update()
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
                 Transform enemy1ShotTransform = other.GetComponent<Transform>();
 
                 LoseLife(enemy1ShotScript.defaultDamage);
-                Instantiate(damageAnimationPrefab, enemy1ShotTransform.position, enemy1ShotTransform.rotation);
+                Instantiate(damageAnimation, enemy1ShotTransform.position, enemy1ShotTransform.rotation);
                 Destroy(other.gameObject);
                 break;
         }

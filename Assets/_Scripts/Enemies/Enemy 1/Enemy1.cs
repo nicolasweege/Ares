@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enemy1 : MonoBehaviour
 {
     [SerializeField] private float enemy1Speed = 2f;
-    [SerializeField] private GameObject enemy1ShotPrefab;
+    [SerializeField] private GameObject enemy1Shot;
     [SerializeField] private Transform shotStartPosition;
     [SerializeField] private int timeToCount = 0;
     [SerializeField] private int timeToShoot = 120;
     [SerializeField] private int enemy1Health = 2;
-    [SerializeField] private GameObject enemy1ExplosionAnimationPrefab;
+    [SerializeField] private GameObject enemy1ExplosionAnimation;
     public int defaultDamage = 1;
     private Rigidbody2D enemy1Rb2D;
 
@@ -23,12 +23,17 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        timeToCount++;
+        var enemy1IsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
 
-        if (timeToCount >= timeToShoot)
+        if (enemy1IsVisible)
         {
-            Instantiate(enemy1ShotPrefab, shotStartPosition.position, shotStartPosition.rotation);
-            timeToCount = 0;
+            timeToCount++;
+
+            if (timeToCount >= timeToShoot)
+            {
+                Instantiate(enemy1Shot, shotStartPosition.position, shotStartPosition.rotation);
+                timeToCount = 0;
+            }
         }
 
         if (enemy1Health <= 0) Death();
@@ -41,7 +46,7 @@ public class Enemy1 : MonoBehaviour
 
     public void Death()
     {
-        Instantiate(enemy1ExplosionAnimationPrefab, transform.position, transform.rotation);
+        Instantiate(enemy1ExplosionAnimation, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 

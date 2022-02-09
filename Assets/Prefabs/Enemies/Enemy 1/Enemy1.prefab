@@ -78,12 +78,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1Speed: 2
-  enemy1ShotPrefab: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}
+  enemy1Shot: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}
   shotStartPosition: {fileID: 6982913048755518968}
   timeToCount: 0
   timeToShoot: 30
   enemy1Health: 2
-  enemy1ExplosionAnimationPrefab: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  enemy1ExplosionAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  enemy1SpriteRenderer: {fileID: 1114345580482160359}
+  defaultDamage: 1
 --- !u!70 &5376568305171802168
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
