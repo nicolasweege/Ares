@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy1Shot : MonoBehaviour
 {
     [SerializeField] private float enemy1ShotSpeed = 5f;
+    public int defaultDamage = 1;
     private Rigidbody2D enemy1ShotRb2D;
 
     private void Start()

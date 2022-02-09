@@ -25,8 +25,10 @@ public class PlayerShot : MonoBehaviour
                 break;
 
             case "Enemy1":
+                Enemy1 enemy1Script = other.GetComponent<Enemy1>();
+
                 Instantiate(damageAnimationPrefab, transform.position, transform.rotation);
-                other.GetComponent<Enemy1>().LoseLife(defaultDamage);
+                enemy1Script.LoseLife(defaultDamage);
                 Destroy(gameObject);
                 break;
 

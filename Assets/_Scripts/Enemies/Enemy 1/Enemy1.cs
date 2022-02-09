@@ -11,6 +11,7 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] private int timeToShoot = 120;
     [SerializeField] private int enemy1Health = 2;
     [SerializeField] private GameObject enemy1ExplosionAnimationPrefab;
+    public int defaultDamage = 1;
     private Rigidbody2D enemy1Rb2D;
 
     private void Start()
@@ -30,16 +31,18 @@ public class Enemy1 : MonoBehaviour
             timeToCount = 0;
         }
 
-        if (enemy1Health <= 0)
-        {
-            Instantiate(enemy1ExplosionAnimationPrefab, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
+        if (enemy1Health <= 0) Death();
     }
 
     public int LoseLife(int damage)
     {
         return enemy1Health -= damage;
+    }
+
+    public void Death()
+    {
+        Instantiate(enemy1ExplosionAnimationPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

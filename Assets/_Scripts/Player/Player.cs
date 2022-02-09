@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int playerHealth = 3;
     [SerializeField] private float playerSpeed = 5f;
     [SerializeField] private GameObject playerShotPrefab;
     [SerializeField] private Transform shotStartPosition;
@@ -38,19 +39,42 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(9.5f, transform.position.y, transform.position.z);
         }
-        
+
         if (transform.position.x > 9.5f)
         {
             transform.position = new Vector3(-9.5f, transform.position.y, transform.position.z);
         }
+
+        if (playerHealth <= 0) Death();
+    }
+
+    private int LoseLife(int damage)
+    {
+        return playerHealth -= damage;
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)
         {
+            case "Enemy1":
+                Enemy1 enemy1Script = other.GetComponent<Enemy1>();
+
+                LoseLife(enemy1Script.defaultDamage);
+                enemy1Script.Death();
+                break;
+
             case "Enemy1Shot":
-                Instantiate(damageAnimationPrefab, other.GetComponent<Transform>().position, other.GetComponent<Transform>().rotation);
+                Enemy1Shot enemy1ShotScript = other.GetComponent<Enemy1Shot>();
+                Transform enemy1ShotTransform = other.GetComponent<Transform>();
+
+                LoseLife(enemy1ShotScript.defaultDamage);
+                Instantiate(damageAnimationPrefab, enemy1ShotTransform.position, enemy1ShotTransform.rotation);
                 Destroy(other.gameObject);
                 break;
         }

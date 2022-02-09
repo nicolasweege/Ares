@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 3
   playerSpeed: 5
   playerShotPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   shotStartPosition: {fileID: 1546371908465108044}
