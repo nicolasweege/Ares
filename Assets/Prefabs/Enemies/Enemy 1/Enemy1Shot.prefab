@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4935518561325417598}
   - component: {fileID: 4935518561325417593}
+  - component: {fileID: 969530639239835513}
   m_Layer: 9
   m_Name: enemy1_shot
   m_TagString: Untagged
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &969530639239835513
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935518561325417599}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdaf068b4f153f84fa68f3a1d10f27d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4935518561706125901
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy1ShotSpeed: 5
-  damageAnimationPrefab: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
+  defaultDamage: 1
 --- !u!70 &2104817050260827514
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
