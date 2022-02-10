@@ -115,8 +115,8 @@ GameObject:
   - component: {fileID: 5665722100170480529}
   - component: {fileID: 5665722100170480526}
   m_Layer: 7
-  m_Name: PlayerShot
-  m_TagString: PlayerShot
+  m_Name: Player Shot
+  m_TagString: Shot
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dafd36991e02640ba8b754694acfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShotSpeed: 10
-  damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
+  speed: 10
   defaultDamage: 1
+  damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
 --- !u!70 &5665722100170480529
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

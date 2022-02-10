@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayerShot
-  - ShotCollider
-  - Enemy1Shot
-  - PlayerCollider
-  - PlayerShotCollider
+  - Shot
+  - EnemyDestroyer
+  - PlayerDestroyer
   - Enemy
+  - Enemy1Shot
+  - PlayerShot
   layers:
   - Default
   - TransparentFX
@@ -21,7 +21,7 @@ TagManager:
   - Player Shot
   - Enemy1
   - Enemy1 Shot
-  - Shot Collider
+  - 
   - 
   - 
   - 

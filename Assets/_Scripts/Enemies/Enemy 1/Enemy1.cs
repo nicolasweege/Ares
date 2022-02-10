@@ -38,7 +38,7 @@ public class Enemy1 : Enemy
     {
         switch (other.gameObject.tag)
         {
-            case "ShotCollider":
+            case "EnemyDestroyer":
                 Destroy(gameObject);
                 break;
         }
