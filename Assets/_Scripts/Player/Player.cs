@@ -5,17 +5,18 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int playerHealth = 3;
-    [SerializeField] private float playerSpeed = 5f;
-    [SerializeField] private GameObject playerShot;
+    [SerializeField] private int health;
+    [SerializeField] private float speed;
+    [SerializeField] private GameObject shot;
     [SerializeField] private Transform shotStartPosition;
     [SerializeField] private GameObject damageAnimation;
-    private Rigidbody2D playerRb2D;
+    [SerializeField] private GameObject deathAnimation;
+    private new Rigidbody2D rigidbody2D;
     private PlayerInputActions playerInputActions;
 
     private void Start()
     {
-        playerRb2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
 
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
@@ -24,13 +25,13 @@ public class Player : MonoBehaviour
 
     private void Shoot(InputAction.CallbackContext context)
     {
-        Instantiate(playerShot, shotStartPosition.position, shotStartPosition.rotation);
+        Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
     }
 
     private void Update()
     {
         Vector2 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-        transform.position += new Vector3(inputVector.x, inputVector.y, transform.position.z) * Time.deltaTime * playerSpeed;
+        transform.position += new Vector3(inputVector.x, inputVector.y, transform.position.z) * Time.deltaTime * speed;
     }
 
     private void FixedUpdate()
@@ -39,23 +40,23 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(9.5f, transform.position.y, transform.position.z);
         }
-
         if (transform.position.x > 9.5f)
         {
             transform.position = new Vector3(-9.5f, transform.position.y, transform.position.z);
         }
 
-        if (playerHealth <= 0) Death();
+        if (health <= 0) Death();
     }
 
     private int LoseLife(int damage)
     {
-        return playerHealth -= damage;
+        return health -= damage;
     }
 
     private void Death()
     {
         Destroy(gameObject);
+        Instantiate(deathAnimation, transform.position, transform.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,10 +68,9 @@ public class Player : MonoBehaviour
                 other.GetComponent<Enemy>().Death();
                 break;
 
-            case "Enemy1Shot":
-                LoseLife(other.GetComponent<Enemy1Shot>().defaultDamage);
-                Instantiate(damageAnimation, other.GetComponent<Transform>().position, other.GetComponent<Transform>().rotation);
-                Destroy(other.gameObject);
+            case "Shot":
+                LoseLife(other.GetComponent<Shot>().defaultDamage);
+                other.GetComponent<Shot>().DestroyShot();
                 break;
         }
     }

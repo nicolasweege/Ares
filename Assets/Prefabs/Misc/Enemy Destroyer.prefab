@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7277616855962760081}
   - component: {fileID: 5314177539107670508}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Enemy Destroyer
   m_TagString: EnemyDestroyer
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}

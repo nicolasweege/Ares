@@ -6,10 +6,10 @@ public class Shot : MonoBehaviour
 {
     [SerializeField] protected float speed;
     [SerializeField] protected GameObject damageAnimation;
-    public int defaultDamage;
     protected new Rigidbody2D rigidbody2D;
+    public int defaultDamage;
 
-    protected void DestroyShot(GameObject damageAnimation)
+    public void DestroyShot()
     {
         Instantiate(damageAnimation, transform.position, transform.rotation);
         Destroy(gameObject);

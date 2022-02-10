@@ -6,9 +6,9 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected int health;
     [SerializeField] protected float speed;
-    [SerializeField] protected GameObject explosionAnimation;
-    public int defaultDamage = 1;
+    [SerializeField] private GameObject deathAnimation;
     protected new Rigidbody2D rigidbody2D;
+    public int defaultDamage;
 
     public int LoseLife(int damage)
     {
@@ -18,6 +18,11 @@ public class Enemy : MonoBehaviour
     public void Death()
     {
         Destroy(gameObject);
-        Instantiate(explosionAnimation, transform.position, transform.rotation);
+        Instantiate(deathAnimation, transform.position, transform.rotation);
+    }
+
+    protected void Shoot(GameObject shot, Transform shotStartPosition)
+    {
+        Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
     }
 }

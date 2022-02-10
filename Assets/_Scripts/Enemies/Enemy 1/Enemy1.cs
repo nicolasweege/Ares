@@ -6,8 +6,8 @@ public class Enemy1 : Enemy
 {
     [SerializeField] private GameObject shot;
     [SerializeField] private Transform shotStartPosition;
-    [SerializeField] private int timeToCount = 0;
-    [SerializeField] private int timeToShoot = 120;
+    [SerializeField] private int timeToCount;
+    [SerializeField] private int timeToShoot;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class Enemy1 : Enemy
 
             if (timeToCount >= timeToShoot)
             {
-                Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
+                Shoot(shot, shotStartPosition);
                 timeToCount = 0;
             }
         }

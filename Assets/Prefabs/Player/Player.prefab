@@ -149,11 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 3
-  playerSpeed: 5
-  playerShot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
+  health: 3
+  speed: 5
+  shot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   shotStartPosition: {fileID: 1546371908465108044}
   damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
+  deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
 --- !u!70 &3643124730240130694
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -21,12 +21,12 @@ public class PlayerShot : Shot
 
             case "Enemy":
                 other.GetComponent<Enemy>().LoseLife(defaultDamage);
-                DestroyShot(damageAnimation);
+                DestroyShot();
                 break;
 
             case "Shot":
                 Destroy(other.gameObject);
-                DestroyShot(damageAnimation);
+                DestroyShot();
                 break;
         }
     }
