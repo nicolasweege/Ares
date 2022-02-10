@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected int health;
     [SerializeField] protected float speed;
     [SerializeField] private GameObject deathAnimation;
-    protected new Rigidbody2D rigidbody2D;
     public int defaultDamage;
 
     public int LoseLife(int damage)

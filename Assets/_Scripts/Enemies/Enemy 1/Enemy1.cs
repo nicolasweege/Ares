@@ -8,6 +8,7 @@ public class Enemy1 : Enemy
     [SerializeField] private Transform shotStartPosition;
     [SerializeField] private int timeToCount;
     [SerializeField] private int timeToShoot;
+    private new Rigidbody2D rigidbody2D;
 
     private void Start()
     {

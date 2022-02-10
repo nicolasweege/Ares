@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy2 : Enemy
 {
+    private new Rigidbody2D rigidbody2D;
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
