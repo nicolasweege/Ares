@@ -8,8 +8,6 @@ TagManager:
   - EnemyDestroyer
   - PlayerDestroyer
   - Enemy
-  - Enemy1Shot
-  - PlayerShot
   layers:
   - Default
   - TransparentFX
@@ -21,7 +19,7 @@ TagManager:
   - Player Shot
   - Enemy 1
   - Enemy 1 Shot
-  - 
+  - Enemy 2
   - 
   - 
   - 
@@ -49,6 +47,9 @@ TagManager:
     locked: 0
   - name: Enemy 1
     uniqueID: 1307419071
+    locked: 0
+  - name: Enemy 2
+    uniqueID: 2921591405
     locked: 0
   - name: Player Shot
     uniqueID: 678046025
