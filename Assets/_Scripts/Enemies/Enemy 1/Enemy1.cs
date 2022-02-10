@@ -27,7 +27,7 @@ public class Enemy1 : Enemy
 
             if (timeToCount >= timeToShoot)
             {
-                Shoot(shot, shotStartPosition);
+                CreateShot(shot, shotStartPosition);
                 timeToCount = 0;
             }
         }

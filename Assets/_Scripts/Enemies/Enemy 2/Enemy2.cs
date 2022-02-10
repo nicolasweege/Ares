@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Enemy2 : Enemy
 {
+    [SerializeField] private GameObject shot;
+    [SerializeField] private Transform shotStartPosition;
+    [SerializeField] private int timeToCount;
+    [SerializeField] private int timeToShoot;
     private new Rigidbody2D rigidbody2D;
+
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -14,10 +19,20 @@ public class Enemy2 : Enemy
 
     private void FixedUpdate()
     {
-        if (health <= 0)
+        var enemy2IsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+
+        if (enemy2IsVisible)
         {
-            Death();
+            timeToCount++;
+
+            if (timeToCount >= timeToShoot)
+            {
+                CreateShot(shot, shotStartPosition);
+                timeToCount = 0;
+            }
         }
+
+        if (health <= 0) Death();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

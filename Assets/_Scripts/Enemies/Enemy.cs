@@ -14,14 +14,14 @@ public class Enemy : MonoBehaviour
         return health -= damage;
     }
 
+    protected void CreateShot(GameObject shot, Transform shotStartPosition)
+    {
+        Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
+    }
+
     public void Death()
     {
         Destroy(gameObject);
         Instantiate(deathAnimation, transform.position, transform.rotation);
-    }
-
-    protected void Shoot(GameObject shot, Transform shotStartPosition)
-    {
-        Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
     }
 }
