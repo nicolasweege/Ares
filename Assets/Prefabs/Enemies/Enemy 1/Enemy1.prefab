@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8316677730504806906}
   m_Layer: 8
   m_Name: Enemy1
-  m_TagString: Enemy1
+  m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,15 +77,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e087f4b8e6612a46a6f6bef18b47cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy1Speed: 2
-  enemy1Shot: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}
+  health: 0
+  speed: 0
+  explosionAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  defaultDamage: 1
+  shot: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}
   shotStartPosition: {fileID: 6982913048755518968}
   timeToCount: 0
   timeToShoot: 30
-  enemy1Health: 2
-  enemy1ExplosionAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  enemy1SpriteRenderer: {fileID: 1114345580482160359}
-  defaultDamage: 1
 --- !u!70 &5376568305171802168
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

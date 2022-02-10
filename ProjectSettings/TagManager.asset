@@ -6,10 +6,10 @@ TagManager:
   tags:
   - PlayerShot
   - ShotCollider
-  - Enemy1
   - Enemy1Shot
   - PlayerCollider
   - PlayerShotCollider
+  - Enemy
   layers:
   - Default
   - TransparentFX

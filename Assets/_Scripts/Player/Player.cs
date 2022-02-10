@@ -62,11 +62,9 @@ public class Player : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "Enemy1":
-                Enemy1 enemy1Script = other.GetComponent<Enemy1>();
-
-                LoseLife(enemy1Script.defaultDamage);
-                enemy1Script.Death();
+            case "Enemy":
+                LoseLife(other.GetComponent<Enemy>().defaultDamage);
+                other.GetComponent<Enemy>().Death();
                 break;
 
             case "Enemy1Shot":

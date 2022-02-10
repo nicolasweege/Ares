@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour
+public class Enemy1 : Enemy
 {
-    [SerializeField] private float enemy1Speed = 2f;
-    [SerializeField] private GameObject enemy1Shot;
+    [SerializeField] private GameObject shot;
     [SerializeField] private Transform shotStartPosition;
     [SerializeField] private int timeToCount = 0;
     [SerializeField] private int timeToShoot = 120;
-    [SerializeField] private int enemy1Health = 2;
-    [SerializeField] private GameObject enemy1ExplosionAnimation;
-    public int defaultDamage = 1;
-    private Rigidbody2D enemy1Rb2D;
 
     private void Start()
     {
-        enemy1Rb2D = GetComponent<Rigidbody2D>();
-
-        enemy1Rb2D.velocity = new Vector2(0f, -enemy1Speed);
+        rigidbody2D.velocity = new Vector2(0f, -speed);
     }
 
     private void FixedUpdate()
@@ -31,23 +24,12 @@ public class Enemy1 : MonoBehaviour
 
             if (timeToCount >= timeToShoot)
             {
-                Instantiate(enemy1Shot, shotStartPosition.position, shotStartPosition.rotation);
+                Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
                 timeToCount = 0;
             }
         }
 
-        if (enemy1Health <= 0) Death();
-    }
-
-    public int LoseLife(int damage)
-    {
-        return enemy1Health -= damage;
-    }
-
-    public void Death()
-    {
-        Instantiate(enemy1ExplosionAnimation, transform.position, transform.rotation);
-        Destroy(gameObject);
+        if (health <= 0) Death();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
