@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e087f4b8e6612a46a6f6bef18b47cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
+  health: 2
+  speed: 3
   explosionAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   defaultDamage: 1
   shot: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}

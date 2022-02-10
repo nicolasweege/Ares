@@ -68,11 +68,8 @@ public class Player : MonoBehaviour
                 break;
 
             case "Enemy1Shot":
-                Enemy1Shot enemy1ShotScript = other.GetComponent<Enemy1Shot>();
-                Transform enemy1ShotTransform = other.GetComponent<Transform>();
-
-                LoseLife(enemy1ShotScript.defaultDamage);
-                Instantiate(damageAnimation, enemy1ShotTransform.position, enemy1ShotTransform.rotation);
+                LoseLife(other.GetComponent<Enemy1Shot>().defaultDamage);
+                Instantiate(damageAnimation, other.GetComponent<Transform>().position, other.GetComponent<Transform>().rotation);
                 Destroy(other.gameObject);
                 break;
         }
