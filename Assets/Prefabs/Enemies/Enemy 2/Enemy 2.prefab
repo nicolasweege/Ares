@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bb28aad3c9cf0479eea2fa135f27e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   speed: 1
   deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   defaultDamage: 2
@@ -63,8 +63,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.014749527, y: -0.36645842}
-  m_Size: {x: 0.54215264, y: 0.6712148}
+  m_Offset: {x: -0.014749527, y: -0.25186488}
+  m_Size: {x: 0.54215264, y: 0.9004019}
   m_Direction: 0
 --- !u!50 &5893662411174623285
 Rigidbody2D:
