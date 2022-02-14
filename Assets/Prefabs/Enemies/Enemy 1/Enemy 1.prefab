@@ -79,12 +79,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   speed: 3
-  deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  defaultDamage: 1
+  timeToShoot: 0
+  minTimeToShoot: 0.5
+  maxTimeToShoot: 1.5
   shot: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}
   shotStartPosition: {fileID: 6982913048755518968}
-  timeToCount: 0
-  timeToShoot: 30
+  deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  defaultDamage: 1
 --- !u!70 &5376568305171802168
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

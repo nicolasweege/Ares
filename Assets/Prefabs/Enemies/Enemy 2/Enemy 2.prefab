@@ -49,12 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 1
-  deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  defaultDamage: 2
+  timeToShoot: 0
+  minTimeToShoot: 1.5
+  maxTimeToShoot: 2.5
   shot: {fileID: 2603989569448783275, guid: edd6ad68d3417294498811acf0709621, type: 3}
   shotStartPosition: {fileID: 4211286061476786538}
-  timeToCount: 0
-  timeToShoot: 60
+  deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  defaultDamage: 2
 --- !u!70 &20361901580904199
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1373375891
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1344780287051860636, guid: 4148a59a56378a24686508aec08400bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -218,7 +219,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5918299744789715264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.475, z: 0}
+  m_LocalPosition: {x: 0, y: -0.651, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1409823976189308952}

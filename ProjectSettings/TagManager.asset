@@ -48,6 +48,9 @@ TagManager:
   - name: Enemy 1
     uniqueID: 1307419071
     locked: 0
+  - name: Enemy 2 Shot
+    uniqueID: 2628607417
+    locked: 0
   - name: Enemy 2
     uniqueID: 2921591405
     locked: 0
@@ -59,9 +62,6 @@ TagManager:
     locked: 0
   - name: Enemy 1 Shot
     uniqueID: 3974682491
-    locked: 0
-  - name: Enemy 2 Shot
-    uniqueID: 2628607417
     locked: 0
   - name: Damage Animation
     uniqueID: 3138669063

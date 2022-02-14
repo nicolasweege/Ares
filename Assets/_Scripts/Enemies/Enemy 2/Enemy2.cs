@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Enemy2 : Enemy
 {
-    [SerializeField] private GameObject shot;
-    [SerializeField] private Transform shotStartPosition;
-    [SerializeField] private int timeToCount;
-    [SerializeField] private int timeToShoot;
     private new Rigidbody2D rigidbody2D;
 
     private void Start()
@@ -17,20 +13,9 @@ public class Enemy2 : Enemy
         rigidbody2D.velocity = new Vector2(0f, -speed);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        var enemy2IsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-
-        if (enemy2IsVisible)
-        {
-            timeToCount++;
-
-            if (timeToCount >= timeToShoot)
-            {
-                CreateShot(shot, shotStartPosition);
-                timeToCount = 0;
-            }
-        }
+        Shoot();
 
         if (health <= 0) Death();
     }
