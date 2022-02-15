@@ -6,28 +6,29 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected int _health;
     [SerializeField] protected float _speed;
-    [SerializeField] protected float timeToShoot;
-    [SerializeField] protected float minTimeToShoot;
-    [SerializeField] protected float maxTimeToShoot;
-    [SerializeField] protected GameObject shot;
-    [SerializeField] protected Transform shotStartPosition;
-    [SerializeField] private GameObject deathAnimation;
-    public int defaultDamage;
+    [SerializeField] protected float _timeToShoot;
+    [SerializeField] protected float _minTimeToShoot;
+    [SerializeField] protected float _maxTimeToShoot;
+    [SerializeField] protected GameObject _shot;
+    [SerializeField] protected Transform _shotStartPosition;
+    [SerializeField] private GameObject _deathAnimation;
+    public int DefaultDamage;
 
     public int LoseLife(int damage)
     {
         return _health -= damage;
     }
 
-    protected void CreateShot(GameObject shot, Transform shotStartPosition)
+    protected void CreateShot()
     {
-        Instantiate(shot, shotStartPosition.position, shotStartPosition.rotation);
+        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().Speed);
     }
 
     public void Death()
     {
         Destroy(gameObject);
-        Instantiate(deathAnimation, transform.position, transform.rotation);
+        Instantiate(_deathAnimation, transform.position, transform.rotation);
     }
 
     protected void Shoot()
@@ -36,12 +37,12 @@ public class Enemy : MonoBehaviour
 
         if (enemyIsVisible)
         {
-            timeToShoot -= Time.deltaTime;
+            _timeToShoot -= Time.deltaTime;
 
-            if (timeToShoot <= 0)
+            if (_timeToShoot <= 0)
             {
-                CreateShot(shot, shotStartPosition);
-                timeToShoot = Random.Range(minTimeToShoot, maxTimeToShoot);
+                CreateShot();
+                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
             }
         }
     }

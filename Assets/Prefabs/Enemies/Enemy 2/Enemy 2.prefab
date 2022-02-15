@@ -47,15 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bb28aad3c9cf0479eea2fa135f27e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 1
-  timeToShoot: 0
-  minTimeToShoot: 1.5
-  maxTimeToShoot: 2.5
-  shot: {fileID: 2603989569448783275, guid: edd6ad68d3417294498811acf0709621, type: 3}
-  shotStartPosition: {fileID: 4211286061476786538}
-  deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  defaultDamage: 1
+  _health: 10
+  _speed: 1
+  _timeToShoot: 0
+  _minTimeToShoot: 1.5
+  _maxTimeToShoot: 2.5
+  _shot: {fileID: 2603989569448783275, guid: edd6ad68d3417294498811acf0709621, type: 3}
+  _shotStartPosition: {fileID: 4211286061476786538}
+  _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  DefaultDamage: 1
 --- !u!70 &20361901580904199
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

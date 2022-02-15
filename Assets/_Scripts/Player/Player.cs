@@ -19,17 +19,18 @@ public class Player : MonoBehaviour
         _playerInputActions.Player.Shoot.performed += Shoot;
     }
 
-    private void Shoot(InputAction.CallbackContext context)
-    {
-        GameObject m_Shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-    }
-
     private void Update()
     {
         Moving();
         Etc();
 
         if (_health <= 0) Death();
+    }
+
+    private void Shoot(InputAction.CallbackContext context)
+    {
+        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, shot.GetComponent<Shot>().Speed);
     }
 
     private void Moving()
@@ -66,12 +67,12 @@ public class Player : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                LoseLife(other.GetComponent<Enemy>().defaultDamage);
+                LoseLife(other.GetComponent<Enemy>().DefaultDamage);
                 other.GetComponent<Enemy>().Death();
                 break;
 
             case "Shot":
-                LoseLife(other.GetComponent<Shot>().defaultDamage);
+                LoseLife(other.GetComponent<Shot>().DefaultDamage);
                 other.GetComponent<Shot>().DestroyShot();
                 break;
         }

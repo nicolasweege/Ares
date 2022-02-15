@@ -24,7 +24,7 @@ public class Enemy2 : Enemy
     {
         switch (other.gameObject.tag)
         {
-            case "EnemyDestroyer":
+            case "InstanceDestroyer":
                 Destroy(gameObject);
                 break;
         }

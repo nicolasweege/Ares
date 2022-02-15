@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class PlayerShot : Shot
 {
-    private Rigidbody2D _rigidbody2D;
-
-    private void Start()
-    {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-
-        _rigidbody2D.velocity = new Vector2(0, speed);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)
         {
-            case "PlayerDestroyer":
+            case "InstanceDestroyer":
                 Destroy(gameObject);
                 break;
 
             case "Enemy":
-                other.GetComponent<Enemy>().LoseLife(defaultDamage);
+                other.GetComponent<Enemy>().LoseLife(DefaultDamage);
                 DestroyShot();
                 break;
 

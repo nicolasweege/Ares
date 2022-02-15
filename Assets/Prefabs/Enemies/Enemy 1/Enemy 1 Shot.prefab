@@ -148,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b4925acbb27f944fb74e05c53d0939d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
-  defaultDamage: 1
+  _damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
+  Speed: 7
+  DefaultDamage: 1
 --- !u!70 &2104817050260827514
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

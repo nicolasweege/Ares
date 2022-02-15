@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Shot : MonoBehaviour
 {
-    [SerializeField] protected float speed;
-    [SerializeField] protected GameObject damageAnimation;
-    public int defaultDamage;
+    [SerializeField] protected GameObject _damageAnimation;
+    public float Speed;
+    public int DefaultDamage;
 
     public void DestroyShot()
     {
         Destroy(gameObject);
-        Instantiate(damageAnimation, transform.position, transform.rotation);
+        Instantiate(_damageAnimation, transform.position, transform.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
