@@ -55,7 +55,7 @@ MonoBehaviour:
   shot: {fileID: 2603989569448783275, guid: edd6ad68d3417294498811acf0709621, type: 3}
   shotStartPosition: {fileID: 4211286061476786538}
   deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  defaultDamage: 2
+  defaultDamage: 1
 --- !u!70 &20361901580904199
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
