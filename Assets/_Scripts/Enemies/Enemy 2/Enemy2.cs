@@ -15,7 +15,7 @@ public class Enemy2 : Enemy
 
     private void Update()
     {
-        Shoot();
+        GuidedShoot();
 
         if (_health <= 0) Death();
     }
