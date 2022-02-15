@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerShot : Shot
 {
-    private new Rigidbody2D rigidbody2D;
+    private Rigidbody2D _rigidbody2D;
 
     private void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
 
-        rigidbody2D.velocity = new Vector2(0, speed);
+        _rigidbody2D.velocity = new Vector2(0, speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

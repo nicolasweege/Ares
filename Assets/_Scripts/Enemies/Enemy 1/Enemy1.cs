@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Enemy1 : Enemy
 {
-    private new Rigidbody2D rigidbody2D;
+    private Rigidbody2D _rigidbody2D;
 
     private void Start()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
 
-        rigidbody2D.velocity = new Vector2(0f, -speed);
+        _rigidbody2D.velocity = new Vector2(0f, -_speed);
     }
 
     private void Update()
     {
         Shoot();
 
-        if (health <= 0) Death();
+        if (_health <= 0) Death();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

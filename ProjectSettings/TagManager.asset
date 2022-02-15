@@ -5,9 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shot
-  - EnemyDestroyer
-  - PlayerDestroyer
   - Enemy
+  - InstanceDestroyer
   layers:
   - Default
   - TransparentFX

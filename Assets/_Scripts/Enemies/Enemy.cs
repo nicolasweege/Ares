@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] protected int health;
-    [SerializeField] protected float speed;
+    [SerializeField] protected int _health;
+    [SerializeField] protected float _speed;
     [SerializeField] protected float timeToShoot;
     [SerializeField] protected float minTimeToShoot;
     [SerializeField] protected float maxTimeToShoot;
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
     public int LoseLife(int damage)
     {
-        return health -= damage;
+        return _health -= damage;
     }
 
     protected void CreateShot(GameObject shot, Transform shotStartPosition)
