@@ -19,56 +19,15 @@ public class Enemy : MonoBehaviour
         return _health -= damage;
     }
 
-    protected void CreateShot()
-    {
-        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().Speed);
-    }
-
-    protected void CreateGuidedShot()
-    {
-        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-        var player = FindObjectOfType<Player>();
-        Vector2 shotDirection = player.transform.position - shot.transform.position;
-        shotDirection.Normalize();
-        shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().Speed;
-    }
-
     public void Death()
     {
         Destroy(gameObject);
         Instantiate(_deathAnimation, transform.position, transform.rotation);
     }
 
-    protected void Shoot()
+    protected void CreateGenericShot()
     {
-        bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-
-        if (enemyIsVisible)
-        {
-            _timeToShoot -= Time.deltaTime;
-
-            if (_timeToShoot <= 0)
-            {
-                CreateShot();
-                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
-            }
-        }
-    }
-
-    protected void GuidedShoot()
-    {
-        bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-
-        if (enemyIsVisible)
-        {
-            _timeToShoot -= Time.deltaTime;
-
-            if (_timeToShoot <= 0)
-            {
-                CreateGuidedShot();
-                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
-            }
-        }
+        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().Speed);
     }
 }

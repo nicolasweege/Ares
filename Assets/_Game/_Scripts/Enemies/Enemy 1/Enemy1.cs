@@ -20,6 +20,22 @@ public class Enemy1 : Enemy
         if (_health <= 0) Death();
     }
 
+    private void Shoot()
+    {
+        bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+
+        if (enemyIsVisible)
+        {
+            _timeToShoot -= Time.deltaTime;
+
+            if (_timeToShoot <= 0)
+            {
+                CreateGenericShot();
+                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)

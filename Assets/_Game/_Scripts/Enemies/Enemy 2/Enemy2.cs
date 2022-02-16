@@ -20,6 +20,35 @@ public class Enemy2 : Enemy
         if (_health <= 0) Death();
     }
 
+    private void CreateGuidedShot()
+    {
+        var player = FindObjectOfType<Player>();
+        if (player == null) return;
+
+        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+
+        Vector2 shotDirection = player.transform.position - shot.transform.position;
+        shotDirection.Normalize();
+
+        shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().Speed;
+    }
+
+    private void GuidedShoot()
+    {
+        bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+
+        if (enemyIsVisible)
+        {
+            _timeToShoot -= Time.deltaTime;
+
+            if (_timeToShoot <= 0)
+            {
+                CreateGuidedShot();
+                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         switch (other.gameObject.tag)
