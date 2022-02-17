@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10
-  _speed: 1
+  _speed: 2
   _timeToShoot: 0
   _minTimeToShoot: 1.5
   _maxTimeToShoot: 2.5
@@ -56,6 +56,8 @@ MonoBehaviour:
   _shotStartPosition: {fileID: 4211286061476786538}
   _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   DefaultDamage: 1
+  _yLimit: 2.5
+  _canMove2Diagonal: 1
 --- !u!70 &20361901580904199
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

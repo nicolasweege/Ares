@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy2 : Enemy
 {
+    [SerializeField] private float _yLimit;
+    [SerializeField] private bool _canMove2Diagonal;
     private Rigidbody2D _rigidbody2D;
 
     private void Start()
@@ -15,9 +17,20 @@ public class Enemy2 : Enemy
 
     private void Update()
     {
+        Moving();
         Shoot();
 
         if (_health <= 0) Death();
+    }
+
+    private void Moving()
+    {
+        if (transform.position.y <= _yLimit && _canMove2Diagonal)
+        {
+            if (transform.position.x > 0f) _rigidbody2D.velocity = new Vector2(-_speed, -_speed);
+            if (transform.position.x < 0f) _rigidbody2D.velocity = new Vector2(_speed, -_speed);
+            _canMove2Diagonal = false;
+        }
     }
 
     private void CreateShot()
