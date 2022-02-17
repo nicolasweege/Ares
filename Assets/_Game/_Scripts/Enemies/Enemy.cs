@@ -24,10 +24,4 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         Instantiate(_deathAnimation, transform.position, transform.rotation);
     }
-
-    protected void CreateGenericShot()
-    {
-        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().Speed);
-    }
 }

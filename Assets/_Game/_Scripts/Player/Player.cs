@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     {
         Vector2 inputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
         inputVector.Normalize();
+
         transform.position += new Vector3(inputVector.x, inputVector.y, transform.position.z) * Time.deltaTime * _speed;
     }
 

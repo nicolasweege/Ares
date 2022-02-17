@@ -15,12 +15,12 @@ public class Enemy2 : Enemy
 
     private void Update()
     {
-        GuidedShoot();
+        Shoot();
 
         if (_health <= 0) Death();
     }
 
-    private void CreateGuidedShot()
+    private void CreateShot()
     {
         var player = FindObjectOfType<Player>();
         if (player == null) return;
@@ -30,10 +30,13 @@ public class Enemy2 : Enemy
         Vector2 shotDirection = player.transform.position - shot.transform.position;
         shotDirection.Normalize();
 
+        float shotAngle = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg;
+
+        shot.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, shotAngle + 90f));
         shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().Speed;
     }
 
-    private void GuidedShoot()
+    private void Shoot()
     {
         bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
 
@@ -43,7 +46,7 @@ public class Enemy2 : Enemy
 
             if (_timeToShoot <= 0)
             {
-                CreateGuidedShot();
+                CreateShot();
                 _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
             }
         }

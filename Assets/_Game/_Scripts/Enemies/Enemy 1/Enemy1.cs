@@ -20,6 +20,12 @@ public class Enemy1 : Enemy
         if (_health <= 0) Death();
     }
 
+    protected void CreateShot()
+    {
+        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().Speed);
+    }
+
     private void Shoot()
     {
         bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
@@ -30,7 +36,7 @@ public class Enemy1 : Enemy
 
             if (_timeToShoot <= 0)
             {
-                CreateGenericShot();
+                CreateShot();
                 _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
             }
         }
