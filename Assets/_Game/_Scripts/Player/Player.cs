@@ -64,15 +64,21 @@ public class Player : MonoBehaviour
         Instantiate(_deathAnimation, transform.position, transform.rotation);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                LoseLife(other.GetComponent<Enemy>().DefaultDamage);
-                other.GetComponent<Enemy>().Death();
+                LoseLife(other.gameObject.GetComponent<Enemy>().DefaultDamage);
+                other.gameObject.GetComponent<Enemy>().Death();
                 break;
+        }
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.tag)
+        {
             case "Shot":
                 LoseLife(other.GetComponent<Shot>().DefaultDamage);
                 other.GetComponent<Shot>().DestroyShot();

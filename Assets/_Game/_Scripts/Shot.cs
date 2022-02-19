@@ -16,7 +16,7 @@ public class Shot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.gameObject.tag)
+        switch (other.tag)
         {
             case "InstanceDestroyer":
                 Destroy(gameObject);

@@ -44,7 +44,7 @@ public class Enemy1 : Enemy
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.gameObject.tag)
+        switch (other.tag)
         {
             case "InstanceDestroyer":
                 bool v = transform.position.y <= 0;

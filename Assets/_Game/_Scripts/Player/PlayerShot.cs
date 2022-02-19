@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class PlayerShot : Shot
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
         {
+            case "Enemy":
+                other.gameObject.GetComponent<Enemy>().LoseLife(DefaultDamage);
+                DestroyShot();
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.tag)
+        {
             case "InstanceDestroyer":
                 Destroy(gameObject);
-                break;
-
-            case "Enemy":
-                other.GetComponent<Enemy>().LoseLife(DefaultDamage);
-                DestroyShot();
                 break;
 
             case "Shot":
