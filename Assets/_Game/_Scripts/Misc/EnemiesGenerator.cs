@@ -21,7 +21,8 @@ public class EnemiesGenerator : MonoBehaviour
 
         if (_timer <= 0)
         {
-            CreateEnemy(Random.Range(10, 20), 0);
+            CreateEnemy(Random.Range(1, 5), 0);
+            CreateEnemy(Random.Range(1, 2), 1);
             _timer = _time2Wait;
         }
     }

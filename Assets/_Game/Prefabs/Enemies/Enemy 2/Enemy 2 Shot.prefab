@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
   Speed: 8
-  DefaultDamage: 3
+  DefaultDamage: 2
 --- !u!70 &808399905947402149
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

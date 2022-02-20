@@ -46,4 +46,4 @@ MonoBehaviour:
   _enemies:
   - {fileID: 3899884751178256408, guid: f07e742b1b1ae42498c36c5a0df3c14a, type: 3}
   - {fileID: 1409823976189308953, guid: 6cdcec435053fd849986e1d158e86ea2, type: 3}
-  _time2Wait: 5
+  _time2Wait: 7
