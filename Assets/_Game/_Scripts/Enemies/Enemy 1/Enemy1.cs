@@ -50,6 +50,11 @@ public class Enemy1 : Enemy
                 bool v = transform.position.y <= 0;
                 if (v) Destroy(gameObject);
                 break;
+
+            case "Shot":
+                LoseLife(other.GetComponent<Shot>().DefaultDamage);
+                other.GetComponent<Shot>().DestroyShot();
+                break;
         }
     }
 }
