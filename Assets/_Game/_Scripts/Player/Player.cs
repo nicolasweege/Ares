@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Moving();
-        Etc();
+        SetHorizontalLimit();
 
         if (_health <= 0) Death();
     }
@@ -41,16 +41,10 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(inputVector.x, inputVector.y, transform.position.z) * Time.deltaTime * _speed;
     }
 
-    private void Etc()
+    private void SetHorizontalLimit()
     {
-        if (transform.position.x < -9.5f)
-        {
-            transform.position = new Vector3(9.5f, transform.position.y, transform.position.z);
-        }
-        if (transform.position.x > 9.5f)
-        {
-            transform.position = new Vector3(-9.5f, transform.position.y, transform.position.z);
-        }
+        if (transform.position.x < -9.5f) transform.position = new Vector3(9.5f, transform.position.y, transform.position.z);
+        if (transform.position.x > 9.5f) transform.position = new Vector3(-9.5f, transform.position.y, transform.position.z);
     }
 
     private int LoseLife(int damage)

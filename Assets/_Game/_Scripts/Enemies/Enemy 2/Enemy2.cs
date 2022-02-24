@@ -25,12 +25,10 @@ public class Enemy2 : Enemy
 
     private void Moving()
     {
-        if (transform.position.y <= _yLimit && _canMove2Diagonal)
-        {
-            if (transform.position.x > 0f) _rigidbody2D.velocity = new Vector2(-_speed, -_speed);
-            if (transform.position.x < 0f) _rigidbody2D.velocity = new Vector2(_speed, -_speed);
-            _canMove2Diagonal = false;
-        }
+        if (transform.position.y > _yLimit || !_canMove2Diagonal) return;
+        if (transform.position.x > 0f) _rigidbody2D.velocity = new Vector2(-_speed, -_speed);
+        if (transform.position.x < 0f) _rigidbody2D.velocity = new Vector2(_speed, -_speed);
+        _canMove2Diagonal = false;
     }
 
     private void CreateShot()
@@ -52,16 +50,14 @@ public class Enemy2 : Enemy
     private void Shoot()
     {
         bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+        if (!enemyIsVisible) return;
 
-        if (enemyIsVisible)
+        _timeToShoot -= Time.deltaTime;
+
+        if (_timeToShoot <= 0)
         {
-            _timeToShoot -= Time.deltaTime;
-
-            if (_timeToShoot <= 0)
-            {
-                CreateShot();
-                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
-            }
+            CreateShot();
+            _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
         }
     }
 
@@ -75,8 +71,12 @@ public class Enemy2 : Enemy
                 break;
 
             case "Shot":
-                LoseLife(other.GetComponent<Shot>().DefaultDamage);
-                other.GetComponent<Shot>().DestroyShot();
+                bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+                if (enemyIsVisible)
+                {
+                    LoseLife(other.GetComponent<Shot>().DefaultDamage);
+                    other.GetComponent<Shot>().DestroyShot();
+                }
                 break;
         }
     }

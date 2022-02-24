@@ -29,16 +29,14 @@ public class Enemy1 : Enemy
     private void Shoot()
     {
         bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+        if (!enemyIsVisible) return;
 
-        if (enemyIsVisible)
+        _timeToShoot -= Time.deltaTime;
+
+        if (_timeToShoot <= 0)
         {
-            _timeToShoot -= Time.deltaTime;
-
-            if (_timeToShoot <= 0)
-            {
-                CreateShot();
-                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
-            }
+            CreateShot();
+            _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
         }
     }
 
@@ -52,8 +50,12 @@ public class Enemy1 : Enemy
                 break;
 
             case "Shot":
-                LoseLife(other.GetComponent<Shot>().DefaultDamage);
-                other.GetComponent<Shot>().DestroyShot();
+                bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+                if (enemyIsVisible)
+                {
+                    LoseLife(other.GetComponent<Shot>().DefaultDamage);
+                    other.GetComponent<Shot>().DestroyShot();
+                }
                 break;
         }
     }
