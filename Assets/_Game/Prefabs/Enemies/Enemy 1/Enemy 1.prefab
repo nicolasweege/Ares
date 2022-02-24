@@ -85,6 +85,7 @@ MonoBehaviour:
   _shot: {fileID: 4935518561706125901, guid: a362d3d35465c13458ddbef3665a1ca2, type: 3}
   _shotStartPosition: {fileID: 6982913048755518968}
   _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  CoinsValue: 1
   DefaultDamage: 1
 --- !u!70 &5376568305171802168
 CapsuleCollider2D:

@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
             case "Enemy":
                 LoseLife(other.gameObject.GetComponent<Enemy>().DefaultDamage);
                 other.gameObject.GetComponent<Enemy>().Death();
+                FindObjectOfType<EnemiesGenerator>().GetCoins(other.gameObject.GetComponent<Enemy>().CoinsValue);
                 break;
         }
     }

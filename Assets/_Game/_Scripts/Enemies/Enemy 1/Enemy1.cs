@@ -17,7 +17,11 @@ public class Enemy1 : Enemy
     {
         Shoot();
 
-        if (_health <= 0) Death();
+        if (_health <= 0) 
+        {
+            Death();
+            FindObjectOfType<EnemiesGenerator>().GetCoins(CoinsValue);
+        }
     }
 
     protected void CreateShot()

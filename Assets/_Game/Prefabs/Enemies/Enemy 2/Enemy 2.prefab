@@ -55,6 +55,7 @@ MonoBehaviour:
   _shot: {fileID: 2603989569448783275, guid: edd6ad68d3417294498811acf0709621, type: 3}
   _shotStartPosition: {fileID: 4211286061476786538}
   _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  CoinsValue: 3
   DefaultDamage: 1
   _yLimit: 2.5
   _canMove2Diagonal: 1

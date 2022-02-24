@@ -20,7 +20,11 @@ public class Enemy2 : Enemy
         Moving();
         Shoot();
 
-        if (_health <= 0) Death();
+        if (_health <= 0) 
+        {
+            Death();
+            FindObjectOfType<EnemiesGenerator>().GetCoins(CoinsValue);
+        }
     }
 
     private void Moving()
