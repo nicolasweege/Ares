@@ -154,6 +154,8 @@ MonoBehaviour:
   _shot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   _shotStartPosition: {fileID: 1546371908465108044}
   _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  _xLimit: 8.3
+  _yLimit: 4.4
 --- !u!70 &3643124730240130694
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

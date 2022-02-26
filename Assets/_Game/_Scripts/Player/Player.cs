@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _shot;
     [SerializeField] private Transform _shotStartPosition;
     [SerializeField] private GameObject _deathAnimation;
+    [SerializeField] private float _xLimit;
+    [SerializeField] private float _yLimit;
     private PlayerInputActions _playerInputActions;
 
     private void Start()
@@ -22,7 +24,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Moving();
-        SetHorizontalLimit();
 
         if (_health <= 0) Death();
     }
@@ -39,12 +40,17 @@ public class Player : MonoBehaviour
         inputVector.Normalize();
 
         transform.position += new Vector3(inputVector.x, inputVector.y, transform.position.z) * Time.deltaTime * _speed;
+
+        float x = Mathf.Clamp(transform.position.x, -_xLimit, _xLimit);
+        float y = Mathf.Clamp(transform.position.y, -_yLimit, _yLimit);
+
+        transform.position = new Vector3(x, y, transform.position.z);
     }
 
     private void SetHorizontalLimit()
     {
-        if (transform.position.x < -9.5f) transform.position = new Vector3(9.5f, transform.position.y, transform.position.z);
-        if (transform.position.x > 9.5f) transform.position = new Vector3(-9.5f, transform.position.y, transform.position.z);
+        if (transform.position.x < -_xLimit) transform.position = new Vector3(_xLimit, transform.position.y, transform.position.z);
+        if (transform.position.x > _xLimit) transform.position = new Vector3(-_xLimit, transform.position.y, transform.position.z);
     }
 
     private int LoseLife(int damage)
