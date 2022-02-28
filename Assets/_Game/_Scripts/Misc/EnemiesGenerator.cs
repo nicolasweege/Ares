@@ -14,7 +14,7 @@ public class EnemiesGenerator : MonoBehaviour
     {
         CreateEnemies(1, 3);
 
-        Debug.Log("Coins: " + _coins);
+        //Debug.Log("Coins: " + _coins);
     }
 
     private void CreateEnemies(int minEnemiesAmount, int maxEnemiesAmount)
