@@ -427,6 +427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemies Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 5676043764078537909, guid: be349e0d0306d504686de15da0d8eeb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be349e0d0306d504686de15da0d8eeb8, type: 3}
 --- !u!1 &1432977950
@@ -677,6 +681,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5565119435820294826, guid: c69976c944b4f754a87dc7871ef99693, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c69976c944b4f754a87dc7871ef99693, type: 3}
 --- !u!1001 &2483127841332114710

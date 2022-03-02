@@ -47,7 +47,7 @@ public class Enemy2 : Enemy
 
         float shotAngle = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg;
 
-        shot.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, shotAngle + 90f));
+        shot.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
         shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().Speed;
     }
 
