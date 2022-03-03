@@ -10,12 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _shot;
     [SerializeField] private Transform _shotStartPosition;
     [SerializeField] private GameObject _deathAnimation;
-    [SerializeField] private float _xLimit;
-    [SerializeField] private float _yLimit;
     [SerializeField] private Camera _camera;
-    private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rb2D;
-    private Vector2 _mousePosition;
+    private PlayerInputActions _playerInputActions;
+    private bool _isGamepad;
 
     private void Start()
     {
@@ -28,33 +26,31 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Moving();
-        Aiming();
+        Move();
+        Aim();
         
         if (_health <= 0) Death();
     }
 
-    private void Moving()
+    private void Move()
     {
-        Vector2 inputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-        inputVector.Normalize();
+        Vector2 movementInputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        movementInputVector.Normalize();
 
-        transform.position += new Vector3(inputVector.x, inputVector.y, transform.position.z) * Time.deltaTime * _speed;
-
-        float x = Mathf.Clamp(transform.position.x, -_xLimit, _xLimit);
-        float y = Mathf.Clamp(transform.position.y, -_yLimit, _yLimit);
-
-        transform.position = new Vector3(x, y, transform.position.z);
+        transform.position += new Vector3(movementInputVector.x, movementInputVector.y, transform.position.z) * Time.deltaTime * _speed;
     }
 
-    private Vector2 Aiming()
+    private Vector2 Aim()
     {
-        _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePosition;
+        Vector2 lookDirection;
+        float lookAngle;
 
-        Vector2 lookDirection = _mousePosition - _rb2D.position;
+        mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        lookDirection = mousePosition - _rb2D.position;
         lookDirection.Normalize();
 
-        float lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90;
+        lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
 
         return lookDirection;
@@ -63,13 +59,7 @@ public class Player : MonoBehaviour
     private void Shoot(InputAction.CallbackContext context)
     {
         GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-        shot.GetComponent<Rigidbody2D>().velocity = Aiming() * shot.GetComponent<Shot>().Speed;
-    }
-
-    private void SetHorizontalLimit()
-    {
-        if (transform.position.x < -_xLimit) transform.position = new Vector3(_xLimit, transform.position.y, transform.position.z);
-        if (transform.position.x > _xLimit) transform.position = new Vector3(-_xLimit, transform.position.y, transform.position.z);
+        shot.GetComponent<Rigidbody2D>().velocity = Aim() * shot.GetComponent<Shot>().Speed;
     }
 
     private int LoseLife(int damage)
@@ -104,5 +94,10 @@ public class Player : MonoBehaviour
                 other.GetComponent<Shot>().DestroyShot();
                 break;
         }
+    }
+
+    public void OnDeviceChange(PlayerInput playerInput)
+    {
+        _isGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 }
