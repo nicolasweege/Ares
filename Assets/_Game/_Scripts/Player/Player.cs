@@ -12,16 +12,16 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _deathAnimation;
     [SerializeField] private Camera _camera;
     private Rigidbody2D _rb2D;
-    private PlayerInputActions _playerInputActions;
     private bool _isGamepad;
+    public PlayerInputActions PlayerInputActions;
 
     private void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
 
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-        _playerInputActions.Player.Shoot.performed += Shoot;
+        PlayerInputActions = new PlayerInputActions();
+        PlayerInputActions.Player.Enable();
+        PlayerInputActions.Player.Shoot.performed += Shoot;
     }
 
     private void Update()
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        Vector2 movementInputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        Vector2 movementInputVector = PlayerInputActions.Player.Movement.ReadValue<Vector2>();
         movementInputVector.Normalize();
 
         transform.position += new Vector3(movementInputVector.x, movementInputVector.y, transform.position.z) * Time.deltaTime * _speed;
