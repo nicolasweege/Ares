@@ -136,6 +136,7 @@ MonoBehaviour:
   _shotStartPosition: {fileID: 1546371908465108044}
   _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _camera: {fileID: 0}
+  _mapGenerator: {fileID: 0}
 --- !u!114 &3858209732904176750
 MonoBehaviour:
   m_ObjectHideFlags: 0
