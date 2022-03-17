@@ -10,7 +10,8 @@ public class PauseMenu : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     public static bool GameIsPaused = false;
 
-    private void Start() {
+    private void Start()
+    {
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Pause.performed += Pause;
