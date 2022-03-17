@@ -12,8 +12,8 @@ public class FollowingCamera : MonoBehaviour
 
     private void FollowPlayer()
     {
-        float xx = Mathf.Lerp(transform.position.x, _playerTransform.position.x, 0.01f);
-        float yy = Mathf.Lerp(transform.position.y, _playerTransform.position.y, 0.01f);
+        float xx = Mathf.Lerp(transform.position.x, _playerTransform.position.x, 0.005f);
+        float yy = Mathf.Lerp(transform.position.y, _playerTransform.position.y, 0.005f);
         transform.position = new Vector3(xx, yy, transform.position.z);
     }
 }

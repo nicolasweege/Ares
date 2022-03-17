@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _shotStartPosition;
     [SerializeField] private GameObject _deathAnimation;
     [SerializeField] private Camera _camera;
-    [SerializeField] private GameObject _mapGenerator;
     private Rigidbody2D _rb2D;
     private bool _isGamepad;
     public PlayerInputActions PlayerInputActions;
@@ -39,10 +38,6 @@ public class Player : MonoBehaviour
         movementInputVector.Normalize();
 
         transform.position += new Vector3(movementInputVector.x, movementInputVector.y, transform.position.z) * Time.deltaTime * _speed;
-
-        float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().SceneXLimit, _mapGenerator.GetComponent<MapGenerator>().SceneXLimit);
-        float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().SceneYLimit, _mapGenerator.GetComponent<MapGenerator>().SceneYLimit);
-        transform.position = new Vector3(xx, yy, transform.position.z);
     }
 
     private Vector2 Aim()
