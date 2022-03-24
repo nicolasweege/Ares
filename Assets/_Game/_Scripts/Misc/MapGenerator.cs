@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject _portalPrefab;
+    [SerializeField] private GameObject _portal;
+    [SerializeField] private GameObject _key;
+    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _camera;
     public int _gridWidth = 16;
     public int _gridHight = 16;
     public int _mapHight = 32;
@@ -12,16 +15,22 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        CreatePortal();
+        CreateElements();
     }
 
-    private void CreatePortal()
+    private void CreateElements()
     {
-        Vector3 portalPos = GetPortalPos();
-        var portal = Instantiate(_portalPrefab, portalPos, transform.rotation);
+        Vector3 portalPos = GetElementPos();
+        Vector3 keyPos = GetElementPos();
+        Vector3 playerPos = GetElementPos();
+
+        var portal = Instantiate(_portal, portalPos, transform.rotation);
+        var key = Instantiate(_key, keyPos, transform.rotation);
+        var player = Instantiate(_player, playerPos, transform.rotation);
+        _camera.GetComponent<FollowingCamera>().SetPlayerTransform(player.transform);
     }
 
-    private Vector3 GetPortalPos()
+    private Vector3 GetElementPos()
     {
         return new Vector3(Random.Range(-_mapWidth, _mapWidth), Random.Range(-_mapHight, _mapHight), 0f);
     }

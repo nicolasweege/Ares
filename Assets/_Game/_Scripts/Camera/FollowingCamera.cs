@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class FollowingCamera : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
+    private Transform _playerTransform;
 
-    private void Update() {
+    private void Update()
+    {
         FollowPlayer();
     }
 
     private void FollowPlayer()
     {
-        float xx = Mathf.Lerp(transform.position.x, _playerTransform.position.x, 0.005f);
-        float yy = Mathf.Lerp(transform.position.y, _playerTransform.position.y, 0.005f);
+        float xx = Mathf.Lerp(transform.position.x, _playerTransform.position.x, 0.010f);
+        float yy = Mathf.Lerp(transform.position.y, _playerTransform.position.y, 0.010f);
         transform.position = new Vector3(xx, yy, transform.position.z);
+    }
+
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        this._playerTransform = playerTransform;
     }
 }

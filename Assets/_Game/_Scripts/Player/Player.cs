@@ -10,15 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _shot;
     [SerializeField] private Transform _shotStartPosition;
     [SerializeField] private GameObject _deathAnimation;
-    [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _mapGenerator;
     private Rigidbody2D _rb2D;
+    private Camera _camera;
     private bool _isGamepad;
     public PlayerInputActions PlayerInputActions;
 
     private void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
+        _camera = FindObjectOfType<Camera>();
 
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.Player.Enable();
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Aim();
-        
+
         if (_health <= 0) Death();
     }
 
