@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerShot : Shot
 {
     private float _timeToDestroyShot = 1f;
-    private void Update() {
+    private void Update()
+    {
         _timeToDestroyShot -= Time.deltaTime;
         if (_timeToDestroyShot <= 0f && !GetComponentInChildren<SpriteRenderer>().isVisible) Destroy(gameObject);
     }

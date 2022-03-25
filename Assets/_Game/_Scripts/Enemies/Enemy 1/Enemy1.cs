@@ -23,7 +23,7 @@ public class Enemy1 : Enemy
     protected void CreateShot()
     {
         GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().Speed);
+        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().GetSpeed());
     }
 
     private void Shoot()
@@ -53,7 +53,7 @@ public class Enemy1 : Enemy
                 bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
                 if (enemyIsVisible)
                 {
-                    LoseLife(other.GetComponent<Shot>().DefaultDamage);
+                    LoseLife(other.GetComponent<Shot>().GetDefaultDamage());
                     other.GetComponent<Shot>().DestroyShot();
                 }
                 break;

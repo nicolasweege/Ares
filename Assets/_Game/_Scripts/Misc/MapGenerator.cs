@@ -8,14 +8,22 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject _key;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _camera;
-    public int _gridWidth = 16;
-    public int _gridHight = 16;
-    public int _mapHight = 32;
-    public int _mapWidth = 64;
+    [SerializeField] private const int _mapHight = 32;
+    [SerializeField] private const int _mapWidth = 64;
 
     private void Start()
     {
         CreateElements();
+    }
+
+    public int GetMapHight()
+    {
+        return _mapHight;
+    }
+
+    public int GetMapWidth()
+    {
+        return _mapWidth;
     }
 
     private void CreateElements()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8311019214197359802}
   - component: {fileID: 4595083221309491608}
   m_Layer: 11
-  m_Name: enemy2_shot
+  m_Name: Enemy 2 Shot Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
-  Speed: 8
-  DefaultDamage: 2
+  _speed: 5
+  _defaultDamage: 2
 --- !u!70 &808399905947402149
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

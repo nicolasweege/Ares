@@ -14,16 +14,16 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb2D;
     private Camera _camera;
     private bool _isGamepad;
-    public PlayerInputActions PlayerInputActions;
+    private PlayerInputActions _playerInputActions;
 
     private void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
         _camera = FindObjectOfType<Camera>();
 
-        PlayerInputActions = new PlayerInputActions();
-        PlayerInputActions.Player.Enable();
-        PlayerInputActions.Player.Shoot.performed += Shoot;
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Player.Enable();
+        _playerInputActions.Player.Shoot.performed += Shoot;
     }
 
     private void Update()
@@ -34,15 +34,20 @@ public class Player : MonoBehaviour
         if (_health <= 0) Death();
     }
 
+    public PlayerInputActions GetPlayerInputActions()
+    {
+        return _playerInputActions;
+    }
+
     private void Move()
     {
-        Vector2 movementInputVector = PlayerInputActions.Player.Movement.ReadValue<Vector2>();
+        Vector2 movementInputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
         movementInputVector.Normalize();
 
         transform.position += new Vector3(movementInputVector.x, movementInputVector.y, transform.position.z) * Time.deltaTime * _speed;
 
-        float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>()._mapWidth, _mapGenerator.GetComponent<MapGenerator>()._mapWidth);
-        float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>()._mapHight, _mapGenerator.GetComponent<MapGenerator>()._mapHight);
+        float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
+        float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
         transform.position = new Vector3(xx, yy, transform.position.z);
     }
 
@@ -65,7 +70,7 @@ public class Player : MonoBehaviour
     private void Shoot(InputAction.CallbackContext context)
     {
         GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
-        shot.GetComponent<Rigidbody2D>().velocity = Aim() * shot.GetComponent<Shot>().Speed;
+        shot.GetComponent<Rigidbody2D>().velocity = Aim() * shot.GetComponent<Shot>().GetSpeed();
     }
 
     private int LoseLife(int damage)
@@ -84,7 +89,7 @@ public class Player : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                LoseLife(other.gameObject.GetComponent<Enemy>().DefaultDamage);
+                LoseLife(other.gameObject.GetComponent<Enemy>().GetDefaultDamage());
                 other.gameObject.GetComponent<Enemy>().Death();
                 break;
         }
@@ -95,7 +100,7 @@ public class Player : MonoBehaviour
         switch (other.tag)
         {
             case "Shot":
-                LoseLife(other.GetComponent<Shot>().DefaultDamage);
+                LoseLife(other.GetComponent<Shot>().GetDefaultDamage());
                 other.GetComponent<Shot>().DestroyShot();
                 break;
         }

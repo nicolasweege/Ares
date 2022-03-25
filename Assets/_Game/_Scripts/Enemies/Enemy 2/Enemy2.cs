@@ -44,7 +44,7 @@ public class Enemy2 : Enemy
         float shotAngle = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg;
 
         shot.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
-        shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().Speed;
+        shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().GetSpeed();
     }
 
     private void Shoot()
@@ -74,7 +74,7 @@ public class Enemy2 : Enemy
                 bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
                 if (enemyIsVisible)
                 {
-                    LoseLife(other.GetComponent<Shot>().DefaultDamage);
+                    LoseLife(other.GetComponent<Shot>().GetDefaultDamage());
                     other.GetComponent<Shot>().DestroyShot();
                 }
                 break;

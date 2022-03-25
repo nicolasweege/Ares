@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviour
             Resume();
             return;
         }
-        FindObjectOfType<Player>().PlayerInputActions.Disable();
+        FindObjectOfType<Player>().GetPlayerInputActions().Disable();
         _pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -32,7 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        FindObjectOfType<Player>().PlayerInputActions.Enable();
+        FindObjectOfType<Player>().GetPlayerInputActions().Enable();
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitToStartMenu()
     {
-        FindObjectOfType<Player>().PlayerInputActions.Disable();
+        FindObjectOfType<Player>().GetPlayerInputActions().Disable();
         _playerInputActions.Disable();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");

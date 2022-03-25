@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4106433254442458406}
   - component: {fileID: 6821159124633602230}
   m_Layer: 0
-  m_Name: player_shot
+  m_Name: Player Shot Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
-  Speed: 10
-  DefaultDamage: 1
+  _speed: 10
+  _defaultDamage: 1
 --- !u!70 &5665722100170480529
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

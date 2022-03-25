@@ -5,8 +5,18 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     [SerializeField] protected GameObject _damageAnimation;
-    public float Speed;
-    public int DefaultDamage;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _defaultDamage;
+
+    public float GetSpeed()
+    {
+        return _speed;
+    }
+
+    public int GetDefaultDamage()
+    {
+        return _defaultDamage;
+    }
 
     public void DestroyShot()
     {

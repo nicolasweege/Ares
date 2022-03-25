@@ -12,8 +12,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject _shot;
     [SerializeField] protected Transform _shotStartPosition;
     [SerializeField] private GameObject _deathAnimation;
-    public int CoinsValue;
-    public int DefaultDamage;
+    [SerializeField] private int _coinsValue;
+    [SerializeField] private int _defaultDamage;
+
+    public int GetCoinsValue()
+    {
+        return _coinsValue;
+    }
+
+    public int GetDefaultDamage()
+    {
+        return _defaultDamage;
+    }
 
     public int LoseLife(int damage)
     {
