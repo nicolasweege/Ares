@@ -22,7 +22,7 @@ public class Enemy1 : Enemy
 
     protected void CreateShot()
     {
-        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+        var shot = Instantiate(_shot, _shotStartPosition.position, Quaternion.identity);
         shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().GetSpeed());
     }
 

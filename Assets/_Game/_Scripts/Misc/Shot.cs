@@ -21,7 +21,7 @@ public class Shot : MonoBehaviour
     public void DestroyShot()
     {
         Destroy(gameObject);
-        Instantiate(_damageAnimation, transform.position, transform.rotation);
+        Instantiate(_damageAnimation, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

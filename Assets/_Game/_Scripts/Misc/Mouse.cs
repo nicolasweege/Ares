@@ -14,7 +14,7 @@ public class Mouse : MonoBehaviour
     private void Update()
     {
         Vector2 mousePosition = GetMousePosition();
-        transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
+        transform.position = new Vector3(mousePosition.x, mousePosition.y);
     }
 
     private Vector2 GetMousePosition()

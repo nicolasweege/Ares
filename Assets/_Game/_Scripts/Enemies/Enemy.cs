@@ -33,6 +33,6 @@ public class Enemy : MonoBehaviour
     public void Death()
     {
         Destroy(gameObject);
-        Instantiate(_deathAnimation, transform.position, transform.rotation);
+        Instantiate(_deathAnimation, transform.position, Quaternion.identity);
     }
 }

@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
-  _speed: 10
+  _speed: 20
   _defaultDamage: 1
 --- !u!70 &5665722100170480529
 CapsuleCollider2D:

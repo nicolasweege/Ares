@@ -36,7 +36,7 @@ public class Enemy2 : Enemy
         var player = FindObjectOfType<Player>();
         if (player == null) return;
 
-        GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+        GameObject shot = Instantiate(_shot, _shotStartPosition.position, Quaternion.identity);
 
         Vector2 shotDirection = player.transform.position - shot.transform.position;
         shotDirection.Normalize();

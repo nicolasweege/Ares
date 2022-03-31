@@ -44,12 +44,12 @@ public class Player : MonoBehaviour
         Vector2 movementInputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
         movementInputVector.Normalize();
 
-        transform.position += new Vector3(movementInputVector.x, movementInputVector.y, transform.position.z) * Time.deltaTime * _speed;
+        transform.position += new Vector3(movementInputVector.x, movementInputVector.y) * Time.deltaTime * _speed;
 
         float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
         float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
 
-        transform.position = new Vector3(xx, yy, transform.position.z);
+        transform.position = new Vector3(xx, yy);
     }
 
     private Vector2 Aim()
@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     private void Death()
     {
         Destroy(gameObject);
-        Instantiate(_deathAnimation, transform.position, transform.rotation);
+        Instantiate(_deathAnimation, transform.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
