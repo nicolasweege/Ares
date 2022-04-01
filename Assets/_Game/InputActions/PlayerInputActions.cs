@@ -167,7 +167,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""44e754d8-cd5d-4bd9-8eb5-6544820ecab4"",
-                    ""path"": ""<Keyboard>/alt"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""K&M"",
