@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShot : Shot
 {
     private float _timeToDestroyShot = 1f;
+
     private void Update()
     {
         _timeToDestroyShot -= Time.deltaTime;
