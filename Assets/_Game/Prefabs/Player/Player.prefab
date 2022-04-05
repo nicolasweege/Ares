@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1131015768432569103}
   - component: {fileID: 5565119435820294826}
+  - component: {fileID: 6003786079395262811}
   - component: {fileID: 3858209732904176750}
   - component: {fileID: 3643124730240130694}
   - component: {fileID: 4521564585405971865}
@@ -131,10 +132,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 5
-  _speed: 5
   _shot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   _shotStartPosition: {fileID: 1546371908465108044}
   _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+--- !u!114 &6003786079395262811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131015768432569096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd21b033d663a047a8ff51891016fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 5565119435820294826}
+  _speed: 5
   _mapGenerator: {fileID: 1334051239914330460, guid: e34a08466237890449b8c2f85c0c07ab, type: 3}
 --- !u!114 &3858209732904176750
 MonoBehaviour:

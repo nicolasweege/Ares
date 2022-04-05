@@ -6,15 +6,17 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _health;
-    [SerializeField] private float _speed;
     [SerializeField] private GameObject _shot;
     [SerializeField] private Transform _shotStartPosition;
     [SerializeField] private GameObject _deathAnimation;
-    [SerializeField] private GameObject _mapGenerator;
     private Rigidbody2D _rb2D;
     private Camera _camera;
     private bool _isGamepad;
     private PlayerInputActions _playerInputActions;
+
+    #region Shared Components
+    public Move Move { get => GetComponent<Move>(); }
+    #endregion
 
     private void Start()
     {
@@ -28,7 +30,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        //Move();
         Aim();
 
         if (_health <= 0) Death();
@@ -39,18 +41,18 @@ public class Player : MonoBehaviour
         return _playerInputActions;
     }
 
-    private void Move()
-    {
-        Vector2 movementInputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-        movementInputVector.Normalize();
+    // private void Move()
+    // {
+    //     Vector2 movementInputVector = PlayerInputActions.Player.Movement.ReadValue<Vector2>();
+    //     movementInputVector.Normalize();
 
-        transform.position += new Vector3(movementInputVector.x, movementInputVector.y) * Time.deltaTime * _speed;
+    //     transform.position += new Vector3(movementInputVector.x, movementInputVector.y) * Time.deltaTime * _speed;
 
-        float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
-        float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
+    //     float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
+    //     float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
 
-        transform.position = new Vector3(xx, yy);
-    }
+    //     transform.position = new Vector3(xx, yy);
+    // }
 
     private Vector2 Aim()
     {
