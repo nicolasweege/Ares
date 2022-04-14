@@ -1,84 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Player" Collapsed="true">
-    <Position X="5.25" Y="0.75" Width="1.5" />
+  <Class Name="Player">
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQEAgAAAKEABAAAAQAAAIIAAEIAIAAgAAEiACAAAAE=</HashCode>
       <FileName>Assets\_Game\_Scripts\Player\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PlayerShot" Collapsed="true">
-    <Position X="3" Y="2.75" Width="1.5" />
+  <Class Name="PlayerShot">
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\Player\PlayerShot.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Shot" Collapsed="true">
-    <Position X="3" Y="1.25" Width="1.5" />
+  <Class Name="Shot">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQQAAAABQAAAAAAAAAAAAAAEEAAAAABAAAAAAAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\Misc\Shot.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MapGenerator" Collapsed="true">
-    <Position X="7" Y="0.75" Width="1.5" />
+  <Class Name="MapGenerator">
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAAAAAQACAAAAAAAAGAAAAIIAAgAAAIAAAAACAAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\Misc\MapGenerator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Animation" Collapsed="true">
-    <Position X="5.25" Y="1.75" Width="1.5" />
+  <Class Name="Animation">
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\Misc\Animation.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Enemy" Collapsed="true">
-    <Position X="6" Y="3" Width="1.5" />
+  <Class Name="Enemy">
+    <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAQAAAABEAAAAJAAAAAIIAEIIAAAAgBAAAAAAAAAE=</HashCode>
       <FileName>Assets\_Game\_Scripts\Enemies\Enemy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Enemy2" Collapsed="true">
-    <Position X="7.5" Y="4.75" Width="1.5" />
+  <Class Name="Enemy2">
+    <Position X="9.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAEAAIACAABAAAAAAAAAAAgEAAAAAAAAAAAAAQIAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\Enemies\Enemy 2\Enemy2.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Enemy1" Collapsed="true">
-    <Position X="4.5" Y="4.75" Width="1.5" />
+  <Class Name="Enemy1">
+    <Position X="12.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAIACAABAAAAAAAAAAAgEAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\Enemies\Enemy 1\Enemy1.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MainMenu" Collapsed="true">
-    <Position X="9.25" Y="0.75" Width="1.5" />
+  <Class Name="MainMenu">
+    <Position X="5.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\UI Scripts\MainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PauseMenu" Collapsed="true">
-    <Position X="9.25" Y="1.75" Width="1.5" />
+  <Class Name="PauseMenu">
+    <Position X="4" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAkAAAAACAAAAAAAAAIAAAAAAAAgAAAIAAAAAgAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\UI Scripts\PauseMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SettingsMenu" Collapsed="true">
-    <Position X="9.25" Y="2.75" Width="1.5" />
+  <Class Name="SettingsMenu">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAgAAAEAGAAAAAAAAAAAAAAAAAAAAAAAMAgAASAAAA=</HashCode>
       <FileName>Assets\_Game\_Scripts\UI Scripts\SettingsMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="@PlayerInputActions" Collapsed="true">
-    <Position X="11.5" Y="1.75" Width="1.5" />
+  <Class Name="@PlayerInputActions">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="@PlayerInputActions.PlayerActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_Game\InputActions\PlayerInputActions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Interface Name="@PlayerInputActions.IPlayerActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\_Game\InputActions\PlayerInputActions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAACAAAAACAAABAiAACECBABAAABAGAEAEEgREBQEAA=</HashCode>
       <FileName>Assets\_Game\InputActions\PlayerInputActions.cs</FileName>
