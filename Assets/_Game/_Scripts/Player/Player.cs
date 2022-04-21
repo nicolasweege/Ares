@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
 
     #region Shared Components
     public Move Move { get => GetComponent<Move>(); }
-
     #endregion
 
     private void Start()
