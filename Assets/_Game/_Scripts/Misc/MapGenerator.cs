@@ -36,11 +36,11 @@ public class MapGenerator : MonoBehaviour
 
     private Vector3 GetPortalPos()
     {
-        return new Vector3(Random.Range(-_mapWidth*.9f, -_mapWidth*.8f), Random.Range(-_mapHight*.9f, _mapHight*.9f));
+        return new Vector3(Random.Range(-_mapWidth * .9f, -_mapWidth * .8f), Random.Range(-_mapHight * .9f, _mapHight * .9f));
     }
 
     private Vector3 GetKeyPos()
     {
-        return new Vector3(Random.Range(_mapWidth*.9f, _mapWidth*.8f), Random.Range(-_mapHight*.9f, _mapHight*.9f));
+        return new Vector3(Random.Range(_mapWidth * .9f, _mapWidth * .8f), Random.Range(-_mapHight * .9f, _mapHight * .9f));
     }
 }
