@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using NPlayer;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenuUI;
+    private Player _player;
     private PlayerInputActions _playerInputActions;
     public static bool GameIsPaused = false;
 
     private void Start()
     {
+        _player = FindObjectOfType<Player>();
+
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Pause.performed += Pause;
@@ -24,7 +28,8 @@ public class PauseMenu : MonoBehaviour
             Resume();
             return;
         }
-        FindObjectOfType<Player>().GetPlayerInputActions().Disable();
+
+        _player.PlayerInputActions.Disable();
         _pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -32,7 +37,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        FindObjectOfType<Player>().GetPlayerInputActions().Enable();
+        _player.PlayerInputActions.Enable();
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -40,7 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitToStartMenu()
     {
-        FindObjectOfType<Player>().GetPlayerInputActions().Disable();
+        _player.PlayerInputActions.Disable();
         _playerInputActions.Disable();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
