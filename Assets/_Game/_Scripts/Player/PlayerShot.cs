@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerShot : Shot
 {
-    private float _timeToDestroyShot = 1f;
-
     private void Update()
     {
-        _timeToDestroyShot -= Time.deltaTime;
+        DeactiveShot();
+    }
 
-        if (_timeToDestroyShot <= 0f && !GetComponentInChildren<SpriteRenderer>().isVisible) 
-            Destroy(gameObject);
+    public override void DestroyShot()
+    {
+        Destroy(gameObject);
+        Instantiate(_damageAnimation, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

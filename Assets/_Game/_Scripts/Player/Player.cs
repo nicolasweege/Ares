@@ -45,7 +45,7 @@ namespace NPlayer
             {
                 case "Shot":
                     LoseLife.LoseLifePlayer(other.GetComponent<Shot>().GetDefaultDamage());
-                    other.GetComponent<Shot>().DestroyShot();
+                    other.GetComponent<Shot>().DestroyShot_2();
                     break;
             }
         }

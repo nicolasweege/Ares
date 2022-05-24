@@ -76,7 +76,7 @@ public class Enemy2 : Enemy
                 if (enemyIsVisible)
                 {
                     LoseLife(other.GetComponent<Shot>().GetDefaultDamage());
-                    other.GetComponent<Shot>().DestroyShot();
+                    other.GetComponent<Shot>().DestroyShot_2();
                 }
                 break;
         }
