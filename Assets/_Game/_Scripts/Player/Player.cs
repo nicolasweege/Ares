@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Enemys;
 
 namespace NPlayer
 {
@@ -33,7 +34,7 @@ namespace NPlayer
             switch (other.gameObject.tag)
             {
                 case "Enemy":
-                    LoseLife.LoseLifePlayer(other.gameObject.GetComponent<Enemy>().GetDefaultDamage());
+                    LoseLife.LoseLifePlayer(other.gameObject.GetComponent<Enemy>().DefaultDamage);
                     other.gameObject.GetComponent<Enemy>().Death();
                     break;
             }

@@ -2,61 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : Enemy
+namespace Enemys
 {
-    private Rigidbody2D _rigidbody2D;
-
-    private void Start()
+    public class Enemy1 : Enemy
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        private Rigidbody2D _rigidbody2D;
 
-        _rigidbody2D.velocity = new Vector2(0f, -_speed);
-    }
-
-    private void Update()
-    {
-        Shoot();
-
-        if (_health <= 0) Death();
-    }
-
-    protected void CreateShot()
-    {
-        var shot = Instantiate(_shot, _shotStartPosition.position, Quaternion.identity);
-        shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().GetSpeed());
-    }
-
-    private void Shoot()
-    {
-        bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-        if (!enemyIsVisible) return;
-
-        _timeToShoot -= Time.deltaTime;
-
-        if (_timeToShoot <= 0)
+        private void Start()
         {
-            CreateShot();
-            _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+
+            _rigidbody2D.velocity = new Vector2(0f, -Speed);
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        switch (other.tag)
+        private void Update()
         {
-            case "InstanceDestroyer":
-                bool v = transform.position.y <= 0;
-                if (v) Destroy(gameObject);
-                break;
+            Shoot();
 
-            case "Shot":
-                bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-                if (enemyIsVisible)
-                {
-                    LoseLife(other.GetComponent<Shot>().GetDefaultDamage());
-                    other.GetComponent<Shot>().DestroyShot_2();
-                }
-                break;
+            if (Health <= 0) Death();
+        }
+
+        protected void CreateShot()
+        {
+            var shot = Instantiate(_shotPf, _shotStartPos.position, Quaternion.identity);
+            shot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shot.GetComponent<Shot>().GetSpeed());
+        }
+
+        private void Shoot()
+        {
+            bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+            if (!enemyIsVisible) return;
+
+            _timeToShoot -= Time.deltaTime;
+
+            if (_timeToShoot <= 0)
+            {
+                CreateShot();
+                _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            switch (other.tag)
+            {
+                case "InstanceDestroyer":
+                    bool v = transform.position.y <= 0;
+                    if (v) Destroy(gameObject);
+                    break;
+
+                case "Shot":
+                    bool enemyIsVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+                    if (enemyIsVisible)
+                    {
+                        LoseLife(other.GetComponent<Shot>().GetDefaultDamage());
+                        other.GetComponent<Shot>().DestroyShot_2();
+                    }
+                    break;
+            }
         }
     }
 }

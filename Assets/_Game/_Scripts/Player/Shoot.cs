@@ -7,8 +7,8 @@ namespace NPlayer
 {
     public class Shoot : MonoBehaviour
     {
-        [SerializeField] private GameObject _shot;
-        [SerializeField] private Transform _shotStartPosition;
+        [SerializeField] private GameObject _shotPf;
+        [SerializeField] private Transform _shotStartPos;
         private Player _player;
 
         private void Start()
@@ -22,7 +22,7 @@ namespace NPlayer
 
         public void ShootPlayer(InputAction.CallbackContext context)
         {
-            GameObject shot = Instantiate(_shot, _shotStartPosition.position, _shotStartPosition.rotation);
+            GameObject shot = Instantiate(_shotPf, _shotStartPos.position, _shotStartPos.rotation);
             shot.GetComponent<Rigidbody2D>().velocity = _player.Aim.AimPlayer() * shot.GetComponent<Shot>().GetSpeed();
         }
     }

@@ -135,9 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
-  _shotStartPosition: {fileID: 1546371908465108044}
-  _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   Health: 5
 --- !u!114 &6003786079395262811
 MonoBehaviour:
@@ -203,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4384d6f02375b704caa7ad99550d60e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shot: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
-  _shotStartPosition: {fileID: 1546371908465108044}
+  _shotPf: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
+  _shotStartPos: {fileID: 1546371908465108044}
 --- !u!114 &3858209732904176750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546371908465108044}
   m_Layer: 6
-  m_Name: Shot Start Position
+  m_Name: Shot Start Pos
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -324,7 +321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6490875460299119224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.222, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1131015768432569103}
