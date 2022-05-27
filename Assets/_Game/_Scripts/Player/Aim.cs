@@ -15,7 +15,7 @@ public class Aim : MonoBehaviour
         Vector2 lookDir;
         float lookAngle;
 
-        mousePos = _playerScript.Camera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = _playerScript.Cam.ScreenToWorldPoint(Input.mousePosition);
         lookDir = mousePos - _playerScript.Rb.position;
         lookDir.Normalize();
 

@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject _shotPf;
     [SerializeField] protected Transform _shotStartPos;
     [SerializeField] protected GameObject _deathAnim;
+    protected Player _playerScript;
 
     public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
 
@@ -55,5 +56,27 @@ public abstract class Enemy : MonoBehaviour
             CreateShot();
             _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
         }
+    }
+
+    public virtual Vector2 AimAtPlayer()
+    {
+        _playerScript = FindObjectOfType<Player>();
+        Vector2 playerPos;
+        Vector2 lookDir;
+        float lookAngle;
+
+        playerPos = _playerScript.transform.position;
+        lookDir = playerPos - new Vector2(transform.position.x, transform.position.y);
+        lookDir.Normalize();
+
+        lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
+
+        return lookDir;
+    }
+
+    public virtual void FollowPlayer()
+    {
+
     }
 }

@@ -10,6 +10,7 @@ public class Enemy_1_Map_1 : Enemy
 
     private void Update()
     {
+        AimAtPlayer();
         Shoot();
 
         if (_health <= 0)
