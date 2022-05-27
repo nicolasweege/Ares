@@ -60,23 +60,19 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual Vector2 AimAtPlayer()
     {
-        _playerScript = FindObjectOfType<Player>();
-        Vector2 playerPos;
-        Vector2 lookDir;
-        float lookAngle;
-
-        playerPos = _playerScript.transform.position;
-        lookDir = playerPos - new Vector2(transform.position.x, transform.position.y);
+        Vector2 playerPos = _playerScript.transform.position;
+        Vector2 lookDir = playerPos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
-
-        lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
-
         return lookDir;
     }
 
     public virtual void FollowPlayer()
     {
-
+        Vector2 playerPos = _playerScript.transform.position;
+        Vector2 playerDir = playerPos - new Vector2(transform.position.x, transform.position.y);
+        playerDir.Normalize();
+        transform.position += new Vector3(playerDir.x, playerDir.y) * Time.deltaTime * _speed;
     }
 }

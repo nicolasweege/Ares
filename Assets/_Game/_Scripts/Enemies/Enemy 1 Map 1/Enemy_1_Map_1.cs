@@ -6,12 +6,17 @@ public class Enemy_1_Map_1 : Enemy
 {
     private Rigidbody2D _rb;
 
-    private void Start() => _rb = GetComponent<Rigidbody2D>();
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _playerScript = FindObjectOfType<Player>();
+    }
 
     private void Update()
     {
         AimAtPlayer();
         Shoot();
+        FollowPlayer();
 
         if (_health <= 0)
             Death();
