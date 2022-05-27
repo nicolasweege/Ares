@@ -149,9 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dafd36991e02640ba8b754694acfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAnimation: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
   _speed: 20
   _defaultDamage: 1
+  _damageAnim: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
 --- !u!70 &5665722100170480529
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,8 +165,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0009795036, y: -0.0029899068}
-  m_Size: {x: 0.054952, y: 0.105972625}
+  m_Offset: {x: -0.00027817488, y: -0.00018166006}
+  m_Size: {x: 0.10475607, y: 0.15166941}
   m_Direction: 0
 --- !u!50 &5665722100170480526
 Rigidbody2D:

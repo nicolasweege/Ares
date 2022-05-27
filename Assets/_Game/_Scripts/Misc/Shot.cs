@@ -4,48 +4,25 @@ using UnityEngine;
 
 public abstract class Shot : MonoBehaviour
 {
-    [SerializeField] protected GameObject _damageAnimation;
     [SerializeField] protected float _speed;
     [SerializeField] protected int _defaultDamage;
+    [SerializeField] protected GameObject _damageAnim;
     protected float _timeToDeactiveShot = 1f;
 
-    public virtual void DeactiveShot()
-    {
-        _timeToDeactiveShot -= Time.deltaTime;
-
-        if (_timeToDeactiveShot <= 0f && !GetComponentInChildren<SpriteRenderer>().isVisible)
-            Destroy(gameObject);
-    }
+    public float Speed { get => _speed; set => _speed = value; }
+    public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
 
     public virtual void DestroyShot()
     {
         Destroy(gameObject);
-        Instantiate(_damageAnimation, transform.position, Quaternion.identity);
+        Instantiate(_damageAnim, transform.position, Quaternion.identity);
     }
 
-    public void DestroyShot_2()
+    public virtual void DeactiveShot()
     {
-        Destroy(gameObject);
-        Instantiate(_damageAnimation, transform.position, Quaternion.identity);
-    }
-
-    public float GetSpeed()
-    {
-        return _speed;
-    }
-
-    public int GetDefaultDamage()
-    {
-        return _defaultDamage;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        switch (other.tag)
-        {
-            case "InstanceDestroyer":
-                Destroy(gameObject);
-                break;
-        }
+        _timeToDeactiveShot -= Time.deltaTime;
+        bool isShotVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+        if (!isShotVisible && _timeToDeactiveShot <= 0f)
+            Destroy(gameObject);
     }
 }

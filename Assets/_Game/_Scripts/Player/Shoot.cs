@@ -3,27 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace NPlayer
+public class Shoot : MonoBehaviour
 {
-    public class Shoot : MonoBehaviour
+    [SerializeField] private GameObject _shotPf;
+    [SerializeField] private Transform _shotStartPos;
+    private Player _playerScript;
+
+    private void Start()
     {
-        [SerializeField] private GameObject _shotPf;
-        [SerializeField] private Transform _shotStartPos;
-        private Player _player;
+        _playerScript = GetComponent<Player>();
 
-        private void Start()
-        {
-            _player = GetComponent<Player>();
+        _playerScript.PlayerInputActions = new PlayerInputActions();
+        _playerScript.PlayerInputActions.Player.Enable();
+        _playerScript.PlayerInputActions.Player.Shoot.performed += PlayerShoot;
+    }
 
-            _player.PlayerInputActions = new PlayerInputActions();
-            _player.PlayerInputActions.Player.Enable();
-            _player.PlayerInputActions.Player.Shoot.performed += ShootPlayer;
-        }
-
-        public void ShootPlayer(InputAction.CallbackContext context)
-        {
-            GameObject shot = Instantiate(_shotPf, _shotStartPos.position, _shotStartPos.rotation);
-            shot.GetComponent<Rigidbody2D>().velocity = _player.Aim.AimPlayer() * shot.GetComponent<Shot>().GetSpeed();
-        }
+    public void PlayerShoot(InputAction.CallbackContext context)
+    {
+        GameObject shot = Instantiate(_shotPf, _shotStartPos.position, _shotStartPos.rotation);
+        shot.GetComponent<Rigidbody2D>().velocity = _playerScript.Aim.PlayerAim() * shot.GetComponent<Shot>().Speed;
     }
 }

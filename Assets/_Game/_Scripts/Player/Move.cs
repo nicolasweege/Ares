@@ -1,39 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NPlayer;
 
-namespace NPlayer
+public class Move : MonoBehaviour
 {
-    public class Move : MonoBehaviour
+    [SerializeField] private float _speed;
+    [SerializeField] private GameObject _mapGenerator;
+    private Player _playerScript;
+
+    private void Start()
     {
-        [SerializeField] private Player _playerController;
-        [SerializeField] private float _speed;
-        [SerializeField] private GameObject _mapGenerator;
-        private PlayerInputActions _playerInputActions;
+        _playerScript = GetComponent<Player>();
+        _playerScript.PlayerInputActions = new PlayerInputActions();
+        _playerScript.PlayerInputActions.Player.Enable();
+    }
 
-        private void Start()
-        {
-            _playerInputActions = new PlayerInputActions();
-            _playerInputActions.Player.Enable();
-        }
+    private void Update() => PlayerMove();
 
-        private void Update()
-        {
-            MovePlayer();
-        }
+    public void PlayerMove()
+    {
+        Vector2 movementInputVector = _playerScript.PlayerInputActions.Player.Movement.ReadValue<Vector2>();
+        movementInputVector.Normalize();
 
-        public void MovePlayer()
-        {
-            Vector2 movementInputVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-            movementInputVector.Normalize();
+        transform.position += new Vector3(movementInputVector.x, movementInputVector.y) * Time.deltaTime * _speed;
 
-            transform.position += new Vector3(movementInputVector.x, movementInputVector.y) * Time.deltaTime * _speed;
+        float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
+        float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
 
-            float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
-            float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
-
-            transform.position = new Vector3(xx, yy);
-        }
+        transform.position = new Vector3(xx, yy);
     }
 }

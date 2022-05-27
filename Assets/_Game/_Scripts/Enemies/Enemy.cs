@@ -1,47 +1,59 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Enemys
+public abstract class Enemy : MonoBehaviour
 {
-    public class Enemy : MonoBehaviour
+    [SerializeField] protected int _health;
+    [SerializeField] protected float _speed;
+    [SerializeField] protected int _amountOfCoins;
+    [SerializeField] protected int _defaultDamage;
+    [SerializeField] protected float _timeToShoot;
+    [SerializeField] protected float _minTimeToShoot;
+    [SerializeField] protected float _maxTimeToShoot;
+    [SerializeField] protected GameObject _shotPf;
+    [SerializeField] protected Transform _shotStartPos;
+    [SerializeField] protected GameObject _deathAnim;
+
+    public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
+
+    public virtual int LoseLife(int damage) => _health -= damage;
+
+    public virtual void Death()
     {
-        [SerializeField] protected int _health;
-        [SerializeField] protected float _speed;
-        [SerializeField] protected int _amountOfCoins;
-        [SerializeField] protected int _defaultDamage;
-        [SerializeField] protected float _timeToShoot;
-        protected float _minTimeToShoot;
-        protected float _maxTimeToShoot;
-        [SerializeField] protected GameObject _shotPf;
-        [SerializeField] protected Transform _shotStartPos;
-        [SerializeField] protected GameObject _deathAnim;
+        Destroy(gameObject);
+        Instantiate(_deathAnim, transform.position, Quaternion.identity);
+    }
 
-        public int Health { get => _health; set => _health = value; }
-        public float Speed { get => _speed; set => _speed = value; }
-        public int AmountOfCoins { get => _amountOfCoins; set => _amountOfCoins = value; }
-        public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
-        public float TimeToShoot { get => _timeToShoot; set => _timeToShoot = value; }
-        public float MinTimeToShoot { get => _minTimeToShoot; set => _minTimeToShoot = value; }
-        public float MaxTimeToShoot { get => _maxTimeToShoot; set => _maxTimeToShoot = value; }
-        public GameObject ShotPf { get => _shotPf; set => _shotPf = value; }
-        public Transform ShotStartPos { get => _shotStartPos; set => _shotStartPos = value; }
+    public virtual void CreateShot()
+    {
+        var player = FindObjectOfType<Player>();
+        if (player == null)
+            return;
 
-        #region Shared Components
-        public Shoot Shoot { get => GetComponent<Shoot>(); }
-        public CreateShot CreateShot { get => GetComponent<CreateShot>(); }
-        #endregion
+        GameObject shot = Instantiate(_shotPf, _shotStartPos.position, Quaternion.identity);
 
-        public virtual int LoseLife(int damage)
+        Vector2 shotDirection = player.transform.position - shot.transform.position;
+        shotDirection.Normalize();
+
+        float shotAngle = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg;
+
+        shot.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
+        shot.GetComponent<Rigidbody2D>().velocity = shotDirection * shot.GetComponent<Shot>().Speed;
+    }
+
+    public virtual void Shoot()
+    {
+        bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
+        if (!isEnemyVisible)
+            return;
+
+        _timeToShoot -= Time.deltaTime;
+
+        if (_timeToShoot <= 0)
         {
-            return Health -= damage;
-        }
-
-        public virtual void Death()
-        {
-            Destroy(gameObject);
-            Instantiate(_deathAnim, transform.position, Quaternion.identity);
+            CreateShot();
+            _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
         }
     }
 }

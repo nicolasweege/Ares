@@ -4,29 +4,18 @@ using UnityEngine;
 
 public class PlayerShot : Shot
 {
-    private void Update()
-    {
-        DeactiveShot();
-    }
+    private Rigidbody2D _rb;
 
-    public override void DestroyShot()
-    {
-        Destroy(gameObject);
-        Instantiate(_damageAnimation, transform.position, Quaternion.identity);
-    }
+    private void Start() => _rb = GetComponent<Rigidbody2D>();
+
+    private void Update() => DeactiveShot();
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        switch (other.tag)
+        if (other.tag.Equals("Shot"))
         {
-            case "InstanceDestroyer":
-                Destroy(gameObject);
-                break;
-
-            case "Shot":
-                Destroy(other.gameObject);
-                DestroyShot();
-                break;
+            Destroy(other.gameObject);
+            DestroyShot();
         }
     }
 }

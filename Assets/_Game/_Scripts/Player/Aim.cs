@@ -2,38 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NPlayer
+public class Aim : MonoBehaviour
 {
-    public class Aim : MonoBehaviour
+    private Player _playerScript;
+    private void Start() => _playerScript = GetComponent<Player>();
+
+    private void Update() => PlayerAim();
+
+    public Vector2 PlayerAim()
     {
-        private Camera _camera;
-        private Rigidbody2D _rb2D;
+        Vector2 mousePos;
+        Vector2 lookDir;
+        float lookAngle;
 
-        private void Start()
-        {
-            _rb2D = GetComponent<Rigidbody2D>();
-            _camera = FindObjectOfType<Camera>();
-        }
+        mousePos = _playerScript.Camera.ScreenToWorldPoint(Input.mousePosition);
+        lookDir = mousePos - _playerScript.Rb.position;
+        lookDir.Normalize();
 
-        private void Update()
-        {
-            AimPlayer();
-        }
+        lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
 
-        public Vector2 AimPlayer()
-        {
-            Vector2 mousePosition;
-            Vector2 lookDirection;
-            float lookAngle;
-
-            mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-            lookDirection = mousePosition - _rb2D.position;
-            lookDirection.Normalize();
-
-            lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90;
-            transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
-
-            return lookDirection;
-        }
+        return lookDir;
     }
 }

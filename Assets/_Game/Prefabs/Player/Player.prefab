@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 5
+  _health: 100
+  _defaultDamage: 3
 --- !u!114 &6003786079395262811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd21b033d663a047a8ff51891016fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerController: {fileID: 5565119435820294826}
   _speed: 5
   _mapGenerator: {fileID: 1334051239914330460, guid: e34a08466237890449b8c2f85c0c07ab, type: 3}
 --- !u!114 &744235937150395147
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759ebd8ee2b30f54c87ad1a602cad198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deathAnimation: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
 --- !u!114 &7026306849252671647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,8 +273,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0059663355, y: -0.002074331}
-  m_Size: {x: 0.53343445, y: 0.53343445}
+  m_Offset: {x: -0.00056549907, y: -0.038790554}
+  m_Size: {x: 0.6233311, y: 0.7294337}
   m_Direction: 0
 --- !u!50 &4521564585405971865
 Rigidbody2D:

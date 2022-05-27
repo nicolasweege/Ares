@@ -2,20 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NPlayer
+public class LoseLife : MonoBehaviour
 {
-    public class LoseLife : MonoBehaviour
-    {
-        private Player _player;
+    private Player _playerScript;
 
-        private void Start()
-        {
-            _player = FindObjectOfType<Player>();
-        }
+    private void Start() => _playerScript = GetComponent<Player>();
 
-        public int LoseLifePlayer(int damage)
-        {
-            return _player.Health -= damage;
-        }
-    }
+    public int PlayerLoseLife(int damage) => _playerScript.Health -= damage;
 }

@@ -2,58 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Enemys;
 
-namespace NPlayer
+public class Player : MonoBehaviour
 {
-    public class Player : MonoBehaviour
+    [SerializeField] private int _health;
+    [SerializeField] private int _defaultDamage;
+    private Rigidbody2D _rb;
+    private Camera _camera;
+    private bool _isGamepad;
+    private PlayerInputActions _playerInputActions;
+
+    public int Health { get => _health; set => _health = value; }
+    public Rigidbody2D Rb { get => _rb; set => _rb = value; }
+    public Camera Camera { get => _camera; set => _camera = value; }
+    public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
+
+    #region Shared Components
+    public Move Move { get => GetComponent<Move>(); }
+    public Aim Aim { get => GetComponent<Aim>(); }
+    public Death Death { get => GetComponent<Death>(); }
+    public LoseLife LoseLife { get => GetComponent<LoseLife>(); }
+    public Shoot Shoot { get => GetComponent<Shoot>(); }
+    #endregion
+
+    private void Start()
     {
-        private Rigidbody2D _rb2D;
-        private Camera _camera;
-        private bool _isGamepad;
+        _rb = GetComponent<Rigidbody2D>();
+        _camera = FindObjectOfType<Camera>();
+    }
 
-        public int Health;
-        public PlayerInputActions PlayerInputActions;
-
-        #region Shared Components
-        public Move Move { get => GetComponent<Move>(); }
-        public Aim Aim { get => GetComponent<Aim>(); }
-        public Death Death { get => GetComponent<Death>(); }
-        public LoseLife LoseLife { get => GetComponent<LoseLife>(); }
-        public Shoot Shoot { get => GetComponent<Shoot>(); }
-        #endregion
-
-        private void Start()
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
         {
-            _rb2D = GetComponent<Rigidbody2D>();
-            _camera = FindObjectOfType<Camera>();
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            switch (other.gameObject.tag)
-            {
-                case "Enemy":
-                    LoseLife.LoseLifePlayer(other.gameObject.GetComponent<Enemy>().DefaultDamage);
-                    other.gameObject.GetComponent<Enemy>().Death();
-                    break;
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            switch (other.tag)
-            {
-                case "Shot":
-                    LoseLife.LoseLifePlayer(other.GetComponent<Shot>().GetDefaultDamage());
-                    other.GetComponent<Shot>().DestroyShot_2();
-                    break;
-            }
-        }
-
-        public void OnDeviceChange(PlayerInput playerInput)
-        {
-            _isGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
+            LoseLife.PlayerLoseLife(other.gameObject.GetComponent<Enemy>().DefaultDamage);
+            other.gameObject.GetComponent<Enemy>().Death();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("Shot"))
+        {
+            LoseLife.PlayerLoseLife(other.GetComponent<Shot>().DefaultDamage);
+            other.GetComponent<Shot>().DestroyShot();
+        }
+
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            LoseLife.PlayerLoseLife(other.GetComponent<Enemy>().DefaultDamage);
+            other.GetComponent<Enemy>().LoseLife(_defaultDamage);
+        }
+    }
+
+    public void OnDeviceChange(PlayerInput playerInput) => _isGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
 }
