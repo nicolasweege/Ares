@@ -5,7 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private GameObject _mapGenerator;
+    [SerializeField] private GameObject _mapGeneratorPf;
     private Player _playerScript;
 
     private void Start()
@@ -24,9 +24,8 @@ public class Move : MonoBehaviour
 
         transform.position += new Vector3(movementInputVector.x, movementInputVector.y) * Time.deltaTime * _speed;
 
-        float xx = Mathf.Clamp(transform.position.x, -_mapGenerator.GetComponent<MapGenerator>().GetMapWidth(), _mapGenerator.GetComponent<MapGenerator>().GetMapWidth());
-        float yy = Mathf.Clamp(transform.position.y, -_mapGenerator.GetComponent<MapGenerator>().GetMapHight(), _mapGenerator.GetComponent<MapGenerator>().GetMapHight());
-
+        float xx = Mathf.Clamp(transform.position.x, -_mapGeneratorPf.GetComponent<MapGenerator>().MapWidth, _mapGeneratorPf.GetComponent<MapGenerator>().MapWidth);
+        float yy = Mathf.Clamp(transform.position.y, -_mapGeneratorPf.GetComponent<MapGenerator>().MapHight, _mapGeneratorPf.GetComponent<MapGenerator>().MapHight);
         transform.position = new Vector3(xx, yy);
     }
 }

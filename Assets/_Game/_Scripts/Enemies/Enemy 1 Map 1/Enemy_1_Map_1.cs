@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy_1_Map_1 : Enemy
 {
+    [SerializeField] protected GameObject _playerPf;
     private Rigidbody2D _rb;
 
     private void Start()
@@ -32,6 +33,11 @@ public class Enemy_1_Map_1 : Enemy
 
             LoseLife(other.GetComponent<Shot>().DefaultDamage);
             other.GetComponent<Shot>().DestroyShot();
+        }
+
+        if (other.tag.Equals("PlayerLimitArea"))
+        {
+            _speed = 0f;
         }
     }
 }

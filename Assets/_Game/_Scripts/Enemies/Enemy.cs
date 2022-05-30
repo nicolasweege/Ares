@@ -14,6 +14,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject _shotPf;
     [SerializeField] protected Transform _shotStartPos;
     [SerializeField] protected GameObject _deathAnim;
+    [SerializeField] protected GameObject _mapGeneratorPf;
     protected Player _playerScript;
 
     public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
@@ -65,6 +66,7 @@ public abstract class Enemy : MonoBehaviour
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
+
         return lookDir;
     }
 

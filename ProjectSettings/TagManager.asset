@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shot
   - Enemy
+  - PlayerLimitArea
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Enemy 1 Map 1 Shot
   - Enemy 2
   - Enemy 2 Shot
-  - 
+  - Player Limit Area
   - 
   - 
   - 

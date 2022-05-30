@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject _portal;
-    [SerializeField] private GameObject _key;
-    [SerializeField] private GameObject _camera;
+    [SerializeField] private GameObject _portalPf;
+    [SerializeField] private GameObject _keyPf;
     [SerializeField] private const int _mapHight = 64;
     [SerializeField] private const int _mapWidth = 64;
 
-    private void Start()
-    {
-        CreateElements();
-    }
+    public int MapHight { get => _mapHight; }
+    public int MapWidth { get => _mapWidth; }
 
-    public int GetMapHight()
-    {
-        return _mapHight;
-    }
-
-    public int GetMapWidth()
-    {
-        return _mapWidth;
-    }
+    private void Start() => CreateElements();
 
     private void CreateElements()
     {
         Vector3 portalPos = GetPortalPos();
         Vector3 keyPos = GetKeyPos();
 
-        var portal = Instantiate(_portal, portalPos, Quaternion.identity);
-        var key = Instantiate(_key, keyPos, Quaternion.identity);
+        var portal = Instantiate(_portalPf, portalPos, Quaternion.identity);
+        var key = Instantiate(_keyPf, keyPos, Quaternion.identity);
     }
 
     private Vector3 GetPortalPos()

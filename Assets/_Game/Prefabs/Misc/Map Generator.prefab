@@ -43,11 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c748c662c60384b90c5ee25b33626d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _portal: {fileID: 6242381352046594366, guid: 4eb3b547fa4c64b4aa193e4111b82030, type: 3}
-  _key: {fileID: 2481416162441724105, guid: 19630d37a0b195c4ca08d5caa79ca0f2, type: 3}
-  _player: {fileID: 1131015768432569096, guid: c69976c944b4f754a87dc7871ef99693, type: 3}
-  _cam: {fileID: 0}
-  _gridWidth: 16
-  _gridHight: 16
-  _mapHight: 36
-  _mapWidth: 64
+  _portalPf: {fileID: 6242381352046594366, guid: 4eb3b547fa4c64b4aa193e4111b82030, type: 3}
+  _keyPf: {fileID: 2481416162441724105, guid: 19630d37a0b195c4ca08d5caa79ca0f2, type: 3}
