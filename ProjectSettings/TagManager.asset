@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy 1 Map 1 Shot
+    uniqueID: 3974682491
+    locked: 0
   - name: Enemy 1 Map 1
     uniqueID: 1307419071
     locked: 0
@@ -58,12 +61,12 @@ TagManager:
   - name: Player
     uniqueID: 4065877639
     locked: 0
-  - name: Enemy 1 Map 1 Shot
-    uniqueID: 3974682491
-    locked: 0
   - name: Damage Animation
     uniqueID: 3138669063
     locked: 0
   - name: Enemy 1 Death Animation
     uniqueID: 2999701529
+    locked: 0
+  - name: Mouse Pos
+    uniqueID: 4125625035
     locked: 0
