@@ -17,5 +17,15 @@ public class PlayerShot : Shot
             Destroy(other.gameObject);
             DestroyShot();
         }
+
+        if (other.tag.Equals("Enemy"))
+        {
+            bool isEnemyVisible = other.GetComponentInChildren<SpriteRenderer>().isVisible;
+            if (!isEnemyVisible)
+                return;
+
+            other.GetComponent<Enemy>().LoseLife(_defaultDamage);
+            DestroyShot();
+        }
     }
 }
