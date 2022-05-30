@@ -34,10 +34,5 @@ public class Enemy_1_Map_1 : Enemy
             LoseLife(other.GetComponent<Shot>().DefaultDamage);
             other.GetComponent<Shot>().DestroyShot();
         }
-
-        if (other.tag.Equals("PlayerLimitArea"))
-        {
-            _speed = 0f;
-        }
     }
 }

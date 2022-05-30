@@ -8,9 +8,9 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float _speed;
     [SerializeField] protected int _amountOfCoins;
     [SerializeField] protected int _defaultDamage;
+    protected float _shootTimer;
     [SerializeField] protected float _timeToShoot;
-    [SerializeField] protected float _minTimeToShoot;
-    [SerializeField] protected float _maxTimeToShoot;
+    [SerializeField] protected float _stoppingDistance;
     [SerializeField] protected GameObject _shotPf;
     [SerializeField] protected Transform _shotStartPos;
     [SerializeField] protected GameObject _deathAnim;
@@ -50,12 +50,12 @@ public abstract class Enemy : MonoBehaviour
         if (!isEnemyVisible)
             return;
 
-        _timeToShoot -= Time.deltaTime;
+        _shootTimer -= Time.deltaTime;
 
-        if (_timeToShoot <= 0)
+        if (_shootTimer <= 0)
         {
             CreateShot();
-            _timeToShoot = Random.Range(_minTimeToShoot, _maxTimeToShoot);
+            _shootTimer = _timeToShoot;
         }
     }
 
@@ -65,16 +65,15 @@ public abstract class Enemy : MonoBehaviour
         Vector2 lookDir = playerPos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
 
+        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
         return lookDir;
     }
 
     public virtual void FollowPlayer()
     {
         Vector2 playerPos = _playerScript.transform.position;
-        Vector2 playerDir = playerPos - new Vector2(transform.position.x, transform.position.y);
-        playerDir.Normalize();
-        transform.position += new Vector3(playerDir.x, playerDir.y) * Time.deltaTime * _speed;
+        if (Vector2.Distance(transform.position, playerPos) >= _stoppingDistance)
+            transform.position = Vector2.MoveTowards(transform.position, playerPos, _speed * Time.deltaTime);
     }
 }

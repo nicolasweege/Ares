@@ -31,15 +31,6 @@ public class Player : MonoBehaviour
         _cam = FindObjectOfType<Camera>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
-            LoseLife.PlayerLoseLife(other.gameObject.GetComponent<Enemy>().DefaultDamage);
-            other.gameObject.GetComponent<Enemy>().Death();
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag.Equals("Shot"))
@@ -47,11 +38,14 @@ public class Player : MonoBehaviour
             LoseLife.PlayerLoseLife(other.GetComponent<Shot>().DefaultDamage);
             other.GetComponent<Shot>().DestroyShot();
         }
+    }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
         if (other.gameObject.tag.Equals("Enemy"))
         {
-            LoseLife.PlayerLoseLife(other.GetComponent<Enemy>().DefaultDamage);
-            other.GetComponent<Enemy>().LoseLife(_defaultDamage);
+            LoseLife.PlayerLoseLife(other.gameObject.GetComponent<Enemy>().DefaultDamage);
+            other.gameObject.GetComponent<Enemy>().Death();
         }
     }
 

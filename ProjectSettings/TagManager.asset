@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Shot
   - Enemy
-  - PlayerLimitArea
   layers:
   - Default
   - TransparentFX
