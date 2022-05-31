@@ -45,6 +45,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -268,6 +269,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      enemy1_explosion_2: -3427547394895910223
+      enemy1_explosion_4: 9104035935401089757
+      enemy1_explosion_5: -4370207248723969787
+      enemy1_explosion_1: 6132393154317374289
+      enemy1_explosion_6: -5947982225452453064
+      enemy1_explosion_0: -1961530082480544363
+      enemy1_explosion_3: 5806219667633696433
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

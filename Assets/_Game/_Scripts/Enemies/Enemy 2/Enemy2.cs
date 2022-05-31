@@ -8,7 +8,11 @@ public class Enemy2 : Enemy
     [SerializeField] private bool _canMoveToDiagonal;
     private Rigidbody2D _rb;
 
-    private void Start() => _rb = GetComponent<Rigidbody2D>();
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponentInChildren<Rigidbody2D>();
+    }
 
     private void Update()
     {
