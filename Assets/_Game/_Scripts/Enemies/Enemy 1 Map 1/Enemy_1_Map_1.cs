@@ -21,6 +21,11 @@ public class Enemy_1_Map_1 : Enemy
             FollowPlayer();
         }
 
+        if (!_isPlayerInRadar)
+        {
+
+        }
+
         if (_health <= 0)
             Death();
     }
