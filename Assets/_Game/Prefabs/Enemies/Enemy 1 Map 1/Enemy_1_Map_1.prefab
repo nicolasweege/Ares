@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1141367414656277076}
   - component: {fileID: 3996008156144159657}
   m_Layer: 8
-  m_Name: Enemy Radar
+  m_Name: Radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
