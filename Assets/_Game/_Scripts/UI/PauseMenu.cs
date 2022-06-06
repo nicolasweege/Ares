@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenuUI;
-    private Player _player;
+    private PlayerController _player;
     private PlayerInputActions _playerInputActions;
     public static bool GameIsPaused = false;
 
     private void Start()
     {
-        _player = FindObjectOfType<Player>();
+        _player = FindObjectOfType<PlayerController>();
 
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();

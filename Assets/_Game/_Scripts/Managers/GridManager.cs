@@ -8,10 +8,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Tile _tile;
     [SerializeField] private Transform _cameraTransform;
 
-    private void Start()
-    {
-        GenerateGrid();
-    }
+    private void Start() => GenerateGrid();
 
     private void GenerateGrid()
     {

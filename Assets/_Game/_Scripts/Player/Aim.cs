@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour
 {
-    private Player _playerScript;
-    private void Start() => _playerScript = GetComponent<Player>();
+    private PlayerController _playerScript;
+    private void Start() => _playerScript = GetComponent<PlayerController>();
 
     private void Update() => PlayerAim();
 

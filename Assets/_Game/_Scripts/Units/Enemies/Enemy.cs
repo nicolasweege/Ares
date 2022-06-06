@@ -15,7 +15,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected Transform _shotStartPos;
     [SerializeField] protected GameObject _deathAnim;
     [SerializeField] protected GameObject _mapGeneratorPf;
-    protected Player _playerScript;
+    protected PlayerController _playerScript;
     [SerializeField] protected bool _isPlayerInRadar = false;
 
     public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
@@ -30,7 +30,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void CreateShot()
     {
-        var player = FindObjectOfType<Player>();
+        var player = FindObjectOfType<PlayerController>();
         if (player == null)
             return;
 

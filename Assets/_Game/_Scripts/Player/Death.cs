@@ -5,9 +5,9 @@ using UnityEngine;
 public class Death : MonoBehaviour
 {
     [SerializeField] private GameObject _deathAnim;
-    private Player _playerScript;
+    private PlayerController _playerScript;
 
-    private void Start() => _playerScript = GetComponent<Player>();
+    private void Start() => _playerScript = GetComponent<PlayerController>();
 
     private void Update()
     {

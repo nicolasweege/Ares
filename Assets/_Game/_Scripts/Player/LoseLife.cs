@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LoseLife : MonoBehaviour
 {
-    private Player _playerScript;
+    private PlayerController _playerScript;
 
-    private void Start() => _playerScript = GetComponent<Player>();
+    private void Start() => _playerScript = GetComponent<PlayerController>();
 
     public int PlayerLoseLife(int damage) => _playerScript.Health -= damage;
 }

@@ -7,11 +7,11 @@ public class Shoot : MonoBehaviour
 {
     [SerializeField] private GameObject _shotPf;
     [SerializeField] private Transform _shotStartPos;
-    private Player _playerScript;
+    private PlayerController _playerScript;
 
     private void Start()
     {
-        _playerScript = GetComponent<Player>();
+        _playerScript = GetComponent<PlayerController>();
 
         _playerScript.PlayerInputActions = new PlayerInputActions();
         _playerScript.PlayerInputActions.Player.Enable();

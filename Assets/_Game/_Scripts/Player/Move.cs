@@ -6,11 +6,11 @@ public class Move : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private GameObject _mapGeneratorPf;
-    private Player _playerScript;
+    private PlayerController _playerScript;
 
     private void Start()
     {
-        _playerScript = GetComponent<Player>();
+        _playerScript = GetComponent<PlayerController>();
         _playerScript.PlayerInputActions = new PlayerInputActions();
         _playerScript.PlayerInputActions.Player.Enable();
     }
