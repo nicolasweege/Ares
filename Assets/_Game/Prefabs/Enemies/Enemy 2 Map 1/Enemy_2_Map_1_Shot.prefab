@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8962960968114403604}
-  - component: {fileID: 3120371335893856525}
+  - component: {fileID: 7223566151964992964}
   - component: {fileID: 5178550012663173626}
   - component: {fileID: 7474088253029685486}
   m_Layer: 11
@@ -119,7 +119,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3120371335893856525
+--- !u!114 &7223566151964992964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977af73d29e8cf0448fe38a3eef114d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _defaultDamage: 5
+  _speed: 15
+  _defaultDamage: 2
   _damageAnim: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
 --- !u!61 &5178550012663173626
 BoxCollider2D:

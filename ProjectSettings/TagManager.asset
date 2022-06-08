@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Shot
   - Enemy
+  - Key
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -64,9 +66,6 @@ TagManager:
   - name: Damage Animation
     uniqueID: 3138669063
     locked: 0
-  - name: Enemy 1 Death Animation
+  - name: Enemy Death Animation
     uniqueID: 2999701529
-    locked: 0
-  - name: Mouse Pos
-    uniqueID: 4125625035
     locked: 0

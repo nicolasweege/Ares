@@ -18,24 +18,12 @@ public class GameManager : Singleton<GameManager>
         switch (newState)
         {
             case GameState.Starting:
-                HandleStarting();
                 break;
             case GameState.Paused:
-                HandlePaused();
                 break;
         }
 
         OnAfterGameStateChanged?.Invoke(newState);
-    }
-
-    private void HandlePaused()
-    {
-        
-    }
-
-    private void HandleStarting()
-    {
-        
     }
 }
 

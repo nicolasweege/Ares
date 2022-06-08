@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridManager : MonoBehaviour
+public class GridManager : Singleton<GridManager>
 {
     [SerializeField] private int _width, _height;
     [SerializeField] private Tile _tile;
@@ -23,7 +23,6 @@ public class GridManager : MonoBehaviour
                 _tile.Init(isOffset);
             }
         }
-
         _cameraTransform.transform.position = new Vector3(_width/2 - .5f, _height/2 - .5f, -10);
     }
 }
