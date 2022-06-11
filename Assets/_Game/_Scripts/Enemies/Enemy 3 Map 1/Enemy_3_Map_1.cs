@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_1_Map_1 : EnemyBase
+public class Enemy_3_Map_1 : EnemyBase
 {
-    [SerializeField] private Transform _shotStartPos;
     private Rigidbody2D _rigidbody;
+    [SerializeField] private Transform _shotStartPosLeft;
+    [SerializeField] private Transform _shotStartPosRight;
+    [SerializeField] private Transform _shotStartPosUp;
+    [SerializeField] private Transform _shotStartPosDown;
+    [SerializeField] private Transform _shootToUp;
+    [SerializeField] private Transform _shootToDown;
+    [SerializeField] private Transform _shootToRight;
+    [SerializeField] private Transform _shootToLeft;
+    [SerializeField] private Vector3 _rotation;
 
     protected override void Awake()
     {
@@ -15,25 +23,20 @@ public class Enemy_1_Map_1 : EnemyBase
 
     private void Update()
     {
-        if (_isPlayerInRadar)
-        {
-            FollowPlayer();
-            AimAtPlayer();
-            Shoot();
-        }
+        transform.Rotate(_rotation * Time.deltaTime);
+        Shoot();
 
         if (_health <= 0)
             Death();
     }
 
-    private void GenerateShot()
+    private void GenerateShot(Transform shotStartPos, Transform shootTo)
     {
         if (PlayerController.Instance == null)
             return;
 
-        GameObject shotInst = Instantiate(_shotPrefab, _shotStartPos.position, Quaternion.identity);
-        Vector2 shotDir = PlayerController.Instance.transform.position - shotInst.transform.position;
-        shotDir.Normalize();
+        GameObject shotInst = Instantiate(_shotPrefab, shotStartPos.position, Quaternion.identity);
+        Vector2 shotDir = shootTo.position - shotInst.transform.position;
         float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
         shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
         shotInst.GetComponent<Rigidbody2D>().velocity = shotDir * shotInst.GetComponent<ShotBase>().Speed;
@@ -48,7 +51,10 @@ public class Enemy_1_Map_1 : EnemyBase
         _shootTimer -= Time.deltaTime;
         if (_shootTimer <= 0f)
         {
-            GenerateShot();
+            GenerateShot(_shotStartPosUp, _shootToUp);
+            GenerateShot(_shotStartPosLeft, _shootToLeft);
+            GenerateShot(_shotStartPosRight, _shootToRight);
+            GenerateShot(_shotStartPosDown, _shootToDown);
             _shootTimer = _timeToShoot;
         }
     }

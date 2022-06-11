@@ -54,7 +54,7 @@ MonoBehaviour:
   _amountOfCoins: 3
   _defaultDamage: 1
   _timeToShoot: 1
-  _stoppingDist: 2.5
+  _stoppingDist: 3
   _shotPrefab: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
   _shotStartPos: {fileID: 8623652495329324883}
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}

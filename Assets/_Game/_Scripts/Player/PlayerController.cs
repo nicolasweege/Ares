@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -77,6 +78,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             TakeDamage(other.GetComponent<ShotBase>().DefaultDamage);
             other.GetComponent<ShotBase>().DestroyShot();
+            // CinemachineManager.Instance.ShakeCamera(5f, .1f);
         }
     }
 

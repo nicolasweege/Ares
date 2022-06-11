@@ -11,7 +11,6 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
     [SerializeField] protected float _timeToShoot;
     [SerializeField] protected float _stoppingDist;
     [SerializeField] protected GameObject _shotPrefab;
-    [SerializeField] protected Transform _shotStartPos;
     [SerializeField] protected GameObject _deathAnim;
     protected float _shootTimer;
     protected bool _isPlayerInRadar = false;
@@ -26,33 +25,6 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
     }
 
-    public virtual void GenerateShot()
-    {
-        if (PlayerController.Instance == null)
-            return;
-
-        GameObject shotInst = Instantiate(_shotPrefab, _shotStartPos.position, Quaternion.identity);
-        Vector2 shotDir = PlayerController.Instance.transform.position - shotInst.transform.position;
-        shotDir.Normalize();
-        float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
-        shotInst.GetComponent<Rigidbody2D>().velocity = shotDir * shotInst.GetComponent<ShotBase>().Speed;
-    }
-
-    public virtual void Shoot()
-    {
-        bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-        if (!isEnemyVisible)
-            return;
-
-        _shootTimer -= Time.deltaTime;
-        if (_shootTimer <= 0f)
-        {
-            GenerateShot();
-            _shootTimer = _timeToShoot;
-        }
-    }
-
     public virtual Vector2 AimAtPlayer()
     {
         Vector2 playerPos = PlayerController.Instance.transform.position;
@@ -65,7 +37,7 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
 
     public virtual void FollowPlayer()
     {
-        Vector2 playerPos = PlayerController.Instance.transform.position;
+        var playerPos = PlayerController.Instance.transform.position;
         if (Vector2.Distance(transform.position, playerPos) >= _stoppingDist)
             transform.position = Vector2.MoveTowards(transform.position, playerPos, _speed * Time.deltaTime);
     }

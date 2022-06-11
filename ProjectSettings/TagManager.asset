@@ -21,7 +21,7 @@ TagManager:
   - Enemy 1 Map 1 Shot
   - Enemy 2 Map 1
   - Enemy 2 Map 1 Shot
-  - 
+  - Enemy 3 Map 1
   - 
   - 
   - 
@@ -56,6 +56,9 @@ TagManager:
     locked: 0
   - name: Enemy 2 Map 1
     uniqueID: 2921591405
+    locked: 0
+  - name: Enemy 3 Map 1
+    uniqueID: 2293882963
     locked: 0
   - name: Player Shot
     uniqueID: 678046025
