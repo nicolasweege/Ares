@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Enemy_1_Map_1 : EnemyBase
 {
+    [SerializeField] private GameObject _shotPrefab;
     [SerializeField] private Transform _shotStartPos;
+    [SerializeField] private float _timeToShoot;
+    private float _shootTimer;
+    private bool _isPlayerInRadar = false;
     private Rigidbody2D _rigidbody;
 
     protected override void Awake()

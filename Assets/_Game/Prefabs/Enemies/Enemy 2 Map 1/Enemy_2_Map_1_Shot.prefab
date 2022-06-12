@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1666359879
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 556070108d4b2ed4d940e0fc23e21dbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd01883d9b243ca4a80edf235ea54f00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8962960968114403604}
   - component: {fileID: 7223566151964992964}
-  - component: {fileID: 5178550012663173626}
+  - component: {fileID: 5909755869275592624}
   - component: {fileID: 7474088253029685486}
   m_Layer: 11
   m_Name: Enemy_2_Map_1_Shot
@@ -131,11 +131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977af73d29e8cf0448fe38a3eef114d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 15
+  _speed: 10
   _defaultDamage: 2
   _damageAnim: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
---- !u!61 &5178550012663173626
-BoxCollider2D:
+  _rotation: {x: 0, y: 0, z: 1000}
+--- !u!70 &5909755869275592624
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,19 +148,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.209782, y: 0.0020961463}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.62404656, y: 0.09016898}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0011750683, y: 0.006864585}
+  m_Size: {x: 0.22846095, y: 0.22846605}
+  m_Direction: 0
 --- !u!50 &7474088253029685486
 Rigidbody2D:
   serializedVersion: 4

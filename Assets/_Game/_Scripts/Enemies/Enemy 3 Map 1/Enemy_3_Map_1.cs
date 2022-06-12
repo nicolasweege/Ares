@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_3_Map_1 : EnemyBase
 {
-    private Rigidbody2D _rigidbody;
+    [SerializeField] private GameObject _shotPrefab;
     [SerializeField] private Transform _shotStartPosLeft;
     [SerializeField] private Transform _shotStartPosRight;
     [SerializeField] private Transform _shotStartPosUp;
@@ -14,17 +14,26 @@ public class Enemy_3_Map_1 : EnemyBase
     [SerializeField] private Transform _shootToRight;
     [SerializeField] private Transform _shootToLeft;
     [SerializeField] private Vector3 _rotation;
+    [SerializeField] private float _timeToShoot;
+    private float _shootTimer;
+    private bool _isPlayerInRadar = false;
+    private Rigidbody2D _rigidbody;
+    private BoxCollider2D _boxCollider;
 
     protected override void Awake()
     {
         base.Awake();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _boxCollider = GetComponentInChildren<BoxCollider2D>();
     }
 
     private void Update()
     {
         transform.Rotate(_rotation * Time.deltaTime);
-        Shoot();
+        if (_isPlayerInRadar)
+        {
+            Shoot();
+        }
 
         if (_health <= 0)
             Death();
@@ -62,12 +71,20 @@ public class Enemy_3_Map_1 : EnemyBase
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
             _isPlayerInRadar = true;
+            _rotation.z = 120f;
+            _boxCollider.size = new Vector2(17f, 17f);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
             _isPlayerInRadar = false;
+            _rotation.z = 40f;
+            _boxCollider.size = new Vector2(10f, 10f);
+        }
     }
 }

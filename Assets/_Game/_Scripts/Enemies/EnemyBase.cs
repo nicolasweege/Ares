@@ -8,12 +8,8 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
     [SerializeField] protected float _speed;
     [SerializeField] protected int _amountOfCoins;
     [SerializeField] protected int _defaultDamage;
-    [SerializeField] protected float _timeToShoot;
     [SerializeField] protected float _stoppingDist;
-    [SerializeField] protected GameObject _shotPrefab;
     [SerializeField] protected GameObject _deathAnim;
-    protected float _shootTimer;
-    protected bool _isPlayerInRadar = false;
 
     public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
 
