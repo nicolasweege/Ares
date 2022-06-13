@@ -17,13 +17,11 @@ public class Enemy_3_Map_1 : EnemyBase
     [SerializeField] private float _timeToShoot;
     private float _shootTimer;
     private bool _isPlayerInRadar = false;
-    private Rigidbody2D _rigidbody;
     private BoxCollider2D _boxCollider;
 
     protected override void Awake()
     {
         base.Awake();
-        _rigidbody = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponentInChildren<BoxCollider2D>();
     }
 
@@ -31,9 +29,7 @@ public class Enemy_3_Map_1 : EnemyBase
     {
         transform.Rotate(_rotation * Time.deltaTime);
         if (_isPlayerInRadar)
-        {
             Shoot();
-        }
 
         if (_health <= 0)
             Death();

@@ -8,19 +8,24 @@ public class Enemy_1_Map_1 : EnemyBase
     [SerializeField] private Transform _subEnemyStartPosRight;
     [SerializeField] private Transform _subEnemyStartPosLeft;
     [SerializeField] private float _timeToGenerateSubEnemies;
+    [SerializeField] private Vector3 _rotation;
     private float _generateSubEnemiesTimer;
     private bool _isPlayerInRadar = false;
     private BoxCollider2D _boxCollider;
 
     protected override void Awake()
     {
-        _generateSubEnemiesTimer = _timeToGenerateSubEnemies;
+        base.Awake();
+        _boxCollider = GetComponentInChildren<BoxCollider2D>();
     }
 
     private void Update()
     {
         if (_isPlayerInRadar)
+        {
+            transform.Rotate(_rotation * Time.deltaTime);
             GenerateSubEnemies();
+        }
 
         if (_health <= 0)
             Death();
