@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Key
   - Portal
+  - Asteroid
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Enemy 2 Map 1
   - Enemy 2 Map 1 Shot
   - Enemy 3 Map 1
-  - 
+  - Asteroid
   - 
   - 
   - 
@@ -71,4 +72,7 @@ TagManager:
     locked: 0
   - name: Enemy Death Animation
     uniqueID: 2999701529
+    locked: 0
+  - name: Asteroid
+    uniqueID: 2482356265
     locked: 0
