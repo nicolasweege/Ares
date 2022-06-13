@@ -6,17 +6,6 @@ public class AsteroidController : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Vector3 _rotation;
-    private Rigidbody2D _rigidbody;
-
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
-
-    private void Start()
-    {
-        // rigidbody.velocity = new Vector2(1f, -1f) * _speed;
-    }
 
     private void Update()
     {

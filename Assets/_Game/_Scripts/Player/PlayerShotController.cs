@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class PlayerShotController : ShotBase
 {
-    private Rigidbody2D _rigidbody;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
-
     private void Update()
     {
         DeactiveShot();
@@ -34,5 +26,8 @@ public class PlayerShotController : ShotBase
             other.GetComponent<EnemyBase>().TakeDamage(DefaultDamage);
             DestroyShot();
         }
+
+        if (other.CompareTag("Asteroid"))
+            DestroyShot();
     }
 }

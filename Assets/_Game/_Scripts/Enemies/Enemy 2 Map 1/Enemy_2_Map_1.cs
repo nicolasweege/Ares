@@ -12,6 +12,8 @@ public class Enemy_2_Map_1 : EnemyBase
     [SerializeField] private Transform _especialShotStartPosRight;
     [SerializeField] private float _timeToNormalShoot;
     [SerializeField] private float _timeToEspecial;
+    [SerializeField] private float _timeToBreak;
+    private float _breakTimer;
     private float _normalShootTimer;
     private float _especialShootTimer;
     private Rigidbody2D _rigidbody;
@@ -22,11 +24,9 @@ public class Enemy_2_Map_1 : EnemyBase
         base.Awake();
         _rigidbody = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponentInChildren<BoxCollider2D>();
-    }
-
-    private void Start()
-    {
         _state = "idle";
+        _especialShootTimer = _timeToEspecial;
+        _breakTimer = _timeToBreak;
     }
 
     private void Update()
@@ -44,6 +44,14 @@ public class Enemy_2_Map_1 : EnemyBase
             case "idle":
                 break;
 
+            case "break_to_especial":
+                SetBreakState("especial_shoot", 0.5f);
+                break;
+
+            case "break_to_normal":
+                SetBreakState("following_player", _timeToBreak);
+                break;
+
             case "following_player":
                 FollowPlayer();
                 HandleNormalShoot();
@@ -51,7 +59,7 @@ public class Enemy_2_Map_1 : EnemyBase
                 _especialShootTimer -= Time.deltaTime;
                 if (_especialShootTimer <= 0f)
                 {
-                    _state = "especial_shoot";
+                    _state = "break_to_especial";
                     _especialShootTimer = _timeToEspecial;
                 }
                 break;
@@ -59,6 +67,16 @@ public class Enemy_2_Map_1 : EnemyBase
             case "especial_shoot":
                 HandleEspecialAttack();
                 break;
+        }
+    }
+
+    private void SetBreakState(string nextState, float time)
+    {
+        _breakTimer -= Time.deltaTime;
+        if (_breakTimer <= 0f)
+        {
+            _state = nextState;
+            _breakTimer = time;
         }
     }
 
@@ -84,7 +102,7 @@ public class Enemy_2_Map_1 : EnemyBase
 
         GenerateShot(_especialShotStartPosLeft, _especialShotPrefab);
         GenerateShot(_especialShotStartPosRight, _especialShotPrefab);
-        _state = "following_player";
+        _state = "break_to_normal";
     }
 
     private void GenerateShot(Transform shotStartPos, GameObject shotPrefab)
@@ -105,7 +123,7 @@ public class Enemy_2_Map_1 : EnemyBase
         if (other.CompareTag("Player"))
         {
             _state = "following_player";
-            _boxCollider.size = new Vector2(15f, 15f);
+            _boxCollider.size = new Vector2(17f, 17f);
         }
     }
 

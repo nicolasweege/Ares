@@ -16,4 +16,10 @@ public class Enemy_1_Map_1_Shot : ShotBase
     {
         DeactiveShot();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Asteroid"))
+            DestroyShot();   
+    }
 }

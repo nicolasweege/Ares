@@ -4,68 +4,61 @@ using UnityEngine;
 
 public class Enemy_1_Map_1 : EnemyBase
 {
-    [SerializeField] private GameObject _shotPrefab;
-    [SerializeField] private Transform _shotStartPos;
-    [SerializeField] private float _timeToShoot;
-    private float _shootTimer;
+    [SerializeField] private GameObject _subEnemyPrefab;
+    [SerializeField] private Transform _subEnemyStartPosRight;
+    [SerializeField] private Transform _subEnemyStartPosLeft;
+    [SerializeField] private float _timeToGenerateSubEnemies;
+    private float _generateSubEnemiesTimer;
     private bool _isPlayerInRadar = false;
-    private Rigidbody2D _rigidbody;
+    private BoxCollider2D _boxCollider;
 
     protected override void Awake()
     {
-        base.Awake();
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _generateSubEnemiesTimer = _timeToGenerateSubEnemies;
     }
 
     private void Update()
     {
         if (_isPlayerInRadar)
-        {
-            FollowPlayer();
-            AimAtPlayer();
-            Shoot();
-        }
+            GenerateSubEnemies();
 
         if (_health <= 0)
             Death();
     }
 
-    private void GenerateShot()
-    {
-        if (PlayerController.Instance == null)
-            return;
+    private void GenerateSubEnemy(Transform subEnemyStartPos) => Instantiate(_subEnemyPrefab, subEnemyStartPos.position, Quaternion.identity);
 
-        GameObject shotInst = Instantiate(_shotPrefab, _shotStartPos.position, Quaternion.identity);
-        Vector2 shotDir = PlayerController.Instance.transform.position - shotInst.transform.position;
-        shotDir.Normalize();
-        float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
-        shotInst.GetComponent<Rigidbody2D>().velocity = shotDir * shotInst.GetComponent<ShotBase>().Speed;
-    }
-
-    private void Shoot()
+    private void GenerateSubEnemies()
     {
         bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
         if (!isEnemyVisible)
             return;
 
-        _shootTimer -= Time.deltaTime;
-        if (_shootTimer <= 0f)
+        _generateSubEnemiesTimer -= Time.deltaTime;
+        if (_generateSubEnemiesTimer <= 0f)
         {
-            GenerateShot();
-            _shootTimer = _timeToShoot;
+            GenerateSubEnemy(_subEnemyStartPosRight);
+            GenerateSubEnemy(_subEnemyStartPosLeft);
+            _generateSubEnemiesTimer = _timeToGenerateSubEnemies;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
             _isPlayerInRadar = true;
+            _boxCollider.size = new Vector2(20f, 20f);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
             _isPlayerInRadar = false;
+            _boxCollider.size = new Vector2(15f, 15f);
+            _generateSubEnemiesTimer = _timeToGenerateSubEnemies;
+        }
     }
 }

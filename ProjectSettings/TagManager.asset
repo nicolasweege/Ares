@@ -67,12 +67,12 @@ TagManager:
   - name: Player
     uniqueID: 4065877639
     locked: 0
-  - name: Damage Animation
-    uniqueID: 3138669063
-    locked: 0
   - name: Enemy Death Animation
     uniqueID: 2999701529
     locked: 0
   - name: Asteroid
     uniqueID: 2482356265
+    locked: 0
+  - name: Damage Animation
+    uniqueID: 3138669063
     locked: 0

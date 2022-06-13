@@ -762,6 +762,7 @@ MonoBehaviour:
   _especialShotStartPosRight: {fileID: 5742172537251220932}
   _timeToNormalShoot: 0.3
   _timeToEspecial: 6
+  _timeToBreak: 1
 --- !u!60 &34940757284889673
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -900,7 +901,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8527862484874608779}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
