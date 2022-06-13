@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Enemy_1_Map_1 : EnemyBase
 {
-    [SerializeField] private GameObject _subEnemyPrefab;
-    [SerializeField] private Transform _subEnemyStartPosRight;
-    [SerializeField] private Transform _subEnemyStartPosLeft;
-    [SerializeField] private float _timeToGenerateSubEnemies;
     [SerializeField] private Vector3 _rotation;
-    private float _generateSubEnemiesTimer;
     private bool _isPlayerInRadar = false;
     private BoxCollider2D _boxCollider;
+
+    public bool IsPlayerInRadar { get => _isPlayerInRadar; set => _isPlayerInRadar = value; }
 
     protected override void Awake()
     {
@@ -24,28 +21,10 @@ public class Enemy_1_Map_1 : EnemyBase
         if (_isPlayerInRadar)
         {
             transform.Rotate(_rotation * Time.deltaTime);
-            GenerateSubEnemies();
         }
 
         if (_health <= 0)
             Death();
-    }
-
-    private void GenerateSubEnemy(Transform subEnemyStartPos) => Instantiate(_subEnemyPrefab, subEnemyStartPos.position, Quaternion.identity);
-
-    private void GenerateSubEnemies()
-    {
-        bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-        if (!isEnemyVisible)
-            return;
-
-        _generateSubEnemiesTimer -= Time.deltaTime;
-        if (_generateSubEnemiesTimer <= 0f)
-        {
-            GenerateSubEnemy(_subEnemyStartPosRight);
-            GenerateSubEnemy(_subEnemyStartPosLeft);
-            _generateSubEnemiesTimer = _timeToGenerateSubEnemies;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -53,7 +32,7 @@ public class Enemy_1_Map_1 : EnemyBase
         if (other.CompareTag("Player"))
         {
             _isPlayerInRadar = true;
-            _boxCollider.size = new Vector2(20f, 20f);
+            _boxCollider.size = new Vector2(30f, 30f);
         }
     }
 
@@ -63,7 +42,6 @@ public class Enemy_1_Map_1 : EnemyBase
         {
             _isPlayerInRadar = false;
             _boxCollider.size = new Vector2(15f, 15f);
-            _generateSubEnemiesTimer = _timeToGenerateSubEnemies;
         }
     }
 }

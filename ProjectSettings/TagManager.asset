@@ -17,14 +17,14 @@ TagManager:
   - Water
   - UI
   - Player
-  - Player Shot
-  - Enemy 1 Map 1
-  - Enemy 1 Map 1 Shot
-  - Enemy 2 Map 1
-  - Enemy 2 Map 1 Shot
-  - Enemy 3 Map 1
+  - Player - Shot
+  - Enemy 1 - [ Map 1 ]
+  - Enemy 1 - [ Map 1 ] - Shot
+  - Enemy 2 - [ Map 1 ]
+  - Enemy 2 - [ Map 1 ] - Shot
+  - Enemy 3 - [ Map 1 ]
   - Asteroid
-  - 
+  - Enemy 1 - [ Map 2 ]
   - 
   - 
   - 
@@ -46,22 +46,25 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Enemy 1 Map 1 Shot
+  - name: Enemy 1 - [ Map 1 ] - Shot
     uniqueID: 3974682491
     locked: 0
-  - name: Enemy 1 Map 1
+  - name: Enemy 1 - [ Map 1 ]
     uniqueID: 1307419071
     locked: 0
-  - name: Enemy 2 Map 1 Shot
+  - name: Enemy 2 - [ Map 1 ] - Shot
     uniqueID: 2628607417
     locked: 0
-  - name: Enemy 2 Map 1
+  - name: Enemy 2 - [ Map 1 ]
     uniqueID: 2921591405
     locked: 0
-  - name: Enemy 3 Map 1
+  - name: Enemy 3 - [ Map 1 ]
     uniqueID: 2293882963
     locked: 0
-  - name: Player Shot
+  - name: Enemy 1 - [ Map 2 ]
+    uniqueID: 1757122295
+    locked: 0
+  - name: Player - Shot
     uniqueID: 678046025
     locked: 0
   - name: Player
