@@ -43,7 +43,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Shoot_performed(InputAction.CallbackContext context)
     {
         var shotInst = Instantiate(_shotPrefab, _shotStartPos.position, _shotStartPos.rotation);
-        shotInst.GetComponent<ShotBase>().Direction = new Vector3(Aim().x, Aim().y);
+        shotInst.GetComponent<BulletBase>().Direction = new Vector3(Aim().x, Aim().y);
     }
 
     private Vector2 Aim()
@@ -74,10 +74,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Shot"))
+        if (other.CompareTag("Bullet"))
         {
-            TakeDamage(other.GetComponent<ShotBase>().DefaultDamage);
-            other.GetComponent<ShotBase>().DestroyShot();
+            TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            other.GetComponent<BulletBase>().DestroyShot();
             // CinemachineManager.Instance.ShakeCamera(5f, .1f);
         }
     }

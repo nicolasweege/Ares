@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Shot
   - Enemy
   - Key
   - Portal
   - Asteroid
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -17,15 +17,15 @@ TagManager:
   - Water
   - UI
   - Player
-  - Player - Shot
-  - Enemy 1 - [ Map 1 ]
-  - Enemy 1 - [ Map 1 ] - Shot
-  - Enemy 2 - [ Map 1 ]
-  - Enemy 2 - [ Map 1 ] - Shot
-  - Enemy 3 - [ Map 1 ]
+  - Player [ Bullet ]
+  - Afrodite
+  - Afrodite [ Bullet ]
+  - Teseu
+  - Teseu [ Bullet ]
+  - Cadmo
   - Asteroid
-  - Enemy 1 - [ Map 2 ]
-  - Enemy 3 - [ Map 1 ] - Shot
+  - Eros
+  - Cadmo [ Bullet ]
   - 
   - 
   - 
@@ -46,28 +46,37 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Enemy 1 - [ Map 1 ] - Shot
+  - name: Planet
+    uniqueID: 13868187
+    locked: 0
+  - name: Afrodite [ Bullet ]
     uniqueID: 3974682491
     locked: 0
-  - name: Enemy 1 - [ Map 1 ]
+  - name: Afrodite
     uniqueID: 1307419071
     locked: 0
-  - name: Enemy 2 - [ Map 1 ] - Shot
+  - name: Teseu [ Trail ]
+    uniqueID: 3670242705
+    locked: 0
+  - name: Teseu [ Bullet ]
     uniqueID: 2628607417
     locked: 0
-  - name: Enemy 2 - [ Map 1 ]
+  - name: Teseu
     uniqueID: 2921591405
     locked: 0
-  - name: Enemy 3 - [ Map 1 ] - Shot
+  - name: Cadmo [ Bullet ]
     uniqueID: 1545959563
     locked: 0
-  - name: Enemy 3 - [ Map 1 ]
+  - name: Cadmo
     uniqueID: 2293882963
     locked: 0
-  - name: Enemy 1 - [ Map 2 ]
+  - name: Eros
     uniqueID: 1757122295
     locked: 0
-  - name: Player - Shot
+  - name: Player [ Trail ]
+    uniqueID: 1254644431
+    locked: 0
+  - name: Player [ Bullet ]
     uniqueID: 678046025
     locked: 0
   - name: Player
