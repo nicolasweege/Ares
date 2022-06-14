@@ -8,8 +8,9 @@ public class Enemy_2_Map_1_Shot : ShotBase
 
     private void Update()
     {
-        transform.Rotate(_rotation * Time.deltaTime);
+        MoveShot();
         DeactiveShot();
+        transform.Rotate(_rotation * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -44,7 +44,7 @@ public class Enemy_3_Map_1 : EnemyBase
         Vector2 shotDir = shootTo.position - shotInst.transform.position;
         float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
         shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
-        shotInst.GetComponent<Rigidbody2D>().velocity = shotDir * shotInst.GetComponent<ShotBase>().Speed;
+        shotInst.GetComponent<ShotBase>().Direction = new Vector3(shotDir.x, shotDir.y);
     }
 
     private void Shoot()

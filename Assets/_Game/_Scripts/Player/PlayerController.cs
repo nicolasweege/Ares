@@ -43,7 +43,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Shoot_performed(InputAction.CallbackContext context)
     {
         var shotInst = Instantiate(_shotPrefab, _shotStartPos.position, _shotStartPos.rotation);
-        shotInst.GetComponent<Rigidbody2D>().velocity = Aim() * shotInst.GetComponent<ShotBase>().Speed;
+        shotInst.GetComponent<ShotBase>().Direction = new Vector3(Aim().x, Aim().y);
     }
 
     private Vector2 Aim()

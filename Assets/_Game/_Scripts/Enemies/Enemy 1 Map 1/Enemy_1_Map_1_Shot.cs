@@ -6,6 +6,7 @@ public class Enemy_1_Map_1_Shot : ShotBase
 {
     private void Update()
     {
+        MoveShot();
         DeactiveShot();
     }
 

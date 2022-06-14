@@ -6,10 +6,11 @@ public class AsteroidController : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Vector3 _rotation;
+    [SerializeField] private Vector3 _direction;
 
     private void Update()
     {
-        transform.position += new Vector3(1f, -1f, transform.position.z) * Time.deltaTime * _speed;
+        transform.position += _direction * Time.deltaTime * _speed;
         transform.Rotate(_rotation * Time.deltaTime);
     }
 }

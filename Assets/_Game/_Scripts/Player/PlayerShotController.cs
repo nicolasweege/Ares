@@ -6,6 +6,7 @@ public class PlayerShotController : ShotBase
 {
     private void Update()
     {
+        MoveShot();
         DeactiveShot();
     }
 
