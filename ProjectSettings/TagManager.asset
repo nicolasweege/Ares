@@ -25,7 +25,7 @@ TagManager:
   - Enemy 3 - [ Map 1 ]
   - Asteroid
   - Enemy 1 - [ Map 2 ]
-  - 
+  - Enemy 3 - [ Map 1 ] - Shot
   - 
   - 
   - 
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Enemy 2 - [ Map 1 ]
     uniqueID: 2921591405
+    locked: 0
+  - name: Enemy 3 - [ Map 1 ] - Shot
+    uniqueID: 1545959563
     locked: 0
   - name: Enemy 3 - [ Map 1 ]
     uniqueID: 2293882963

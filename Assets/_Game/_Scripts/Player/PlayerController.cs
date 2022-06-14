@@ -51,7 +51,7 @@ public class PlayerController : Singleton<PlayerController>
         Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDir = mousePos - _rigidbody.position;
         lookDir.Normalize();
-        float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
+        float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
         return lookDir;
     }

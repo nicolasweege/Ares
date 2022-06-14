@@ -43,7 +43,7 @@ public class Enemy_3_Map_1 : EnemyBase
         GameObject shotInst = Instantiate(_shotPrefab, shotStartPos.position, Quaternion.identity);
         Vector2 shotDir = shootTo.position - shotInst.transform.position;
         float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
+        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle - 90f);
         shotInst.GetComponent<ShotBase>().Direction = new Vector3(shotDir.x, shotDir.y);
     }
 

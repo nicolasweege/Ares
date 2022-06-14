@@ -31,7 +31,7 @@ public class Sub_Enemy_1_Map_1 : EnemyBase
         Vector2 shotDir = PlayerController.Instance.transform.position - shotInst.transform.position;
         shotDir.Normalize();
         float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
+        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle - 90f);
         shotInst.GetComponent<ShotBase>().Direction = new Vector3(shotDir.x, shotDir.y);
     }
 
