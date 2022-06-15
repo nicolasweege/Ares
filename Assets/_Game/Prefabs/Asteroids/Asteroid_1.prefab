@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.3
   _rotation: {x: 0, y: 0, z: 10}
+  _direction: {x: 0, y: 0, z: 0}
 --- !u!60 &2121509760686443994
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1812611031
-  m_SortingLayer: 10
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4778884eb7ed8cb4dba171e8d8ca1b85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -290,7 +291,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1812611031
-  m_SortingLayer: 10
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4778884eb7ed8cb4dba171e8d8ca1b85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -374,7 +375,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1812611031
-  m_SortingLayer: 10
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4778884eb7ed8cb4dba171e8d8ca1b85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

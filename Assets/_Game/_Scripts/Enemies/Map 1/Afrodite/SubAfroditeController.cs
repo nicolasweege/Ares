@@ -5,8 +5,8 @@ using UnityEngine;
 public class SubAfroditeController : EnemyBase
 {
     [SerializeField] private GameObject _mainEnemyPrefab;
-    [SerializeField] private GameObject _shotPrefab;
-    [SerializeField] private Transform _shotStartPos;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _bulletStartingPos;
     [SerializeField] private float _timeToShoot;
     private float _shootTimer;
 
@@ -22,17 +22,17 @@ public class SubAfroditeController : EnemyBase
             Death();
     }
 
-    private void GenerateShot()
+    private void GenerateBullet()
     {
         if (PlayerController.Instance == null)
             return;
 
-        GameObject shotInst = Instantiate(_shotPrefab, _shotStartPos.position, Quaternion.identity);
-        Vector2 shotDir = PlayerController.Instance.transform.position - shotInst.transform.position;
-        shotDir.Normalize();
-        float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle - 90f);
-        shotInst.GetComponent<BulletBase>().Direction = new Vector3(shotDir.x, shotDir.y);
+        GameObject bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, Quaternion.identity);
+        Vector2 bulletDir = PlayerController.Instance.transform.position - bulletInst.transform.position;
+        bulletDir.Normalize();
+        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle - 90f);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
     private void Shoot()
@@ -44,7 +44,7 @@ public class SubAfroditeController : EnemyBase
         _shootTimer -= Time.deltaTime;
         if (_shootTimer <= 0f)
         {
-            GenerateShot();
+            GenerateBullet();
             _shootTimer = _timeToShoot;
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4862982054092138372}
   m_Layer: 8
-  m_Name: Shot Start Pos
+  m_Name: Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,12 +104,12 @@ SpriteRenderer:
   m_SortingLayerID: 1307419071
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 45cddb3031b1a1c44b5410ff0b3aa25d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b5d28bc19986014f9b795cade91629a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.44, y: 3.06}
+  m_Size: {x: 1.74, y: 3.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -170,8 +170,8 @@ MonoBehaviour:
   _stoppingDist: 0
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _mainEnemyPrefab: {fileID: 0}
-  _shotPrefab: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
-  _shotStartPos: {fileID: 4862982054092138372}
+  _bulletPrefab: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
+  _bulletStartingPos: {fileID: 4862982054092138372}
   _timeToShoot: 0.5
 --- !u!58 &2082913033585719470
 CircleCollider2D:

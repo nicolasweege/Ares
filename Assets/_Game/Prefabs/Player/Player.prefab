@@ -137,8 +137,8 @@ MonoBehaviour:
   _health: 1000
   _speed: 5
   _defaultDamage: 3
-  _shotPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
-  _shotStartPos: {fileID: 1546371908465108044}
+  _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
+  _bulletStartingPos: {fileID: 1546371908465108044}
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
 --- !u!114 &3858209732904176750
 MonoBehaviour:
@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5845796378671607401
 Transform:
   m_ObjectHideFlags: 0
@@ -5066,7 +5066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546371908465108044}
   m_Layer: 6
-  m_Name: Shot Start Pos
+  m_Name: Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,11 +5,11 @@ using UnityEngine;
 public class TeseuController : EnemyBase
 {
     [SerializeField] private string _state;
-    [SerializeField] private GameObject _normalShotPrefab;
-    [SerializeField] private GameObject _especialShotPrefab;
-    [SerializeField] private Transform _normalShotStartPos;
-    [SerializeField] private Transform _especialShotStartPosLeft;
-    [SerializeField] private Transform _especialShotStartPosRight;
+    [SerializeField] private GameObject _normalBulletPrefab;
+    [SerializeField] private GameObject _especialBulletPrefab;
+    [SerializeField] private Transform _normalBulletStartingPos;
+    [SerializeField] private Transform _especialBulletStartingPosLeft;
+    [SerializeField] private Transform _especialBulletStartingPosRight;
     [SerializeField] private float _timeToNormalShoot;
     [SerializeField] private float _timeToEspecial;
     [SerializeField] private float _timeToBreak;
@@ -65,7 +65,7 @@ public class TeseuController : EnemyBase
                 break;
 
             case "especial_shoot":
-                HandleEspecialAttack();
+                HandleEspecialShoot();
                 break;
         }
     }
@@ -89,33 +89,33 @@ public class TeseuController : EnemyBase
         _normalShootTimer -= Time.deltaTime;
         if (_normalShootTimer <= 0f)
         {
-            GenerateShot(_normalShotStartPos, _normalShotPrefab);
+            GenerateBullet(_normalBulletStartingPos, _normalBulletPrefab);
             _normalShootTimer = _timeToNormalShoot;
         }
     }
 
-    private void HandleEspecialAttack()
+    private void HandleEspecialShoot()
     {
         bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
         if (!isEnemyVisible)
             return;
 
-        GenerateShot(_especialShotStartPosLeft, _especialShotPrefab);
-        GenerateShot(_especialShotStartPosRight, _especialShotPrefab);
+        GenerateBullet(_especialBulletStartingPosLeft, _especialBulletPrefab);
+        GenerateBullet(_especialBulletStartingPosRight, _especialBulletPrefab);
         _state = "break_to_normal";
     }
 
-    private void GenerateShot(Transform shotStartPos, GameObject shotPrefab)
+    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab)
     {
         if (PlayerController.Instance == null)
             return;
 
-        GameObject shotInst = Instantiate(shotPrefab, shotStartPos.position, Quaternion.identity);
-        Vector2 shotDir = PlayerController.Instance.transform.position - shotInst.transform.position;
-        shotDir.Normalize();
-        float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle + 90f);
-        shotInst.GetComponent<BulletBase>().Direction = new Vector3(shotDir.x, shotDir.y);
+        GameObject bulletInst = Instantiate(bulletPrefab, bulletStartingPos.position, Quaternion.identity);
+        Vector2 bulletDir = PlayerController.Instance.transform.position - bulletInst.transform.position;
+        bulletDir.Normalize();
+        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle + 90f);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

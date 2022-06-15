@@ -6,8 +6,8 @@ public class PlayerBulletController : BulletBase
 {
     private void Update()
     {
-        MoveShot();
-        DeactiveShot();
+        MoveBullet();
+        DeactiveBullet();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +15,7 @@ public class PlayerBulletController : BulletBase
         if (other.CompareTag("Bullet"))
         {
             Destroy(other.gameObject);
-            DestroyShot();
+            DestroyBullet();
         }
 
         if (other.CompareTag("Enemy"))
@@ -25,10 +25,10 @@ public class PlayerBulletController : BulletBase
                 return;
 
             other.GetComponent<EnemyBase>().TakeDamage(DefaultDamage);
-            DestroyShot();
+            DestroyBullet();
         }
 
         if (other.CompareTag("Asteroid"))
-            DestroyShot();
+            DestroyBullet();
     }
 }

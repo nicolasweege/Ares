@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AfroditeBulletController : BulletBase
+public class CadmoBulletController : BulletBase
 {
     protected override void Awake()
     {

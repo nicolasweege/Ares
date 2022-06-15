@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CadmoController : EnemyBase
 {
-    [SerializeField] private GameObject _shotPrefab;
-    [SerializeField] private Transform _shotStartPosLeft;
-    [SerializeField] private Transform _shotStartPosRight;
-    [SerializeField] private Transform _shotStartPosUp;
-    [SerializeField] private Transform _shotStartPosDown;
-    [SerializeField] private Transform _shootToUp;
-    [SerializeField] private Transform _shootToDown;
-    [SerializeField] private Transform _shootToRight;
-    [SerializeField] private Transform _shootToLeft;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _bulletStartingPosUp;
+    [SerializeField] private Transform _bulletStartingPosDown;
+    [SerializeField] private Transform _bulletStartingPosRight;
+    [SerializeField] private Transform _bulletStartingPosLeft;
+    [SerializeField] private Transform _bulletDirUp;
+    [SerializeField] private Transform _bulletDirDown;
+    [SerializeField] private Transform _bulletDirRight;
+    [SerializeField] private Transform _bulletDirLeft;
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
     private float _shootTimer;
@@ -28,6 +28,7 @@ public class CadmoController : EnemyBase
     private void Update()
     {
         transform.Rotate(_rotation * Time.deltaTime);
+
         if (_isPlayerInRadar)
             Shoot();
 
@@ -35,16 +36,16 @@ public class CadmoController : EnemyBase
             Death();
     }
 
-    private void GenerateShot(Transform shotStartPos, Transform shootTo)
+    private void GenerateBullet(Transform bulletStartingPos, Transform bulletDirTo)
     {
         if (PlayerController.Instance == null)
             return;
 
-        GameObject shotInst = Instantiate(_shotPrefab, shotStartPos.position, Quaternion.identity);
-        Vector2 shotDir = shootTo.position - shotInst.transform.position;
-        float shotAngle = Mathf.Atan2(shotDir.y, shotDir.x) * Mathf.Rad2Deg;
-        shotInst.transform.rotation = Quaternion.Euler(0f, 0f, shotAngle - 90f);
-        shotInst.GetComponent<BulletBase>().Direction = new Vector3(shotDir.x, shotDir.y);
+        GameObject bulletInst = Instantiate(_bulletPrefab, bulletStartingPos.position, Quaternion.identity);
+        Vector2 bulletDir = bulletDirTo.position - bulletInst.transform.position;
+        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle - 90f);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
     private void Shoot()
@@ -56,10 +57,10 @@ public class CadmoController : EnemyBase
         _shootTimer -= Time.deltaTime;
         if (_shootTimer <= 0f)
         {
-            GenerateShot(_shotStartPosUp, _shootToUp);
-            GenerateShot(_shotStartPosLeft, _shootToLeft);
-            GenerateShot(_shotStartPosRight, _shootToRight);
-            GenerateShot(_shotStartPosDown, _shootToDown);
+            GenerateBullet(_bulletStartingPosUp, _bulletDirUp);
+            GenerateBullet(_bulletStartingPosLeft, _bulletDirLeft);
+            GenerateBullet(_bulletStartingPosRight, _bulletDirRight);
+            GenerateBullet(_bulletStartingPosDown, _bulletDirDown);
             _shootTimer = _timeToShoot;
         }
     }

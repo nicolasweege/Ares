@@ -76,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5233597086984742361}
   m_Layer: 12
-  m_Name: Shoot To (Left)
+  m_Name: Bullet Dir (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5777258886211581403}
   m_Layer: 12
-  m_Name: Shoot Misc
+  m_Name: Bullets Misc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6641276051134747587}
   m_Layer: 12
-  m_Name: Shot Start Pos (Down)
+  m_Name: Bullet Starting Pos (Down)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7370929223167327319}
   m_Layer: 12
-  m_Name: Shoot To (Down)
+  m_Name: Bullet Dir (Down)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5836012982431776630}
   m_Layer: 12
-  m_Name: Shoot To (Up)
+  m_Name: Bullet Dir (Up)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2365619749555267156}
   m_Layer: 12
-  m_Name: Shot Start Pos (Right)
+  m_Name: Bullet Starting Pos (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7334911507272306414}
   m_Layer: 12
-  m_Name: Shoot To (Right)
+  m_Name: Bullet Dir (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4544349267016764257}
   m_Layer: 12
-  m_Name: Shot Start Pos (Up)
+  m_Name: Bullet Starting Pos (Up)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,15 +464,15 @@ MonoBehaviour:
   _defaultDamage: 6
   _stoppingDist: 4
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  _shotPrefab: {fileID: 2108062860262381256, guid: 42029e0c2a15deb438905b6e92537ee6, type: 3}
-  _shotStartPosLeft: {fileID: 3634622356963830608}
-  _shotStartPosRight: {fileID: 2365619749555267156}
-  _shotStartPosUp: {fileID: 4544349267016764257}
-  _shotStartPosDown: {fileID: 6641276051134747587}
-  _shootToUp: {fileID: 5836012982431776630}
-  _shootToDown: {fileID: 7370929223167327319}
-  _shootToRight: {fileID: 7334911507272306414}
-  _shootToLeft: {fileID: 5233597086984742361}
+  _bulletPrefab: {fileID: 2108062860262381256, guid: 42029e0c2a15deb438905b6e92537ee6, type: 3}
+  _bulletStartingPosUp: {fileID: 4544349267016764257}
+  _bulletStartingPosDown: {fileID: 6641276051134747587}
+  _bulletStartingPosRight: {fileID: 2365619749555267156}
+  _bulletStartingPosLeft: {fileID: 3634622356963830608}
+  _bulletDirUp: {fileID: 5836012982431776630}
+  _bulletDirDown: {fileID: 7370929223167327319}
+  _bulletDirRight: {fileID: 7334911507272306414}
+  _bulletDirLeft: {fileID: 5233597086984742361}
   _rotation: {x: 0, y: 0, z: 100}
   _timeToShoot: 0.2
 --- !u!60 &1832635351826848676
@@ -571,7 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3634622356963830608}
   m_Layer: 12
-  m_Name: Shot Start Pos (Left)
+  m_Name: Bullet Starting Pos (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,7 +663,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2001084333
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ef6c78383827f064f8b08a3ec85b5c14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

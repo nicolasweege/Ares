@@ -4842,7 +4842,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8527862484874608776}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1317144530937627484
 BoxCollider2D:
@@ -4880,7 +4880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3099763338303153322}
   m_Layer: 10
-  m_Name: Shoot Misc
+  m_Name: Bullets Misc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4902,7 +4902,7 @@ Transform:
   - {fileID: 5742172537251220932}
   - {fileID: 6270282815842813306}
   m_Father: {fileID: 8527862484874608776}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3082790398326676779
 GameObject:
@@ -14571,7 +14571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6177699732803113586}
   m_Layer: 10
-  m_Name: Especial Shot Start Pos Left
+  m_Name: Especial Bullet Starting Pos (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14602,7 +14602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5742172537251220932}
   m_Layer: 10
-  m_Name: Especial Shot Start Pos Right
+  m_Name: Especial Bullet Starting Pos (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14654,7 +14654,7 @@ Transform:
   - {fileID: 8573687347471011499}
   - {fileID: 4886028821927551835}
   m_Father: {fileID: 8527862484874608776}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6861701203888812195
 GameObject:
@@ -19468,37 +19468,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &7112098611888903938
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4569106692881701269}
-  m_Layer: 10
-  m_Name: Shot Start Pos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4569106692881701269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7112098611888903938}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.443, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8527862484874608776}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7267875907694551373
 GameObject:
   m_ObjectHideFlags: 0
@@ -19593,7 +19562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6270282815842813306}
   m_Layer: 10
-  m_Name: Normal Shot Start Pos
+  m_Name: Normal Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19679,7 +19648,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5813746830675727308}
-  - {fileID: 4569106692881701269}
   - {fileID: 6971171852586073229}
   - {fileID: 2806729114441279971}
   - {fileID: 3099763338303153322}
@@ -19705,11 +19673,11 @@ MonoBehaviour:
   _stoppingDist: 3
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _state: 
-  _normalShotPrefab: {fileID: 8962960968114403607, guid: 4dcd8adabb89b7949bd986bd781384e4, type: 3}
-  _especialShotPrefab: {fileID: 1827705127104138118, guid: d6eaa9be18e4ac84eb15a90e1ef92ca5, type: 3}
-  _normalShotStartPos: {fileID: 6270282815842813306}
-  _especialShotStartPosLeft: {fileID: 6177699732803113586}
-  _especialShotStartPosRight: {fileID: 5742172537251220932}
+  _normalBulletPrefab: {fileID: 8962960968114403607, guid: 4dcd8adabb89b7949bd986bd781384e4, type: 3}
+  _especialBulletPrefab: {fileID: 1827705127104138118, guid: d6eaa9be18e4ac84eb15a90e1ef92ca5, type: 3}
+  _normalBulletStartingPos: {fileID: 6270282815842813306}
+  _especialBulletStartingPosLeft: {fileID: 6177699732803113586}
+  _especialBulletStartingPosRight: {fileID: 5742172537251220932}
   _timeToNormalShoot: 0.3
   _timeToEspecial: 6
   _timeToBreak: 1

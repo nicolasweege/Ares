@@ -156,6 +156,7 @@ MonoBehaviour:
   _defaultDamage: 1
   _damageAnim: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
   _direction: {x: 0, y: 0, z: 0}
+  _timeToDestroyVisibleBullet: 1.5
 --- !u!70 &8109267729624676853
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

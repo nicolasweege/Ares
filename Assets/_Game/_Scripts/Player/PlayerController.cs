@@ -9,12 +9,12 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private int _health;
     [SerializeField] private float _speed;
     [SerializeField] private int _defaultDamage;
-    [SerializeField] private GameObject _shotPrefab;
-    [SerializeField] private Transform _shotStartPos;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _bulletStartingPos;
     [SerializeField] private GameObject _deathAnim;
+    private bool _isGamepad;
     private Rigidbody2D _rigidbody;
     private Camera _camera;
-    private bool _isGamepad;
     private PlayerInputActions _playerInputActions;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
@@ -42,8 +42,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Shoot_performed(InputAction.CallbackContext context)
     {
-        var shotInst = Instantiate(_shotPrefab, _shotStartPos.position, _shotStartPos.rotation);
-        shotInst.GetComponent<BulletBase>().Direction = new Vector3(Aim().x, Aim().y);
+        var bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, _bulletStartingPos.rotation);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(Aim().x, Aim().y);
     }
 
     private Vector2 Aim()
@@ -77,8 +77,7 @@ public class PlayerController : Singleton<PlayerController>
         if (other.CompareTag("Bullet"))
         {
             TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
-            other.GetComponent<BulletBase>().DestroyShot();
-            // CinemachineManager.Instance.ShakeCamera(5f, .1f);
+            other.GetComponent<BulletBase>().DestroyBullet();
         }
     }
 
