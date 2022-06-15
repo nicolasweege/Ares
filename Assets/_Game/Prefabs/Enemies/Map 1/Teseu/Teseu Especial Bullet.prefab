@@ -51,9 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   _defaultDamage: 5
-  _timeToDestroyVisibleBullet: 1
   _damageAnim: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
-  _direction: {x: 0, y: 0, z: 0}
+  _timeToDestroyVisibleBullet: 1
   _rotation: {x: 0, y: 0, z: 1000}
 --- !u!70 &1170303326870585593
 CapsuleCollider2D:
@@ -4853,7 +4852,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5000,7 +4999,7 @@ GameObject:
   - component: {fileID: 3567567499593467767}
   - component: {fileID: 7635561350762081925}
   m_Layer: 11
-  m_Name: Trail 1 (1)
+  m_Name: Trail 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9749,7 +9748,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -32,7 +32,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Update()
     {
         Move();
-        Aim();
+        // Aim();
 
         if (_health <= 0)
             Death();
