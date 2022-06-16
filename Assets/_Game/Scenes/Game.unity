@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stars: 0
-  _parallaxMultiplier: {x: 0.07, y: 0.015}
+  _parallaxMultiplier: {x: 0.085, y: 0.015}
 --- !u!1 &268493150
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stars: 0
-  _parallaxMultiplier: {x: 0.05, y: 0}
+  _parallaxMultiplier: {x: 0.065, y: 0}
 --- !u!1001 &295045918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3619,7 +3619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stars: 0
-  _parallaxMultiplier: {x: 0.09, y: 0.04}
+  _parallaxMultiplier: {x: 0.11, y: 0.04}
 --- !u!1 &1899551873
 GameObject:
   m_ObjectHideFlags: 0

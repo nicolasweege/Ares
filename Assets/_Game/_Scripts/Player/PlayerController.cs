@@ -11,6 +11,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private int _defaultDamage;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _bulletStartingPos;
+    [SerializeField] private Transform _bulletDir;
     [SerializeField] private GameObject _deathAnim;
     private bool _isGamepad;
     private Rigidbody2D _rigidbody;
@@ -27,6 +28,7 @@ public class PlayerController : Singleton<PlayerController>
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Shoot.performed += Shoot_performed;
+        _playerInputActions.Player.MoveAim.performed += MoveAim_performed;
     }
 
     private void Update()
@@ -43,7 +45,15 @@ public class PlayerController : Singleton<PlayerController>
     private void Shoot_performed(InputAction.CallbackContext context)
     {
         var bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, _bulletStartingPos.rotation);
-        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(Aim().x, Aim().y);
+        Vector2 bulletDir = _bulletDir.position - bulletInst.transform.position;
+        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle - 90f);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
+    }
+
+    private void MoveAim_performed(InputAction.CallbackContext context)
+    {
+
     }
 
     private Vector2 Aim()
@@ -52,7 +62,8 @@ public class PlayerController : Singleton<PlayerController>
         Vector2 lookDir = mousePos - _rigidbody.position;
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
+        // transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, lookAngle), 0.02f);
         return lookDir;
     }
 
