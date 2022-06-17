@@ -16,15 +16,14 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
     private float _shootTimer;
-    private bool _isGamepad;
+    // private bool _isGamepad;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
@@ -128,5 +127,5 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    public void OnDeviceChange(PlayerInput playerInput) => _isGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
+    // public void OnDeviceChange(PlayerInput playerInput) => _isGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
 }

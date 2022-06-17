@@ -9,7 +9,7 @@ TagManager:
   - Portal
   - Asteroid
   - Bullet
-  - Main Player Space Station
+  - Player Main Ship
   layers:
   - Default
   - TransparentFX
@@ -27,7 +27,7 @@ TagManager:
   - Asteroid
   - Eros
   - Cadmo [ Bullet ]
-  - Main Player Space Station
+  - Player Main Ship
   - Player Utility Ship
   - 
   - 
