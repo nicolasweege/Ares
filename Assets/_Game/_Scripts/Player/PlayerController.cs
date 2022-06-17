@@ -27,6 +27,7 @@ public class PlayerController : Singleton<PlayerController>
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
+        _playerInputActions.MainShip.Disable();
         _playerInputActions.Player.Shoot.performed += Shoot_performed;
     }
 
