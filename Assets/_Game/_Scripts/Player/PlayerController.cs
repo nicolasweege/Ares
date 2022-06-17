@@ -13,8 +13,10 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Transform _bulletStartingPos;
     [SerializeField] private Transform _bulletDir;
     [SerializeField] private GameObject _deathAnim;
+    [SerializeField] private Vector3 _rotation;
+    [SerializeField] private float _timeToShoot;
+    private float _shootTimer;
     private bool _isGamepad;
-    private Rigidbody2D _rigidbody;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
 
@@ -23,18 +25,34 @@ public class PlayerController : Singleton<PlayerController>
     protected override void Awake()
     {
         base.Awake();
-        _rigidbody = GetComponent<Rigidbody2D>();
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
         _playerInputActions.Player.Shoot.performed += Shoot_performed;
-        _playerInputActions.Player.MoveAim.performed += MoveAim_performed;
     }
 
     private void Update()
     {
         Move();
-        // Aim();
+
+        if (_playerInputActions.Player.MoveAimToRight.IsPressed())
+            MoveAimToRight();
+
+        if (_playerInputActions.Player.MoveAimToLeft.IsPressed())
+            MoveAimToLeft();
+
+        Vector2 v = _playerInputActions.Player.MoveAim.ReadValue<Vector2>();
+        transform.Rotate(new Vector3(0f, 0f, -v.x * _rotation.z) * Time.deltaTime);
+
+        if (_playerInputActions.Player.ShootHolding.IsPressed())
+        {
+            _shootTimer -= Time.deltaTime;
+            if (_shootTimer <= 0f)
+            {
+                GenerateBullet();
+                _shootTimer = _timeToShoot;
+            }
+        }
 
         if (_health <= 0)
             Death();
@@ -44,6 +62,11 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Shoot_performed(InputAction.CallbackContext context)
     {
+        GenerateBullet();
+    }
+
+    private void GenerateBullet()
+    {
         var bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, _bulletStartingPos.rotation);
         Vector2 bulletDir = _bulletDir.position - bulletInst.transform.position;
         float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
@@ -51,19 +74,23 @@ public class PlayerController : Singleton<PlayerController>
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
-    private void MoveAim_performed(InputAction.CallbackContext context)
+    private void MoveAimToRight()
     {
+        transform.Rotate(-_rotation * Time.deltaTime);
+    }
 
+    private void MoveAimToLeft()
+    {
+        transform.Rotate(_rotation * Time.deltaTime);
     }
 
     private Vector2 Aim()
     {
         Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 lookDir = mousePos - _rigidbody.position;
+        Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        // transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0f, 0f, lookAngle), 0.02f);
+        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
         return lookDir;
     }
 

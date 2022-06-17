@@ -52,7 +52,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Pause"",
@@ -64,10 +64,37 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MoveAim"",
-                    ""type"": ""Value"",
+                    ""name"": ""MoveAimToRight"",
+                    ""type"": ""Button"",
                     ""id"": ""03f0e94b-c2be-41f4-a2f7-166373a39105"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveAimToLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""29b503c2-8218-4fe8-8cfc-8c88a6a98edd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootHolding"",
+                    ""type"": ""Button"",
+                    ""id"": ""88ad7fe9-8563-41d1-b02a-766b601f4d43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveAim"",
+                    ""type"": ""Value"",
+                    ""id"": ""a1d19541-ab6f-4f23-9b66-a1c34338b6be"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -143,7 +170,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""83cc8b72-6e05-4aa6-b04a-658eeb02c5ea"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1251247-f9d9-4667-8c48-cb517c3f166c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -155,6 +193,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""ded6a700-8882-4d82-bca2-cbab5a7e1f33"",
                     ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f1d5463b-0172-4315-8978-78cd99ca4edb"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""K&M"",
@@ -199,17 +248,83 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""267e5808-ce19-4f92-9924-4212fe1bb954"",
                     ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.1)"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""MoveAim"",
+                    ""action"": ""MoveAimToRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a885fe8f-f7fe-4754-ae0c-bf7180d143b3"",
+                    ""id"": ""88913611-a038-43ad-8951-749f6c1fcfa4"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": ""Hold(duration=0.1)"",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""MoveAimToRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cb66457-577a-4c9a-bf47-b78fa0e87f02"",
                     ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Hold(duration=0.1)"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MoveAimToLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14f64627-5f10-4e4d-9675-1f7709399d8c"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": ""Hold(duration=0.1)"",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""MoveAimToLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bd5c7c4-eec3-4f56-9f8e-f4437c5ea07f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10ea1d11-f48d-42fc-b05b-08921c32b007"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb6c14ed-6d06-43e6-acd0-84581f23027d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""483a21e1-91bc-424e-bd98-60413b2e955e"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -256,6 +371,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_MoveAimToRight = m_Player.FindAction("MoveAimToRight", throwIfNotFound: true);
+        m_Player_MoveAimToLeft = m_Player.FindAction("MoveAimToLeft", throwIfNotFound: true);
+        m_Player_ShootHolding = m_Player.FindAction("ShootHolding", throwIfNotFound: true);
         m_Player_MoveAim = m_Player.FindAction("MoveAim", throwIfNotFound: true);
     }
 
@@ -320,6 +438,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_MoveAimToRight;
+    private readonly InputAction m_Player_MoveAimToLeft;
+    private readonly InputAction m_Player_ShootHolding;
     private readonly InputAction m_Player_MoveAim;
     public struct PlayerActions
     {
@@ -329,6 +450,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @MoveAimToRight => m_Wrapper.m_Player_MoveAimToRight;
+        public InputAction @MoveAimToLeft => m_Wrapper.m_Player_MoveAimToLeft;
+        public InputAction @ShootHolding => m_Wrapper.m_Player_ShootHolding;
         public InputAction @MoveAim => m_Wrapper.m_Player_MoveAim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -351,6 +475,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @MoveAimToRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAimToRight;
+                @MoveAimToRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAimToRight;
+                @MoveAimToRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAimToRight;
+                @MoveAimToLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAimToLeft;
+                @MoveAimToLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAimToLeft;
+                @MoveAimToLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAimToLeft;
+                @ShootHolding.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootHolding;
+                @ShootHolding.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootHolding;
+                @ShootHolding.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootHolding;
                 @MoveAim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAim;
                 @MoveAim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAim;
                 @MoveAim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveAim;
@@ -370,6 +503,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @MoveAimToRight.started += instance.OnMoveAimToRight;
+                @MoveAimToRight.performed += instance.OnMoveAimToRight;
+                @MoveAimToRight.canceled += instance.OnMoveAimToRight;
+                @MoveAimToLeft.started += instance.OnMoveAimToLeft;
+                @MoveAimToLeft.performed += instance.OnMoveAimToLeft;
+                @MoveAimToLeft.canceled += instance.OnMoveAimToLeft;
+                @ShootHolding.started += instance.OnShootHolding;
+                @ShootHolding.performed += instance.OnShootHolding;
+                @ShootHolding.canceled += instance.OnShootHolding;
                 @MoveAim.started += instance.OnMoveAim;
                 @MoveAim.performed += instance.OnMoveAim;
                 @MoveAim.canceled += instance.OnMoveAim;
@@ -401,6 +543,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnMoveAimToRight(InputAction.CallbackContext context);
+        void OnMoveAimToLeft(InputAction.CallbackContext context);
+        void OnShootHolding(InputAction.CallbackContext context);
         void OnMoveAim(InputAction.CallbackContext context);
     }
 }

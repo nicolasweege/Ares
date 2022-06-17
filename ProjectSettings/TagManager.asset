@@ -9,6 +9,7 @@ TagManager:
   - Portal
   - Asteroid
   - Bullet
+  - Main Player Space Station
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - Player Attack Ship
   - Player [ Bullet ]
   - Afrodite
   - Afrodite [ Bullet ]
@@ -26,8 +27,8 @@ TagManager:
   - Asteroid
   - Eros
   - Cadmo [ Bullet ]
-  - 
-  - 
+  - Main Player Space Station
+  - Player Utility Ship
   - 
   - 
   - 
@@ -45,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2738636265
     locked: 0
   - name: Planet
     uniqueID: 13868187
