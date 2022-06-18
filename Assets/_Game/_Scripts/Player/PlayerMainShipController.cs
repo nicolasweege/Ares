@@ -12,7 +12,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private GameObject _cinemachineCamera;
     private CinemachineVirtualCamera _virtualCamera;
-    private Rigidbody2D _rigidbody;
     private PlayerInputActions _playerInputActions;
     private bool _isPlayerInSubShip = false;
 
@@ -35,7 +34,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             Move();
         }
 
-        if (Input.GetKey(KeyCode.C) && !_isPlayerInSubShip)
+        if (_playerInputActions.MainShip.ChangeToSubShip.IsPressed() && !_isPlayerInSubShip)
         {
             ChangeToAttackShip();
             _isPlayerInSubShip = true;
@@ -54,7 +53,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         Vector2 moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
         moveVector.Normalize();
-        // _rigidbody.velocity += new Vector2(moveVector.x, moveVector.y) * Time.deltaTime * _speed;
         transform.position += new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _speed;
         float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
         float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);
