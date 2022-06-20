@@ -147,6 +147,7 @@ MonoBehaviour:
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _rotation: {x: 0, y: 0, z: 90}
   _timeToShoot: 0.1
+  _portalPrefab: {fileID: 7539416216041936415, guid: eed315a8338fc33468c61af87a56b4cf, type: 3}
 --- !u!114 &3858209732904176750
 MonoBehaviour:
   m_ObjectHideFlags: 0

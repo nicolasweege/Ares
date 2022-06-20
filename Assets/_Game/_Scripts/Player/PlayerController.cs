@@ -15,6 +15,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
+    [SerializeField] private GameObject _portalPrefab;
     private float _shootTimer;
     // private bool _isGamepad;
     private Camera _camera;
@@ -40,6 +41,9 @@ public class PlayerController : Singleton<PlayerController>
 
         if (_playerInputActions.Player.MoveAimToLeft.IsPressed())
             MoveAimToLeft();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            Instantiate(_portalPrefab, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity);
 
         Vector2 v = _playerInputActions.Player.MoveAim.ReadValue<Vector2>();
         transform.Rotate(new Vector3(0f, 0f, -v.x * _rotation.z) * Time.deltaTime);

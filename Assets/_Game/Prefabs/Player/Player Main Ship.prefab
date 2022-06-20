@@ -847,6 +847,7 @@ MonoBehaviour:
   _attackShipPrefab: {fileID: 1131015768432569096, guid: c69976c944b4f754a87dc7871ef99693, type: 3}
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _cinemachineCamera: {fileID: 0}
+  _portalPrefab: {fileID: 7539416216041936415, guid: eed315a8338fc33468c61af87a56b4cf, type: 3}
 --- !u!50 &3119294525952107604
 Rigidbody2D:
   serializedVersion: 4

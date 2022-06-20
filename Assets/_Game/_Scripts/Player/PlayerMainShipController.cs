@@ -11,6 +11,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private GameObject _attackShipPrefab;
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private GameObject _cinemachineCamera;
+    [SerializeField] private GameObject _portalPrefab;
     private CinemachineVirtualCamera _virtualCamera;
     private PlayerInputActions _playerInputActions;
     private bool _isPlayerInSubShip = false;
@@ -32,6 +33,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (!_isPlayerInSubShip)
         {
             Move();
+            if (Input.GetKeyDown(KeyCode.R))
+                Instantiate(_portalPrefab, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity);
         }
 
         if (_playerInputActions.MainShip.ChangeToSubShip.IsPressed() && !_isPlayerInSubShip)
