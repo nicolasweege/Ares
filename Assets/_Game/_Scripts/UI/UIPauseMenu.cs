@@ -25,7 +25,7 @@ public class UIPauseMenu : MonoBehaviour
             return;
         }
 
-        PlayerController.Instance.PlayerInputActions.Disable();
+        PlayerAttackShipController.Instance.PlayerInputActions.Disable();
         _pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -33,7 +33,7 @@ public class UIPauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        PlayerController.Instance.PlayerInputActions.Enable();
+        PlayerAttackShipController.Instance.PlayerInputActions.Enable();
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -41,7 +41,7 @@ public class UIPauseMenu : MonoBehaviour
 
     public void ExitToStartMenu()
     {
-        PlayerController.Instance.PlayerInputActions.Disable();
+        PlayerAttackShipController.Instance.PlayerInputActions.Disable();
         _playerInputActions.Disable();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");

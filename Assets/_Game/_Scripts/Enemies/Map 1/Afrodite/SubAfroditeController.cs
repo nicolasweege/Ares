@@ -24,11 +24,11 @@ public class SubAfroditeController : EnemyBase
 
     private void GenerateBullet()
     {
-        if (PlayerController.Instance == null)
+        if (PlayerAttackShipController.Instance == null)
             return;
 
         GameObject bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, Quaternion.identity);
-        Vector2 bulletDir = PlayerController.Instance.transform.position - bulletInst.transform.position;
+        Vector2 bulletDir = PlayerAttackShipController.Instance.transform.position - bulletInst.transform.position;
         bulletDir.Normalize();
         float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
         bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle - 90f);

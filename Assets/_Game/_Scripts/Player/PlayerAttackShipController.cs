@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
 {
     [SerializeField] private int _health;
     [SerializeField] private float _speed;
@@ -17,7 +17,6 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float _timeToShoot;
     [SerializeField] private GameObject _portalPrefab;
     private float _shootTimer;
-    // private bool _isGamepad;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
 
@@ -36,17 +35,8 @@ public class PlayerController : Singleton<PlayerController>
     {
         Move();
 
-        if (_playerInputActions.Player.MoveAimToRight.IsPressed())
-            MoveAimToRight();
-
-        if (_playerInputActions.Player.MoveAimToLeft.IsPressed())
-            MoveAimToLeft();
-
         if (Input.GetKeyDown(KeyCode.R))
             Instantiate(_portalPrefab, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity);
-
-        Vector2 v = _playerInputActions.Player.MoveAim.ReadValue<Vector2>();
-        transform.Rotate(new Vector3(0f, 0f, -v.x * _rotation.z) * Time.deltaTime);
 
         if (_playerInputActions.Player.ShootHolding.IsPressed())
         {
@@ -73,19 +63,10 @@ public class PlayerController : Singleton<PlayerController>
     {
         var bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, _bulletStartingPos.rotation);
         Vector2 bulletDir = _bulletDir.position - bulletInst.transform.position;
+        bulletDir.Normalize();
         float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
         bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle - 90f);
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
-    }
-
-    private void MoveAimToRight()
-    {
-        transform.Rotate(-_rotation * Time.deltaTime);
-    }
-
-    private void MoveAimToLeft()
-    {
-        transform.Rotate(_rotation * Time.deltaTime);
     }
 
     private Vector2 Aim()
@@ -131,6 +112,4 @@ public class PlayerController : Singleton<PlayerController>
             other.gameObject.GetComponent<EnemyBase>().Death();
         }
     }
-
-    // public void OnDeviceChange(PlayerInput playerInput) => _isGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
 }

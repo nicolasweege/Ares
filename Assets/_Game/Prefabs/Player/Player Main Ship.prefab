@@ -844,7 +844,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 1000
   _speed: 1
-  _attackShipPrefab: {fileID: 1131015768432569096, guid: c69976c944b4f754a87dc7871ef99693, type: 3}
+  _attackShipPrefab: {fileID: 2238636717248138835, guid: 6c3bf164dc4ecca48a91806f50dd25b8, type: 3}
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _cinemachineCamera: {fileID: 0}
   _portalPrefab: {fileID: 7539416216041936415, guid: eed315a8338fc33468c61af87a56b4cf, type: 3}

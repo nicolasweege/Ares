@@ -38,7 +38,7 @@ public class CadmoController : EnemyBase
 
     private void GenerateBullet(Transform bulletStartingPos, Transform bulletDirTo)
     {
-        if (PlayerController.Instance == null)
+        if (PlayerAttackShipController.Instance == null)
             return;
 
         GameObject bulletInst = Instantiate(_bulletPrefab, bulletStartingPos.position, Quaternion.identity);

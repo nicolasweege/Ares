@@ -23,7 +23,7 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
 
     public virtual Vector2 AimAtPlayer()
     {
-        Vector2 playerPos = PlayerController.Instance.transform.position;
+        Vector2 playerPos = PlayerAttackShipController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
@@ -33,7 +33,7 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
 
     public virtual void FollowPlayer()
     {
-        var playerPos = PlayerController.Instance.transform.position;
+        var playerPos = PlayerAttackShipController.Instance.transform.position;
         if (Vector2.Distance(transform.position, playerPos) >= _stoppingDist)
             transform.position = Vector2.MoveTowards(transform.position, playerPos, _speed * Time.deltaTime);
     }
