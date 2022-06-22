@@ -16,6 +16,11 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
     [SerializeField] private GameObject _portalPrefab;
+    [SerializeField] private ParticleSystem _centerStabilizerTrail;
+    [SerializeField] private ParticleSystem _rightStabilizerTrail;
+    [SerializeField] private ParticleSystem _leftStabilizerTrail;
+    [SerializeField] private ParticleSystem _rightTurbineFlame;
+    [SerializeField] private ParticleSystem _leftTurbineFlame;
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
@@ -29,11 +34,53 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
         _playerInputActions.Player.Enable();
         _playerInputActions.MainShip.Disable();
         _playerInputActions.Player.Shoot.performed += Shoot_performed;
+
+        _centerStabilizerTrail.startLifetime = 0f;
+        _rightStabilizerTrail.startLifetime = 0f;
+        _leftStabilizerTrail.startLifetime = 0f;
+        _rightTurbineFlame.startLifetime = 0f;
+        _leftTurbineFlame.startLifetime = 0f;
     }
 
     private void Update()
     {
         Move();
+        Aim();
+
+        if (Input.GetKey(KeyCode.A))
+            _rightStabilizerTrail.startLifetime = 0.15f;
+
+        if (Input.GetKey(KeyCode.D))
+            _leftStabilizerTrail.startLifetime = 0.15f;
+
+        if (Input.GetKeyUp(KeyCode.A))
+            _rightStabilizerTrail.startLifetime = 0f;
+
+        if (Input.GetKeyUp(KeyCode.D))
+            _leftStabilizerTrail.startLifetime = 0f;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            _centerStabilizerTrail.startLifetime = 0.15f;
+            _rightTurbineFlame.startLifetime = 0.2f;
+            _leftTurbineFlame.startLifetime = 0.2f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            _centerStabilizerTrail.startLifetime = 0f;
+            _rightTurbineFlame.startLifetime = 0f;
+            _leftTurbineFlame.startLifetime = 0f;
+        }
+
+        if (_playerInputActions.Player.Movement.ReadValue<Vector2>() != new Vector2(0f, 0f))
+        {
+            _rightTurbineFlame.startLifetime = 0.2f;
+        }
+        else
+        {
+            _rightTurbineFlame.startLifetime = 0f;
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
             Instantiate(_portalPrefab, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity);
