@@ -27,7 +27,8 @@ public abstract class EnemyBase : StaticInstance<EnemyBase>
         Vector2 lookDir = playerPos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
+        float turnSpeed = 5;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, lookAngle), turnSpeed * Time.deltaTime);
         return lookDir;
     }
 
