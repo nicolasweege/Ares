@@ -53,7 +53,10 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
         TurretAim();
         HandleStabilizers();
 
-        if (_playerInputActions.Player.Movement.ReadValue<Vector2>().y == 1f)
+        var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        move.Normalize();
+
+        if (Mathf.Round(move.y) == 1f)
         {
             _rightTurbineFlame.startLifetime = 0.2f;
             _leftTurbineFlame.startLifetime = 0.2f;
@@ -92,45 +95,53 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
 
     private void HandleStabilizers()
     {
-        var playerMovement = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-        playerMovement.Normalize();
+        var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        move.Normalize();
 
-        if (playerMovement.x == 0f && playerMovement.y == -1f)
+        // Moving to Back
+        if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == -1f)
         {
             ResetStabilizers();
             _frontStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x == 0f && playerMovement.y == 1f)
+        // Moving to Front
+        if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 1f)
         {
             ResetStabilizers();
             _backStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x == 1f && playerMovement.y == 0f)
+        // Moving to Right
+        if (Mathf.Round(move.x) == 1f && Mathf.Round(move.y) == 0f)
         {
             ResetStabilizers();
             _leftStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x == -1f && playerMovement.y == 0f)
+        // Moving to Left
+        if (Mathf.Round(move.x) == -1f && Mathf.Round(move.y) == 0f)
         {
             ResetStabilizers();
             _rightStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x > 0f && playerMovement.y > 0f)
+        // Moving to Diagonal Front/Right
+        if (Mathf.Round(move.x) > 0f && Mathf.Round(move.y) > 0f)
         {
             ResetStabilizers();
             _leftBackDStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x < 0f && playerMovement.y > 0f)
+        // Moving to Diagonal Front/Left
+        if (Mathf.Round(move.x) < 0f && Mathf.Round(move.y) > 0f)
         {
             ResetStabilizers();
             _rightBackDStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x > 0f && playerMovement.y < 0f)
+        // Moving to Diagonal Back/Right
+        if (Mathf.Round(move.x) > 0f && Mathf.Round(move.y) < 0f)
         {
             ResetStabilizers();
             _leftFrontDStabilizerTrail.startLifetime = 0.15f;
         }
-        if (playerMovement.x < 0f && playerMovement.y < 0f)
+        // Moving to Diagonal Back/Left
+        if (Mathf.Round(move.x) < 0f && Mathf.Round(move.y) < 0f)
         {
             ResetStabilizers();
             _rightFrontDStabilizerTrail.startLifetime = 0.15f;
