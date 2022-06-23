@@ -15,12 +15,19 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
-    [SerializeField] private GameObject _portalPrefab;
-    [SerializeField] private ParticleSystem _centerStabilizerTrail;
-    [SerializeField] private ParticleSystem _rightStabilizerTrail;
-    [SerializeField] private ParticleSystem _leftStabilizerTrail;
     [SerializeField] private ParticleSystem _rightTurbineFlame;
     [SerializeField] private ParticleSystem _leftTurbineFlame;
+    [SerializeField] private Transform _turretTransform;
+    #region Stabilizer Trails
+    [SerializeField] private ParticleSystem _frontStabilizerTrail;
+    [SerializeField] private ParticleSystem _backStabilizerTrail;
+    [SerializeField] private ParticleSystem _rightStabilizerTrail;
+    [SerializeField] private ParticleSystem _leftStabilizerTrail;
+    [SerializeField] private ParticleSystem _rightFrontDStabilizerTrail;
+    [SerializeField] private ParticleSystem _leftFrontDStabilizerTrail;
+    [SerializeField] private ParticleSystem _rightBackDStabilizerTrail;
+    [SerializeField] private ParticleSystem _leftBackDStabilizerTrail;
+    #endregion
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
@@ -35,55 +42,27 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
         _playerInputActions.MainShip.Disable();
         _playerInputActions.Player.Shoot.performed += Shoot_performed;
 
-        _centerStabilizerTrail.startLifetime = 0f;
-        _rightStabilizerTrail.startLifetime = 0f;
-        _leftStabilizerTrail.startLifetime = 0f;
         _rightTurbineFlame.startLifetime = 0f;
         _leftTurbineFlame.startLifetime = 0f;
+        ResetStabilizers();
     }
 
     private void Update()
     {
         Move();
-        Aim();
+        TurretAim();
+        HandleStabilizers();
 
-        if (Input.GetKey(KeyCode.A))
-            _rightStabilizerTrail.startLifetime = 0.15f;
-
-        if (Input.GetKey(KeyCode.D))
-            _leftStabilizerTrail.startLifetime = 0.15f;
-
-        if (Input.GetKeyUp(KeyCode.A))
-            _rightStabilizerTrail.startLifetime = 0f;
-
-        if (Input.GetKeyUp(KeyCode.D))
-            _leftStabilizerTrail.startLifetime = 0f;
-
-        if (Input.GetKey(KeyCode.W))
+        if (_playerInputActions.Player.Movement.ReadValue<Vector2>().y == 1f)
         {
-            _centerStabilizerTrail.startLifetime = 0.15f;
             _rightTurbineFlame.startLifetime = 0.2f;
             _leftTurbineFlame.startLifetime = 0.2f;
-        }
-
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            _centerStabilizerTrail.startLifetime = 0f;
-            _rightTurbineFlame.startLifetime = 0f;
-            _leftTurbineFlame.startLifetime = 0f;
-        }
-
-        if (_playerInputActions.Player.Movement.ReadValue<Vector2>() != new Vector2(0f, 0f))
-        {
-            _rightTurbineFlame.startLifetime = 0.2f;
         }
         else
         {
             _rightTurbineFlame.startLifetime = 0f;
+            _leftTurbineFlame.startLifetime = 0f;
         }
-
-        if (Input.GetKeyDown(KeyCode.R))
-            Instantiate(_portalPrefab, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity);
 
         if (_playerInputActions.Player.ShootHolding.IsPressed())
         {
@@ -97,6 +76,65 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
 
         if (_health <= 0)
             Death();
+    }
+
+    private void ResetStabilizers()
+    {
+        _frontStabilizerTrail.startLifetime = 0f;
+        _backStabilizerTrail.startLifetime = 0f;
+        _rightStabilizerTrail.startLifetime = 0f;
+        _leftStabilizerTrail.startLifetime = 0f;
+        _rightFrontDStabilizerTrail.startLifetime = 0f;
+        _leftFrontDStabilizerTrail.startLifetime = 0f;
+        _rightBackDStabilizerTrail.startLifetime = 0f;
+        _leftBackDStabilizerTrail.startLifetime = 0f;
+    }
+
+    private void HandleStabilizers()
+    {
+        var playerMovement = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        playerMovement.Normalize();
+
+        if (playerMovement.x == 0f && playerMovement.y == -1f)
+        {
+            ResetStabilizers();
+            _frontStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x == 0f && playerMovement.y == 1f)
+        {
+            ResetStabilizers();
+            _backStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x == 1f && playerMovement.y == 0f)
+        {
+            ResetStabilizers();
+            _leftStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x == -1f && playerMovement.y == 0f)
+        {
+            ResetStabilizers();
+            _rightStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x > 0f && playerMovement.y > 0f)
+        {
+            ResetStabilizers();
+            _leftBackDStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x < 0f && playerMovement.y > 0f)
+        {
+            ResetStabilizers();
+            _rightBackDStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x > 0f && playerMovement.y < 0f)
+        {
+            ResetStabilizers();
+            _leftFrontDStabilizerTrail.startLifetime = 0.15f;
+        }
+        if (playerMovement.x < 0f && playerMovement.y < 0f)
+        {
+            ResetStabilizers();
+            _rightFrontDStabilizerTrail.startLifetime = 0.15f;
+        }
     }
 
     private int TakeDamage(int damage) => _health -= damage;
@@ -116,13 +154,14 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
-    private Vector2 Aim()
+    private Vector2 TurretAim()
     {
         Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.Euler(0f, 0f, lookAngle);
+        float turnSpeed = 5;
+        _turretTransform.rotation = Quaternion.Slerp(_turretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), turnSpeed * Time.deltaTime);
         return lookDir;
     }
 

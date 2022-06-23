@@ -10,6 +10,7 @@ TagManager:
   - Asteroid
   - Bullet
   - Player Main Ship
+  - Main Player Space Station
   layers:
   - Default
   - TransparentFX
@@ -80,11 +81,11 @@ TagManager:
   - name: Player [ Trail ]
     uniqueID: 1254644431
     locked: 0
-  - name: Player [ Bullet ]
-    uniqueID: 678046025
-    locked: 0
   - name: Player
     uniqueID: 4065877639
+    locked: 0
+  - name: Player [ Bullet ]
+    uniqueID: 678046025
     locked: 0
   - name: Enemy Death Animation
     uniqueID: 2999701529
