@@ -37,6 +37,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""ChangeToSubShip"",
+                    ""type"": ""Button"",
+                    ""id"": ""2060d397-57d9-4316-81bf-fba4aa935889"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""223ed35a-ffe0-41f9-b3ea-00e570b4e559"",
@@ -342,6 +351,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""ShootHolding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50d5cbe0-8f60-4779-9325-2b73fd8e573a"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeToSubShip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67ffa2ab-62bc-4bd7-ab6c-dc2b4386d667"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""ChangeToSubShip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -489,6 +520,226 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Sub Attack Ship"",
+            ""id"": ""ed7aa73a-953b-4bf1-a38d-4b6e41d3a9fa"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""e4dbdca7-9052-4a1a-b144-891973a73023"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ShootHolding"",
+                    ""type"": ""Button"",
+                    ""id"": ""8565a4e2-bbd8-44ee-975f-bd314bf40ca4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b2be2eb-2409-4679-87fd-27ad1dc7345a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9e9fbf05-7106-4e0c-a0b1-e93140c5085b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""1ae6efe8-99c2-4d8b-81c6-e2575e817a07"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""2a2b2e4e-26b0-40f3-b1b2-cc57896fe222"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""058e1750-c88f-41e2-8008-e3f29c9b0e36"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""768e8fae-9f81-4c38-a34a-90a5a8b35e73"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1c7f6862-8f61-42bb-a2aa-a2848c14c9ec"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b6414bf-5487-4cba-b5c8-ba0dc4428f05"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""709b9b71-300e-40cd-8b36-23b2871c0345"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00a5fa8d-e7ec-42b8-8f46-ebc6844e92e5"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""178d244b-ea25-4a52-b8e1-cf0eb3950e88"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b40c52c2-c689-495b-8647-2f6f87f72de4"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b554675b-332a-4eee-bc66-099cbdeed95c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d622227c-541f-4a02-aec6-f3ecc79bf934"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""263dfe9e-03d0-4f8d-a5b6-2dd5bad6aa84"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67c3b28c-976c-43fe-bd68-4c12ffe0da66"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dee68595-8cb8-43ce-8f76-c649340fde1f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18025481-6500-4ae5-a705-cb94a65afa33"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""ShootHolding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -524,6 +775,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_ChangeToSubShip = m_Player.FindAction("ChangeToSubShip", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
@@ -536,6 +788,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_MainShip_Movement = m_MainShip.FindAction("Movement", throwIfNotFound: true);
         m_MainShip_Pause = m_MainShip.FindAction("Pause", throwIfNotFound: true);
         m_MainShip_ChangeToSubShip = m_MainShip.FindAction("ChangeToSubShip", throwIfNotFound: true);
+        // Sub Attack Ship
+        m_SubAttackShip = asset.FindActionMap("Sub Attack Ship", throwIfNotFound: true);
+        m_SubAttackShip_Movement = m_SubAttackShip.FindAction("Movement", throwIfNotFound: true);
+        m_SubAttackShip_ShootHolding = m_SubAttackShip.FindAction("ShootHolding", throwIfNotFound: true);
+        m_SubAttackShip_Shoot = m_SubAttackShip.FindAction("Shoot", throwIfNotFound: true);
+        m_SubAttackShip_Pause = m_SubAttackShip.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -596,6 +854,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_ChangeToSubShip;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Pause;
@@ -608,6 +867,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @ChangeToSubShip => m_Wrapper.m_Player_ChangeToSubShip;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
@@ -627,6 +887,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @ChangeToSubShip.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeToSubShip;
+                @ChangeToSubShip.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeToSubShip;
+                @ChangeToSubShip.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeToSubShip;
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
@@ -655,6 +918,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @ChangeToSubShip.started += instance.OnChangeToSubShip;
+                @ChangeToSubShip.performed += instance.OnChangeToSubShip;
+                @ChangeToSubShip.canceled += instance.OnChangeToSubShip;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
@@ -729,6 +995,63 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public MainShipActions @MainShip => new MainShipActions(this);
+
+    // Sub Attack Ship
+    private readonly InputActionMap m_SubAttackShip;
+    private ISubAttackShipActions m_SubAttackShipActionsCallbackInterface;
+    private readonly InputAction m_SubAttackShip_Movement;
+    private readonly InputAction m_SubAttackShip_ShootHolding;
+    private readonly InputAction m_SubAttackShip_Shoot;
+    private readonly InputAction m_SubAttackShip_Pause;
+    public struct SubAttackShipActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public SubAttackShipActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_SubAttackShip_Movement;
+        public InputAction @ShootHolding => m_Wrapper.m_SubAttackShip_ShootHolding;
+        public InputAction @Shoot => m_Wrapper.m_SubAttackShip_Shoot;
+        public InputAction @Pause => m_Wrapper.m_SubAttackShip_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_SubAttackShip; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SubAttackShipActions set) { return set.Get(); }
+        public void SetCallbacks(ISubAttackShipActions instance)
+        {
+            if (m_Wrapper.m_SubAttackShipActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnMovement;
+                @ShootHolding.started -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnShootHolding;
+                @ShootHolding.performed -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnShootHolding;
+                @ShootHolding.canceled -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnShootHolding;
+                @Shoot.started -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnShoot;
+                @Pause.started -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_SubAttackShipActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @ShootHolding.started += instance.OnShootHolding;
+                @ShootHolding.performed += instance.OnShootHolding;
+                @ShootHolding.canceled += instance.OnShootHolding;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public SubAttackShipActions @SubAttackShip => new SubAttackShipActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -750,6 +1073,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnChangeToSubShip(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
@@ -763,5 +1087,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnChangeToSubShip(InputAction.CallbackContext context);
+    }
+    public interface ISubAttackShipActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnShootHolding(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

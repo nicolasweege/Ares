@@ -25,6 +25,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void Start()
     {
+        
         _virtualCamera = _cinemachineCamera.GetComponent<CinemachineVirtualCamera>();
     }
 
@@ -65,7 +66,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private void ChangeToAttackShip()
     {
         var shipInst = Instantiate(_attackShipPrefab, new Vector3(transform.position.x + 5f, transform.position.y -5f), Quaternion.identity);
-        _virtualCamera.m_Lens.OrthographicSize = 6f;
+        _virtualCamera.m_Lens.OrthographicSize = 7f;
         _virtualCamera.Follow = shipInst.transform;
         _playerInputActions.MainShip.Disable();
     }

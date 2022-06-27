@@ -18,6 +18,13 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
     [SerializeField] private ParticleSystem _rightTurbineFlame;
     [SerializeField] private ParticleSystem _leftTurbineFlame;
     [SerializeField] private Transform _turretTransform;
+    [SerializeField] private GameObject _cinemachineCamera;
+    [SerializeField] private GameObject _subAttackShipPrefab;
+    private CinemachineVirtualCamera _virtualCamera;
+    private float _shootTimer;
+    private Camera _camera;
+    private bool _isPlayerInSubShip = false;
+    private PlayerInputActions _playerInputActions;
     #region Stabilizer Trails
     [SerializeField] private ParticleSystem _frontStabilizerTrail;
     [SerializeField] private ParticleSystem _backStabilizerTrail;
@@ -28,18 +35,14 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
     [SerializeField] private ParticleSystem _rightBackDStabilizerTrail;
     [SerializeField] private ParticleSystem _leftBackDStabilizerTrail;
     #endregion
-    private float _shootTimer;
-    private Camera _camera;
-    private PlayerInputActions _playerInputActions;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
-    private void Start()
+    protected override void Awake()
     {
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-        _playerInputActions.MainShip.Disable();
         _playerInputActions.Player.Shoot.performed += Shoot_performed;
 
         _rightTurbineFlame.startLifetime = 0f;
@@ -47,38 +50,61 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
         ResetStabilizers();
     }
 
+    private void Start()
+    {
+        _virtualCamera = _cinemachineCamera.GetComponent<CinemachineVirtualCamera>();
+    }
+
     private void Update()
     {
-        Move();
-        TurretAim();
-        HandleStabilizers();
-
-        var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-        move.Normalize();
-
-        if (Mathf.Round(move.y) == 1f)
+        if (!_isPlayerInSubShip)
         {
-            _rightTurbineFlame.startLifetime = 0.2f;
-            _leftTurbineFlame.startLifetime = 0.2f;
-        }
-        else
-        {
-            _rightTurbineFlame.startLifetime = 0f;
-            _leftTurbineFlame.startLifetime = 0f;
-        }
+            Move();
+            Move();
+            TurretAim();
+            HandleStabilizers();
 
-        if (_playerInputActions.Player.ShootHolding.IsPressed())
-        {
-            _shootTimer -= Time.deltaTime;
-            if (_shootTimer <= 0f)
+            var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+            move.Normalize();
+
+            if (Mathf.Round(move.y) == 1f)
             {
-                GenerateBullet();
-                _shootTimer = _timeToShoot;
+                _rightTurbineFlame.startLifetime = 0.2f;
+                _leftTurbineFlame.startLifetime = 0.2f;
             }
+            else
+            {
+                _rightTurbineFlame.startLifetime = 0f;
+                _leftTurbineFlame.startLifetime = 0f;
+            }
+
+            if (_playerInputActions.Player.ShootHolding.IsPressed())
+            {
+                _shootTimer -= Time.deltaTime;
+                if (_shootTimer <= 0f)
+                {
+                    GenerateBullet();
+                    _shootTimer = _timeToShoot;
+                }
+            }
+
+            if (_health <= 0)
+                Death();
         }
 
-        if (_health <= 0)
-            Death();
+        if (_playerInputActions.Player.ChangeToSubShip.IsPressed() && !_isPlayerInSubShip)
+        {
+            ChangeToSubAttackShip();
+            _isPlayerInSubShip = true;
+        }
+    }
+
+    private void ChangeToSubAttackShip()
+    {
+        var shipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x + 5f, transform.position.y - 5f), Quaternion.identity);
+        _virtualCamera.m_Lens.OrthographicSize = 5f;
+        _virtualCamera.Follow = shipInst.transform;
+        _playerInputActions.Player.Disable();
     }
 
     private void ResetStabilizers()
