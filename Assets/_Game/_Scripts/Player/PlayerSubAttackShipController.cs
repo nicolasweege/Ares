@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipController>
 {
@@ -11,6 +12,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
     [SerializeField] private Transform _bulletStartingPos;
     [SerializeField] private Transform _bulletDir;
     [SerializeField] private GameObject _deathAnim;
+    [SerializeField] private ParticleSystem _turbineFlame;
     [SerializeField] private float _timeToShoot;
     private float _shootTimer;
     private Camera _camera;
@@ -23,6 +25,8 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.SubAttackShip.Enable();
         _playerInputActions.SubAttackShip.Shoot.performed += Shoot_performed;
+
+        _turbineFlame.startLifetime = 0f;
     }
 
     private void Update()
@@ -40,8 +44,35 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
             }
         }
 
+        var move = _playerInputActions.SubAttackShip.Movement.ReadValue<Vector2>();
+        move.Normalize();
+
+        if (_playerInputActions.SubAttackShip.Movement.IsPressed())
+        {
+            _turbineFlame.startLifetime = 0.2f;
+        }
+        else
+        {
+            _turbineFlame.startLifetime = 0f;
+        }
+
+        if (_playerInputActions.Player.ShootHolding.IsPressed())
+        {
+            _shootTimer -= Time.deltaTime;
+            if (_shootTimer <= 0f)
+            {
+                GenerateBullet();
+                _shootTimer = _timeToShoot;
+            }
+        }
+
         if (_health <= 0)
             Death();
+
+        if (_playerInputActions.SubAttackShip.ChangeToAttackShip.IsPressed())
+        {
+            ChangeToMainAttackShip();
+        }
     }
 
     private int TakeDamage(int damage) => _health -= damage;
@@ -95,5 +126,15 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
             TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
             other.GetComponent<BulletBase>().DestroyBullet();
         }
+    }
+
+    private void ChangeToMainAttackShip()
+    {
+        PlayerAttackShipController.Instance.VirtualCamera.m_Lens.OrthographicSize = 8f;
+        PlayerAttackShipController.Instance.VirtualCamera.Follow = PlayerAttackShipController.Instance.transform;
+        _playerInputActions.SubAttackShip.Disable();
+        _playerInputActions.Player.Enable();
+        PlayerAttackShipController.Instance.IsPlayerInSubShip = false;
+        Death();
     }
 }

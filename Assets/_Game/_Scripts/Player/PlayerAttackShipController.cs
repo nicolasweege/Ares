@@ -36,6 +36,12 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
     [SerializeField] private ParticleSystem _leftBackDStabilizerTrail;
     #endregion
 
+    public bool IsPlayerInSubShip { get => _isPlayerInSubShip; set => _isPlayerInSubShip = value; }
+
+    public CinemachineVirtualCamera VirtualCamera { get => _virtualCamera; set => _virtualCamera = value; }
+
+    public GameObject CinemachineCamera { get => _cinemachineCamera; set => _cinemachineCamera = value; }
+
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     protected override void Awake()
@@ -97,14 +103,6 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
             ChangeToSubAttackShip();
             _isPlayerInSubShip = true;
         }
-    }
-
-    private void ChangeToSubAttackShip()
-    {
-        var shipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x + 5f, transform.position.y - 5f), Quaternion.identity);
-        _virtualCamera.m_Lens.OrthographicSize = 5f;
-        _virtualCamera.Follow = shipInst.transform;
-        _playerInputActions.Player.Disable();
     }
 
     private void ResetStabilizers()
@@ -176,7 +174,7 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
 
     private int TakeDamage(int damage) => _health -= damage;
 
-    private void Shoot_performed(InputAction.CallbackContext context)
+    private void Shoot_performed(InputAction.CallbackContext obj)
     {
         GenerateBullet();
     }
@@ -234,5 +232,13 @@ public class PlayerAttackShipController : Singleton<PlayerAttackShipController>
             TakeDamage(other.gameObject.GetComponent<EnemyBase>().DefaultDamage);
             other.gameObject.GetComponent<EnemyBase>().Death();
         }
+    }
+
+    private void ChangeToSubAttackShip()
+    {
+        var shipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x + 5f, transform.position.y - 5f), Quaternion.identity);
+        _virtualCamera.m_Lens.OrthographicSize = 6f;
+        _virtualCamera.Follow = shipInst.transform;
+        _playerInputActions.Player.Disable();
     }
 }

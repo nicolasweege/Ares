@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Player Main Ship
   - Main Player Space Station
+  - Cinemachine Camera
   layers:
   - Default
   - TransparentFX

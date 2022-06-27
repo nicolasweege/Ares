@@ -538,6 +538,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeToAttackShip",
+                    "type": "Button",
+                    "id": "58c02b24-6cb4-46bc-90f1-44b217402e58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -714,6 +723,28 @@
                     "processors": "",
                     "groups": "K&M",
                     "action": "ShootHolding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb9e7898-8099-4564-8353-140288d78fd5",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ChangeToAttackShip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ac69389-fa10-4c83-a9ce-a2e90e112582",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "K&M",
+                    "action": "ChangeToAttackShip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

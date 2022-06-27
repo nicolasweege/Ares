@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1616667921095164542}
   - component: {fileID: 6773728880279036646}
   - component: {fileID: 8255180598584687173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Sub Attack Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   _bulletStartingPos: {fileID: 5037170821894037980}
   _bulletDir: {fileID: 5473224387361849336}
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  _turbineFlame: {fileID: 3162034895047729552}
   _timeToShoot: 0.1
 --- !u!60 &6773728880279036646
 PolygonCollider2D:
@@ -211,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5037170821894037980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3861735284967169260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +278,7 @@ GameObject:
   - component: {fileID: 556067236516363771}
   - component: {fileID: 3162034895047729552}
   - component: {fileID: 7338686367976246459}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Flame Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5087,7 +5088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5473224387361849336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}

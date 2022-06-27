@@ -560,6 +560,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeToAttackShip"",
+                    ""type"": ""Button"",
+                    ""id"": ""58c02b24-6cb4-46bc-90f1-44b217402e58"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -738,6 +747,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""ShootHolding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb9e7898-8099-4564-8353-140288d78fd5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeToAttackShip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ac69389-fa10-4c83-a9ce-a2e90e112582"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""K&M"",
+                    ""action"": ""ChangeToAttackShip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -794,6 +825,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_SubAttackShip_ShootHolding = m_SubAttackShip.FindAction("ShootHolding", throwIfNotFound: true);
         m_SubAttackShip_Shoot = m_SubAttackShip.FindAction("Shoot", throwIfNotFound: true);
         m_SubAttackShip_Pause = m_SubAttackShip.FindAction("Pause", throwIfNotFound: true);
+        m_SubAttackShip_ChangeToAttackShip = m_SubAttackShip.FindAction("ChangeToAttackShip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1003,6 +1035,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_SubAttackShip_ShootHolding;
     private readonly InputAction m_SubAttackShip_Shoot;
     private readonly InputAction m_SubAttackShip_Pause;
+    private readonly InputAction m_SubAttackShip_ChangeToAttackShip;
     public struct SubAttackShipActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1011,6 +1044,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @ShootHolding => m_Wrapper.m_SubAttackShip_ShootHolding;
         public InputAction @Shoot => m_Wrapper.m_SubAttackShip_Shoot;
         public InputAction @Pause => m_Wrapper.m_SubAttackShip_Pause;
+        public InputAction @ChangeToAttackShip => m_Wrapper.m_SubAttackShip_ChangeToAttackShip;
         public InputActionMap Get() { return m_Wrapper.m_SubAttackShip; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1032,6 +1066,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnPause;
+                @ChangeToAttackShip.started -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnChangeToAttackShip;
+                @ChangeToAttackShip.performed -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnChangeToAttackShip;
+                @ChangeToAttackShip.canceled -= m_Wrapper.m_SubAttackShipActionsCallbackInterface.OnChangeToAttackShip;
             }
             m_Wrapper.m_SubAttackShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -1048,6 +1085,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ChangeToAttackShip.started += instance.OnChangeToAttackShip;
+                @ChangeToAttackShip.performed += instance.OnChangeToAttackShip;
+                @ChangeToAttackShip.canceled += instance.OnChangeToAttackShip;
             }
         }
     }
@@ -1094,5 +1134,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnShootHolding(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnChangeToAttackShip(InputAction.CallbackContext context);
     }
 }
