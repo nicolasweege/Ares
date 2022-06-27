@@ -56,22 +56,13 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
             _turbineFlame.startLifetime = 0f;
         }
 
-        if (_playerInputActions.Player.ShootHolding.IsPressed())
-        {
-            _shootTimer -= Time.deltaTime;
-            if (_shootTimer <= 0f)
-            {
-                GenerateBullet();
-                _shootTimer = _timeToShoot;
-            }
-        }
-
         if (_health <= 0)
             Death();
 
         if (_playerInputActions.SubAttackShip.ChangeToAttackShip.IsPressed())
         {
-            ChangeToMainAttackShip();
+            ChangeToPlayerMainShip();
+            PlayerMainShipController.Instance.IsPlayerInSubShip = false;
         }
     }
 
@@ -128,13 +119,12 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         }
     }
 
-    private void ChangeToMainAttackShip()
+    private void ChangeToPlayerMainShip()
     {
-        PlayerAttackShipController.Instance.VirtualCamera.m_Lens.OrthographicSize = 8f;
-        PlayerAttackShipController.Instance.VirtualCamera.Follow = PlayerAttackShipController.Instance.transform;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 8f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
         _playerInputActions.SubAttackShip.Disable();
-        _playerInputActions.Player.Enable();
-        PlayerAttackShipController.Instance.IsPlayerInSubShip = false;
-        Death();
+        PlayerMainShipController.Instance.PlayerInputActions.Player.Enable();
+        Destroy(gameObject);
     }
 }
