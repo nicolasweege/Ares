@@ -10,8 +10,6 @@ TagManager:
   - Asteroid
   - Bullet
   - Player Main Ship
-  - Main Player Space Station
-  - Cinemachine Camera
   layers:
   - Default
   - TransparentFX
@@ -19,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Player Attack Ship
+  - Player Sub Attack Ship
   - Player [ Bullet ]
   - Afrodite
   - Afrodite [ Bullet ]
@@ -30,7 +28,7 @@ TagManager:
   - Eros
   - Cadmo [ Bullet ]
   - Player Main Ship
-  - Player Utility Ship
+  - 
   - 
   - 
   - 

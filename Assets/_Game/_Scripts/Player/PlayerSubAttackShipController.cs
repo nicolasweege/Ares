@@ -115,7 +115,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
 
     private void ChangeToPlayerMainShip()
     {
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 7f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
         _playerInputActions.SubAttackShip.Disable();
         PlayerMainShipController.Instance.PlayerInputActions.Player.Enable();

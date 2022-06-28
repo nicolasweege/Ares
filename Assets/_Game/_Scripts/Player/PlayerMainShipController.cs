@@ -51,6 +51,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void Update()
     {
+        HandleStabilizers();
+
         var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
         move.Normalize();
 
@@ -68,7 +70,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             Move();
             TurretAim();
-            HandleStabilizers();
 
             if (_playerInputActions.Player.ShootHolding.IsPressed())
             {
@@ -111,49 +112,61 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleStabilizers()
     {
-        ResetStabilizers();
         var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
         move.Normalize();
 
         // Moving to Back
         if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == -1f)
         {
+            ResetStabilizers();
             _frontStabilizerTrail.Play();
         }
         // Moving to Front
         if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 1f)
         {
+            ResetStabilizers();
             _backStabilizerTrail.Play();
         }
         // Moving to Right
         if (Mathf.Round(move.x) == 1f && Mathf.Round(move.y) == 0f)
         {
+            ResetStabilizers();
             _leftStabilizerTrail.Play();
         }
         // Moving to Left
         if (Mathf.Round(move.x) == -1f && Mathf.Round(move.y) == 0f)
         {
+            ResetStabilizers();
             _rightStabilizerTrail.Play();
         }
         // Moving to Diagonal Front/Right
         if (Mathf.Round(move.x) > 0f && Mathf.Round(move.y) > 0f)
         {
+            ResetStabilizers();
             _leftBackDStabilizerTrail.Play();
         }
         // Moving to Diagonal Front/Left
         if (Mathf.Round(move.x) < 0f && Mathf.Round(move.y) > 0f)
         {
+            ResetStabilizers();
             _rightBackDStabilizerTrail.Play();
         }
         // Moving to Diagonal Back/Right
         if (Mathf.Round(move.x) > 0f && Mathf.Round(move.y) < 0f)
         {
+            ResetStabilizers();
             _leftFrontDStabilizerTrail.Play();
         }
         // Moving to Diagonal Back/Left
         if (Mathf.Round(move.x) < 0f && Mathf.Round(move.y) < 0f)
         {
+            ResetStabilizers();
             _rightFrontDStabilizerTrail.Play();
+        }
+
+        if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 0f)
+        {
+            ResetStabilizers();
         }
     }
 
@@ -216,7 +229,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private void ChangeToSubAttackShip()
     {
         var subAttackShipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x, transform.position.y - 3f), Quaternion.identity);
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 7f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = subAttackShipInst.transform;
         _playerInputActions.Player.Disable();
     }
