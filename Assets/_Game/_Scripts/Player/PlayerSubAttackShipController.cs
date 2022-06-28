@@ -14,6 +14,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private ParticleSystem _turbineFlame;
     [SerializeField] private float _timeToShoot;
+    [SerializeField] private float _turnSpeed;
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
@@ -24,9 +25,8 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.SubAttackShip.Enable();
-        _playerInputActions.SubAttackShip.Shoot.performed += Shoot_performed;
 
-        _turbineFlame.startLifetime = 0f;
+        _turbineFlame.Stop();
     }
 
     private void Update()
@@ -49,11 +49,11 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
 
         if (_playerInputActions.SubAttackShip.Movement.IsPressed())
         {
-            _turbineFlame.startLifetime = 0.2f;
+            _turbineFlame.Play();
         }
         else
         {
-            _turbineFlame.startLifetime = 0f;
+            _turbineFlame.Stop();
         }
 
         if (_health <= 0)
@@ -72,11 +72,6 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
     {
         Destroy(gameObject);
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
-    }
-
-    private void Shoot_performed(InputAction.CallbackContext context)
-    {
-        GenerateBullet();
     }
 
     private void GenerateBullet()
@@ -105,8 +100,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        float turnSpeed = 5;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, lookAngle), turnSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, lookAngle), _turnSpeed * Time.deltaTime);
         return lookDir;
     }
 
@@ -121,7 +115,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
 
     private void ChangeToPlayerMainShip()
     {
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 8f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 7f;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
         _playerInputActions.SubAttackShip.Disable();
         PlayerMainShipController.Instance.PlayerInputActions.Player.Enable();

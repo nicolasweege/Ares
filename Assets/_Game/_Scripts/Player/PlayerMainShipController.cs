@@ -15,10 +15,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
-    [SerializeField] private ParticleSystem _rightTurbineFlame;
-    [SerializeField] private ParticleSystem _leftTurbineFlame;
+    [SerializeField] private float _turnSpeed;
     [SerializeField] private Transform _turretTransform;
     [SerializeField] private GameObject _subAttackShipPrefab;
+    [SerializeField] private ParticleSystem _rightTurbineFlame;
+    [SerializeField] private ParticleSystem _leftTurbineFlame;
     #region Stabilizer Trails
     [SerializeField] private ParticleSystem _frontStabilizerTrail;
     [SerializeField] private ParticleSystem _backStabilizerTrail;
@@ -43,35 +44,31 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-        _playerInputActions.Player.Shoot.performed += Shoot_performed;
 
-        _rightTurbineFlame.startLifetime = 0f;
-        _leftTurbineFlame.startLifetime = 0f;
         ResetStabilizers();
+        ResetTurbineFlames();
     }
 
     private void Update()
     {
+        var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        move.Normalize();
+
+        if (Mathf.Round(move.y) == 1f)
+        {
+            _rightTurbineFlame.Play();
+            _leftTurbineFlame.Play();
+        }
+        else
+        {
+            ResetTurbineFlames();
+        }
+
         if (!_isPlayerInSubShip)
         {
             Move();
-            Move();
             TurretAim();
             HandleStabilizers();
-
-            var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
-            move.Normalize();
-
-            if (Mathf.Round(move.y) == 1f)
-            {
-                _rightTurbineFlame.startLifetime = 0.2f;
-                _leftTurbineFlame.startLifetime = 0.2f;
-            }
-            else
-            {
-                _rightTurbineFlame.startLifetime = 0f;
-                _leftTurbineFlame.startLifetime = 0f;
-            }
 
             if (_playerInputActions.Player.ShootHolding.IsPressed())
             {
@@ -94,79 +91,73 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
     }
 
+    private void ResetTurbineFlames()
+    {
+        _rightTurbineFlame.Stop();
+        _leftTurbineFlame.Stop();
+    }
+
     private void ResetStabilizers()
     {
-        _frontStabilizerTrail.startLifetime = 0f;
-        _backStabilizerTrail.startLifetime = 0f;
-        _rightStabilizerTrail.startLifetime = 0f;
-        _leftStabilizerTrail.startLifetime = 0f;
-        _rightFrontDStabilizerTrail.startLifetime = 0f;
-        _leftFrontDStabilizerTrail.startLifetime = 0f;
-        _rightBackDStabilizerTrail.startLifetime = 0f;
-        _leftBackDStabilizerTrail.startLifetime = 0f;
+        _frontStabilizerTrail.Stop();
+        _backStabilizerTrail.Stop();
+        _rightStabilizerTrail.Stop();
+        _leftStabilizerTrail.Stop();
+        _rightFrontDStabilizerTrail.Stop();
+        _leftFrontDStabilizerTrail.Stop();
+        _rightBackDStabilizerTrail.Stop();
+        _leftBackDStabilizerTrail.Stop();
     }
 
     private void HandleStabilizers()
     {
+        ResetStabilizers();
         var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
         move.Normalize();
 
         // Moving to Back
         if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == -1f)
         {
-            ResetStabilizers();
-            _frontStabilizerTrail.startLifetime = 0.15f;
+            _frontStabilizerTrail.Play();
         }
         // Moving to Front
         if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 1f)
         {
-            ResetStabilizers();
-            _backStabilizerTrail.startLifetime = 0.15f;
+            _backStabilizerTrail.Play();
         }
         // Moving to Right
         if (Mathf.Round(move.x) == 1f && Mathf.Round(move.y) == 0f)
         {
-            ResetStabilizers();
-            _leftStabilizerTrail.startLifetime = 0.15f;
+            _leftStabilizerTrail.Play();
         }
         // Moving to Left
         if (Mathf.Round(move.x) == -1f && Mathf.Round(move.y) == 0f)
         {
-            ResetStabilizers();
-            _rightStabilizerTrail.startLifetime = 0.15f;
+            _rightStabilizerTrail.Play();
         }
         // Moving to Diagonal Front/Right
         if (Mathf.Round(move.x) > 0f && Mathf.Round(move.y) > 0f)
         {
-            ResetStabilizers();
-            _leftBackDStabilizerTrail.startLifetime = 0.15f;
+            _leftBackDStabilizerTrail.Play();
         }
         // Moving to Diagonal Front/Left
         if (Mathf.Round(move.x) < 0f && Mathf.Round(move.y) > 0f)
         {
-            ResetStabilizers();
-            _rightBackDStabilizerTrail.startLifetime = 0.15f;
+            _rightBackDStabilizerTrail.Play();
         }
         // Moving to Diagonal Back/Right
         if (Mathf.Round(move.x) > 0f && Mathf.Round(move.y) < 0f)
         {
-            ResetStabilizers();
-            _leftFrontDStabilizerTrail.startLifetime = 0.15f;
+            _leftFrontDStabilizerTrail.Play();
         }
         // Moving to Diagonal Back/Left
         if (Mathf.Round(move.x) < 0f && Mathf.Round(move.y) < 0f)
         {
-            ResetStabilizers();
-            _rightFrontDStabilizerTrail.startLifetime = 0.15f;
+            _rightFrontDStabilizerTrail.Play();
         }
     }
 
     private int TakeDamage(int damage) => _health -= damage;
-
-    private void Shoot_performed(InputAction.CallbackContext obj)
-    {
-        GenerateBullet();
-    }
 
     private void GenerateBullet()
     {
@@ -184,8 +175,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        float turnSpeed = 5;
-        _turretTransform.rotation = Quaternion.Slerp(_turretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), turnSpeed * Time.deltaTime);
+        _turretTransform.rotation = Quaternion.Slerp(_turretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), _turnSpeed * Time.deltaTime);
         return lookDir;
     }
 
@@ -225,8 +215,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void ChangeToSubAttackShip()
     {
-        var subAttackShipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x + 5f, transform.position.y - 5f), Quaternion.identity);
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
+        var subAttackShipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x, transform.position.y - 3f), Quaternion.identity);
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 7f;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = subAttackShipInst.transform;
         _playerInputActions.Player.Disable();
     }
