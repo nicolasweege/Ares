@@ -18,9 +18,13 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private float _turnSpeed;
     [SerializeField] private Transform _turretTransform;
     [SerializeField] private GameObject _subAttackShipPrefab;
+    private float _shootTimer;
+    private Camera _camera;
+    private bool _isPlayerInSubShip = false;
+    private PlayerInputActions _playerInputActions;
+    #region Stabilizer Trails/Turbine Flames - Particles
     [SerializeField] private ParticleSystem _rightTurbineFlame;
     [SerializeField] private ParticleSystem _leftTurbineFlame;
-    #region Stabilizer Trails
     [SerializeField] private ParticleSystem _frontStabilizerTrail;
     [SerializeField] private ParticleSystem _backStabilizerTrail;
     [SerializeField] private ParticleSystem _rightStabilizerTrail;
@@ -30,10 +34,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private ParticleSystem _rightBackDStabilizerTrail;
     [SerializeField] private ParticleSystem _leftBackDStabilizerTrail;
     #endregion
-    private float _shootTimer;
-    private Camera _camera;
-    private bool _isPlayerInSubShip = false;
-    private PlayerInputActions _playerInputActions;
 
     public bool IsPlayerInSubShip { get => _isPlayerInSubShip; set => _isPlayerInSubShip = value; }
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
@@ -119,7 +119,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == -1f)
         {
             ResetStabilizers();
-            _frontStabilizerTrail.Play();
+            if (!_frontStabilizerTrail.isEmitting)
+                _frontStabilizerTrail.Play();
         }
         // Moving to Front
         if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 1f)
