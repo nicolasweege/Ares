@@ -2,7 +2,7 @@
     "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "Main Ship",
             "id": "b470f16f-d9e8-45ee-abfa-1367d326623c",
             "actions": [
                 {
@@ -15,18 +15,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChangeToSubShip",
+                    "name": "Change To Sub Attack Ship",
                     "type": "Button",
                     "id": "2060d397-57d9-4316-81bf-fba4aa935889",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "223ed35a-ffe0-41f9-b3ea-00e570b4e559",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -51,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveAimToRight",
+                    "name": "Move Aim To Right",
                     "type": "Button",
                     "id": "03f0e94b-c2be-41f4-a2f7-166373a39105",
                     "expectedControlType": "Button",
@@ -60,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveAimToLeft",
+                    "name": "Move Aim To Left",
                     "type": "Button",
                     "id": "29b503c2-8218-4fe8-8cfc-8c88a6a98edd",
                     "expectedControlType": "Button",
@@ -69,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ShootHolding",
+                    "name": "Shoot Holding",
                     "type": "Button",
                     "id": "88ad7fe9-8563-41d1-b02a-766b601f4d43",
                     "expectedControlType": "Button",
@@ -78,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveAim",
+                    "name": "Move Aim",
                     "type": "Value",
                     "id": "a1d19541-ab6f-4f23-9b66-a1c34338b6be",
                     "expectedControlType": "Vector2",
@@ -105,7 +96,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -116,7 +107,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -127,7 +118,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -138,7 +129,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -151,50 +142,6 @@
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",
                     "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "83cc8b72-6e05-4aa6-b04a-658eeb02c5ea",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c1251247-f9d9-4667-8c48-cb517c3f166c",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ded6a700-8882-4d82-bca2-cbab5a7e1f33",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f1d5463b-0172-4315-8978-78cd99ca4edb",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -215,7 +162,7 @@
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -238,7 +185,7 @@
                     "interactions": "Hold(duration=0.1)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MoveAimToRight",
+                    "action": "Move Aim To Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -248,8 +195,8 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "Hold(duration=0.1)",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "MoveAimToRight",
+                    "groups": "Keyboard",
+                    "action": "Move Aim To Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -260,7 +207,7 @@
                     "interactions": "Hold(duration=0.1)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MoveAimToLeft",
+                    "action": "Move Aim To Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,8 +217,8 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "Hold(duration=0.1)",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "MoveAimToLeft",
+                    "groups": "Keyboard",
+                    "action": "Move Aim To Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -282,7 +229,7 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ShootHolding",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -293,7 +240,7 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ShootHolding",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -303,8 +250,8 @@
                     "path": "<Keyboard>/space",
                     "interactions": "Hold",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "ShootHolding",
+                    "groups": "Keyboard",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -315,7 +262,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "MoveAim",
+                    "action": "Move Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -325,8 +272,8 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "ShootHolding",
+                    "groups": "Mouse",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -337,7 +284,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ChangeToSubShip",
+                    "action": "Change To Sub Attack Ship",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -347,153 +294,8 @@
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "ChangeToSubShip",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Main Ship",
-            "id": "bec0594a-9684-4778-b059-4db233e70407",
-            "actions": [
-                {
-                    "name": "Movement",
-                    "type": "Value",
-                    "id": "d5f57634-9e68-435a-b32c-fae5fc4346e2",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "69382a29-7ba8-4d3a-b97b-fd47e9a2d81f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeToSubShip",
-                    "type": "Button",
-                    "id": "824cba35-7161-463f-9599-71ee2046e55e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "WASD",
-                    "id": "b227a36c-5aef-4a10-9bd4-cc48998bf568",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "41e20011-91ef-4560-a29d-1a98de377278",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "fc5c080b-6a2b-40ed-af4b-53b97e2f58ba",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "4aad1119-13a5-4f15-a451-a9c8a6b2e6df",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "2dce0d72-e7fd-4839-9ee2-38114f411c39",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "745fd15e-a1ce-4879-9fd4-fbd37a431c42",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "StickDeadzone",
-                    "groups": "Gamepad",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41dc320a-1b21-44d8-88e8-315d5e971faa",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "640d2510-b74f-4484-8471-5b5a6d69f1fd",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0151d76f-6486-4c2b-beec-495c45134144",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "ChangeToSubShip",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fe058f06-a3b5-4497-af2c-ca374054e806",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "ChangeToSubShip",
+                    "groups": "Keyboard",
+                    "action": "Change To Sub Attack Ship",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -513,18 +315,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ShootHolding",
+                    "name": "Shoot Holding",
                     "type": "Button",
                     "id": "8565a4e2-bbd8-44ee-975f-bd314bf40ca4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Shoot",
-                    "type": "Button",
-                    "id": "7b2be2eb-2409-4679-87fd-27ad1dc7345a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -540,7 +333,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeToAttackShip",
+                    "name": "Change To Main Ship",
                     "type": "Button",
                     "id": "58c02b24-6cb4-46bc-90f1-44b217402e58",
                     "expectedControlType": "Button",
@@ -567,7 +360,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -578,7 +371,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -589,7 +382,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -600,7 +393,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -622,7 +415,7 @@
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
+                    "groups": "Keyboard",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -640,56 +433,12 @@
                 },
                 {
                     "name": "",
-                    "id": "178d244b-ea25-4a52-b8e1-cf0eb3950e88",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b40c52c2-c689-495b-8647-2f6f87f72de4",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b554675b-332a-4eee-bc66-099cbdeed95c",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d622227c-541f-4a02-aec6-f3ecc79bf934",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "K&M",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "263dfe9e-03d0-4f8d-a5b6-2dd5bad6aa84",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ShootHolding",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -700,7 +449,7 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ShootHolding",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -710,8 +459,8 @@
                     "path": "<Keyboard>/space",
                     "interactions": "Hold",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "ShootHolding",
+                    "groups": "Keyboard",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -721,8 +470,8 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "ShootHolding",
+                    "groups": "Mouse",
+                    "action": "Shoot Holding",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -733,7 +482,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ChangeToAttackShip",
+                    "action": "Change To Main Ship",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -743,8 +492,8 @@
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "K&M",
-                    "action": "ChangeToAttackShip",
+                    "groups": "Keyboard",
+                    "action": "Change To Main Ship",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -764,14 +513,20 @@
             ]
         },
         {
-            "name": "K&M",
-            "bindingGroup": "K&M",
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Mouse",
+            "bindingGroup": "Mouse",
+            "devices": [
                 {
                     "devicePath": "<Mouse>",
                     "isOptional": false,

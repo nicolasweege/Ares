@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8921673329648153650}
   - component: {fileID: 8921673329648153653}
   m_Layer: 0
-  m_Name: Player Bullet Hit
+  m_Name: Player Sub Attack Ship Bullet Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.037390407, y: 1.4980392, z: 0, w: 0.39215687}
+        m_Name: Blue
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 4.7593803, z: 0.12884572, w: 0.39215687}
+        m_Name: White
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:

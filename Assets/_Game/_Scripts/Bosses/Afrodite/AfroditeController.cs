@@ -29,7 +29,7 @@ public class AfroditeController : EnemyBase
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
         {
             _isPlayerInRadar = true;
             _boxCollider.size = new Vector2(30f, 30f);
@@ -38,7 +38,7 @@ public class AfroditeController : EnemyBase
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
         {
             _isPlayerInRadar = false;
             _boxCollider.size = new Vector2(15f, 15f);

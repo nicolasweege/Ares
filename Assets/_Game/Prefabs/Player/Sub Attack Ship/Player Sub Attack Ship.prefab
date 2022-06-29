@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8255180598584687173}
   m_Layer: 6
   m_Name: Player Sub Attack Ship
-  m_TagString: Player
+  m_TagString: PlayerSubAttackShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 10
   _speed: 5
-  _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
+  _bulletPrefab: {fileID: 7830280391853845465, guid: 5b60ad54d1ce65d42ba7fac8cdcaf27c, type: 3}
   _bulletStartingPos: {fileID: 5037170821894037980}
   _bulletDir: {fileID: 5473224387361849336}
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
@@ -491,7 +491,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.9556167, a: 1}
+      maxColor: {r: 0.029804826, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1573,8 +1573,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.2783019, g: 0.96603775, b: 1, a: 1}
-        key1: {r: 0, g: 0.3581133, b: 1, a: 1}
+        key0: {r: 0.1430471, g: 1, b: 0, a: 1}
+        key1: {r: 0, g: 0.23584908, b: 0.004327579, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

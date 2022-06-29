@@ -67,7 +67,7 @@ public class CadmoController : EnemyBase
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerMainShip"))
         {
             _isPlayerInRadar = true;
             _rotation.z = 120f;
@@ -77,7 +77,7 @@ public class CadmoController : EnemyBase
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerMainShip"))
         {
             _isPlayerInRadar = false;
             _rotation.z = 40f;

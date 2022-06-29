@@ -59,7 +59,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         if (_health <= 0)
             Death();
 
-        if (_playerInputActions.SubAttackShip.ChangeToAttackShip.IsPressed())
+        if (_playerInputActions.SubAttackShip.ChangeToMainShip.IsPressed())
         {
             ChangeToPlayerMainShip();
             PlayerMainShipController.Instance.IsPlayerInSubShip = false;
@@ -104,6 +104,15 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         return lookDir;
     }
 
+    private void ChangeToPlayerMainShip()
+    {
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
+        _playerInputActions.SubAttackShip.Disable();
+        PlayerMainShipController.Instance.PlayerInputActions.MainShip.Enable();
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
@@ -111,14 +120,5 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
             TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
             other.GetComponent<BulletBase>().DestroyBullet();
         }
-    }
-
-    private void ChangeToPlayerMainShip()
-    {
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
-        _playerInputActions.SubAttackShip.Disable();
-        PlayerMainShipController.Instance.PlayerInputActions.Player.Enable();
-        Destroy(gameObject);
     }
 }

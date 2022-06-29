@@ -13,8 +13,8 @@ public class UIPauseMenu : MonoBehaviour
     private void Start()
     {
         _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-        _playerInputActions.Player.Pause.performed += Pause;
+        _playerInputActions.MainShip.Enable();
+        _playerInputActions.MainShip.Pause.performed += Pause;
     }
 
     public void Pause(InputAction.CallbackContext context)
@@ -36,7 +36,7 @@ public class UIPauseMenu : MonoBehaviour
         if (PlayerMainShipController.Instance.IsPlayerInSubShip)
         {
             PlayerMainShipController.Instance.PlayerInputActions.Enable();
-            PlayerMainShipController.Instance.PlayerInputActions.Player.Disable();
+            PlayerMainShipController.Instance.PlayerInputActions.MainShip.Disable();
         }
         else
         {

@@ -120,7 +120,7 @@ public class TeseuController : EnemyBase
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
         {
             _state = "following_player";
             _boxCollider.size = new Vector2(17f, 17f);
@@ -129,7 +129,7 @@ public class TeseuController : EnemyBase
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
         {
             _state = "idle";
             _especialShootTimer = _timeToEspecial;

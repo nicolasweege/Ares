@@ -43,7 +43,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         base.Awake();
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
+        _playerInputActions.MainShip.Enable();
 
         ResetStabilizers();
         ResetTurbineFlames();
@@ -53,7 +53,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         HandleStabilizers();
 
-        var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        var move = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
         move.Normalize();
 
         if (Mathf.Round(move.y) == 1f)
@@ -71,7 +71,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             Move();
             TurretAim();
 
-            if (_playerInputActions.Player.ShootHolding.IsPressed())
+            if (_playerInputActions.MainShip.ShootHolding.IsPressed())
             {
                 _shootTimer -= Time.deltaTime;
                 if (_shootTimer <= 0f)
@@ -85,7 +85,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 Death();
         }
 
-        if (_playerInputActions.Player.ChangeToSubShip.IsPressed() && !_isPlayerInSubShip)
+        if (_playerInputActions.MainShip.ChangeToSubAttackShip.IsPressed() && !_isPlayerInSubShip)
         {
             ChangeToSubAttackShip();
             _isPlayerInSubShip = true;
@@ -112,7 +112,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleStabilizers()
     {
-        var move = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        var move = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
         move.Normalize();
 
         // Moving to Back
@@ -171,7 +171,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
     }
 
-    private int TakeDamage(int damage) => _health -= damage;
+    public int TakeDamage(int damage) => _health -= damage;
 
     private void GenerateBullet()
     {
@@ -195,7 +195,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void Move()
     {
-        Vector2 moveVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        Vector2 moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
         moveVector.Normalize();
         transform.position += new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _speed;
         float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
@@ -209,9 +209,23 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
     }
 
+    private void ChangeToSubAttackShip()
+    {
+        var subAttackShipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x, transform.position.y - 3f), Quaternion.identity);
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = subAttackShipInst.transform;
+        _playerInputActions.MainShip.Disable();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
+        {
+            TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            other.GetComponent<BulletBase>().DestroyBullet();
+        }
+
+        if (other.CompareTag("PlayerSubAttackShipBullet"))
         {
             TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
             other.GetComponent<BulletBase>().DestroyBullet();
@@ -225,13 +239,5 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             TakeDamage(other.gameObject.GetComponent<EnemyBase>().DefaultDamage);
             other.gameObject.GetComponent<EnemyBase>().Death();
         }
-    }
-
-    private void ChangeToSubAttackShip()
-    {
-        var subAttackShipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x, transform.position.y - 3f), Quaternion.identity);
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = subAttackShipInst.transform;
-        _playerInputActions.Player.Disable();
     }
 }

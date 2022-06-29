@@ -27,28 +27,26 @@ public class PlayerMiscScript : MonoBehaviour
     {
         _camera = FindObjectOfType<Camera>();
         _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-        _playerInputActions.MainShip.Disable();
-        _playerInputActions.Player.Shoot.performed += Shoot_performed;
+        _playerInputActions.MainShip.Enable();
     }
 
     private void Update()
     {
         Move();
 
-        if (_playerInputActions.Player.MoveAimToRight.IsPressed())
+        if (_playerInputActions.MainShip.MoveAimToRight.IsPressed())
             MoveAimToRight();
 
-        if (_playerInputActions.Player.MoveAimToLeft.IsPressed())
+        if (_playerInputActions.MainShip.MoveAimToLeft.IsPressed())
             MoveAimToLeft();
 
         if (Input.GetKeyDown(KeyCode.R))
             Instantiate(_portalPrefab, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0f), Quaternion.identity);
 
-        Vector2 v = _playerInputActions.Player.MoveAim.ReadValue<Vector2>();
+        Vector2 v = _playerInputActions.MainShip.MoveAim.ReadValue<Vector2>();
         transform.Rotate(new Vector3(0f, 0f, -v.x * _rotation.z) * Time.deltaTime);
 
-        if (_playerInputActions.Player.ShootHolding.IsPressed())
+        if (_playerInputActions.MainShip.ShootHolding.IsPressed())
         {
             _shootTimer -= Time.deltaTime;
             if (_shootTimer <= 0f)
@@ -63,11 +61,6 @@ public class PlayerMiscScript : MonoBehaviour
     }
 
     private int TakeDamage(int damage) => _health -= damage;
-
-    private void Shoot_performed(InputAction.CallbackContext context)
-    {
-        GenerateBullet();
-    }
 
     private void GenerateBullet()
     {
@@ -101,7 +94,7 @@ public class PlayerMiscScript : MonoBehaviour
 
     private void Move()
     {
-        Vector2 moveVector = _playerInputActions.Player.Movement.ReadValue<Vector2>();
+        Vector2 moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
         moveVector.Normalize();
         transform.position += new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _speed;
         float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);

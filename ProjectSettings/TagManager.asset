@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Key
-  - Portal
   - Asteroid
   - Bullet
-  - Player Main Ship
+  - PlayerMainShip
+  - PlayerSubAttackShip
+  - PlayerSubAttackShipBullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Player Sub Attack Ship
+  - Player Sub Attack Ship [ Unit ]
   - Player [ Bullet ]
   - Afrodite
   - Afrodite [ Bullet ]
@@ -27,8 +27,8 @@ TagManager:
   - Asteroid
   - Eros
   - Cadmo [ Bullet ]
-  - Player Main Ship
-  - 
+  - Player Main Ship [ Unit ]
+  - Player Sub Attack Ship [ Bullet ]
   - 
   - 
   - 
