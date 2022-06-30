@@ -15,6 +15,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
     [SerializeField] private ParticleSystem _turbineFlame;
     [SerializeField] private float _timeToShoot;
     [SerializeField] private float _turnSpeed;
+    [SerializeField] private float _cameraOrthoSize;
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
@@ -106,7 +107,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
 
     private void ChangeToPlayerMainShip()
     {
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = _cameraOrthoSize;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
         _playerInputActions.SubAttackShip.Disable();
         PlayerMainShipController.Instance.PlayerInputActions.MainShip.Enable();

@@ -18,6 +18,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private float _turnSpeed;
     [SerializeField] private Transform _turretTransform;
     [SerializeField] private GameObject _subAttackShipPrefab;
+    [SerializeField] private float _cameraOrthoSize;
     private float _shootTimer;
     private Camera _camera;
     private bool _isPlayerInSubShip = false;
@@ -212,7 +213,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private void ChangeToSubAttackShip()
     {
         var subAttackShipInst = Instantiate(_subAttackShipPrefab, new Vector3(transform.position.x, transform.position.y - 3f), Quaternion.identity);
-        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 6f;
+        CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = _cameraOrthoSize;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = subAttackShipInst.transform;
         _playerInputActions.MainShip.Disable();
     }
