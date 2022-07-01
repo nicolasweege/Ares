@@ -38,7 +38,7 @@
     "m_Dropdowns": [],
     "m_CategoryData": [
         {
-            "m_Id": "828d09d4200d4165900e29e375c1486d"
+            "m_Id": "6a22486c99cb4677b84b9200fdcd5ab2"
         }
     ],
     "m_Nodes": [
@@ -2695,6 +2695,45 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "6a22486c99cb4677b84b9200fdcd5ab2",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "1fbd462f2ae4df85b99657b65f4f7121"
+        },
+        {
+            "m_Id": "a1f9ebb49b52548086e3516a86a633cd"
+        },
+        {
+            "m_Id": "74527226f09bb5898491ecf30ce09d9b"
+        },
+        {
+            "m_Id": "04476ccf0cebd887aec7e4b6ed4bc177"
+        },
+        {
+            "m_Id": "65cb0a5dbff4d282a333afc787a07f22"
+        },
+        {
+            "m_Id": "d15f50f9bbb19d89b3078dbb46d3c0ed"
+        },
+        {
+            "m_Id": "a9fe8b5f087aa08c8436dd7cf236aa7f"
+        },
+        {
+            "m_Id": "6dc4ec2275bd608a81cca37830cbc3c0"
+        },
+        {
+            "m_Id": "e20e85d6b3a66481944fe31197070623"
+        },
+        {
+            "m_Id": "703305fb0119ae87bcf8977848a4224f"
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector2MaterialSlot",
     "m_ObjectId": "6ba4b35b8de74d8e88d3e6d79b31e7d3",
     "m_Id": 1,
@@ -3314,45 +3353,6 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
-    "m_ObjectId": "828d09d4200d4165900e29e375c1486d",
-    "m_Name": "",
-    "m_ChildObjectList": [
-        {
-            "m_Id": "1fbd462f2ae4df85b99657b65f4f7121"
-        },
-        {
-            "m_Id": "a1f9ebb49b52548086e3516a86a633cd"
-        },
-        {
-            "m_Id": "74527226f09bb5898491ecf30ce09d9b"
-        },
-        {
-            "m_Id": "04476ccf0cebd887aec7e4b6ed4bc177"
-        },
-        {
-            "m_Id": "65cb0a5dbff4d282a333afc787a07f22"
-        },
-        {
-            "m_Id": "d15f50f9bbb19d89b3078dbb46d3c0ed"
-        },
-        {
-            "m_Id": "a9fe8b5f087aa08c8436dd7cf236aa7f"
-        },
-        {
-            "m_Id": "6dc4ec2275bd608a81cca37830cbc3c0"
-        },
-        {
-            "m_Id": "e20e85d6b3a66481944fe31197070623"
-        },
-        {
-            "m_Id": "703305fb0119ae87bcf8977848a4224f"
-        }
-    ]
 }
 
 {
