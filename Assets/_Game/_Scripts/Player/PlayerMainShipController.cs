@@ -172,7 +172,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
     }
 
-    public int TakeDamage(int damage) => _health -= damage;
+    public int TakeDamage(int damage)
+    {
+        return _health -= damage;
+    }
 
     private void GenerateBullet()
     {

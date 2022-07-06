@@ -30030,7 +30030,7 @@ MonoBehaviour:
   _turnSpeed: 12
   _turretTransform: {fileID: 4752901645959921279}
   _subAttackShipPrefab: {fileID: 2501291325124508981, guid: cfdeca3353f80c141900064c5b74aafe, type: 3}
-  _cameraOrthoSize: 5
+  _cameraOrthoSize: 7
   _rightTurbineFlame: {fileID: 5573755622878982656}
   _leftTurbineFlame: {fileID: 109246218676607566}
   _frontStabilizerTrail: {fileID: 6663159386704098564}
