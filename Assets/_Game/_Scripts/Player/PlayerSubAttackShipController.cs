@@ -111,6 +111,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = PlayerMainShipController.Instance.transform;
         _playerInputActions.SubAttackShip.Disable();
         PlayerMainShipController.Instance.PlayerInputActions.MainShip.Enable();
+        PlayerMainShipController.Instance.EnableAimLaser();
         Destroy(gameObject);
     }
 

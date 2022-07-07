@@ -56,7 +56,7 @@ MonoBehaviour:
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
   _turbineFlame: {fileID: 3162034895047729552}
   _timeToShoot: 0.1
-  _turnSpeed: 15
+  _turnSpeed: 20
   _cameraOrthoSize: 6
 --- !u!60 &6773728880279036646
 PolygonCollider2D:

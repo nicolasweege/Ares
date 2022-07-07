@@ -16,16 +16,24 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private Vector3 _rotation;
     [SerializeField] private float _timeToShoot;
     [SerializeField] private float _turnSpeed;
+    [SerializeField] private float _idleTurnSpeed;
+    [SerializeField] private float _movingTurnSpeed;
     [SerializeField] private Transform _turretTransform;
     [SerializeField] private GameObject _subAttackShipPrefab;
     [SerializeField] private float _cameraOrthoSize;
+    [SerializeField] private GameObject _shieldSprite;
+    [SerializeField] private GameObject _aimLaser;
+    private bool _isShieldEnabled = false;
+    private CapsuleCollider2D _shieldCollider;
     private float _shootTimer;
     private Camera _camera;
     private bool _isPlayerInSubShip = false;
     private PlayerInputActions _playerInputActions;
     #region Stabilizer Trails/Turbine Flames - Particles
-    [SerializeField] private ParticleSystem _rightTurbineFlame;
-    [SerializeField] private ParticleSystem _leftTurbineFlame;
+    [SerializeField] private ParticleSystem _backRightTurbineFlame;
+    [SerializeField] private ParticleSystem _backLeftTurbineFlame;
+    [SerializeField] private ParticleSystem _frontRightTurbineFlame;
+    [SerializeField] private ParticleSystem _frontLeftTurbineFlame;
     [SerializeField] private ParticleSystem _frontStabilizerTrail;
     [SerializeField] private ParticleSystem _backStabilizerTrail;
     [SerializeField] private ParticleSystem _rightStabilizerTrail;
@@ -43,11 +51,17 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         base.Awake();
         _camera = FindObjectOfType<Camera>();
+        _shieldCollider = GetComponent<CapsuleCollider2D>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.MainShip.Enable();
 
         ResetStabilizers();
         ResetTurbineFlames();
+    }
+
+    private void Start()
+    {
+        _aimLaser.SetActive(true);
     }
 
     private void Update()
@@ -59,8 +73,13 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (Mathf.Round(move.y) == 1f)
         {
-            _rightTurbineFlame.Play();
-            _leftTurbineFlame.Play();
+            _backRightTurbineFlame.Play();
+            _backLeftTurbineFlame.Play();
+        }
+        else if (Mathf.Round(move.y) == -1f)
+        {
+            _frontRightTurbineFlame.Play();
+            _frontLeftTurbineFlame.Play();
         }
         else
         {
@@ -71,6 +90,24 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             Move();
             TurretAim();
+
+            if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 0f)
+            {
+                _turnSpeed = _idleTurnSpeed;
+            }
+            else
+            {
+                _turnSpeed = _movingTurnSpeed;
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                EnableShield();
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                DisableShield();
+            }
 
             if (_playerInputActions.MainShip.ShootHolding.IsPressed())
             {
@@ -95,8 +132,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void ResetTurbineFlames()
     {
-        _rightTurbineFlame.Stop();
-        _leftTurbineFlame.Stop();
+        _backRightTurbineFlame.Stop();
+        _backLeftTurbineFlame.Stop();
+        _frontRightTurbineFlame.Stop();
+        _frontLeftTurbineFlame.Stop();
     }
 
     private void ResetStabilizers()
@@ -219,19 +258,51 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().m_Lens.OrthographicSize = _cameraOrthoSize;
         CinemachineManager.Instance.GetComponent<CinemachineVirtualCamera>().Follow = subAttackShipInst.transform;
         _playerInputActions.MainShip.Disable();
+        DisableShield();
+        DisableAimLaser();
+    }
+
+    private void DisableShield()
+    {
+        _shieldCollider.enabled = false;
+        _shieldSprite.SetActive(false);
+        _isShieldEnabled = false;
+    }
+
+    private void EnableShield()
+    {
+        _shieldCollider.enabled = true;
+        _shieldSprite.SetActive(true);
+        _isShieldEnabled = true;
+    }
+
+    public void EnableAimLaser()
+    {
+        _aimLaser.SetActive(true);
+    }
+
+    private void DisableAimLaser()
+    {
+        _aimLaser.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
         {
-            TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            if (!_isShieldEnabled)
+            {
+                TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            }
             other.GetComponent<BulletBase>().DestroyBullet();
         }
 
         if (other.CompareTag("PlayerSubAttackShipBullet"))
         {
-            TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            if (!_isShieldEnabled)
+            {
+                TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            }
             other.GetComponent<BulletBase>().DestroyBullet();
         }
     }
@@ -240,7 +311,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(other.gameObject.GetComponent<EnemyBase>().DefaultDamage);
+            if (!_isShieldEnabled)
+            {
+                TakeDamage(other.gameObject.GetComponent<EnemyBase>().DefaultDamage);
+            }
             other.gameObject.GetComponent<EnemyBase>().Death();
         }
     }

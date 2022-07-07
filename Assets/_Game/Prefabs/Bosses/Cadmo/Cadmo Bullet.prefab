@@ -49,8 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _defaultDamage: 2
-  _damageAnim: {fileID: 6722471001022864929, guid: 3014a5c18c37d5c4980e5abfa16a0e7e, type: 3}
-  _direction: {x: 0, y: 0, z: 0}
+  _damageAnim: {fileID: 8921673329648153652, guid: 2adc510d8779ced45a490092d7dbe5b9, type: 3}
   _timeToDestroyVisibleBullet: 3
 --- !u!70 &417020091140845594
 CapsuleCollider2D:
@@ -161,7 +160,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1545959563
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d1955f62896efdf4f80819e12b8219be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
