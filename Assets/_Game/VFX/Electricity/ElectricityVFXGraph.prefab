@@ -72,21 +72,33 @@ VisualEffect:
       - m_Value: 20
         m_Name: MaxElectricityScaleValue
         m_Overridden: 1
+      - m_Value: 10
+        m_Name: MinElectricitySize
+        m_Overridden: 1
+      - m_Value: 15
+        m_Name: MaxElectricitySize
+        m_Overridden: 1
+      - m_Value: 1
+        m_Name: MinFlashSize
+        m_Overridden: 1
+      - m_Value: 5
+        m_Name: MaxFlashSize
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 265.68524, y: 1782.8878, z: 0, w: 0}
+      - m_Value: {x: 0, y: 1024, z: 0, w: 0}
         m_Name: ElectricityColor
         m_Overridden: 1
-      - m_Value: {x: 0.66551226, y: 8.47419, z: 0, w: 0}
+      - m_Value: {x: 0.29319367, y: 10.680627, z: 0, w: 0}
         m_Name: FlashColor
         m_Overridden: 1
-      - m_Value: {x: 52.203922, y: 1024, z: 0, w: 0}
+      - m_Value: {x: 1, y: 1, z: 1, w: 0}
         m_Name: SparksColor
-        m_Overridden: 1
+        m_Overridden: 0
     m_Uint:
       m_Array: []
     m_Int:

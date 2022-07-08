@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7539416216041936415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1972443, y: 1.1972443, z: 1.1972443}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,19 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 4.2980394, y: 2.6039217, z: 5.992157, w: 0}
+        m_Name: ParticleColor
+        m_Overridden: 1
+      - m_Value: {x: 1.9764706, y: 3.2627451, z: 5.992157, w: 0}
+        m_Name: CircleColor
+        m_Overridden: 1
+      - m_Value: {x: 0.9882353, y: 1.6313726, z: 2.9960785, w: 0}
+        m_Name: BreatingCircleColor
+        m_Overridden: 1
+      - m_Value: {x: 17.192158, y: 10.415687, z: 23.968628, w: 0}
+        m_Name: ShaderColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -107,6 +119,6 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1757122295
+  m_SortingLayer: 10
   m_SortingOrder: 0
