@@ -62,7 +62,7 @@ VisualEffect:
       - m_Value: {x: 1.9764706, y: 3.2627451, z: 5.992157, w: 0}
         m_Name: CircleColor
         m_Overridden: 1
-      - m_Value: {x: 0.9882353, y: 1.6313726, z: 2.9960785, w: 0}
+      - m_Value: {x: 1.3975757, y: 2.307109, z: 4.237095, w: 0}
         m_Name: BreatingCircleColor
         m_Overridden: 1
       - m_Value: {x: 17.192158, y: 10.415687, z: 23.968628, w: 0}
