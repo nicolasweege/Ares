@@ -12,7 +12,6 @@ TagManager:
   - PlayerSubAttackShipBullet
   - Portal
   - Key
-  - EnemyRadar
   layers:
   - Default
   - TransparentFX

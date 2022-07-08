@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerLaserBeamController : Singleton<PlayerLaserBeamController>
 {
+    [SerializeField] private int _defaultDamage;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private Transform _fireStartingPos;
     [SerializeField] private Transform _fireDir;
@@ -64,10 +65,20 @@ public class PlayerLaserBeamController : Singleton<PlayerLaserBeamController>
 
         int layerMask = ~(LayerMask.GetMask("Player Main Ship [ Unit ]"));
         RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, layerMask);
+
         if (laserHit)
         {
+            if (laserHit.collider.gameObject.CompareTag("Enemy"))
+            {
+                bool isEnemyVisible = laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible;
+                if (isEnemyVisible)
+                {
+                    laserHit.collider.GetComponent<EnemyBase>().TakeDamage(_defaultDamage);
+                }
+            }
+
             _lineRenderer.SetPosition(1, laserHit.point);
-            Debug.Log(laserHit.collider.name);
+            // Debug.Log(laserHit.collider.name);
         }
 
         _endVFX.transform.position = _lineRenderer.GetPosition(1);

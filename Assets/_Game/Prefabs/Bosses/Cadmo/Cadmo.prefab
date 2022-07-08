@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 86509316150492983}
   m_Layer: 12
   m_Name: Radar Cadmo
-  m_TagString: EnemyRadar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4eea6945932f748849b23509b8504c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
+  _health: 50
   _speed: 3
   _amountOfCoins: 10
   _defaultDamage: 6
