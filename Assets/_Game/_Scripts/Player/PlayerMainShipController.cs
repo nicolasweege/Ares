@@ -66,6 +66,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void Update()
     {
+        DisableAimLaser();
         HandleStabilizers();
 
         var move = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
