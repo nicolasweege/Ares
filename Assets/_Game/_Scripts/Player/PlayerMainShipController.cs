@@ -23,6 +23,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private float _cameraOrthoSize;
     [SerializeField] private GameObject _shieldSprite;
     [SerializeField] private GameObject _aimLaser;
+    [SerializeField] private GameObject _laserBeam;
     private bool _isShieldEnabled = false;
     private CapsuleCollider2D _shieldCollider;
     private float _shootTimer;
@@ -91,6 +92,19 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             Move();
             TurretAim();
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                _laserBeam.GetComponent<PlayerLaserBeamController>().EnableLaser();
+            }
+            if (Input.GetMouseButton(1))
+            {
+                _laserBeam.GetComponent<PlayerLaserBeamController>().UpdateLaser();
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                _laserBeam.GetComponent<PlayerLaserBeamController>().DisableLaser();
+            }
 
             if (Mathf.Round(move.x) == 0f && Mathf.Round(move.y) == 0f)
             {

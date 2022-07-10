@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLaserBeamController : Singleton<PlayerLaserBeamController>
+public class PlayerLaserBeamController : MonoBehaviour
 {
     [SerializeField] private int _defaultDamage;
     [SerializeField] private LineRenderer _lineRenderer;
@@ -10,31 +10,22 @@ public class PlayerLaserBeamController : Singleton<PlayerLaserBeamController>
     [SerializeField] private Transform _fireDir;
     [SerializeField] private GameObject _startVFX;
     [SerializeField] private GameObject _endVFX;
+    [SerializeField] private bool _isPlayerLaser;
     private Vector2 _laserDir;
     private List<ParticleSystem> _particles = new List<ParticleSystem>();
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         FillLists();
         DisableLaser();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (!_isPlayerLaser)
         {
             EnableLaser();
-        }
-
-        if (Input.GetMouseButton(1))
-        {
             UpdateLaser();
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            DisableLaser();
         }
     }
 
@@ -80,7 +71,6 @@ public class PlayerLaserBeamController : Singleton<PlayerLaserBeamController>
             _lineRenderer.SetPosition(1, laserHit.point);
             // Debug.Log(laserHit.collider.name);
         }
-
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }
 

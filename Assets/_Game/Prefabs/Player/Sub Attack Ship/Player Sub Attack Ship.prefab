@@ -261,7 +261,7 @@ MonoBehaviour:
   _turbineFlame: {fileID: 3162034895047729552}
   _timeToShoot: 0.1
   _turnSpeed: 20
-  _cameraOrthoSize: 6
+  _cameraOrthoSize: 7
 --- !u!60 &6773728880279036646
 PolygonCollider2D:
   m_ObjectHideFlags: 0

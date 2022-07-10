@@ -25310,9 +25310,10 @@ MonoBehaviour:
   _movingTurnSpeed: 5
   _turretTransform: {fileID: 4752901645959921279}
   _subAttackShipPrefab: {fileID: 2501291325124508981, guid: cfdeca3353f80c141900064c5b74aafe, type: 3}
-  _cameraOrthoSize: 6
+  _cameraOrthoSize: 7
   _shieldSprite: {fileID: 7617916817057230784}
   _aimLaser: {fileID: 5488557010185144090}
+  _laserBeam: {fileID: 4005503774356786776}
   _backRightTurbineFlame: {fileID: 5573755622878982656}
   _backLeftTurbineFlame: {fileID: 109246218676607566}
   _frontRightTurbineFlame: {fileID: 9079969821073779365}
@@ -61663,5 +61664,10 @@ PrefabInstance:
 --- !u!4 &2832813882447726846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+  m_PrefabInstance: {fileID: 3717665639980681860}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4005503774356786776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
   m_PrefabInstance: {fileID: 3717665639980681860}
   m_PrefabAsset: {fileID: 0}
