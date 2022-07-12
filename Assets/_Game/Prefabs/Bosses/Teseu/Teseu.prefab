@@ -4780,7 +4780,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -624724591
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9717,7 +9717,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -624724591
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -14529,7 +14529,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -624724591
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19436,7 +19436,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -624724591
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19539,14 +19539,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1373375891
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5be618d186c758543979f75cd74a3e0d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d68d6b253e7c9e64991b4d0530d6cd1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.2, y: 2.2}
+  m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -19672,15 +19672,18 @@ MonoBehaviour:
   _defaultDamage: 2
   _stoppingDist: 3
   _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
-  _state: 
-  _normalBulletPrefab: {fileID: 8962960968114403607, guid: 4dcd8adabb89b7949bd986bd781384e4, type: 3}
-  _especialBulletPrefab: {fileID: 1827705127104138118, guid: d6eaa9be18e4ac84eb15a90e1ef92ca5, type: 3}
-  _normalBulletStartingPos: {fileID: 6270282815842813306}
-  _especialBulletStartingPosLeft: {fileID: 6177699732803113586}
-  _especialBulletStartingPosRight: {fileID: 5742172537251220932}
-  _timeToNormalShoot: 0.3
-  _timeToEspecial: 6
-  _timeToBreak: 1
+  NormalBulletPrefab: {fileID: 8962960968114403607, guid: 4dcd8adabb89b7949bd986bd781384e4, type: 3}
+  EspecialBulletPrefab: {fileID: 1827705127104138118, guid: d6eaa9be18e4ac84eb15a90e1ef92ca5, type: 3}
+  NormalBulletStartingPos: {fileID: 6270282815842813306}
+  EspecialBulletStartingPosLeft: {fileID: 6177699732803113586}
+  EspecialBulletStartingPosRight: {fileID: 5742172537251220932}
+  TimeToNormalShoot: 0.2
+  TimeToEspecial: 5
+  TimeToBreak: 1
+  BreakTimer: 0
+  NormalShootTimer: 0
+  EspecialShootTimer: 0
+  BoxCollider: {fileID: 1317144530937627484}
 --- !u!60 &34940757284889673
 PolygonCollider2D:
   m_ObjectHideFlags: 0

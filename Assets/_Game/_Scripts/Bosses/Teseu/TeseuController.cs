@@ -4,108 +4,64 @@ using UnityEngine;
 
 public class TeseuController : EnemyBase
 {
-    [SerializeField] private string _state;
-    [SerializeField] private GameObject _normalBulletPrefab;
-    [SerializeField] private GameObject _especialBulletPrefab;
-    [SerializeField] private Transform _normalBulletStartingPos;
-    [SerializeField] private Transform _especialBulletStartingPosLeft;
-    [SerializeField] private Transform _especialBulletStartingPosRight;
-    [SerializeField] private float _timeToNormalShoot;
-    [SerializeField] private float _timeToEspecial;
-    [SerializeField] private float _timeToBreak;
-    private float _breakTimer;
-    private float _normalShootTimer;
-    private float _especialShootTimer;
-    private Rigidbody2D _rigidbody;
-    private BoxCollider2D _boxCollider;
+    public GameObject NormalBulletPrefab;
+    public GameObject EspecialBulletPrefab;
+    public Transform NormalBulletStartingPos;
+    public Transform EspecialBulletStartingPosLeft;
+    public Transform EspecialBulletStartingPosRight;
+    public float TimeToNormalShoot;
+    public float TimeToEspecial;
+    public float TimeToBreak;
+    public float BreakTimer;
+    public float NormalShootTimer;
+    public float EspecialShootTimer;
+    public BoxCollider2D BoxCollider;
+
+    public TeseuBaseState CurrentState;
+    public TeseuIdleState IdleState = new TeseuIdleState();
+    public TeseuFollowingPlayerState FollowingPlayerState = new TeseuFollowingPlayerState();
+    public TeseuEspecialShootState EspecialShootState = new TeseuEspecialShootState();
+    public TeseuBreakToNormalState BreakToNormalState = new TeseuBreakToNormalState();
+    public TeseuBreakToEspecialState BreakToEspecialState = new TeseuBreakToEspecialState();
 
     protected override void Awake()
     {
         base.Awake();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _boxCollider = GetComponentInChildren<BoxCollider2D>();
-        _state = "idle";
-        _especialShootTimer = _timeToEspecial;
-        _breakTimer = _timeToBreak;
+        EspecialShootTimer = TimeToEspecial;
+        BreakTimer = TimeToBreak;
+        CurrentState = IdleState;
+        CurrentState.EnterState(this);
     }
 
     private void Update()
     {
-        HandleState();
+        CurrentState.UpdateState(this);
 
         if (_health <= 0)
             Death();
     }
 
-    private void HandleState()
+    public void SwitchState(TeseuBaseState state)
     {
-        switch (_state)
-        {
-            case "idle":
-                break;
-
-            case "break_to_especial":
-                SetBreakState("especial_shoot", 0.5f);
-                break;
-
-            case "break_to_normal":
-                SetBreakState("following_player", _timeToBreak);
-                break;
-
-            case "following_player":
-                FollowPlayer();
-                HandleNormalShoot();
-
-                _especialShootTimer -= Time.deltaTime;
-                if (_especialShootTimer <= 0f)
-                {
-                    _state = "break_to_especial";
-                    _especialShootTimer = _timeToEspecial;
-                }
-                break;
-
-            case "especial_shoot":
-                HandleEspecialShoot();
-                break;
-        }
+        CurrentState = state;
+        state.EnterState(this);
     }
 
-    private void SetBreakState(string nextState, float time)
-    {
-        _breakTimer -= Time.deltaTime;
-        if (_breakTimer <= 0f)
-        {
-            _state = nextState;
-            _breakTimer = time;
-        }
-    }
-
-    private void HandleNormalShoot()
+    public void HandleNormalShoot()
     {
         bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
         if (!isEnemyVisible)
             return;
 
-        _normalShootTimer -= Time.deltaTime;
-        if (_normalShootTimer <= 0f)
+        NormalShootTimer -= Time.deltaTime;
+        if (NormalShootTimer <= 0f)
         {
-            GenerateBullet(_normalBulletStartingPos, _normalBulletPrefab);
-            _normalShootTimer = _timeToNormalShoot;
+            GenerateBullet(NormalBulletStartingPos, NormalBulletPrefab);
+            NormalShootTimer = TimeToNormalShoot;
         }
     }
 
-    private void HandleEspecialShoot()
-    {
-        bool isEnemyVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-        if (!isEnemyVisible)
-            return;
-
-        GenerateBullet(_especialBulletStartingPosLeft, _especialBulletPrefab);
-        GenerateBullet(_especialBulletStartingPosRight, _especialBulletPrefab);
-        _state = "break_to_normal";
-    }
-
-    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab)
+    public void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab)
     {
         if (PlayerMainShipController.Instance == null)
             return;
@@ -120,20 +76,11 @@ public class TeseuController : EnemyBase
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
-        {
-            _state = "following_player";
-            _boxCollider.size = new Vector2(17f, 17f);
-        }
+        CurrentState.OnTriggerEnter(this, other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
-        {
-            _state = "idle";
-            _especialShootTimer = _timeToEspecial;
-            _boxCollider.size = new Vector2(10f, 10f);
-        }
+        CurrentState.OnTriggerExit(this, other);
     }
 }

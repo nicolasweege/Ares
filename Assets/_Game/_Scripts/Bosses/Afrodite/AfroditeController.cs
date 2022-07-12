@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ public class AfroditeController : EnemyBase
     [SerializeField] private Vector3 _rotation;
     private bool _isPlayerInRadar = false;
     private BoxCollider2D _boxCollider;
+    public static event Action<AfroditeState> OnBeforeAfroditeStateChanged;
+    public static event Action<AfroditeState> OnAfterAfroditeStateChanged;
+
+    public AfroditeState State { get; private set; }
 
     public bool IsPlayerInRadar { get => _isPlayerInRadar; set => _isPlayerInRadar = value; }
 
@@ -27,6 +32,23 @@ public class AfroditeController : EnemyBase
             Death();
     }
 
+    public void UpdateAfroditeState(AfroditeState newState)
+    {
+        OnBeforeAfroditeStateChanged?.Invoke(newState);
+
+        State = newState;
+
+        switch (newState)
+        {
+            case AfroditeState.Idle:
+                break;
+            case AfroditeState.Moving:
+                break;
+        }
+
+        OnAfterAfroditeStateChanged?.Invoke(newState);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
@@ -44,4 +66,10 @@ public class AfroditeController : EnemyBase
             _boxCollider.size = new Vector2(15f, 15f);
         }
     }
+}
+
+[SerializeField] public enum AfroditeState
+{
+    Idle = 0,
+    Moving = 1
 }

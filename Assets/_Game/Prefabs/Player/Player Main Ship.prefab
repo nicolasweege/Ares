@@ -25297,7 +25297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1000
-  _speed: 3
+  _speed: 4
   _defaultDamage: 1
   _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   _bulletStartingPos: {fileID: 2080581498894607699}
