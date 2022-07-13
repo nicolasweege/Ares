@@ -19671,7 +19671,7 @@ MonoBehaviour:
   _amountOfCoins: 0
   _defaultDamage: 2
   _stoppingDist: 3
-  _deathAnim: {fileID: 1261679055607676512, guid: fdace0def949f0c4c82f9f3ddcdb46f4, type: 3}
+  _deathAnim: {fileID: 8921673329648153652, guid: 2adc510d8779ced45a490092d7dbe5b9, type: 3}
   NormalBulletPrefab: {fileID: 8962960968114403607, guid: 4dcd8adabb89b7949bd986bd781384e4, type: 3}
   EspecialBulletPrefab: {fileID: 1827705127104138118, guid: d6eaa9be18e4ac84eb15a90e1ef92ca5, type: 3}
   NormalBulletStartingPos: {fileID: 6270282815842813306}

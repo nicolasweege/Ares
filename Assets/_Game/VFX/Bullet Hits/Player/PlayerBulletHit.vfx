@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d4c867f6b72b714dbb5fd1780afe208, type: 3}
-  m_Name: vfxgraph_PlayerBulletHit
+  m_Name: PlayerBulletHit
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 0}
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_UISuperCollapsed: 0
   m_UIInfos: {fileID: 114340500867371532}
   m_ParameterInfo:
-  - name: Blue
-    path: Blue
+  - name: Color 1
+    path: Color 1
     tooltip: 
     sheetType: m_Vector4f
     realType: Color
@@ -150,8 +150,8 @@ MonoBehaviour:
     max: Infinity
     enumValues: []
     descendantCount: 0
-  - name: White
-    path: White
+  - name: Color 2
+    path: Color 2
     tooltip: 
     sheetType: m_Vector4f
     realType: Color
@@ -175,7 +175,7 @@ VisualEffectResource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: vfxgraph_PlayerBulletHit
+  m_Name: PlayerBulletHit
   m_Graph: {fileID: 114350483966674976}
   m_Infos:
     m_RendererSettings:
@@ -1476,7 +1476,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614613}
-  m_ExposedName: Blue
+  m_ExposedName: Color 1
   m_Exposed: 1
   m_Order: 0
   m_Category: 
@@ -6026,7 +6026,7 @@ MonoBehaviour:
   m_InputSlots: []
   m_OutputSlots:
   - {fileID: 8926484042661614834}
-  m_ExposedName: White
+  m_ExposedName: Color 2
   m_Exposed: 1
   m_Order: 1
   m_Category: 

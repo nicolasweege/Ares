@@ -6,70 +6,38 @@ using UnityEngine;
 public class AfroditeController : EnemyBase
 {
     [SerializeField] private Vector3 _rotation;
-    private bool _isPlayerInRadar = false;
-    private BoxCollider2D _boxCollider;
-    public static event Action<AfroditeState> OnBeforeAfroditeStateChanged;
-    public static event Action<AfroditeState> OnAfterAfroditeStateChanged;
+    public bool IsPlayerInRadar = false;
+    public BoxCollider2D BoxCollider;
+    private Vector2 _velocity = Vector2.zero;
 
-    public AfroditeState State { get; private set; }
-
-    public bool IsPlayerInRadar { get => _isPlayerInRadar; set => _isPlayerInRadar = value; }
+    public AfroditeBaseState CurrentState;
+    public AfroditeIdleState IdleState = new AfroditeIdleState();
 
     protected override void Awake()
     {
         base.Awake();
-        _boxCollider = GetComponentInChildren<BoxCollider2D>();
+        BoxCollider = GetComponentInChildren<BoxCollider2D>();
+        CurrentState = IdleState;
+        CurrentState.EnterState(this);
     }
 
     private void Update()
     {
-        if (_isPlayerInRadar)
-        {
-            transform.Rotate(_rotation * Time.deltaTime);
-        }
+        CurrentState.UpdateState(this);
 
         if (_health <= 0)
             Death();
-    }
 
-    public void UpdateAfroditeState(AfroditeState newState)
-    {
-        OnBeforeAfroditeStateChanged?.Invoke(newState);
-
-        State = newState;
-
-        switch (newState)
-        {
-            case AfroditeState.Idle:
-                break;
-            case AfroditeState.Moving:
-                break;
-        }
-
-        OnAfterAfroditeStateChanged?.Invoke(newState);
+        transform.position = Vector2.SmoothDamp(transform.position, new Vector2(10f, 0f), ref _velocity, _speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
-        {
-            _isPlayerInRadar = true;
-            _boxCollider.size = new Vector2(30f, 30f);
-        }
+        CurrentState.OnTriggerEnter(this, other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
-        {
-            _isPlayerInRadar = false;
-            _boxCollider.size = new Vector2(15f, 15f);
-        }
+        CurrentState.OnTriggerExit(this, other);
     }
-}
-
-[SerializeField] public enum AfroditeState
-{
-    Idle = 0,
-    Moving = 1
 }
