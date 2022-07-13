@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1497411710027219578}
-  - component: {fileID: 6652368011336952492}
+  - component: {fileID: 4118934464117810640}
   m_Layer: 0
   m_Name: Satellite Laser Beam
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6652368011336952492
+--- !u!114 &4118934464117810640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,16 +79,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 288693571894936796}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 748c6b62c84017a4db56b4a1d4ed7124, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f1075c271d232248b209470bd79be57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultDamage: 1
+  _defaultDamage: 1000
   _lineRenderer: {fileID: 2526442506186889314}
   _fireStartingPos: {fileID: 2466176862008024909}
   _fireDir: {fileID: 3601124844114529875}
   _startVFX: {fileID: 188523795549292374}
   _endVFX: {fileID: 5371843745005849578}
-  _isPlayerLaser: 0
+  _layerMask: Satellite
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3407550114908391497}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4899,8 +4899,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1156298233
-  m_SortingLayer: 16
+  m_SortingLayerID: -1822473135
+  m_SortingLayer: 14
   m_SortingOrder: 1
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -4971,7 +4971,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4448001778417333106}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4984,7 +4984,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d9e07b7bbecaf04691622307bf233e5, type: 2}
+  - {fileID: 2100000, guid: e2107e1a27b566b42a23ff1d5c608505, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5002,9 +5002,9 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1156298233
-  m_SortingLayer: 16
-  m_SortingOrder: 0
+  m_SortingLayerID: 1307419071
+  m_SortingLayer: 4
+  m_SortingOrder: 17
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 20, z: 0}
@@ -9842,9 +9842,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1156298233
-  m_SortingLayer: 16
-  m_SortingOrder: 1
+  m_SortingLayerID: -1822473135
+  m_SortingLayer: 14
+  m_SortingOrder: 17
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -14687,8 +14687,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1156298233
-  m_SortingLayer: 16
+  m_SortingLayerID: -1822473135
+  m_SortingLayer: 14
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19499,9 +19499,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1156298233
-  m_SortingLayer: 16
-  m_SortingOrder: 1
+  m_SortingLayerID: -1822473135
+  m_SortingLayer: 14
+  m_SortingOrder: 17
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19556,7 +19556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8908978293857866113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

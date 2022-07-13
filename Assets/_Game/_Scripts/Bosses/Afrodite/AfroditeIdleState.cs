@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class AfroditeIdleState : AfroditeBaseState
 {
+    private float _timeToSwitchState = 3f;
+    private float _timer;
+
     public override void EnterState(AfroditeController context)
     {
-
+        _timer = _timeToSwitchState;
     }
 
     public override void UpdateState(AfroditeController context)
     {
-
-    }
-
-    public override void OnTriggerEnter(AfroditeController context, Collider2D other)
-    {
-
+        _timer -= Time.deltaTime;
+        if (_timer <= 0f)
+        {
+            context.SwitchState(context.AimingState);
+        }
     }
 }

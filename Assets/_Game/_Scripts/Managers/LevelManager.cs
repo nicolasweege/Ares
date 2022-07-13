@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    [SerializeField] private const int _mapHight = 20;
-    [SerializeField] private const int _mapWidth = 20;
+    [SerializeField] private const float _mapHight = 20f;
+    [SerializeField] private const float _mapWidth = 20f;
 
-    public int MapHight { get => _mapHight; }
-    public int MapWidth { get => _mapWidth; }
+    public float MapHight { get => _mapHight; }
+    public float MapWidth { get => _mapWidth; }
 }

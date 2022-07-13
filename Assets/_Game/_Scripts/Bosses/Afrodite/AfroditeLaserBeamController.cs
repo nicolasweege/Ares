@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLaserBeamController : MonoBehaviour
+public class AfroditeLaserBeamController : MonoBehaviour
 {
     [SerializeField] private int _defaultDamage;
     [SerializeField] private LineRenderer _lineRenderer;
@@ -10,6 +10,7 @@ public class PlayerLaserBeamController : MonoBehaviour
     [SerializeField] private Transform _fireDir;
     [SerializeField] private GameObject _startVFX;
     [SerializeField] private GameObject _endVFX;
+    [SerializeField] private string _layerMask;
     private Vector2 _laserDir;
     private List<ParticleSystem> _particles = new List<ParticleSystem>();
 
@@ -44,17 +45,17 @@ public class PlayerLaserBeamController : MonoBehaviour
         _laserDir = (Vector2)_fireDir.position - (Vector2)transform.position;
         _startVFX.transform.position = new Vector3(_fireStartingPos.position.x, _fireStartingPos.position.y, _startVFX.transform.position.z);
 
-        int layerMask = ~(LayerMask.GetMask("Player Main Ship [ Unit ]"));
+        int layerMask = ~(LayerMask.GetMask(_layerMask));
         RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, layerMask);
 
         if (laserHit)
         {
-            if (laserHit.collider.gameObject.CompareTag("Enemy"))
+            if (laserHit.collider.gameObject.CompareTag("PlayerMainShip") || laserHit.collider.gameObject.CompareTag("PlayerSubAttackShip"))
             {
-                bool isEnemyVisible = laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible;
-                if (isEnemyVisible)
+                bool isPlayerVisible = laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible;
+                if (isPlayerVisible)
                 {
-                    laserHit.collider.GetComponent<EnemyBase>().TakeDamage(_defaultDamage);
+                    laserHit.collider.GetComponent<PlayerSubAttackShipController>().TakeDamage(_defaultDamage);
                 }
             }
 

@@ -67,7 +67,7 @@ public class PlayerSubAttackShipController : Singleton<PlayerSubAttackShipContro
         }
     }
 
-    private int TakeDamage(int damage) => _health -= damage;
+    public int TakeDamage(int damage) => _health -= damage;
 
     private void Death()
     {

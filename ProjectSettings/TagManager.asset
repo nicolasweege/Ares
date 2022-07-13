@@ -31,7 +31,7 @@ TagManager:
   - Cadmo [ Bullet ]
   - Player Main Ship [ Unit ]
   - Player Sub Attack Ship [ Bullet ]
-  - 
+  - Satellite
   - 
   - 
   - 
@@ -87,6 +87,9 @@ TagManager:
     locked: 0
   - name: Player [ Bullet ]
     uniqueID: 678046025
+    locked: 0
+  - name: Satellite
+    uniqueID: 2472494161
     locked: 0
   - name: Enemy Death Animation
     uniqueID: 2999701529
