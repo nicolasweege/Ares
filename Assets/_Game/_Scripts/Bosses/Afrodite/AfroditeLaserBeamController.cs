@@ -20,6 +20,11 @@ public class AfroditeLaserBeamController : MonoBehaviour
         DisableLaser();
     }
 
+    private void Update()
+    {
+        UpdateLaser();
+    }
+
     public void EnableLaser()
     {
         _lineRenderer.enabled = true;
@@ -50,13 +55,16 @@ public class AfroditeLaserBeamController : MonoBehaviour
 
         if (laserHit)
         {
-            if (laserHit.collider.gameObject.CompareTag("PlayerMainShip") || laserHit.collider.gameObject.CompareTag("PlayerSubAttackShip"))
+            if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
-                bool isPlayerVisible = laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible;
-                if (isPlayerVisible)
-                {
+                if (laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible)
+                    laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_defaultDamage);
+            }
+
+            if (laserHit.collider.gameObject.CompareTag("PlayerSubAttackShip"))
+            {
+                if (laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible)
                     laserHit.collider.GetComponent<PlayerSubAttackShipController>().TakeDamage(_defaultDamage);
-                }
             }
 
             _lineRenderer.SetPosition(1, laserHit.point);

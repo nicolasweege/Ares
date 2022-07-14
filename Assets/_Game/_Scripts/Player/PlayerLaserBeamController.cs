@@ -19,6 +19,11 @@ public class PlayerLaserBeamController : MonoBehaviour
         DisableLaser();
     }
 
+    private void Update()
+    {
+        UpdateLaser();
+    }
+
     public void EnableLaser()
     {
         _lineRenderer.enabled = true;

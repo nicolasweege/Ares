@@ -1216,7 +1216,7 @@ MonoBehaviour:
   _rotation: {x: 0, y: 0, z: 90}
   IsPlayerInRadar: 0
   BoxCollider: {fileID: 3996008156144159657}
-  TurnSpeed: 1
+  TurnSpeed: 2
   LaserBeam: {fileID: 6837032833081740260}
 --- !u!58 &4193644512958272751
 CircleCollider2D:
@@ -5355,7 +5355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &209655295813420316
 Transform:
   m_ObjectHideFlags: 0

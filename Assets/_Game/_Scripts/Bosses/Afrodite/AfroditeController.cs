@@ -35,7 +35,7 @@ public class AfroditeController : EnemyBase
 
         Debug.Log(CurrentState);
 
-        transform.position = Vector2.SmoothDamp(transform.position, new Vector2(5f, 0f), ref _velocity, _speed);
+        // transform.position = Vector2.SmoothDamp(transform.position, new Vector2(5f, 0f), ref _velocity, _speed);
     }
 
     public void SwitchState(AfroditeBaseState state)

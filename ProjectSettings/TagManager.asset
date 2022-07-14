@@ -10,8 +10,6 @@ TagManager:
   - PlayerMainShip
   - PlayerSubAttackShip
   - PlayerSubAttackShipBullet
-  - Portal
-  - Key
   layers:
   - Default
   - TransparentFX
@@ -25,10 +23,10 @@ TagManager:
   - Afrodite [ Bullet ]
   - Teseu
   - Teseu [ Bullet ]
-  - Cadmo
+  - 
   - Asteroid
-  - Eros
-  - Cadmo [ Bullet ]
+  - 
+  - 
   - Player Main Ship [ Unit ]
   - Player Sub Attack Ship [ Bullet ]
   - Satellite
@@ -52,9 +50,6 @@ TagManager:
   - name: Background
     uniqueID: 2738636265
     locked: 0
-  - name: Planet
-    uniqueID: 13868187
-    locked: 0
   - name: Afrodite [ Bullet ]
     uniqueID: 3974682491
     locked: 0
@@ -70,15 +65,6 @@ TagManager:
   - name: Teseu
     uniqueID: 2921591405
     locked: 0
-  - name: Cadmo [ Bullet ]
-    uniqueID: 1545959563
-    locked: 0
-  - name: Cadmo
-    uniqueID: 2293882963
-    locked: 0
-  - name: Eros
-    uniqueID: 1757122295
-    locked: 0
   - name: Player [ Trail ]
     uniqueID: 1254644431
     locked: 0
@@ -90,9 +76,6 @@ TagManager:
     locked: 0
   - name: Satellite
     uniqueID: 2472494161
-    locked: 0
-  - name: Enemy Death Animation
-    uniqueID: 2999701529
     locked: 0
   - name: Asteroid
     uniqueID: 2482356265
