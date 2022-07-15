@@ -161,7 +161,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             {
                 TakeDamage(other.gameObject.GetComponent<EnemyBase>().DefaultDamage);
             }
-            other.gameObject.GetComponent<EnemyBase>().Death();
+            // other.gameObject.GetComponent<EnemyBase>().Death();
         }
     }
 }

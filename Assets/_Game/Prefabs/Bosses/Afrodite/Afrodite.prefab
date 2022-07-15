@@ -1166,6 +1166,8 @@ GameObject:
   - component: {fileID: 1463419017436258478}
   - component: {fileID: 8453892432992078889}
   - component: {fileID: 4193644512958272751}
+  - component: {fileID: 2251522653472965764}
+  - component: {fileID: 7384944945347510718}
   - component: {fileID: 6812555322137856018}
   m_Layer: 8
   m_Name: Afrodite
@@ -1191,7 +1193,7 @@ Transform:
   - {fileID: 5010258736623098940}
   - {fileID: 209655295813420316}
   - {fileID: 5052372785905856707}
-  - {fileID: 5630696221062942018}
+  - {fileID: 1784483192594085016}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1207,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07919b299eb4e6448d07f2511a58aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1000
+  _health: 10000
   _speed: 1
   _amountOfCoins: 0
   _defaultDamage: 1
@@ -1217,7 +1219,7 @@ MonoBehaviour:
   IsPlayerInRadar: 0
   BoxCollider: {fileID: 3996008156144159657}
   TurnSpeed: 5
-  LaserBeam: {fileID: 6837032833081740260}
+  LaserBeam: {fileID: 578016837093814846}
 --- !u!58 &4193644512958272751
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1225,7 +1227,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463419017436258479}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1234,6 +1236,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.28
+--- !u!58 &2251522653472965764
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463419017436258479}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.9}
+  serializedVersion: 2
+  m_Radius: 1.71
+--- !u!70 &7384944945347510718
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463419017436258479}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.82}
+  m_Size: {x: 0.89, y: 2.9}
+  m_Direction: 0
 --- !u!50 &6812555322137856018
 Rigidbody2D:
   serializedVersion: 4
@@ -7011,7 +7045,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1145866435953524545, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
   m_PrefabInstance: {fileID: 331637775764665734}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6549254639252508472
+--- !u!1001 &865854437805487842
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -7020,7 +7054,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 288693571894936796, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_Name
-      value: Satellite Laser Beam
+      value: Afrodite Laser Beam
       objectReference: {fileID: 0}
     - target: {fileID: 288693571894936796, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_IsActive
@@ -7075,24 +7109,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2526442506186889314, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526442506186889314, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_SortingOrder
       value: -22
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526442506186889314, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1307419071
-      objectReference: {fileID: 0}
-    - target: {fileID: 3140822830813006764, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3601124844114529875, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3601124844114529875, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7102,33 +7120,29 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -21
       objectReference: {fileID: 0}
-    - target: {fileID: 6587565975127897036, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: _isPlayerLaser
-      value: 1
+    - target: {fileID: 5631400426469461230, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 6643281708167107599, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 1
+    - target: {fileID: 5631400426469461230, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6643281708167107599, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344445280116436978, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 5631400426469461230, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1156298233
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
---- !u!4 &5630696221062942018 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1497411710027219578, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-  m_PrefabInstance: {fileID: 6549254639252508472}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6837032833081740260 stripped
+--- !u!1 &578016837093814846 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 288693571894936796, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
-  m_PrefabInstance: {fileID: 6549254639252508472}
+  m_PrefabInstance: {fileID: 865854437805487842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1784483192594085016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1497411710027219578, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
+  m_PrefabInstance: {fileID: 865854437805487842}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6952638400751535923
 PrefabInstance:
