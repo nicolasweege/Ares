@@ -8,10 +8,11 @@ public class AfroditeController : EnemyBase
     [SerializeField] private Vector3 _rotation;
     public bool IsPlayerInRadar = false;
     public BoxCollider2D BoxCollider;
-    private Vector2 _velocity = Vector2.zero;
     [Range(0f, 100f)]
     public float TurnSpeed;
     public GameObject LaserBeam;
+
+    public float Speed { get => _speed; set => _speed = value; }
 
     public AfroditeBaseState CurrentState;
     public AfroditeIdleState IdleState = new AfroditeIdleState();
@@ -33,9 +34,7 @@ public class AfroditeController : EnemyBase
         if (_health <= 0)
             Death();
 
-        Debug.Log(CurrentState);
-
-        // transform.position = Vector2.SmoothDamp(transform.position, new Vector2(5f, 0f), ref _velocity, _speed);
+        // Debug.Log(CurrentState);
     }
 
     public void SwitchState(AfroditeBaseState state)

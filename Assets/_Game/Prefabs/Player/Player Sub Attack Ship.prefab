@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6038372168014250400}
   - component: {fileID: 1616667921095164542}
-  - component: {fileID: 6773728880279036646}
+  - component: {fileID: 5426687819941169170}
   - component: {fileID: 8255180598584687173}
   m_Layer: 6
   m_Name: Player Sub Attack Ship
@@ -58,8 +58,8 @@ MonoBehaviour:
   _timeToShoot: 0.1
   _turnSpeed: 20
   _cameraOrthoSize: 7
---- !u!60 &6773728880279036646
-PolygonCollider2D:
+--- !u!70 &5426687819941169170
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -71,34 +71,9 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.40716326}
-      - {x: -0.09155321, y: 0.40819043}
-      - {x: -0.16644162, y: 0.25526416}
-      - {x: -0.24399014, y: 0.17916247}
-      - {x: -0.2554702, y: 0.12266606}
-      - {x: -0.28980264, y: 0.09284246}
-      - {x: -0.35680914, y: -0.046429396}
-      - {x: -0.09892539, y: -0.083084196}
-      - {x: 0.0012242347, y: -0.13641022}
-      - {x: 0.11010976, y: -0.08407313}
-      - {x: 0.36078835, y: -0.044279456}
-      - {x: 0.29481196, y: 0.079936944}
-      - {x: 0.25079942, y: 0.12830889}
-      - {x: 0.2457612, y: 0.18016447}
-      - {x: 0.15689832, y: 0.26055276}
-      - {x: 0.0783301, y: 0.40903628}
+  m_Offset: {x: -0.0020186752, y: 0.12498951}
+  m_Size: {x: 0.4716474, y: 0.5554608}
+  m_Direction: 0
 --- !u!50 &8255180598584687173
 Rigidbody2D:
   serializedVersion: 4
@@ -192,7 +167,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 12
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 07b800872b424004e9526550fa1121cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5049,7 +5024,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1254644431
-  m_SortingLayer: 11
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_RenderMode: 1
   m_MeshDistribution: 0
