@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334051239914330462}
-  - component: {fileID: 1334051239914330461}
+  - component: {fileID: 3628722150059588883}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1334051239914330461
+--- !u!114 &3628722150059588883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c748c662c60384b90c5ee25b33626d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _portalPrefab: {fileID: 6242381352046594366, guid: 4eb3b547fa4c64b4aa193e4111b82030, type: 3}
-  _keyPrefab: {fileID: 2481416162441724105, guid: 19630d37a0b195c4ca08d5caa79ca0f2, type: 3}
+  _mapHight: 20
+  _mapWidth: 20

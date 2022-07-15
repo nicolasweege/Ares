@@ -21,7 +21,7 @@ public class AfroditeAimingState : AfroditeBaseState
             context.SwitchState(context.LaserShootState);
         }
 
-        Vector2 playerPos = PlayerSubAttackShipController.Instance.transform.position;
+        Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;

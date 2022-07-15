@@ -33,15 +33,8 @@ public class UIPauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        if (PlayerMainShipController.Instance.IsPlayerInSubShip)
-        {
-            PlayerMainShipController.Instance.PlayerInputActions.Enable();
-            PlayerMainShipController.Instance.PlayerInputActions.MainShip.Disable();
-        }
-        else
-        {
-            PlayerMainShipController.Instance.PlayerInputActions.Enable();
-        }
+
+        PlayerMainShipController.Instance.PlayerInputActions.Enable();
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
