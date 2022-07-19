@@ -25,11 +25,6 @@ public class AfroditeAimingState : AfroditeBaseState
             context.SwitchState(context.AimingState);
         }
 
-        /*if (context.transform.position == new Vector3(_currentMovePoint.x, _currentMovePoint.y))
-        {
-            context.SwitchState(context.LaserShootState);
-        }*/
-
         Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
