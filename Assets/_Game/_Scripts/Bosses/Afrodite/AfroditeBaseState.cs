@@ -10,7 +10,7 @@ public abstract class AfroditeBaseState
 
     public virtual void OnTriggerEnter(AfroditeController context, Collider2D other)
     {
-        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
+        if (other.CompareTag("PlayerMainShip"))
         {
             context.IsPlayerInRadar = true;
             context.BoxCollider.size = new Vector2(30f, 30f);
@@ -19,7 +19,7 @@ public abstract class AfroditeBaseState
 
     public virtual void OnTriggerExit(AfroditeController context, Collider2D other)
     {
-        if (other.CompareTag("PlayerMainShip") || other.CompareTag("PlayerSubAttackShip"))
+        if (other.CompareTag("PlayerMainShip"))
         {
             context.IsPlayerInRadar = false;
             context.BoxCollider.size = new Vector2(15f, 15f);

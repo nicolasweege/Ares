@@ -18,10 +18,14 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private GameObject _shield;
     [SerializeField] private GameObject _laserBeam;
     [SerializeField] private ParticleSystem _turbineFlame;
+    [SerializeField] private float _dashAmount;
+    [SerializeField] private LayerMask _dashRaycastLayerMask;
     private bool _isShieldEnabled = false;
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
+    private Rigidbody2D _rigidbody;
+    private bool _dashing = false;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
@@ -34,12 +38,22 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _shield.SetActive(false);
     }
 
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     private void Update()
     {
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
         HandleShield();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _dashing = true;
+        }
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -104,12 +118,26 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleMove()
     {
-        Vector2 moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>();
-        moveVector.Normalize();
+        Vector2 moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
         transform.position += new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _speed;
+        // _rigidbody.velocity = new Vector3(moveVector.x, moveVector.y) * _speed;
         float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
         float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);
         transform.position = new Vector3(xx, yy);
+
+        if (_dashing)
+        {
+            var dashPos = transform.position + new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _dashAmount;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVector, Time.deltaTime * _dashAmount, _dashRaycastLayerMask);
+            if (hit.collider != null)
+            {
+                dashPos = hit.point;
+            }
+
+            transform.position = dashPos;
+            _dashing = false;
+        }
     }
 
     private void Death()
@@ -135,15 +163,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
-        {
-            if (!_isShieldEnabled)
-            {
-                TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
-            }
-            other.GetComponent<BulletBase>().DestroyBullet();
-        }
-
-        if (other.CompareTag("PlayerSubAttackShipBullet"))
         {
             if (!_isShieldEnabled)
             {

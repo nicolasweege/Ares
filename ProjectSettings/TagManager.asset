@@ -8,8 +8,7 @@ TagManager:
   - Asteroid
   - Bullet
   - PlayerMainShip
-  - PlayerSubAttackShip
-  - PlayerSubAttackShipBullet
+  - Satellite
   layers:
   - Default
   - TransparentFX
@@ -17,18 +16,18 @@ TagManager:
   - 
   - Water
   - UI
-  - Player Sub Attack Ship [ Unit ]
-  - Player [ Bullet ]
+  - 
+  - Player Bullet
   - Afrodite
-  - Afrodite [ Bullet ]
+  - Afrodite Bullet
   - Teseu
-  - Teseu [ Bullet ]
+  - Teseu Bullet
   - 
   - Asteroid
   - 
   - 
-  - Player Main Ship [ Unit ]
-  - Player Sub Attack Ship [ Bullet ]
+  - Player Ship
+  - 
   - Satellite
   - 
   - 
@@ -50,28 +49,28 @@ TagManager:
   - name: Background
     uniqueID: 2738636265
     locked: 0
-  - name: Afrodite [ Bullet ]
+  - name: Afrodite Bullet
     uniqueID: 3974682491
     locked: 0
   - name: Afrodite
     uniqueID: 1307419071
     locked: 0
-  - name: Teseu [ Trail ]
+  - name: Teseu Trail
     uniqueID: 3670242705
     locked: 0
-  - name: Teseu [ Bullet ]
+  - name: Teseu Bullet
     uniqueID: 2628607417
     locked: 0
   - name: Teseu
     uniqueID: 2921591405
     locked: 0
-  - name: Player [ Trail ]
+  - name: Player Trail
     uniqueID: 1254644431
     locked: 0
   - name: Player
     uniqueID: 4065877639
     locked: 0
-  - name: Player [ Bullet ]
+  - name: Player Bullet
     uniqueID: 678046025
     locked: 0
   - name: Satellite

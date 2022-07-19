@@ -88,7 +88,9 @@ MonoBehaviour:
   _fireDir: {fileID: 3601124844114529875}
   _startVFX: {fileID: 188523795549292374}
   _endVFX: {fileID: 5371843745005849578}
-  _layerMask: Afrodite
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 470775
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4900,7 +4902,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 17
+  m_SortingLayer: 12
   m_SortingOrder: 1
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -5003,7 +5005,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1307419071
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -9843,7 +9845,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1307419071
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 17
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -14688,7 +14690,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 17
+  m_SortingLayer: 12
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19500,7 +19502,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1307419071
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 17
   m_RenderMode: 0
   m_MeshDistribution: 0

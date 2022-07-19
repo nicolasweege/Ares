@@ -10,7 +10,7 @@ public class SatelliteLaserController : MonoBehaviour
     [SerializeField] private Transform _fireDir;
     [SerializeField] private GameObject _startVFX;
     [SerializeField] private GameObject _endVFX;
-    [SerializeField] private string _layerMask;
+    [SerializeField] private LayerMask _layerMask;
     private Vector2 _laserDir;
     private List<ParticleSystem> _particles = new List<ParticleSystem>();
 
@@ -51,8 +51,7 @@ public class SatelliteLaserController : MonoBehaviour
         _laserDir = (Vector2)_fireDir.position - (Vector2)transform.position;
         _startVFX.transform.position = new Vector3(_fireStartingPos.position.x, _fireStartingPos.position.y, _startVFX.transform.position.z);
 
-        int layerMask = ~(LayerMask.GetMask(_layerMask));
-        RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, layerMask);
+        RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
 
         if (laserHit)
         {
