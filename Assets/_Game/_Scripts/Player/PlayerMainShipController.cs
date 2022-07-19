@@ -26,6 +26,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rigidbody;
     private bool _dashing = false;
+    private Vector2 _moveVector;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
@@ -118,18 +119,20 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleMove()
     {
-        Vector2 moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
-        transform.position += new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _speed;
+        _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
+        transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
+
         // _rigidbody.velocity = new Vector3(moveVector.x, moveVector.y) * _speed;
-        float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
+
+        /*float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
         float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);
-        transform.position = new Vector3(xx, yy);
+        transform.position = new Vector3(xx, yy);*/
 
         if (_dashing)
         {
-            var dashPos = transform.position + new Vector3(moveVector.x, moveVector.y) * Time.deltaTime * _dashAmount;
+            var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _dashAmount;
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, moveVector, Time.deltaTime * _dashAmount, _dashRaycastLayerMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveVector, Time.deltaTime * _dashAmount, _dashRaycastLayerMask);
             if (hit.collider != null)
             {
                 dashPos = hit.point;
@@ -182,5 +185,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             }
             // other.gameObject.GetComponent<EnemyBase>().Death();
         }
+
+        if (other.gameObject.CompareTag("Satellite"))
+            Death();
     }
 }

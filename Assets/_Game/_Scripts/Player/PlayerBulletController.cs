@@ -30,5 +30,11 @@ public class PlayerBulletController : BulletBase
 
         if (other.CompareTag("Asteroid"))
             DestroyBullet();
+
+        if (other.CompareTag("Satellite"))
+            DestroyBullet();
+
+        if (other.CompareTag("ArenaCollider"))
+            DestroyBullet();
     }
 }

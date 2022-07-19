@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 21683
+  controlID: 32976
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -403,9 +403,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.56420213, y: -4.046925, z: -2.8625412}
+    m_Target: {x: 1.7481874, y: -2.0525174, z: -3.2621605}
     speed: 2
-    m_Value: {x: 0.56420213, y: -4.046925, z: -2.8625412}
+    m_Value: {x: 1.7481874, y: -2.0525174, z: -3.2621605}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -456,9 +456,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 21.774284
+    m_Target: 24.848076
     speed: 2
-    m_Value: 21.774284
+    m_Value: 24.848076
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 21684
+  controlID: 32977
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -567,7 +567,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e8faffff
+      m_ExpandedIDs: e6c8fcff90c9fcffd8dffcff24f6fcffe8faffff38af050004b00500
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -659,21 +659,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Game/Prefabs/Satellite
+    - Assets/_Game/Prefabs/Player
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 72
   m_LastFolders:
-  - Assets/_Game/Prefabs/Satellite
+  - Assets/_Game/Prefabs/Player
   m_LastFoldersGridSize: 72
   m_LastProjectPath: C:\Users\nicolas\Documents\GitHub\Ares
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 65}
-    m_SelectedIDs: 44740000
-    m_LastClickedID: 29764
+    scrollPos: {x: 0, y: 60}
+    m_SelectedIDs: 42740000
+    m_LastClickedID: 29762
     m_ExpandedIDs: 000000002c7200002e72000030720000327200003472000036720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
