@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10000
-  _speed: 1
+  _speed: 2
   _amountOfCoins: 0
   _defaultDamage: 1
   _stoppingDist: 3
@@ -1471,6 +1471,11 @@ MonoBehaviour:
   BoxCollider: {fileID: 3996008156144159657}
   TurnSpeed: 5
   LaserBeam: {fileID: 578016837093814846}
+  MovePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!58 &4193644512958272751
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9630,7 +9635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631400426469461230, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_SortingLayer
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5631400426469461230, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_SortingOrder

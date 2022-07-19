@@ -89,7 +89,7 @@ MonoBehaviour:
   _endVFX: {fileID: 5371843745005849578}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 200695
+    m_Bits: 66295
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393968281
-  m_SortingLayer: 12
+  m_SortingLayer: 11
   m_SortingOrder: 17
   m_Positions:
   - {x: 0, y: 0, z: 0}

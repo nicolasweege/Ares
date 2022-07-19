@@ -19,7 +19,7 @@ public class AfroditeLaserShootState : AfroditeBaseState
         if (_timer <= 0f)
         {
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
-            context.SwitchState(context.IdleState);
+            context.SwitchState(context.AimingState);
         }
 
         context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();

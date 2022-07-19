@@ -1242,7 +1242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484012162}
   m_Layer: 0
-  m_Name: Point (3)
+  m_Name: Move Point Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,7 +1589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 535338330}
   m_Layer: 0
-  m_Name: Point (2)
+  m_Name: Move Point Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,7 +1886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855911929}
   m_Layer: 0
-  m_Name: Point
+  m_Name: Move Point Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2688,6 +2688,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Afrodite
       objectReference: {fileID: 0}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePointUp
+      value: 
+      objectReference: {fileID: 535338330}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePointDown
+      value: 
+      objectReference: {fileID: 484012162}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePointLeft
+      value: 
+      objectReference: {fileID: 1560535421}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePointRight
+      value: 
+      objectReference: {fileID: 855911929}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 535338330}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 484012162}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1560535421}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: MovePoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 855911929}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
 --- !u!4 &1254341897 stripped
@@ -3998,7 +4030,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1560535421}
   m_Layer: 0
-  m_Name: Point (1)
+  m_Name: Move Point Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

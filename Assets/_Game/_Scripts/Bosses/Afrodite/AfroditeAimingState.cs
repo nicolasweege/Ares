@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class AfroditeAimingState : AfroditeBaseState
 {
-    private float _timeToSwitchState = 3f;
+    private float _timeToSwitchState = 5f;
     private float _timer;
     private Vector2 _velocity = Vector2.zero;
+    private int _randomIndex;
+    private Vector2 _currentMovePoint;
 
     public override void EnterState(AfroditeController context)
     {
         _timer = _timeToSwitchState;
+        _randomIndex = Random.Range(0, context.MovePoints.Count);
+        _currentMovePoint = context.MovePoints[_randomIndex].position;
     }
 
     public override void UpdateState(AfroditeController context)
@@ -18,14 +22,19 @@ public class AfroditeAimingState : AfroditeBaseState
         _timer -= Time.deltaTime;
         if (_timer <= 0f)
         {
-            context.SwitchState(context.LaserShootState);
+            context.SwitchState(context.AimingState);
         }
+
+        /*if (context.transform.position == new Vector3(_currentMovePoint.x, _currentMovePoint.y))
+        {
+            context.SwitchState(context.LaserShootState);
+        }*/
 
         Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
-        context.transform.position = Vector2.SmoothDamp(context.transform.position, new Vector2(5f, 0f), ref _velocity, context.Speed);
+        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref _velocity, context.Speed);
     }
 }

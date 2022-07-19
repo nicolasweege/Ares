@@ -11,13 +11,13 @@ public class AfroditeController : EnemyBase
     [Range(0f, 100f)]
     public float TurnSpeed;
     public GameObject LaserBeam;
-
-    public float Speed { get => _speed; set => _speed = value; }
-
+    public List<Transform> MovePoints = new List<Transform>();
     public AfroditeBaseState CurrentState;
     public AfroditeIdleState IdleState = new AfroditeIdleState();
     public AfroditeLaserShootState LaserShootState = new AfroditeLaserShootState();
     public AfroditeAimingState AimingState = new AfroditeAimingState();
+
+    public float Speed { get => _speed; set => _speed = value; }
 
     protected override void Awake()
     {
