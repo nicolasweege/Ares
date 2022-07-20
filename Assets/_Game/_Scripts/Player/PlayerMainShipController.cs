@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -20,6 +21,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private ParticleSystem _turbineFlame;
     [SerializeField] private float _dashAmount;
     [SerializeField] private LayerMask _dashRaycastLayerMask;
+    [SerializeField] private UnityEvent ScreenShakeEvent;
     private bool _isShieldEnabled = false;
     private float _shootTimer;
     private Camera _camera;

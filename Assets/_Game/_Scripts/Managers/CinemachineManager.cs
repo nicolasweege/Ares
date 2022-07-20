@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Events;
 
 public class CinemachineManager : Singleton<CinemachineManager>
 {
@@ -12,4 +13,6 @@ public class CinemachineManager : Singleton<CinemachineManager>
         base.Awake();
         _cinemachineVMCam = GetComponent<CinemachineVirtualCamera>();
     }
+
+    public void ScreenShakeEvent(UnityEvent screenShakeEvent) => screenShakeEvent.Invoke();
 }
