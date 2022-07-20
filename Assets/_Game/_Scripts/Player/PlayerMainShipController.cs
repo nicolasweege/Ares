@@ -21,7 +21,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private ParticleSystem _turbineFlame;
     [SerializeField] private float _dashAmount;
     [SerializeField] private LayerMask _dashRaycastLayerMask;
-    [SerializeField] private UnityEvent ScreenShakeEvent;
+    [SerializeField] private Transform _aimTransform;
     private bool _isShieldEnabled = false;
     private float _shootTimer;
     private Camera _camera;
@@ -29,6 +29,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private Rigidbody2D _rigidbody;
     private bool _dashing = false;
     private Vector2 _moveVector;
+
+    [SerializeField] private UnityEvent ScreenShakeEvent;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
@@ -48,6 +50,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void Update()
     {
+        Vector3 mousePos = Utils.GetMouseWorldPosition();
+        _aimTransform.LookAt(mousePos);
+
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
