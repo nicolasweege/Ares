@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AfroditeController : EnemyBase
+public class AfroditeController : Singleton<AfroditeController>
 {
+    public int Health;
+    public float Speed;
+    [SerializeField] private GameObject _deathAnim;
     [Range(0f, 100f)]
     public float TurnSpeed;
     public GameObject LaserBeam;
@@ -28,8 +31,6 @@ public class AfroditeController : EnemyBase
     [SerializeField] private float _timeToCenterAttack;
     private float _centerAttackTimer;
 
-    public float Speed { get => _speed; set => _speed = value; }
-
     protected override void Awake()
     {
         base.Awake();
@@ -49,7 +50,7 @@ public class AfroditeController : EnemyBase
             _centerAttackTimer = _timeToCenterAttack;
         }
 
-        if (_health <= 0)
+        if (Health <= 0)
             Death();
 
         Debug.Log(CurrentState);
@@ -71,6 +72,12 @@ public class AfroditeController : EnemyBase
         CurrentState.OnTriggerExit(this, other);
     }
 
+    public virtual void Death()
+    {
+        Destroy(gameObject);
+        Instantiate(_deathAnim, transform.position, Quaternion.identity);
+    }
+
     public void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab)
     {
         if (PlayerMainShipController.Instance == null)
@@ -80,7 +87,7 @@ public class AfroditeController : EnemyBase
         Vector2 bulletDir = context.FirstStageBulletDir.position - bulletInst.transform.position;
         bulletDir.Normalize();
         float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
-        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle - 90f);
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 }
