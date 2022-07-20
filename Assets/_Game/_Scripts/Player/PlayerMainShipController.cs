@@ -179,6 +179,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
             }
             other.GetComponent<BulletBase>().DestroyBullet();
+            CinemachineManager.Instance.ScreenShakeEvent(ScreenShakeEvent);
         }
     }
 

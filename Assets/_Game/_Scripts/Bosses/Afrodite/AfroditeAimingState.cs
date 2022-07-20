@@ -9,6 +9,8 @@ public class AfroditeAimingState : AfroditeBaseState
     private Vector2 _velocity = Vector2.zero;
     private int _randomIndex;
     private Vector2 _currentMovePoint;
+    private float _timeToFirstStage = 1f;
+    private float _firstStageTimer;
 
     public override void EnterState(AfroditeController context)
     {
@@ -31,5 +33,21 @@ public class AfroditeAimingState : AfroditeBaseState
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref _velocity, context.Speed);
+
+        HandleFirstStage(context);
+    }
+
+    private void HandleFirstStage(AfroditeController context)
+    {
+        bool isEnemyVisible = context.GetComponentInChildren<SpriteRenderer>().isVisible;
+        if (!isEnemyVisible)
+            return;
+
+        _firstStageTimer -= Time.deltaTime;
+        if (_firstStageTimer <= 0f)
+        {
+            context.GenerateBullet(context, context.FirstStageBulletStartingPoint, context.FirstStageBullet);
+            _firstStageTimer = _timeToFirstStage;
+        }
     }
 }
