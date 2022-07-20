@@ -20,11 +20,8 @@ public class PlayerBulletController : BulletBase
 
         if (other.CompareTag("Enemy"))
         {
-            bool isEnemyVisible = other.GetComponentInChildren<SpriteRenderer>().isVisible;
-            if (!isEnemyVisible)
-                return;
-
-            other.GetComponent<EnemyBase>().TakeDamage(DefaultDamage);
+            AfroditeController.Instance.TakeDamage(_defaultDamage);
+            // other.GetComponent<EnemyBase>().TakeDamage(DefaultDamage);
             DestroyBullet();
         }
 

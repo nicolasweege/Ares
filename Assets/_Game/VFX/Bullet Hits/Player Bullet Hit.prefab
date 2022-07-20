@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8921673329648153650}
   - component: {fileID: 8921673329648153653}
   m_Layer: 0
-  m_Name: Player Sub Attack Ship Bullet Hit
+  m_Name: Player Bullet Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,17 +70,20 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.037390407, y: 1.4980392, z: 0, w: 0.39215687}
+      - m_Value: {x: 0.23340061, y: 1.9681013, z: 2.1513445, w: 0.39215687}
         m_Name: Blue
         m_Overridden: 1
-      - m_Value: {x: 0, y: 67.79352, z: 2.1296391, w: 0.39215687}
+      - m_Value: {x: 0, y: 3.9978054, z: 4.7593803, w: 0.39215687}
         m_Name: White
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1, z: 0, w: 1}
-        m_Name: Color 1
+      - m_Value: {x: 0, y: 1.4980392, z: 1.4980392, w: 0.39215687}
+        m_Name: FlashColor
         m_Overridden: 1
-      - m_Value: {x: 0, y: 1, z: 0, w: 1}
-        m_Name: Color 2
+      - m_Value: {x: 0, y: 5.992157, z: 5.992157, w: 0.39215687}
+        m_Name: CrossColor
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 8, z: 7.9686275, w: 0.39215687}
+        m_Name: ParticlesColor
         m_Overridden: 1
     m_Uint:
       m_Array: []
@@ -134,5 +137,5 @@ VFXRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 16
+  m_SortingLayer: 13
   m_SortingOrder: 0

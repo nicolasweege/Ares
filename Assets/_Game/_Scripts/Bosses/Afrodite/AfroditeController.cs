@@ -13,6 +13,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public GameObject LaserBeam;
     public Transform MovePointCenter;
     public List<Transform> MovePoints = new List<Transform>();
+    public Vector3 FirstStageProjectileDir;
 
     #region First Stage Props
     public GameObject FirstStageBullet;
@@ -72,6 +73,8 @@ public class AfroditeController : Singleton<AfroditeController>
         CurrentState.OnTriggerExit(this, other);
     }
 
+    public int TakeDamage(int damage) => Health -= damage;
+
     public virtual void Death()
     {
         Destroy(gameObject);
@@ -84,10 +87,10 @@ public class AfroditeController : Singleton<AfroditeController>
             return;
 
         var bulletInst = Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
-        Vector2 bulletDir = context.FirstStageBulletDir.position - bulletInst.transform.position;
-        bulletDir.Normalize();
-        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        FirstStageProjectileDir = context.FirstStageBulletDir.position - bulletInst.transform.position;
+        FirstStageProjectileDir.Normalize();
+        float bulletAngle = Mathf.Atan2(FirstStageProjectileDir.y, FirstStageProjectileDir.x) * Mathf.Rad2Deg;
         bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(FirstStageProjectileDir.x, FirstStageProjectileDir.y);
     }
 }

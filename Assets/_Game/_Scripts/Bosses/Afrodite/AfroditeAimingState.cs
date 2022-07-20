@@ -39,10 +39,6 @@ public class AfroditeAimingState : AfroditeBaseState
 
     private void HandleFirstStage(AfroditeController context)
     {
-        bool isEnemyVisible = context.GetComponentInChildren<SpriteRenderer>().isVisible;
-        if (!isEnemyVisible)
-            return;
-
         _firstStageTimer -= Time.deltaTime;
         if (_firstStageTimer <= 0f)
         {
