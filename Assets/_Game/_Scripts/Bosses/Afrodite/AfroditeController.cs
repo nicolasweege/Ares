@@ -13,12 +13,12 @@ public class AfroditeController : Singleton<AfroditeController>
     public GameObject LaserBeam;
     public Transform MovePointCenter;
     public List<Transform> MovePoints = new List<Transform>();
-    public Vector3 FirstStageProjectileDir;
 
     #region First Stage Props
-    public GameObject FirstStageBullet;
-    public Transform FirstStageBulletStartingPoint;
-    public Transform FirstStageBulletDir;
+    public Vector3 CurrentFirstStageProjectileDir;
+    public GameObject FirstStageProjectile;
+    public Transform FirstStageProjectileStartingPoint;
+    public Transform FirstStageProjectileDir;
     #endregion
 
     #region States
@@ -87,10 +87,10 @@ public class AfroditeController : Singleton<AfroditeController>
             return;
 
         var bulletInst = Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
-        FirstStageProjectileDir = context.FirstStageBulletDir.position - bulletInst.transform.position;
-        FirstStageProjectileDir.Normalize();
-        float bulletAngle = Mathf.Atan2(FirstStageProjectileDir.y, FirstStageProjectileDir.x) * Mathf.Rad2Deg;
+        CurrentFirstStageProjectileDir = context.FirstStageProjectileDir.position - bulletInst.transform.position;
+        CurrentFirstStageProjectileDir.Normalize();
+        float bulletAngle = Mathf.Atan2(CurrentFirstStageProjectileDir.y, CurrentFirstStageProjectileDir.x) * Mathf.Rad2Deg;
         bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(FirstStageProjectileDir.x, FirstStageProjectileDir.y);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(CurrentFirstStageProjectileDir.x, CurrentFirstStageProjectileDir.y);
     }
 }

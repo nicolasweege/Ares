@@ -56,11 +56,8 @@ public class PlayerLaserBeamController : MonoBehaviour
         {
             if (laserHit.collider.gameObject.CompareTag("Enemy"))
             {
-                bool isEnemyVisible = laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible;
-                if (isEnemyVisible)
-                {
-                    laserHit.collider.GetComponent<EnemyBase>().TakeDamage(_defaultDamage);
-                }
+                // laserHit.collider.GetComponent<EnemyBase>().TakeDamage(_defaultDamage);
+                AfroditeController.Instance.TakeDamage(_defaultDamage);
             }
 
             _lineRenderer.SetPosition(1, laserHit.point);

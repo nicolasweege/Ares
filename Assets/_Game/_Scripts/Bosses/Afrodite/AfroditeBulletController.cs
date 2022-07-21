@@ -4,31 +4,20 @@ using UnityEngine;
 
 public class AfroditeBulletController : BulletBase
 {
+    [SerializeField] private float _stopingDist;
     [SerializeField] private float _timeToRecover;
     [SerializeField] private Transform _damageAnimSpawnPoint;
-    private float _recoverTimer;
-    private Rigidbody2D _rigidbody;
+    private bool _isOnStopingDist = false;
 
     protected override void Awake()
     {
         base.Awake();
         _destroyVisibleBulletTimer = _timeToDestroyVisibleBullet;
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _recoverTimer = _timeToRecover;
     }
 
     private void Update()
     {
-        _recoverTimer -= Time.deltaTime;
-        if (_recoverTimer <= 0f)
-        {
-            RecoverProjectile();
-            // _recoverTimer = _timeToRecover;
-        }
-        else
-        {
-            MoveProjectile();
-        }
+        MoveProjectile();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,23 +31,28 @@ public class AfroditeBulletController : BulletBase
 
     public override void DestroyBullet()
     {
-        Destroy(gameObject);
         Instantiate(_damageAnim, _damageAnimSpawnPoint.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void MoveProjectile()
     {
-        Vector2 bulletDir = PlayerMainShipController.Instance.transform.position - transform.position;
-        bulletDir.Normalize();
-        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        _direction = new Vector3(bulletDir.x, bulletDir.y);
-        transform.position += _direction * Time.deltaTime * _speed;
-    }
+        var playerPos = PlayerMainShipController.Instance.transform.position;
 
-    private void RecoverProjectile()
-    {
-        // _direction = AfroditeController.Instance.FirstStageProjectileDir;
-        transform.position += _direction * Time.deltaTime * _speed;
+        if (Vector2.Distance(transform.position, playerPos) < _stopingDist)
+            _isOnStopingDist = true;
+
+        if (Vector2.Distance(transform.position, playerPos) >= _stopingDist && !_isOnStopingDist)
+        {
+            Vector2 bulletDir = PlayerMainShipController.Instance.transform.position - transform.position;
+            bulletDir.Normalize();
+            float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+            _direction = new Vector3(bulletDir.x, bulletDir.y);
+            transform.position += _direction * Time.deltaTime * _speed;
+        }
+
+        if (_isOnStopingDist)
+            transform.position += _direction * Time.deltaTime * _speed;
     }
 }

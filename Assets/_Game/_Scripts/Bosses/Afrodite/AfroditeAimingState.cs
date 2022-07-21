@@ -42,7 +42,7 @@ public class AfroditeAimingState : AfroditeBaseState
         _firstStageTimer -= Time.deltaTime;
         if (_firstStageTimer <= 0f)
         {
-            context.GenerateBullet(context, context.FirstStageBulletStartingPoint, context.FirstStageBullet);
+            context.GenerateBullet(context, context.FirstStageProjectileStartingPoint, context.FirstStageProjectile);
             _firstStageTimer = _timeToFirstStage;
         }
     }

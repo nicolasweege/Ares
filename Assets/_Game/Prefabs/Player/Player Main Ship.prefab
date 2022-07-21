@@ -5180,7 +5180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1000
-  _speed: 8
+  _speed: 7
   _defaultDamage: 1
   _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
   _bulletStartingPos: {fileID: 2080581498894607699}
@@ -5684,7 +5684,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!1 &8398967263433771424
 GameObject:
   m_ObjectHideFlags: 0
