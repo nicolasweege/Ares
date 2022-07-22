@@ -5196,7 +5196,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 405495
   _aimTransform: {fileID: 3655777091004263308}
-  ScreenShakeEvent:
+  _screenShakeEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5840707007084685990}

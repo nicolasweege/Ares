@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AfroditeLaserShootState : AfroditeBaseState
+public class AfroditeSecondStageState : AfroditeBaseState
 {
     private float _timeToSwitchState = 5f;
     private float _timer;
@@ -19,7 +19,7 @@ public class AfroditeLaserShootState : AfroditeBaseState
         if (_timer <= 0f)
         {
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
-            context.SwitchState(context.AimingState);
+            context.SwitchState(context.FirstStageState);
         }
 
         context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();

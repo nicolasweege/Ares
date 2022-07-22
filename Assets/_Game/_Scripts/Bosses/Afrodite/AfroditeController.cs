@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AfroditeController : Singleton<AfroditeController>
 {
@@ -21,34 +22,42 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform FirstStageProjectileDir;
     #endregion
 
-    #region States
-    public AfroditeBaseState CurrentState;
-    public AfroditeIdleState IdleState = new AfroditeIdleState();
-    public AfroditeLaserShootState LaserShootState = new AfroditeLaserShootState();
-    public AfroditeAimingState AimingState = new AfroditeAimingState();
-    public AfroditeCenterAttackState CenterAttackState = new AfroditeCenterAttackState();
+    #region Third Stage Props
+    [SerializeField] private float _timeToThirdStage;
+    private float _thirdStageTimer;
+    public GameObject ThirdStageProjectile;
     #endregion
 
-    [SerializeField] private float _timeToCenterAttack;
-    private float _centerAttackTimer;
+    #region Stage States
+    public AfroditeBaseState CurrentState;
+    public AfroditeIdleState IdleState = new AfroditeIdleState();
+    public AfroditeSecondStageState SecondStageState = new AfroditeSecondStageState();
+    public AfroditeFirstStageState FirstStageState = new AfroditeFirstStageState();
+    public AfroditeThirdStageState ThirdStageState = new AfroditeThirdStageState();
+    #endregion
+
+    public UnityEvent ScreenShakeEvent;
 
     protected override void Awake()
     {
         base.Awake();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
-        _centerAttackTimer = _timeToCenterAttack;
+        _thirdStageTimer = _timeToThirdStage;
     }
 
     private void Update()
     {
         CurrentState.UpdateState(this);
 
-        _centerAttackTimer -= Time.deltaTime;
-        if (_centerAttackTimer <= 0)
+        if (CurrentState != ThirdStageState)
         {
-            SwitchState(CenterAttackState);
-            _centerAttackTimer = _timeToCenterAttack;
+            _thirdStageTimer -= Time.deltaTime;
+            if (_thirdStageTimer <= 0f)
+            {
+                SwitchState(ThirdStageState);
+                _thirdStageTimer = _timeToThirdStage;
+            }
         }
 
         if (Health <= 0)
@@ -79,18 +88,5 @@ public class AfroditeController : Singleton<AfroditeController>
     {
         Destroy(gameObject);
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
-    }
-
-    public void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab)
-    {
-        if (PlayerMainShipController.Instance == null)
-            return;
-
-        var bulletInst = Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
-        CurrentFirstStageProjectileDir = context.FirstStageProjectileDir.position - bulletInst.transform.position;
-        CurrentFirstStageProjectileDir.Normalize();
-        float bulletAngle = Mathf.Atan2(CurrentFirstStageProjectileDir.y, CurrentFirstStageProjectileDir.x) * Mathf.Rad2Deg;
-        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(CurrentFirstStageProjectileDir.x, CurrentFirstStageProjectileDir.y);
     }
 }

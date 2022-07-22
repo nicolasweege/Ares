@@ -30,7 +30,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private bool _dashing = false;
     private Vector2 _moveVector;
 
-    [SerializeField] private UnityEvent ScreenShakeEvent;
+    [SerializeField] private UnityEvent _screenShakeEvent;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
@@ -179,7 +179,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
             }
             other.GetComponent<BulletBase>().DestroyBullet();
-            CinemachineManager.Instance.ScreenShakeEvent(ScreenShakeEvent);
+            CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
         }
     }
 
