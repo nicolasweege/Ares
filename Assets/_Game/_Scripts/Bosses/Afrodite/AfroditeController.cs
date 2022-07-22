@@ -9,31 +9,32 @@ public class AfroditeController : Singleton<AfroditeController>
     public int Health;
     public float Speed;
     [SerializeField] private GameObject _deathAnim;
-    [Range(0f, 100f)]
-    public float TurnSpeed;
+    [Range(0f, 100f)] public float TurnSpeed;
     public GameObject LaserBeam;
     public Transform MovePointCenter;
     public List<Transform> MovePoints = new List<Transform>();
 
     #region First Stage Props
-    public Vector3 CurrentFirstStageProjectileDir;
+    [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
     public GameObject FirstStageProjectile;
     public Transform FirstStageProjectileStartingPoint;
     public Transform FirstStageProjectileDir;
+    [Range(0f, 100f)] public float FirstStageProjectileTurnSpeed;
     #endregion
 
     #region Third Stage Props
     [SerializeField] private float _timeToThirdStage;
     private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
+    public List<Transform> ThirdStageProjectileDirections = new List<Transform>();
     #endregion
 
     #region Stage States
-    public AfroditeBaseState CurrentState;
-    public AfroditeIdleState IdleState = new AfroditeIdleState();
-    public AfroditeSecondStageState SecondStageState = new AfroditeSecondStageState();
-    public AfroditeFirstStageState FirstStageState = new AfroditeFirstStageState();
-    public AfroditeThirdStageState ThirdStageState = new AfroditeThirdStageState();
+    [NonSerialized] public AfroditeBaseState CurrentState;
+    [NonSerialized] public AfroditeIdleState IdleState = new AfroditeIdleState();
+    [NonSerialized] public AfroditeSecondStageState SecondStageState = new AfroditeSecondStageState();
+    [NonSerialized] public AfroditeFirstStageState FirstStageState = new AfroditeFirstStageState();
+    [NonSerialized] public AfroditeThirdStageState ThirdStageState = new AfroditeThirdStageState();
     #endregion
 
     public UnityEvent ScreenShakeEvent;

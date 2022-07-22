@@ -11,6 +11,8 @@ public class AfroditeThirdStageState : AfroditeBaseState
     private float _shootTimer;
     private float _timeToBreak = 3f;
     private float _breakTimer;
+    private int _randomIndex;
+    private Vector2 _currentBulletDir;
 
     public override void EnterState(AfroditeController context)
     {
@@ -47,22 +49,22 @@ public class AfroditeThirdStageState : AfroditeBaseState
         _shootTimer -= Time.deltaTime;
         if (_shootTimer <= 0f)
         {
-            GenerateBullet(context, context.transform, context.ThirdStageProjectile, context.FirstStageProjectileDir);
+            _randomIndex = Random.Range(0, context.ThirdStageProjectileDirections.Count);
+            _currentBulletDir = context.ThirdStageProjectileDirections[_randomIndex].position;
+            GenerateBullet(context, context.transform, context.ThirdStageProjectile);
             _shootTimer = _timeToShoot;
         }
     }
 
-    private void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
+    private void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab)
     {
         if (PlayerMainShipController.Instance == null)
             return;
 
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
-        // context.CurrentFirstStageProjectileDir = projectileDir.position - bulletInst.transform.position;
-        Vector2 projectileDirection = projectileDir.position - bulletInst.transform.position;
-        projectileDirection.Normalize();
-        float bulletAngle = Mathf.Atan2(projectileDirection.y, projectileDirection.x) * Mathf.Rad2Deg;
-        // bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(projectileDirection.x, projectileDirection.y);
+        _currentBulletDir.Normalize();
+        float bulletAngle = Mathf.Atan2(_currentBulletDir.y, _currentBulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(_currentBulletDir.x, _currentBulletDir.y);
     }
 }

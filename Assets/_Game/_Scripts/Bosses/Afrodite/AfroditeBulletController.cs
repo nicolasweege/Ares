@@ -5,7 +5,6 @@ using UnityEngine;
 public class AfroditeBulletController : BulletBase
 {
     [SerializeField] private float _stopingDist;
-    [SerializeField] private float _timeToRecover;
     [SerializeField] private Transform _damageAnimSpawnPoint;
     private bool _isOnStopingDist = false;
 
@@ -48,6 +47,7 @@ public class AfroditeBulletController : BulletBase
             bulletDir.Normalize();
             float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+            // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, bulletAngle), AfroditeController.Instance.FirstStageProjectileTurnSpeed * Time.deltaTime);
             _direction = new Vector3(bulletDir.x, bulletDir.y);
             transform.position += _direction * Time.deltaTime * _speed;
         }

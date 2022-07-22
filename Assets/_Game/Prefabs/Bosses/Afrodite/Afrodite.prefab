@@ -1536,12 +1536,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  CurrentFirstStageProjectileDir: {x: 0, y: 0, z: 0}
   FirstStageProjectile: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
   FirstStageProjectileStartingPoint: {fileID: 337551333127773696}
   FirstStageProjectileDir: {fileID: 1020920847562995013}
+  FirstStageProjectileTurnSpeed: 8
   _timeToThirdStage: 20
-  ThirdStageProjectile: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
+  ThirdStageProjectile: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
+  ThirdStageProjectileDirections:
+  - {fileID: 1721166800716924963}
+  - {fileID: 5333835564153023752}
+  - {fileID: 3905179536431990606}
+  - {fileID: 3353711287837984122}
+  - {fileID: 275059834197122026}
+  - {fileID: 4415106784888062572}
+  - {fileID: 6528938632137398057}
+  - {fileID: 7361440172720490730}
   ScreenShakeEvent:
     m_PersistentCalls:
       m_Calls:

@@ -55,9 +55,6 @@ public class AfroditeFirstStageState : AfroditeBaseState
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         context.CurrentFirstStageProjectileDir = projectileDir.position - bulletInst.transform.position;
         context.CurrentFirstStageProjectileDir.Normalize();
-        float bulletAngle = Mathf.Atan2(context.CurrentFirstStageProjectileDir.y, context.CurrentFirstStageProjectileDir.x) * Mathf.Rad2Deg;
-        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        bulletInst.transform.rotation = Quaternion.Slerp(bulletInst.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(context.CurrentFirstStageProjectileDir.x, context.CurrentFirstStageProjectileDir.y);
     }
 }
