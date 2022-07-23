@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AfroditeThirdStageState : AfroditeBaseState
 {
-    private Vector2 _velocity = Vector2.zero;
     private float _timeToSwitchState = 8f;
     private float _switchStateTimer;
     private float _timeToFirstWaveShoot = 0.2f;
@@ -16,7 +15,7 @@ public class AfroditeThirdStageState : AfroditeBaseState
     private float _timeToShakeScreen = 0.5f;
     private float _screenShakeTimer;
     private bool _isFirstWaveFinished = false;
-    private float _speedToCenter = 1f;
+    private float _speedToMovePointCenter = 1f;
 
     public override void EnterState(AfroditeController context)
     {
@@ -28,7 +27,7 @@ public class AfroditeThirdStageState : AfroditeBaseState
     {
         if (Vector2.Distance(context.transform.position, context.MovePointCenter.position) > 0.5f)
         {
-            context.transform.position = Vector2.SmoothDamp(context.transform.position, context.MovePointCenter.position, ref _velocity, _speedToCenter);
+            context.transform.position = Vector2.SmoothDamp(context.transform.position, context.MovePointCenter.position, ref context.Velocity, _speedToMovePointCenter);
         }
         else
         {

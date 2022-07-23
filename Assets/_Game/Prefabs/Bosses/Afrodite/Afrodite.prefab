@@ -1757,6 +1757,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Velocity: {x: 0, y: 0}
   FirstStageProjectile: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
   FirstStageProjectileStartingPoint1: {fileID: 337551333127773696}
   FirstStageProjectileStartingPoint2: {fileID: 5352337545257554005}
@@ -1765,7 +1766,7 @@ MonoBehaviour:
   FirstStageProjectileTurnSpeed: 8
   TurretTransform1: {fileID: 2306212057705355940}
   TurretTransform2: {fileID: 1521764583869096347}
-  _timeToThirdStage: 20
+  _timeToThirdStage: 10
   ThirdStageProjectile: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
   ThirdStageFirstWaveShootDirections:
   - {fileID: 1721166800716924963}

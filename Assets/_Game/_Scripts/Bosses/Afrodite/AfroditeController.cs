@@ -13,6 +13,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public GameObject LaserBeam;
     public Transform MovePointCenter;
     public List<Transform> MovePoints = new List<Transform>();
+    public Vector2 Velocity = Vector2.zero;
 
     #region First Stage Props
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
