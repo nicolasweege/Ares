@@ -137,9 +137,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (_dashing)
         {
-            var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _dashAmount;
+            var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveVector, Time.deltaTime * _dashAmount, _dashRaycastLayerMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveVector, _dashAmount, _dashRaycastLayerMask);
             if (hit.collider != null)
             {
                 dashPos = hit.point;
@@ -185,15 +185,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            if (!_isShieldEnabled)
-            {
-                TakeDamage(other.gameObject.GetComponent<EnemyBase>().DefaultDamage);
-            }
-            // other.gameObject.GetComponent<EnemyBase>().Death();
-        }
-
         if (other.gameObject.CompareTag("Satellite"))
             Death();
     }
