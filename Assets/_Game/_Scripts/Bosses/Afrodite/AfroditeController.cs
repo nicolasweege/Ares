@@ -17,10 +17,13 @@ public class AfroditeController : Singleton<AfroditeController>
     #region First Stage Props
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
     public GameObject FirstStageProjectile;
-    public Transform FirstStageProjectileStartingPoint;
-    public Transform FirstStageProjectileDir;
+    public Transform FirstStageProjectileStartingPoint1;
+    public Transform FirstStageProjectileStartingPoint2;
+    public Transform FirstStageProjectileDir1;
+    public Transform FirstStageProjectileDir2;
     [Range(0f, 100f)] public float FirstStageProjectileTurnSpeed;
-    public Transform TurretTransform;
+    public Transform TurretTransform1;
+    public Transform TurretTransform2;
     #endregion
 
     #region Third Stage Props

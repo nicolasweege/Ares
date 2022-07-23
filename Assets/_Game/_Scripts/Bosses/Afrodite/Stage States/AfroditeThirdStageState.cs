@@ -88,9 +88,6 @@ public class AfroditeThirdStageState : AfroditeBaseState
 
     private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
     {
-        if (PlayerMainShipController.Instance == null)
-            return;
-
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
         bulletDir.Normalize();

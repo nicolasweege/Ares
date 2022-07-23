@@ -336,6 +336,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &183876010114798435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4159446685612539747}
+  m_Layer: 8
+  m_Name: First Stage Projectile Dir
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4159446685612539747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183876010114798435}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.834, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1106025544247675343}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &197161286827434422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,11 +1758,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   FirstStageProjectile: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
-  FirstStageProjectileStartingPoint: {fileID: 337551333127773696}
-  FirstStageProjectileDir: {fileID: 1020920847562995013}
+  FirstStageProjectileStartingPoint1: {fileID: 337551333127773696}
+  FirstStageProjectileStartingPoint2: {fileID: 5352337545257554005}
+  FirstStageProjectileDir1: {fileID: 1020920847562995013}
+  FirstStageProjectileDir2: {fileID: 4159446685612539747}
   FirstStageProjectileTurnSpeed: 8
-  TurretTransform: {fileID: 2306212057705355940}
-  _timeToThirdStage: 10
+  TurretTransform1: {fileID: 2306212057705355940}
+  TurretTransform2: {fileID: 1521764583869096347}
+  _timeToThirdStage: 20
   ThirdStageProjectile: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
   ThirdStageFirstWaveShootDirections:
   - {fileID: 1721166800716924963}
@@ -1992,7 +2026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5728191210288691090}
   m_Layer: 0
-  m_Name: Coisas do script
+  m_Name: Coisas de script
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2024,7 +2058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9076877974552295658}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Turrets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3171,6 +3205,7 @@ Transform:
   - {fileID: 1323610634170932445}
   - {fileID: 2073858668756149443}
   - {fileID: 1545733287270433002}
+  - {fileID: 1106025544247675343}
   m_Father: {fileID: 2925585760920471793}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6787,6 +6822,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5791395211245083744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106025544247675343}
+  m_Layer: 0
+  m_Name: First Stage Projectile Handler (coisa de script) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106025544247675343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791395211245083744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5352337545257554005}
+  - {fileID: 4159446685612539747}
+  m_Father: {fileID: 1521764583869096347}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5917157848058768586
 GameObject:
   m_ObjectHideFlags: 0
@@ -10281,6 +10349,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8379013191479895215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5352337545257554005}
+  m_Layer: 8
+  m_Name: First Stage Projectile Starting Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5352337545257554005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8379013191479895215}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.334, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1106025544247675343}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8468992551996748679
 GameObject:
   m_ObjectHideFlags: 0

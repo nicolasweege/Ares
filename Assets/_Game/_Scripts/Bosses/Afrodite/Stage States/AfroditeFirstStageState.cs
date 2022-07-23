@@ -9,8 +9,11 @@ public class AfroditeFirstStageState : AfroditeBaseState
     private Vector2 _velocity = Vector2.zero;
     private int _randomIndex;
     private Vector2 _currentMovePoint;
-    private float _timeToShoot = 1f;
-    private float _shootTimer;
+    private float _timeToFirstWaveShoot = 0.1f;
+    private float _firstWaveShootTimer;
+    private float _timeToSecondWaveShoot = 0.2f;
+    private float _secondWaveShootTimer;
+    private bool _isFirstWaveFinished = false;
 
     public override void EnterState(AfroditeController context)
     {
@@ -34,17 +37,33 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref _velocity, context.Speed);
 
-        HandleAim(context);
+        HandleTurretAim(context.TurretTransform1);
+        HandleTurretAim(context.TurretTransform2);
         HandleAttack(context);
     }
 
     private void HandleAttack(AfroditeController context)
     {
-        _shootTimer -= Time.deltaTime;
-        if (_shootTimer <= 0f)
+        if (!_isFirstWaveFinished)
         {
-            GenerateBullet(context, context.FirstStageProjectileStartingPoint, context.FirstStageProjectile, context.FirstStageProjectileDir);
-            _shootTimer = _timeToShoot;
+            _firstWaveShootTimer -= Time.deltaTime;
+            if (_firstWaveShootTimer <= 0f)
+            {
+                GenerateBullet(context, context.FirstStageProjectileStartingPoint1, context.FirstStageProjectile, context.FirstStageProjectileDir1);
+                _isFirstWaveFinished = true;
+                _firstWaveShootTimer = _timeToFirstWaveShoot;
+            }
+        }
+
+        if (_isFirstWaveFinished)
+        {
+            _secondWaveShootTimer -= Time.deltaTime;
+            if (_secondWaveShootTimer <= 0f)
+            {
+                GenerateBullet(context, context.FirstStageProjectileStartingPoint2, context.FirstStageProjectile, context.FirstStageProjectileDir2);
+                _isFirstWaveFinished = false;
+                _secondWaveShootTimer = _timeToSecondWaveShoot;
+            }
         }
     }
 
@@ -59,13 +78,13 @@ public class AfroditeFirstStageState : AfroditeBaseState
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(context.CurrentFirstStageProjectileDir.x, context.CurrentFirstStageProjectileDir.y);
     }
 
-    private Vector2 HandleAim(AfroditeController context)
+    private Vector2 HandleTurretAim(Transform turretTransform)
     {
         Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
-        Vector2 lookDir = playerPos - new Vector2(context.TurretTransform.position.x, context.TurretTransform.position.y);
+        Vector2 lookDir = playerPos - new Vector2(turretTransform.position.x, turretTransform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        context.TurretTransform.rotation = Quaternion.Slerp(context.TurretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), 10f * Time.deltaTime);
+        turretTransform.rotation = Quaternion.Slerp(turretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), 20f * Time.deltaTime);
         return lookDir;
     }
 }

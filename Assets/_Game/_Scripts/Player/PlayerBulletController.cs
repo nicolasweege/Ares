@@ -13,10 +13,7 @@ public class PlayerBulletController : BulletBase
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Bullet"))
-        {
-            other.GetComponent<BulletBase>().DestroyBullet();
             DestroyBullet();
-        }
 
         if (other.CompareTag("Enemy"))
         {
