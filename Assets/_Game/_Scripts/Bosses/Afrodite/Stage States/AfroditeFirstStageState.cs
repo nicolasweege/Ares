@@ -34,6 +34,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref _velocity, context.Speed);
 
+        HandleAim(context);
         HandleAttack(context);
     }
 
@@ -56,5 +57,15 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.CurrentFirstStageProjectileDir = projectileDir.position - bulletInst.transform.position;
         context.CurrentFirstStageProjectileDir.Normalize();
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(context.CurrentFirstStageProjectileDir.x, context.CurrentFirstStageProjectileDir.y);
+    }
+
+    private Vector2 HandleAim(AfroditeController context)
+    {
+        Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
+        Vector2 lookDir = playerPos - new Vector2(context.TurretTransform.position.x, context.TurretTransform.position.y);
+        lookDir.Normalize();
+        float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        context.TurretTransform.rotation = Quaternion.Slerp(context.TurretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), 10f * Time.deltaTime);
+        return lookDir;
     }
 }

@@ -36,7 +36,7 @@ public class AfroditeBulletController : BulletBase
 
     private void MoveProjectile()
     {
-        var playerPos = PlayerMainShipController.Instance.transform.position;
+        /*var playerPos = PlayerMainShipController.Instance.transform.position;
 
         if (Vector2.Distance(transform.position, playerPos) < _stopingDist)
             _isOnStopingDist = true;
@@ -52,7 +52,7 @@ public class AfroditeBulletController : BulletBase
             transform.position += _direction * Time.deltaTime * _speed;
         }
 
-        if (_isOnStopingDist)
+        if (_isOnStopingDist)*/
             transform.position += _direction * Time.deltaTime * _speed;
     }
 }

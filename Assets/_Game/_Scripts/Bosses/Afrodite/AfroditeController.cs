@@ -20,13 +20,13 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform FirstStageProjectileStartingPoint;
     public Transform FirstStageProjectileDir;
     [Range(0f, 100f)] public float FirstStageProjectileTurnSpeed;
+    public Transform TurretTransform;
     #endregion
 
     #region Third Stage Props
     [SerializeField] private float _timeToThirdStage;
     private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
-    public List<Transform> ThirdStageProjectileDirections = new List<Transform>();
     public List<Transform> ThirdStageFirstWaveShootDirections = new List<Transform>();
     public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
     #endregion
