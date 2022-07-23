@@ -5191,7 +5191,7 @@ MonoBehaviour:
   _shield: {fileID: 7617916817057230784}
   _laserBeam: {fileID: 4005503774356786776}
   _turbineFlame: {fileID: 637379536331507086}
-  _dashAmount: 100
+  _dashAmount: 2
   _dashRaycastLayerMask:
     serializedVersion: 2
     m_Bits: 405495
