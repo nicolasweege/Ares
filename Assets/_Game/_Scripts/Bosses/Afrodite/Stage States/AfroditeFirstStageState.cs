@@ -34,10 +34,10 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref _velocity, context.Speed);
 
-        Attack(context);
+        HandleAttack(context);
     }
 
-    private void Attack(AfroditeController context)
+    private void HandleAttack(AfroditeController context)
     {
         _shootTimer -= Time.deltaTime;
         if (_shootTimer <= 0f)

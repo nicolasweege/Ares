@@ -27,6 +27,8 @@ public class AfroditeController : Singleton<AfroditeController>
     private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
     public List<Transform> ThirdStageProjectileDirections = new List<Transform>();
+    public List<Transform> ThirdStageFirstWaveShootDirections = new List<Transform>();
+    public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
     #endregion
 
     #region Stage States
