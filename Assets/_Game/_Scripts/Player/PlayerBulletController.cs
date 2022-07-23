@@ -14,14 +14,13 @@ public class PlayerBulletController : BulletBase
     {
         if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<BulletBase>().DestroyBullet();
             DestroyBullet();
         }
 
         if (other.CompareTag("Enemy"))
         {
             AfroditeController.Instance.TakeDamage(_defaultDamage);
-            // other.GetComponent<EnemyBase>().TakeDamage(DefaultDamage);
             DestroyBullet();
         }
 
