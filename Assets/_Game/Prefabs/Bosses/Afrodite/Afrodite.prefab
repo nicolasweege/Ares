@@ -1704,7 +1704,7 @@ GameObject:
   - component: {fileID: 6812555322137856018}
   m_Layer: 8
   m_Name: Afrodite
-  m_TagString: Enemy
+  m_TagString: AfroditeMainShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1744,9 +1744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07919b299eb4e6448d07f2511a58aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10000
+  Health: 1000
   Speed: 2.5
-  _deathAnim: {fileID: 8921673329648153652, guid: 2adc510d8779ced45a490092d7dbe5b9, type: 3}
+  DeathAnim: {fileID: 8921673329648153652, guid: a33ec7d9639f7b440a132d9aafe9dc5c, type: 3}
   TurnSpeed: 1
   LaserBeam: {fileID: 578016837093814846}
   MovePointCenter: {fileID: 0}
@@ -1757,7 +1757,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Velocity: {x: 0, y: 0}
   FirstStageProjectile: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
   FirstStageProjectileStartingPoint1: {fileID: 337551333127773696}
   FirstStageProjectileStartingPoint2: {fileID: 5352337545257554005}

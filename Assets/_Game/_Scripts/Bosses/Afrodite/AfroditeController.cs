@@ -8,12 +8,12 @@ public class AfroditeController : Singleton<AfroditeController>
 {
     public int Health;
     public float Speed;
-    [SerializeField] private GameObject _deathAnim;
+    public GameObject DeathAnim;
     [Range(0f, 100f)] public float TurnSpeed;
     public GameObject LaserBeam;
     public Transform MovePointCenter;
     public List<Transform> MovePoints = new List<Transform>();
-    public Vector2 Velocity = Vector2.zero;
+    [NonSerialized] public Vector2 Velocity = Vector2.zero;
 
     #region First Stage Props
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
@@ -38,6 +38,7 @@ public class AfroditeController : Singleton<AfroditeController>
     #region Stage States
     [NonSerialized] public AfroditeBaseState CurrentState;
     [NonSerialized] public AfroditeIdleState IdleState = new AfroditeIdleState();
+    [NonSerialized] public AfroditeDeathState DeathState = new AfroditeDeathState();
     [NonSerialized] public AfroditeSecondStageState SecondStageState = new AfroditeSecondStageState();
     [NonSerialized] public AfroditeFirstStageState FirstStageState = new AfroditeFirstStageState();
     [NonSerialized] public AfroditeThirdStageState ThirdStageState = new AfroditeThirdStageState();
@@ -55,9 +56,16 @@ public class AfroditeController : Singleton<AfroditeController>
 
     private void Update()
     {
+        Debug.Log(CurrentState);
+        Debug.Log(Health);
         CurrentState.UpdateState(this);
 
-        if (CurrentState != ThirdStageState)
+        if (Health <= 0 && CurrentState != DeathState)
+        {
+            SwitchState(DeathState);
+        }
+
+        if (CurrentState != ThirdStageState && CurrentState != DeathState)
         {
             _thirdStageTimer -= Time.deltaTime;
             if (_thirdStageTimer <= 0f)
@@ -66,11 +74,6 @@ public class AfroditeController : Singleton<AfroditeController>
                 _thirdStageTimer = _timeToThirdStage;
             }
         }
-
-        if (Health <= 0)
-            Death();
-
-        Debug.Log(CurrentState);
     }
 
     public void SwitchState(AfroditeBaseState state)
@@ -90,10 +93,4 @@ public class AfroditeController : Singleton<AfroditeController>
     }
 
     public int TakeDamage(int damage) => Health -= damage;
-
-    public virtual void Death()
-    {
-        Destroy(gameObject);
-        Instantiate(_deathAnim, transform.position, Quaternion.identity);
-    }
 }

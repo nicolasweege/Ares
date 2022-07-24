@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AfroditeBulletController : BulletBase
+public class AfroditeFirstStageBulletController : BulletBase
 {
     [SerializeField] private float _stopingDist;
     [SerializeField] private Transform _damageAnimSpawnPoint;
-    private bool _isOnStopingDist = false;
+    // private bool _isOnStopingDist = false;
 
     protected override void Awake()
     {
@@ -36,6 +36,9 @@ public class AfroditeBulletController : BulletBase
 
     private void MoveProjectile()
     {
+        transform.position += _direction * Time.deltaTime * _speed;
+
+        // Script de projetil que segue o player (pode ser usado em outras ocasioes)
         /*var playerPos = PlayerMainShipController.Instance.transform.position;
 
         if (Vector2.Distance(transform.position, playerPos) < _stopingDist)
@@ -52,7 +55,7 @@ public class AfroditeBulletController : BulletBase
             transform.position += _direction * Time.deltaTime * _speed;
         }
 
-        if (_isOnStopingDist)*/
-            transform.position += _direction * Time.deltaTime * _speed;
+        if (_isOnStopingDist)
+            transform.position += _direction * Time.deltaTime * _speed;*/
     }
 }

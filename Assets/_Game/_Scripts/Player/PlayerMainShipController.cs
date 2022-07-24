@@ -26,7 +26,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
-    private Rigidbody2D _rigidbody;
     private bool _dashing = false;
     private Vector2 _moveVector;
 
@@ -41,11 +40,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.MainShip.Enable();
         _shield.SetActive(false);
-    }
-
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -128,8 +122,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
         transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
-
-        // _rigidbody.velocity = new Vector3(moveVector.x, moveVector.y) * _speed;
 
         /*float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
         float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);

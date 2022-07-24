@@ -52,11 +52,10 @@ public class PlayerLaserBeamController : MonoBehaviour
 
         RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
 
-        if (laserHit)
+        if (laserHit && _lineRenderer.enabled)
         {
-            if (laserHit.collider.gameObject.CompareTag("Enemy"))
+            if (laserHit.collider.gameObject.CompareTag("AfroditeMainShip"))
             {
-                // laserHit.collider.GetComponent<EnemyBase>().TakeDamage(_defaultDamage);
                 AfroditeController.Instance.TakeDamage(_defaultDamage);
             }
 
