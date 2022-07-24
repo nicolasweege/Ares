@@ -5186,7 +5186,7 @@ MonoBehaviour:
   _bulletStartingPos: {fileID: 2080581498894607699}
   _bulletDir: {fileID: 8101181073452533380}
   _deathAnim: {fileID: 8921673329648153652, guid: 2adc510d8779ced45a490092d7dbe5b9, type: 3}
-  _timeToShoot: 1
+  _timeToShoot: 0.7
   _turnSpeed: 20
   _shield: {fileID: 7617916817057230784}
   _laserBeam: {fileID: 4005503774356786776}
@@ -5196,7 +5196,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 405495
   _aimTransform: {fileID: 3655777091004263308}
-  _shootTimer: 1
   _dashCooldown: 0.8
   _timeToActivateShield: 2
   _screenShakeEvent:
@@ -5662,7 +5661,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.93424654, b: 1, a: 0.078431375}
+  m_Color: {r: 0, g: 0.93424654, b: 1, a: 0.14901961}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

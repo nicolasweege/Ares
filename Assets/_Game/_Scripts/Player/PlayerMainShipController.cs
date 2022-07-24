@@ -23,7 +23,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private LayerMask _dashRaycastLayerMask;
     [SerializeField] private Transform _aimTransform;
     private bool _isShieldEnabled = false;
-    [SerializeField] private float _shootTimer;
+    private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
     private bool _dashing = false;
@@ -65,7 +65,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        /*if (Input.GetMouseButtonDown(1))
         {
             _laserBeam.GetComponent<PlayerLaserBeamController>().EnableLaser();
         }
@@ -76,7 +76,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (Input.GetMouseButtonUp(1))
         {
             _laserBeam.GetComponent<PlayerLaserBeamController>().DisableLaser();
-        }
+        }*/
 
         _shootTimer -= Time.deltaTime;
         if (_playerInputActions.MainShip.NormalShoot.IsPressed())

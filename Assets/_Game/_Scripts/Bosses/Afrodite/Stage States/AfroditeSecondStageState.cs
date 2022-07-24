@@ -6,7 +6,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
 {
     private float _timeToSwitchState = 1.5f;
     private float _switchStateTimer;
-    private float _turnSpeed = 5f;
+    private float _turnSpeed = 10f;
     private float _timeToLaserShoot = 2f;
     private float _laserShootTimer;
 

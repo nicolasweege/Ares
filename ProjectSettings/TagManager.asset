@@ -51,6 +51,9 @@ TagManager:
   - name: Background
     uniqueID: 2738636265
     locked: 0
+  - name: Asteroid
+    uniqueID: 2482356265
+    locked: 0
   - name: Afrodite Bullet
     uniqueID: 3974682491
     locked: 0
@@ -80,9 +83,6 @@ TagManager:
     locked: 0
   - name: Satellite Laser
     uniqueID: 2900999015
-    locked: 0
-  - name: Asteroid
-    uniqueID: 2482356265
     locked: 0
   - name: Damage Animation
     uniqueID: 3138669063

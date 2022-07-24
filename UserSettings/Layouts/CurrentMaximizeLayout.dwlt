@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 45502
+  controlID: 57244
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -375,7 +375,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -394,7 +394,7 @@ MonoBehaviour:
       index: 13
       layout: 4
   m_WindowGUID: 82a0021bf9692004fa66c6a0f246d2cd
-  m_Gizmos: 0
+  m_Gizmos: 1
   m_OverrideSceneCullingMask: 0
   m_SceneIsLit: 0
   m_SceneLighting: 1
@@ -403,9 +403,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.015632438, y: -0.28654924, z: -0.0024268006}
+    m_Target: {x: -0.5617286, y: -0.35134867, z: -0.019660596}
     speed: 2
-    m_Value: {x: -0.015632438, y: -0.28654924, z: -0.0024268006}
+    m_Value: {x: -1.0018306, y: -2.2491872, z: -3.8737247}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -456,9 +456,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1.038154
+    m_Target: 2.2605991
     speed: 2
-    m_Value: 1.038154
+    m_Value: 10.9584
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 45431
+  controlID: 57245
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -565,9 +565,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8a76f2ff
-      m_LastClickedID: -887158
-      m_ExpandedIDs: 9676f2ff5a190400
+      m_SelectedIDs: 52cf06005ecf060062cf0600
+      m_LastClickedID: 446290
+      m_ExpandedIDs: 9c78ecff4ecf0600
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -659,22 +659,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Game/Prefabs/Player
+    - Assets/_Game/Prefabs/Asteroids
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 72
   m_LastFolders:
-  - Assets/_Game/Prefabs/Player
+  - Assets/_Game/Prefabs/Asteroids
   m_LastFoldersGridSize: 72
   m_LastProjectPath: C:\Users\nicolas\Documents\GitHub\Ares
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 177}
-    m_SelectedIDs: d6740000
-    m_LastClickedID: 29910
-    m_ExpandedIDs: 00000000ba720000bc720000be720000c0720000c2720000c4720000c6720000b6740000
+    m_SelectedIDs: cc740000
+    m_LastClickedID: 29900
+    m_ExpandedIDs: 00000000ba720000bc720000be720000c0720000c2720000c4720000c6720000b6740000c67400002c800000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -702,7 +702,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ba720000bc720000be720000c0720000c2720000c4720000c6720000b6740000
+    m_ExpandedIDs: 00000000ba720000bc720000be720000c0720000c2720000c4720000c6720000b6740000c67400002c800000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -727,9 +727,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 8a76f2ff
-    m_LastClickedInstanceID: -887158
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 52cf06005ecf060062cf0600
+    m_LastClickedInstanceID: 446306
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000c68a0000c29d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
