@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -57,7 +58,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         HandleTurbineFlame();
         HandleShield();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_playerInputActions.MainShip.Dash.IsPressed())
         {
             if (_dashCooldownTimer <= 0f)
             {
@@ -156,6 +157,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         Destroy(gameObject);
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
+        SceneManager.LoadScene("Menu");
     }
 
     private void HandleShield()
@@ -165,12 +167,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             _canActivateShield = true;
         }
-        if (Input.GetKey(KeyCode.LeftShift) && _canActivateShield)
+        if (_playerInputActions.MainShip.ActivateShield.IsPressed() && _canActivateShield)
         {
             _shield.SetActive(true);
             _isShieldEnabled = true;
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (!_playerInputActions.MainShip.ActivateShield.IsPressed())
         {
             _shield.SetActive(false);
             _isShieldEnabled = false;

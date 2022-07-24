@@ -71,6 +71,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""42701a3f-20bf-44a0-920a-6ce339aca40a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ActivateShield"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d18aec0-2117-4453-bd47-3d6800ec1e22"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -194,6 +212,50 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Normal Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11ba9f64-2934-4841-b784-aa666e9a6860"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ed5cde9-6ae9-49f4-90bf-719a26acd31b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63ea503c-d1b5-4bb2-ad8f-78f8e2faefae"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ActivateShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b0865e9-4969-4c8e-8e40-0e7730695e65"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ActivateShield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -241,6 +303,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_MainShip_Pause = m_MainShip.FindAction("Pause", throwIfNotFound: true);
         m_MainShip_NormalShoot = m_MainShip.FindAction("Normal Shoot", throwIfNotFound: true);
         m_MainShip_Shoot = m_MainShip.FindAction("Shoot", throwIfNotFound: true);
+        m_MainShip_Dash = m_MainShip.FindAction("Dash", throwIfNotFound: true);
+        m_MainShip_ActivateShield = m_MainShip.FindAction("ActivateShield", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -305,6 +369,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainShip_Pause;
     private readonly InputAction m_MainShip_NormalShoot;
     private readonly InputAction m_MainShip_Shoot;
+    private readonly InputAction m_MainShip_Dash;
+    private readonly InputAction m_MainShip_ActivateShield;
     public struct MainShipActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -314,6 +380,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_MainShip_Pause;
         public InputAction @NormalShoot => m_Wrapper.m_MainShip_NormalShoot;
         public InputAction @Shoot => m_Wrapper.m_MainShip_Shoot;
+        public InputAction @Dash => m_Wrapper.m_MainShip_Dash;
+        public InputAction @ActivateShield => m_Wrapper.m_MainShip_ActivateShield;
         public InputActionMap Get() { return m_Wrapper.m_MainShip; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -338,6 +406,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShoot;
+                @Dash.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnDash;
+                @ActivateShield.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnActivateShield;
+                @ActivateShield.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnActivateShield;
+                @ActivateShield.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnActivateShield;
             }
             m_Wrapper.m_MainShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -357,6 +431,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @ActivateShield.started += instance.OnActivateShield;
+                @ActivateShield.performed += instance.OnActivateShield;
+                @ActivateShield.canceled += instance.OnActivateShield;
             }
         }
     }
@@ -395,5 +475,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnNormalShoot(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnActivateShield(InputAction.CallbackContext context);
     }
 }
