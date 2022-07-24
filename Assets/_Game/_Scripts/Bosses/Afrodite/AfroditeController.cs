@@ -27,6 +27,11 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform TurretTransform2;
     #endregion
 
+    #region Second Stage Props
+    [SerializeField] private float _timeToSecondStage;
+    private float _secondStageTimer;
+    #endregion
+
     #region Third Stage Props
     [SerializeField] private float _timeToThirdStage;
     private float _thirdStageTimer;
@@ -42,6 +47,7 @@ public class AfroditeController : Singleton<AfroditeController>
     [NonSerialized] public AfroditeSecondStageState SecondStageState = new AfroditeSecondStageState();
     [NonSerialized] public AfroditeFirstStageState FirstStageState = new AfroditeFirstStageState();
     [NonSerialized] public AfroditeThirdStageState ThirdStageState = new AfroditeThirdStageState();
+    [NonSerialized] public AfroditeFourthStageState FourthStageState = new AfroditeFourthStageState();
     #endregion
 
     public UnityEvent ScreenShakeEvent;
@@ -51,7 +57,6 @@ public class AfroditeController : Singleton<AfroditeController>
         base.Awake();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
-        _thirdStageTimer = _timeToThirdStage;
     }
 
     private void Update()
@@ -60,19 +65,44 @@ public class AfroditeController : Singleton<AfroditeController>
         Debug.Log(Health);
         CurrentState.UpdateState(this);
 
+        /*if (Health <= 20 && CurrentState != FourthStageState)
+        {
+            SwitchState(FourthStageState);
+        }*/
+
+        if (Health <= 40)
+        {
+            if (CurrentState != SecondStageState && CurrentState != ThirdStageState)
+            {
+                _secondStageTimer -= Time.deltaTime;
+                if (_secondStageTimer <= 0f)
+                {
+                    SwitchState(SecondStageState);
+                    _secondStageTimer = _timeToSecondStage;
+                }
+
+                _thirdStageTimer -= Time.deltaTime;
+                if (_thirdStageTimer <= 0f)
+                {
+                    SwitchState(ThirdStageState);
+                    _thirdStageTimer = _timeToThirdStage;
+                }
+            }
+        }
+
+        if (Health <= 60 && Health > 40)
+        {
+            _secondStageTimer -= Time.deltaTime;
+            if (_secondStageTimer <= 0f && CurrentState != SecondStageState)
+            {
+                SwitchState(SecondStageState);
+                _secondStageTimer = _timeToSecondStage;
+            }
+        }
+
         if (Health <= 0 && CurrentState != DeathState)
         {
             SwitchState(DeathState);
-        }
-
-        if (CurrentState != ThirdStageState && CurrentState != DeathState)
-        {
-            _thirdStageTimer -= Time.deltaTime;
-            if (_thirdStageTimer <= 0f)
-            {
-                SwitchState(ThirdStageState);
-                _thirdStageTimer = _timeToThirdStage;
-            }
         }
     }
 

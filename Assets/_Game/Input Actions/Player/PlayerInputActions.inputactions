@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot Holding",
+                    "name": "Normal Shoot",
                     "type": "Button",
-                    "id": "88ad7fe9-8563-41d1-b02a-766b601f4d43",
+                    "id": "0de0f38b-9876-4af0-96aa-1ed3a6bb5ef1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -144,23 +144,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5bd5c7c4-eec3-4f56-9f8e-f4437c5ea07f",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Shoot Holding",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4249f5c7-4cb5-4280-83e9-126ea249ac40",
+                    "id": "95c1f450-dd66-41d7-b13d-e415984a007c",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse",
-                    "action": "Shoot Holding",
+                    "action": "Normal Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

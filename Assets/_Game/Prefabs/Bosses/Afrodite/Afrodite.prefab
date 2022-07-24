@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07919b299eb4e6448d07f2511a58aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 1000
+  Health: 100
   Speed: 2.5
   DeathAnim: {fileID: 8921673329648153652, guid: a33ec7d9639f7b440a132d9aafe9dc5c, type: 3}
   TurnSpeed: 1
@@ -1765,7 +1765,8 @@ MonoBehaviour:
   FirstStageProjectileTurnSpeed: 8
   TurretTransform1: {fileID: 2306212057705355940}
   TurretTransform2: {fileID: 1521764583869096347}
-  _timeToThirdStage: 10
+  _timeToSecondStage: 15
+  _timeToThirdStage: 30
   ThirdStageProjectile: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
   ThirdStageFirstWaveShootDirections:
   - {fileID: 1721166800716924963}

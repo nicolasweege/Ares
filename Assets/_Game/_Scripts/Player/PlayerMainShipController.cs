@@ -23,10 +23,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private LayerMask _dashRaycastLayerMask;
     [SerializeField] private Transform _aimTransform;
     private bool _isShieldEnabled = false;
-    private float _shootTimer;
+    [SerializeField] private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
     private bool _dashing = false;
+    [SerializeField] private float _dashCooldown;
+    private float _dashCooldownTimer;
+    [SerializeField] private float _timeToActivateShield;
+    private float _activateShieldTimer;
+    private bool _canActivateShield = false;
     private Vector2 _moveVector;
 
     [SerializeField] private UnityEvent _screenShakeEvent;
@@ -54,7 +59,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _dashing = true;
+            if (_dashCooldownTimer <= 0f)
+            {
+                _dashing = true;
+            }
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -70,9 +78,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _laserBeam.GetComponent<PlayerLaserBeamController>().DisableLaser();
         }
 
-        if (_playerInputActions.MainShip.ShootHolding.IsPressed())
+        _shootTimer -= Time.deltaTime;
+        if (_playerInputActions.MainShip.NormalShoot.IsPressed())
         {
-            _shootTimer -= Time.deltaTime;
             if (_shootTimer <= 0f)
             {
                 GenerateBullet();
@@ -127,7 +135,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);
         transform.position = new Vector3(xx, yy);*/
 
-        if (_dashing)
+        _dashCooldownTimer -= Time.deltaTime;
+        if (_dashing && _dashCooldownTimer <= 0f)
         {
             var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;
 
@@ -139,6 +148,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
             transform.position = dashPos;
             _dashing = false;
+            _dashCooldownTimer = _dashCooldown;
         }
     }
 
@@ -150,7 +160,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleShield()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        _activateShieldTimer -= Time.deltaTime;
+        if (_activateShieldTimer <= 0f && !_canActivateShield)
+        {
+            _canActivateShield = true;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && _canActivateShield)
         {
             _shield.SetActive(true);
             _isShieldEnabled = true;
@@ -169,9 +184,18 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             if (!_isShieldEnabled)
             {
                 TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+                CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             }
+
+            if (_isShieldEnabled)
+            {
+                _canActivateShield = false;
+                _activateShieldTimer = _timeToActivateShield;
+                _shield.SetActive(false);
+                _isShieldEnabled = false;
+            }
+
             other.GetComponent<BulletBase>().DestroyBullet();
-            CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
         }
     }
 

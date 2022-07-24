@@ -55,9 +55,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot Holding"",
+                    ""name"": ""NormalShoot"",
                     ""type"": ""Button"",
-                    ""id"": ""88ad7fe9-8563-41d1-b02a-766b601f4d43"",
+                    ""id"": ""0de0f38b-9876-4af0-96aa-1ed3a6bb5ef1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -166,23 +166,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5bd5c7c4-eec3-4f56-9f8e-f4437c5ea07f"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Shoot Holding"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4249f5c7-4cb5-4280-83e9-126ea249ac40"",
+                    ""id"": ""95c1f450-dd66-41d7-b13d-e415984a007c"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
-                    ""action"": ""Shoot Holding"",
+                    ""action"": ""NormalShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -230,7 +219,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_MainShip_Movement = m_MainShip.FindAction("Movement", throwIfNotFound: true);
         m_MainShip_Aim = m_MainShip.FindAction("Aim", throwIfNotFound: true);
         m_MainShip_Pause = m_MainShip.FindAction("Pause", throwIfNotFound: true);
-        m_MainShip_ShootHolding = m_MainShip.FindAction("Shoot Holding", throwIfNotFound: true);
+        m_MainShip_NormalShoot = m_MainShip.FindAction("NormalShoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,7 +282,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainShip_Movement;
     private readonly InputAction m_MainShip_Aim;
     private readonly InputAction m_MainShip_Pause;
-    private readonly InputAction m_MainShip_ShootHolding;
+    private readonly InputAction m_MainShip_NormalShoot;
     public struct MainShipActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -301,7 +290,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_MainShip_Movement;
         public InputAction @Aim => m_Wrapper.m_MainShip_Aim;
         public InputAction @Pause => m_Wrapper.m_MainShip_Pause;
-        public InputAction @ShootHolding => m_Wrapper.m_MainShip_ShootHolding;
+        public InputAction @NormalShoot => m_Wrapper.m_MainShip_NormalShoot;
         public InputActionMap Get() { return m_Wrapper.m_MainShip; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -320,9 +309,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnPause;
-                @ShootHolding.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShootHolding;
-                @ShootHolding.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShootHolding;
-                @ShootHolding.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShootHolding;
+                @NormalShoot.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
+                @NormalShoot.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
+                @NormalShoot.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
             }
             m_Wrapper.m_MainShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -336,9 +325,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @ShootHolding.started += instance.OnShootHolding;
-                @ShootHolding.performed += instance.OnShootHolding;
-                @ShootHolding.canceled += instance.OnShootHolding;
+                @NormalShoot.started += instance.OnNormalShoot;
+                @NormalShoot.performed += instance.OnNormalShoot;
+                @NormalShoot.canceled += instance.OnNormalShoot;
             }
         }
     }
@@ -375,6 +364,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnShootHolding(InputAction.CallbackContext context);
+        void OnNormalShoot(InputAction.CallbackContext context);
     }
 }
