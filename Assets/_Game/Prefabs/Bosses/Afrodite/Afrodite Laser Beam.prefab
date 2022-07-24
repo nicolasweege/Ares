@@ -31,7 +31,7 @@ Transform:
   - {fileID: 2404429481729391920}
   - {fileID: 6647529651053642806}
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288693571894936796
 GameObject:
@@ -65,6 +65,7 @@ Transform:
   - {fileID: 3140822830813006764}
   - {fileID: 2466176862008024909}
   - {fileID: 3601124844114529875}
+  - {fileID: 1365642141508378269}
   - {fileID: 3431927862797432950}
   - {fileID: 5150599265155524611}
   m_Father: {fileID: 0}
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultDamage: 1
   _lineRenderer: {fileID: 2526442506186889314}
+  _laserBoxCollider: {fileID: 1589019819868856890}
   _fireStartingPos: {fileID: 2466176862008024909}
   _fireDir: {fileID: 3601124844114529875}
   _startVFX: {fileID: 188523795549292374}
@@ -91,6 +93,64 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 462583
+--- !u!1 &1335676508273416376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365642141508378269}
+  - component: {fileID: 1589019819868856890}
+  m_Layer: 18
+  m_Name: Laser Box Collider
+  m_TagString: ArenaCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1365642141508378269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335676508273416376}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalScale: {x: 1, y: 100, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1497411710027219578}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1589019819868856890
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335676508273416376}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,7 +4962,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 1
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -5005,7 +5065,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1307419071
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -9845,7 +9905,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1307419071
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 17
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9908,7 +9968,7 @@ Transform:
   - {fileID: 3866440047688767418}
   - {fileID: 7792536572257972251}
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7201181484652790586
 GameObject:
@@ -14690,7 +14750,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19502,7 +19562,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1307419071
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 17
   m_RenderMode: 0
   m_MeshDistribution: 0

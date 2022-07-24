@@ -55,7 +55,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""NormalShoot"",
+                    ""name"": ""Normal Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""9efee4b3-e99e-4755-881a-59e06550a7f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""0de0f38b-9876-4af0-96aa-1ed3a6bb5ef1"",
                     ""expectedControlType"": ""Button"",
@@ -171,7 +180,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse"",
-                    ""action"": ""NormalShoot"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef8c2e15-1600-493d-9893-74a0c23f02d1"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Normal Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -219,7 +239,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_MainShip_Movement = m_MainShip.FindAction("Movement", throwIfNotFound: true);
         m_MainShip_Aim = m_MainShip.FindAction("Aim", throwIfNotFound: true);
         m_MainShip_Pause = m_MainShip.FindAction("Pause", throwIfNotFound: true);
-        m_MainShip_NormalShoot = m_MainShip.FindAction("NormalShoot", throwIfNotFound: true);
+        m_MainShip_NormalShoot = m_MainShip.FindAction("Normal Shoot", throwIfNotFound: true);
+        m_MainShip_Shoot = m_MainShip.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -283,6 +304,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainShip_Aim;
     private readonly InputAction m_MainShip_Pause;
     private readonly InputAction m_MainShip_NormalShoot;
+    private readonly InputAction m_MainShip_Shoot;
     public struct MainShipActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -291,6 +313,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_MainShip_Aim;
         public InputAction @Pause => m_Wrapper.m_MainShip_Pause;
         public InputAction @NormalShoot => m_Wrapper.m_MainShip_NormalShoot;
+        public InputAction @Shoot => m_Wrapper.m_MainShip_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_MainShip; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -312,6 +335,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @NormalShoot.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
                 @NormalShoot.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
                 @NormalShoot.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
+                @Shoot.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_MainShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -328,6 +354,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @NormalShoot.started += instance.OnNormalShoot;
                 @NormalShoot.performed += instance.OnNormalShoot;
                 @NormalShoot.canceled += instance.OnNormalShoot;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -365,5 +394,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnNormalShoot(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }

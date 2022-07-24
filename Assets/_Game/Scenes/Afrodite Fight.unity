@@ -2766,6 +2766,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: FourthStageMovePointLeft
+      value: 
+      objectReference: {fileID: 1560535421}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: MovePoints.Array.data[0]
       value: 
       objectReference: {fileID: 535338330}
@@ -2789,6 +2793,10 @@ PrefabInstance:
       propertyPath: MovePoints.Array.data[5]
       value: 
       objectReference: {fileID: 761922116}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: FourthStageMovePointRight
+      value: 
+      objectReference: {fileID: 855911929}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
 --- !u!4 &1254341897 stripped

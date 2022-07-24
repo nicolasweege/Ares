@@ -40,6 +40,13 @@ public class AfroditeController : Singleton<AfroditeController>
     public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
     #endregion
 
+    #region Fourth Stage Props
+    [SerializeField] private float _timeToFourthStage;
+    private float _fourthStageTimer;
+    public Transform FourthStageMovePointLeft;
+    public Transform FourthStageMovePointRight;
+    #endregion
+
     #region Stage States
     [NonSerialized] public AfroditeBaseState CurrentState;
     [NonSerialized] public AfroditeIdleState IdleState = new AfroditeIdleState();
@@ -65,12 +72,34 @@ public class AfroditeController : Singleton<AfroditeController>
         Debug.Log(Health);
         CurrentState.UpdateState(this);
 
-        /*if (Health <= 20 && CurrentState != FourthStageState)
+        if (Health <= 20 && Health > 0)
         {
-            SwitchState(FourthStageState);
-        }*/
+            if (CurrentState != SecondStageState && CurrentState != ThirdStageState && CurrentState != FourthStageState)
+            {
+                _secondStageTimer -= Time.deltaTime;
+                if (_secondStageTimer <= 0f)
+                {
+                    SwitchState(SecondStageState);
+                    _secondStageTimer = _timeToSecondStage;
+                }
 
-        if (Health <= 40)
+                _thirdStageTimer -= Time.deltaTime;
+                if (_thirdStageTimer <= 0f)
+                {
+                    SwitchState(ThirdStageState);
+                    _thirdStageTimer = _timeToThirdStage;
+                }
+
+                _fourthStageTimer -= Time.deltaTime;
+                if (_fourthStageTimer <= 0f)
+                {
+                    SwitchState(FourthStageState);
+                    _fourthStageTimer = _timeToFourthStage;
+                }
+            }
+        }
+
+        if (Health <= 40 && Health > 20)
         {
             if (CurrentState != SecondStageState && CurrentState != ThirdStageState)
             {

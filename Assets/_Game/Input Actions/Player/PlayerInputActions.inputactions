@@ -35,6 +35,15 @@
                 {
                     "name": "Normal Shoot",
                     "type": "Button",
+                    "id": "9efee4b3-e99e-4755-881a-59e06550a7f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
                     "id": "0de0f38b-9876-4af0-96aa-1ed3a6bb5ef1",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -145,6 +154,17 @@
                 {
                     "name": "",
                     "id": "95c1f450-dd66-41d7-b13d-e415984a007c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef8c2e15-1600-493d-9893-74a0c23f02d1",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
