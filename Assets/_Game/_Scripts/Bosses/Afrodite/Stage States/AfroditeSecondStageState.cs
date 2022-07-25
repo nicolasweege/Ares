@@ -40,4 +40,9 @@ public class AfroditeSecondStageState : AfroditeBaseState
             context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), _turnSpeed * Time.deltaTime);
         }
     }
+
+    private void HandleLaserAttack()
+    {
+
+    }
 }

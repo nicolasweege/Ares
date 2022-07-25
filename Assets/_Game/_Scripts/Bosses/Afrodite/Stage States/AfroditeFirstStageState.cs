@@ -10,7 +10,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
     private Vector2 _currentMovePoint;
     private float _timeToFirstWaveShoot = 0.1f;
     private float _firstWaveShootTimer;
-    private float _timeToSecondWaveShoot = 0.2f;
+    private float _timeToSecondWaveShoot = 0.25f;
     private float _secondWaveShootTimer;
     private bool _isFirstWaveFinished = false;
 
