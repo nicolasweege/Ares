@@ -93,7 +93,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             Death();
     }
 
-    public int TakeDamage(int damage) => _health -= damage;
+    public int TakeDamage(int damage)
+    {
+        CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
+        return _health -= damage;
+    }
 
     private void HandleTurbineFlame()
     {
@@ -186,7 +190,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             if (!_isShieldEnabled)
             {
                 TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
-                CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             }
 
             if (_isShieldEnabled)
