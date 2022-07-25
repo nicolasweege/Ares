@@ -61,7 +61,8 @@ public class AfroditeLaserBeamController : MonoBehaviour
             {
                 if (laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible)
                 {
-                    laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_defaultDamage);
+                    // laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_defaultDamage);
+                    laserHit.collider.GetComponent<PlayerMainShipController>().Death();
                 }
             }
 

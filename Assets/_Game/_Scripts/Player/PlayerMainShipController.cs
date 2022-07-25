@@ -153,11 +153,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
     }
 
-    private void Death()
+    public void Death()
     {
         Destroy(gameObject);
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
-        SceneManager.LoadScene("Menu");
+        // SceneManager.LoadScene("Afrodite Fight");
     }
 
     private void HandleShield()

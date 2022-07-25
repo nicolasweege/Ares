@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SatelliteLaserController : MonoBehaviour
 {
-    [SerializeField] private int _defaultDamage;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private Transform _fireStartingPos;
     [SerializeField] private Transform _fireDir;
@@ -57,8 +56,7 @@ public class SatelliteLaserController : MonoBehaviour
         {
             if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
-                if (laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible)
-                    laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_defaultDamage);
+                laserHit.collider.GetComponent<PlayerMainShipController>().Death();
             }
 
             _lineRenderer.SetPosition(1, laserHit.point);

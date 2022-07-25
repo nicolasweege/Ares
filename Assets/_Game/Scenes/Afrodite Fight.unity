@@ -2195,6 +2195,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ce89ffaa7c7614c85b7fd85d141fbe, type: 3}
+--- !u!1 &956072659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956072660}
+  m_Layer: 0
+  m_Name: Aim Point Down
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &956072660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956072659}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1126102522}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967145259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2571,6 +2602,8 @@ Transform:
   - {fileID: 484012162}
   - {fileID: 761922116}
   - {fileID: 1145509389}
+  - {fileID: 956072660}
+  - {fileID: 1432697167}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2765,6 +2798,14 @@ PrefabInstance:
       propertyPath: _timeToCenterAttack
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: FourthStageAimPointUp
+      value: 
+      objectReference: {fileID: 1432697167}
+    - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: FourthStageAimPointDown
+      value: 
+      objectReference: {fileID: 956072660}
     - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: FourthStageMovePointLeft
       value: 
@@ -3525,6 +3566,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409862966}
   m_CullTransparentMesh: 1
+--- !u!1 &1432697166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1432697167}
+  m_Layer: 0
+  m_Name: Aim Point Up
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1432697167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432697166}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1126102522}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1461904776
 GameObject:
   m_ObjectHideFlags: 0

@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1365642141508378269}
   - component: {fileID: 1589019819868856890}
-  m_Layer: 18
+  m_Layer: 8
   m_Name: Laser Box Collider
   m_TagString: ArenaCollider
   m_Icon: {fileID: 0}

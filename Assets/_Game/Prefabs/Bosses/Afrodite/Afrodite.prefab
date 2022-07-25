@@ -2114,9 +2114,11 @@ MonoBehaviour:
   - {fileID: 3353711287837984122}
   - {fileID: 4415106784888062572}
   - {fileID: 7361440172720490730}
-  _timeToFourthStage: 0
+  _timeToFourthStage: 45
   FourthStageMovePointLeft: {fileID: 0}
   FourthStageMovePointRight: {fileID: 0}
+  FourthStageAimPointUp: {fileID: 0}
+  FourthStageAimPointDown: {fileID: 0}
   ScreenShakeEvent:
     m_PersistentCalls:
       m_Calls:

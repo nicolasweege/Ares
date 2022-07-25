@@ -45,6 +45,8 @@ public class AfroditeController : Singleton<AfroditeController>
     private float _fourthStageTimer;
     public Transform FourthStageMovePointLeft;
     public Transform FourthStageMovePointRight;
+    public Transform FourthStageAimPointUp;
+    public Transform FourthStageAimPointDown;
     #endregion
 
     #region Stage States
