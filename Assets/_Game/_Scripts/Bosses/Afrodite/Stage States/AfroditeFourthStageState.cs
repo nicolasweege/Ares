@@ -9,8 +9,9 @@ public class AfroditeFourthStageState : AfroditeBaseState
     private Vector2 _currentMovePoint;
     private Vector2 _currentAimPoint;
     private Vector2 _otherAimPoint;
-    private float _baseTurnSpeed = 0.4f;
+    private float _baseTurnSpeed = 0.5f;
     private float _currentTurnSpeed;
+    private float _speedToMovePoint = 1f;
 
     public override void EnterState(AfroditeController context)
     {
@@ -67,7 +68,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
         if (PlayerMainShipController.Instance == null)
             return;
 
-        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, context.Speed);
+        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _speedToMovePoint);
     }
 
     private void HandleAim(AfroditeController context, Vector2 aimPoint)

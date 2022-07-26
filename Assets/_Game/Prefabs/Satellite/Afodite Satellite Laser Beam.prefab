@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1497411710027219578}
   - component: {fileID: 4118934464117810640}
   m_Layer: 0
-  m_Name: Satellite Laser Beam
+  m_Name: Afodite Satellite Laser Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
