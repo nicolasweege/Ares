@@ -2102,6 +2102,7 @@ MonoBehaviour:
   TurretTransform1: {fileID: 2306212057705355940}
   TurretTransform2: {fileID: 1521764583869096347}
   _timeToSecondStage: 15
+  LaserFeedBackLine: {fileID: 2218676075763707095}
   _timeToThirdStage: 30
   ThirdStageProjectile: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
   ThirdStageFirstWaveShootDirections:
@@ -10107,7 +10108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _rotation: {x: 0, y: 0, z: 100}
+  _rotation: {x: 0, y: 0, z: 200}
   _direction: {x: 0, y: 0, z: 0}
 --- !u!212 &5254888398037537984
 SpriteRenderer:
@@ -12256,6 +12257,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1355143841415092789, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1497411710027219578, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -12350,6 +12355,11 @@ GameObject:
 --- !u!4 &1784483192594085016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1497411710027219578, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
+  m_PrefabInstance: {fileID: 865854437805487842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!120 &2218676075763707095 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 1355143841415092789, guid: cb5beb46fa5627c41991ee05177ed5d5, type: 3}
   m_PrefabInstance: {fileID: 865854437805487842}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4780272274599622525

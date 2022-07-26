@@ -27,7 +27,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private float _shootTimer;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
-    private bool _dashing = false;
+    private bool _isDashing = false;
     [SerializeField] private float _dashCooldown;
     private float _dashCooldownTimer;
     [SerializeField] private float _timeToActivateShield;
@@ -37,6 +37,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     [SerializeField] private UnityEvent _screenShakeEvent;
 
+    public bool IsDashing { get => _isDashing; set => _isDashing = value; }
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     protected override void Awake()
@@ -62,7 +63,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             if (_dashCooldownTimer <= 0f)
             {
-                _dashing = true;
+                _isDashing = true;
             }
         }
 
@@ -141,7 +142,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         transform.position = new Vector3(xx, yy);*/
 
         _dashCooldownTimer -= Time.deltaTime;
-        if (_dashing && _dashCooldownTimer <= 0f)
+        if (_isDashing && _dashCooldownTimer <= 0f)
         {
             var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;
 
@@ -152,7 +153,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             }
 
             transform.position = dashPos;
-            _dashing = false;
+            _isDashing = false;
             _dashCooldownTimer = _dashCooldown;
         }
     }

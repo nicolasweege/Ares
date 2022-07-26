@@ -6,6 +6,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
 {
     [SerializeField] private int _defaultDamage;
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private LineRenderer _laserFeedbackLineRenderer;
     [SerializeField] private BoxCollider2D _laserBoxCollider;
     [SerializeField] private Transform _fireStartingPos;
     [SerializeField] private Transform _fireDir;
@@ -24,6 +25,22 @@ public class AfroditeLaserBeamController : MonoBehaviour
     private void Update()
     {
         UpdateLaser();
+    }
+
+    public void EnableFeedbackLaser()
+    {
+        _laserFeedbackLineRenderer.enabled = true;
+    }
+
+    public void DisableFeedbackLaser()
+    {
+        _laserFeedbackLineRenderer.enabled = false;
+    }
+
+    public void UpdateFeedbackLaser()
+    {
+        _laserFeedbackLineRenderer.SetPosition(0, (Vector2)_fireStartingPos.position);
+        _laserFeedbackLineRenderer.SetPosition(1, (Vector2)_fireDir.position);
     }
 
     public void EnableLaser()
