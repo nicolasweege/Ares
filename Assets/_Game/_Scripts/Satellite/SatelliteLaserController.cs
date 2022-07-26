@@ -5,6 +5,7 @@ using UnityEngine;
 public class SatelliteLaserController : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private BoxCollider2D _laserBoxCollider;
     [SerializeField] private Transform _fireStartingPos;
     [SerializeField] private Transform _fireDir;
     [SerializeField] private GameObject _startVFX;
@@ -28,6 +29,7 @@ public class SatelliteLaserController : MonoBehaviour
     public void EnableLaser()
     {
         _lineRenderer.enabled = true;
+        _laserBoxCollider.enabled = true;
         for (int i = 0; i < _particles.Count; i++)
         {
             _particles[i].Play();
@@ -37,6 +39,7 @@ public class SatelliteLaserController : MonoBehaviour
     public void DisableLaser()
     {
         _lineRenderer.enabled = false;
+        _laserBoxCollider.enabled = false;
         for (int i = 0; i < _particles.Count; i++)
         {
             _particles[i].Stop();
@@ -52,15 +55,12 @@ public class SatelliteLaserController : MonoBehaviour
 
         RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
 
-        if (laserHit)
+        if (laserHit && _lineRenderer.enabled)
         {
             if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
                 laserHit.collider.GetComponent<PlayerMainShipController>().Death();
             }
-
-            _lineRenderer.SetPosition(1, laserHit.point);
-            // Debug.Log(laserHit.collider.name);
         }
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }

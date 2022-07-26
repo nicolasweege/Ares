@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2498433792727630468}
   - component: {fileID: 637379536331507086}
   - component: {fileID: 8145223774005957017}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: Flame Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4780,7 +4780,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1254644431
-  m_SortingLayer: 8
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6430284971134191192}
   - component: {fileID: 4937780150823617191}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BSB7_26_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4883,7 +4883,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 5de60e2b2cd9c7941a94e7cd3b270c30, type: 3}
   m_Color: {r: 0.6039216, g: 0.62352943, b: 0.85882354, a: 1}
@@ -4906,7 +4906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6558689991554879848}
   - component: {fileID: 6234206087795378812}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BSB7_26_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4967,7 +4967,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 5801c246519e1b34c9d7e4200274adb8, type: 3}
   m_Color: {r: 0, g: 0.7921569, b: 1, a: 1}
@@ -4989,7 +4989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2080581498894607699}
-  m_Layer: 16
+  m_Layer: 13
   m_Name: Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5021,7 +5021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702383244427179707}
   - component: {fileID: 5447684854508427950}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BSB7_26_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5082,7 +5082,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 37d9136da33bbd342b3808c59243df3b, type: 3}
   m_Color: {r: 0.6039216, g: 0.62352943, b: 0.85882354, a: 1}
@@ -5104,7 +5104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3655777091004263308}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5140,7 +5140,7 @@ GameObject:
   - component: {fileID: 5840707007084685990}
   - component: {fileID: 926220734505401159}
   - component: {fileID: 5152461630013085035}
-  m_Layer: 16
+  m_Layer: 13
   m_Name: Player Main Ship
   m_TagString: PlayerMainShip
   m_Icon: {fileID: 0}
@@ -5313,7 +5313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6067983961108037093}
   - component: {fileID: 8937191672195641491}
-  m_Layer: 16
+  m_Layer: 13
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5374,7 +5374,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5396,7 +5396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8101181073452533380}
-  m_Layer: 16
+  m_Layer: 13
   m_Name: Bullet Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5428,7 +5428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2122218036647728951}
   - component: {fileID: 2661690245394529845}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BSB7_26_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5489,7 +5489,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c019b361afb2e774482be05adc790968, type: 3}
   m_Color: {r: 0, g: 0.7921569, b: 1, a: 1}
@@ -5512,7 +5512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2609468570415231837}
   - component: {fileID: 1336665033097329905}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BSB7_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5573,7 +5573,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc16150de2da534b932cdf689a2b31f, type: 3}
   m_Color: {r: 0, g: 0.7921569, b: 1, a: 1}
@@ -5597,9 +5597,9 @@ GameObject:
   - component: {fileID: 8289923135552445970}
   - component: {fileID: 6215320205037973612}
   - component: {fileID: 8701838060320108487}
-  m_Layer: 17
+  m_Layer: 14
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: PlayerShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5658,7 +5658,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -229089657
-  m_SortingLayer: 9
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 0.93424654, b: 1, a: 0.14901961}
@@ -5696,7 +5696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6908857856628704186}
-  m_Layer: 16
+  m_Layer: 13
   m_Name: Bullet Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5729,7 +5729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7736306944639637940}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5764,9 +5764,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5823822772601936702}
     m_Modifications:
+    - target: {fileID: 188523795549292374, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
       propertyPath: m_Name
       value: Player Laser Beam
+      objectReference: {fileID: 0}
+    - target: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
       propertyPath: m_IsActive
@@ -5820,9 +5828,41 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3407550114908391497, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828662145417251770, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448001778417333106, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 4448001778417333106, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371843745005849578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601675473985291446, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201181484652790586, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344445280116436978, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908978293857866113, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}

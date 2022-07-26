@@ -47,7 +47,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform FourthStageMovePointRight;
     public Transform FourthStageAimPointUp;
     public Transform FourthStageAimPointDown;
-    public GameObject FourthStageMinionSatellite;
+    public GameObject FourthStageSatellite;
     #endregion
 
     #region Stage States

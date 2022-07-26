@@ -209,5 +209,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (other.gameObject.CompareTag("Satellite"))
             Death();
+
+        if (other.gameObject.CompareTag("SatelliteLaserCollider"))
+            Death();
     }
 }

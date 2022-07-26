@@ -11,6 +11,8 @@ TagManager:
   - Satellite
   - ArenaCollider
   - AfroditeMainShip
+  - SatelliteLaserCollider
+  - PlayerShield
   layers:
   - Default
   - TransparentFX
@@ -18,19 +20,19 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Satellite
   - Player Bullet
   - Afrodite
   - Afrodite Bullet
-  - Teseu
-  - Teseu Bullet
-  - 
+  - Arena Collider
   - Asteroid
-  - 
-  - 
+  - Satellite Laser Collider
   - Player Ship
   - Player Shield
-  - Satellite
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -59,15 +61,6 @@ TagManager:
     locked: 0
   - name: Afrodite
     uniqueID: 1307419071
-    locked: 0
-  - name: Teseu Trail
-    uniqueID: 3670242705
-    locked: 0
-  - name: Teseu Bullet
-    uniqueID: 2628607417
-    locked: 0
-  - name: Teseu
-    uniqueID: 2921591405
     locked: 0
   - name: Player Trail
     uniqueID: 1254644431

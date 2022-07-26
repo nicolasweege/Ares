@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 6647529651053642806}
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288693571894936796
 GameObject:
@@ -62,6 +62,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3140822830813006764}
+  - {fileID: 4791635045843959854}
   - {fileID: 2466176862008024909}
   - {fileID: 3601124844114529875}
   - {fileID: 3431927862797432950}
@@ -81,15 +82,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1075c271d232248b209470bd79be57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultDamage: 1000
   _lineRenderer: {fileID: 2526442506186889314}
+  _laserBoxCollider: {fileID: 6096758749212342335}
   _fireStartingPos: {fileID: 2466176862008024909}
   _fireDir: {fileID: 3601124844114529875}
   _startVFX: {fileID: 188523795549292374}
   _endVFX: {fileID: 5371843745005849578}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 65783
+    m_Bits: 94135
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +120,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4448001778417333106
 GameObject:
@@ -192,8 +193,8 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393968281
-  m_SortingLayer: 11
-  m_SortingOrder: 17
+  m_SortingLayer: 9
+  m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 20, z: 0}
@@ -5031,9 +5032,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1822473135
-  m_SortingLayer: 10
-  m_SortingOrder: 17
+  m_SortingLayerID: -1393968281
+  m_SortingLayer: 9
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5064,6 +5065,64 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &4695234230253866103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4791635045843959854}
+  - component: {fileID: 6096758749212342335}
+  m_Layer: 12
+  m_Name: Collider
+  m_TagString: SatelliteLaserCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4791635045843959854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695234230253866103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1497411710027219578}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6096758749212342335
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695234230253866103}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5371843745005849578
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,7 +5153,7 @@ Transform:
   m_Children:
   - {fileID: 7792536572257972251}
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7344445280116436978
 GameObject:
@@ -9875,9 +9934,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1822473135
-  m_SortingLayer: 10
-  m_SortingOrder: 17
+  m_SortingLayerID: -1393968281
+  m_SortingLayer: 9
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -9937,5 +9996,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AfroditeLaserBeamController : MonoBehaviour
 {
-    [SerializeField] private int _defaultDamage;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private LineRenderer _laserFeedbackLineRenderer;
     [SerializeField] private BoxCollider2D _laserBoxCollider;
@@ -76,15 +75,10 @@ public class AfroditeLaserBeamController : MonoBehaviour
         {
             if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
-                if (laserHit.collider.GetComponentInChildren<SpriteRenderer>().isVisible)
-                {
-                    // laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_defaultDamage);
-                    laserHit.collider.GetComponent<PlayerMainShipController>().Death();
-                }
+                laserHit.collider.GetComponent<PlayerMainShipController>().Death();
             }
 
             _lineRenderer.SetPosition(1, laserHit.point);
-            // Debug.Log(laserHit.collider.name);
         }
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }

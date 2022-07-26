@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6232771798821579286}
   - component: {fileID: 4642356149687419355}
   m_Layer: 8
-  m_Name: Laser Box Collider
-  m_TagString: ArenaCollider
+  m_Name: Collider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4642356149687419355
 BoxCollider2D:
@@ -121,10 +121,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3140822830813006764}
+  - {fileID: 6232771798821579286}
   - {fileID: 2643784294379005351}
   - {fileID: 2466176862008024909}
   - {fileID: 3601124844114529875}
-  - {fileID: 6232771798821579286}
   - {fileID: 3431927862797432950}
   - {fileID: 5150599265155524611}
   m_Father: {fileID: 0}
@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c78e4e73fab97468d1a7b610224e68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultDamage: 1
   _lineRenderer: {fileID: 2526442506186889314}
   _laserFeedbackLineRenderer: {fileID: 1355143841415092789}
   _laserBoxCollider: {fileID: 4642356149687419355}
@@ -152,7 +151,7 @@ MonoBehaviour:
   _endVFX: {fileID: 5371843745005849578}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 462583
+    m_Bits: 490743
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3828662145417251770
 GameObject:
@@ -469,8 +468,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
-      minScalar: 0.1
+      scalar: 0.5
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4963,9 +4962,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1156298233
-  m_SortingLayer: 13
-  m_SortingOrder: 1
+  m_SortingLayerID: 1307419071
+  m_SortingLayer: 4
+  m_SortingOrder: 16
   m_RenderMode: 1
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5412,8 +5411,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.8
-      minScalar: 1.8
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10002,7 +10001,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!120 &1355143841415092789
 LineRenderer:
@@ -14883,7 +14882,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 13
+  m_SortingLayer: 10
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19756,5 +19755,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1497411710027219578}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
