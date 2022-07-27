@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AfroditeLaserBeamController : MonoBehaviour
 {
+    [SerializeField] private int _damage;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private LineRenderer _laserFeedbackLineRenderer;
     [SerializeField] private BoxCollider2D _laserBoxCollider;
@@ -19,11 +20,6 @@ public class AfroditeLaserBeamController : MonoBehaviour
     {
         FillLists();
         DisableLaser();
-    }
-
-    private void Update()
-    {
-        UpdateLaser();
     }
 
     public void EnableFeedbackLaser()
@@ -64,6 +60,15 @@ public class AfroditeLaserBeamController : MonoBehaviour
 
     public void UpdateLaser()
     {
+        if (_lineRenderer.enabled)
+        {
+            _laserBoxCollider.enabled = PlayerMainShipController.Instance.CanTakeDamage;
+        }
+        else
+        {
+            _laserBoxCollider.enabled = false;
+        }
+
         _lineRenderer.SetPosition(0, (Vector2)_fireStartingPos.position);
         _lineRenderer.SetPosition(1, (Vector2)_fireDir.position);
         _laserDir = (Vector2)_fireDir.position - (Vector2)transform.position;
@@ -75,10 +80,10 @@ public class AfroditeLaserBeamController : MonoBehaviour
         {
             if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
-                laserHit.collider.GetComponent<PlayerMainShipController>().Death();
+                laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_damage);
             }
 
-            _lineRenderer.SetPosition(1, laserHit.point);
+            // _lineRenderer.SetPosition(1, laserHit.point);
         }
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }

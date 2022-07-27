@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Cinemachine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
@@ -34,10 +33,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private float _activateShieldTimer;
     private bool _canActivateShield = false;
     private Vector2 _moveVector;
+    [SerializeField] private float _timeToCanTakeDamage;
+    private float _canTakeDamageTimer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Color _baseColor;
+
+    public bool CanTakeDamage = true;
 
     [SerializeField] private UnityEvent _screenShakeEvent;
 
-    public bool IsDashing { get => _isDashing; set => _isDashing = value; }
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     protected override void Awake()
@@ -47,6 +51,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.MainShip.Enable();
         _shield.SetActive(false);
+        _canTakeDamageTimer = _timeToCanTakeDamage;
     }
 
     private void Update()
@@ -54,6 +59,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         Vector3 mousePos = Utils.GetMouseWorldPosition();
         _aimTransform.LookAt(mousePos);
 
+        HandleDamange();
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
@@ -67,19 +73,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             }
         }
 
-        /*if (Input.GetMouseButtonDown(1))
-        {
-            _laserBeam.GetComponent<PlayerLaserBeamController>().EnableLaser();
-        }
-        if (Input.GetMouseButton(1))
-        {
-            _laserBeam.GetComponent<PlayerLaserBeamController>().UpdateLaser();
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            _laserBeam.GetComponent<PlayerLaserBeamController>().DisableLaser();
-        }*/
-
         _shootTimer -= Time.deltaTime;
         if (_playerInputActions.MainShip.NormalShoot.IsPressed())
         {
@@ -92,24 +85,56 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (_health <= 0)
             Death();
+
+        /*if (Input.GetMouseButtonDown(1))
+        {
+            _laserBeam.GetComponent<PlayerLaserBeamController>().EnableLaser();
+        }
+        if (Input.GetMouseButton(1))
+        {
+            _laserBeam.GetComponent<PlayerLaserBeamController>().UpdateLaser();
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            _laserBeam.GetComponent<PlayerLaserBeamController>().DisableLaser();
+        }*/
     }
 
-    public int TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
-        return _health -= damage;
+        if (CanTakeDamage)
+        {
+            _health -= damage;
+            CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
+            CanTakeDamage = false;
+        }
+    }
+
+    public void HandleDamange()
+    {
+        if (!CanTakeDamage)
+        {
+            _canTakeDamageTimer -= Time.deltaTime;
+            _spriteRenderer.color = Color.white;
+        }
+        else
+        {
+            _spriteRenderer.color = _baseColor;
+        }
+
+        if (_canTakeDamageTimer <= 0f)
+        {
+            CanTakeDamage = true;
+            _canTakeDamageTimer = _timeToCanTakeDamage;
+        }
     }
 
     private void HandleTurbineFlame()
     {
         if (_playerInputActions.MainShip.Movement.IsPressed())
-        {
             _turbineFlame.Play();
-        }
         else
-        {
             _turbineFlame.Stop();
-        }
     }
 
     private void GenerateBullet()
@@ -162,7 +187,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         Destroy(gameObject);
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
-        // SceneManager.LoadScene("Afrodite Fight");
+        SceneManager.LoadScene("Afrodite Fight");
     }
 
     private void HandleShield()
@@ -186,22 +211,25 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (CanTakeDamage)
         {
-            if (!_isShieldEnabled)
+            if (other.CompareTag("Bullet"))
             {
-                TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
-            }
+                if (!_isShieldEnabled)
+                {
+                    TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+                }
 
-            if (_isShieldEnabled)
-            {
-                _canActivateShield = false;
-                _activateShieldTimer = _timeToActivateShield;
-                _shield.SetActive(false);
-                _isShieldEnabled = false;
-            }
+                if (_isShieldEnabled)
+                {
+                    _canActivateShield = false;
+                    _activateShieldTimer = _timeToActivateShield;
+                    _shield.SetActive(false);
+                    _isShieldEnabled = false;
+                }
 
-            other.GetComponent<BulletBase>().DestroyBullet();
+                other.GetComponent<BulletBase>().DestroyBullet();
+            }
         }
     }
 

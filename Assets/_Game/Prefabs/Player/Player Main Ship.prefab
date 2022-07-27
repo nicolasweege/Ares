@@ -5179,7 +5179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1000
+  _health: 7
   _speed: 7
   _defaultDamage: 1
   _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
@@ -5198,6 +5198,10 @@ MonoBehaviour:
   _aimTransform: {fileID: 3655777091004263308}
   _dashCooldown: 0.8
   _timeToActivateShield: 2
+  _timeToCanTakeDamage: 2
+  _spriteRenderer: {fileID: 4937780150823617191}
+  _baseColor: {r: 0.6039216, g: 0.62352943, b: 0.85882354, a: 1}
+  CanTakeDamage: 1
   _screenShakeEvent:
     m_PersistentCalls:
       m_Calls:
