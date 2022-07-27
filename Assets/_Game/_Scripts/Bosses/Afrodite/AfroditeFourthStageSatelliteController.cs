@@ -11,6 +11,11 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     [SerializeField] private GameObject _laser4;
     [SerializeField] private LayerMask _layerMask;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     private void Update()
     {
         if (_health <= 0)
@@ -19,7 +24,14 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
         }
     }
 
-    private int TakeDamage(int damage) => _health -= damage;
+    private void TakeDamage(int damage)
+    {
+        _health -= damage;
+        foreach(SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            spr.enabled = false;
+        }
+    }
 
     private void DisableLasers()
     {

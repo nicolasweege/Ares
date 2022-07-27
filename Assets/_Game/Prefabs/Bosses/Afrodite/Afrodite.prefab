@@ -2033,6 +2033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463419017436258478}
   - component: {fileID: 8453892432992078889}
+  - component: {fileID: 5661621571539974236}
   - component: {fileID: 2085932613807744157}
   - component: {fileID: 4193644512958272751}
   - component: {fileID: 2251522653472965764}
@@ -2085,6 +2086,7 @@ MonoBehaviour:
   DeathAnim: {fileID: 8921673329648153652, guid: a33ec7d9639f7b440a132d9aafe9dc5c, type: 3}
   TurnSpeed: 1
   LaserBeam: {fileID: 578016837093814846}
+  _flashHitEffect: {fileID: 5661621571539974236}
   MovePointCenter: {fileID: 0}
   MovePoints:
   - {fileID: 0}
@@ -2135,6 +2137,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5661621571539974236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463419017436258479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0a456c8bafe84ab3c332e4c2cc2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _duration: 0.1
 --- !u!114 &2085932613807744157
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,9 +11,11 @@ public class AfroditeController : Singleton<AfroditeController>
     public GameObject DeathAnim;
     [Range(0f, 100f)] public float TurnSpeed;
     public GameObject LaserBeam;
+    [SerializeField] private FlashHitEffect _flashHitEffect;
     public Transform MovePointCenter;
     public List<Transform> MovePoints = new List<Transform>();
     [NonSerialized] public Vector2 Velocity = Vector2.zero;
+    [NonSerialized] public bool IsFlashing = false;
 
     #region First Stage Props
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
@@ -67,6 +69,11 @@ public class AfroditeController : Singleton<AfroditeController>
         base.Awake();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
+
+        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            spr.gameObject.AddComponent<AfroditeResetColor>();
+        }
     }
 
     private void Update()
@@ -154,5 +161,9 @@ public class AfroditeController : Singleton<AfroditeController>
         CurrentState.OnTriggerExit(this, other);
     }
 
-    public int TakeDamage(int damage) => Health -= damage;
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        _flashHitEffect.Flash();
+    }
 }
