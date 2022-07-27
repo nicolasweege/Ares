@@ -241,14 +241,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 TakeDamage(AfroditeController.Instance.CollisionDamage);
             }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Satellite"))
-            Death();
-
-        if (other.gameObject.CompareTag("SatelliteLaserCollider"))
+        if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite"))
             Death();
     }
 }

@@ -59,7 +59,7 @@ public class SatelliteLaserController : MonoBehaviour
         {
             if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
-                laserHit.collider.GetComponent<PlayerMainShipController>().Death();
+                // laserHit.collider.GetComponent<PlayerMainShipController>().Death();
             }
         }
         _endVFX.transform.position = _lineRenderer.GetPosition(1);

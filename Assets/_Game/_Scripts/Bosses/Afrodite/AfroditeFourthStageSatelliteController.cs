@@ -53,6 +53,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
         if (other.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+            other.GetComponent<BulletBase>().DestroyBullet();
         }
     }
 }

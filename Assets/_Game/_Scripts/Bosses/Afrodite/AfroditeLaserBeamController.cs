@@ -80,7 +80,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
         {
             if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
             {
-                laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_damage);
+                // laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_damage);
             }
 
             // _lineRenderer.SetPosition(1, laserHit.point);
