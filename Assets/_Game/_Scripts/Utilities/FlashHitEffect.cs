@@ -1,21 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashHitEffect : MonoBehaviour
 {
-    // [SerializeField] private Material _flashMaterial;
     [SerializeField] private Color _flashColor;
     [SerializeField] private float _duration;
-    // [SerializeField] private SpriteRenderer _spriteRenderer;
-    // private Material _originalMaterial;
-    // private Color _originalColor;
     private Coroutine _flashRoutine;
-
-    void Start()
-    {
-        // _originalMaterial = _spriteRenderer.material;
-    }
+    [NonSerialized] public bool IsFlashing = false;
 
     public void Flash()
     {
@@ -32,13 +25,15 @@ public class FlashHitEffect : MonoBehaviour
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
         {
-            spr.color = _flashColor;
+            float a = spr.color.a;
+            spr.color = new Color(_flashColor.r, _flashColor.g, _flashColor.b, a);
         }
-        AfroditeController.Instance.IsFlashing = true;
-        // _spriteRenderer.material = _flashMaterial;
+
+        IsFlashing = true;
+
         yield return new WaitForSeconds(_duration);
-        // _spriteRenderer.material = _originalMaterial;
-        AfroditeController.Instance.IsFlashing = false;
+
+        IsFlashing = false;
         _flashRoutine = null;
     }
 }

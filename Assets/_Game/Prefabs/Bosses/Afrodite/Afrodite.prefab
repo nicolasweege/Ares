@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flashColor: {r: 1, g: 1, b: 1, a: 1}
-  _duration: 0.1
+  _duration: 0.125
 --- !u!114 &2085932613807744157
 MonoBehaviour:
   m_ObjectHideFlags: 0
