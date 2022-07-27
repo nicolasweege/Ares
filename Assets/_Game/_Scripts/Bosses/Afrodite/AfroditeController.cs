@@ -8,6 +8,7 @@ public class AfroditeController : Singleton<AfroditeController>
 {
     public int Health;
     public float Speed;
+    public int CollisionDamage;
     public GameObject DeathAnim;
     [Range(0f, 100f)] public float TurnSpeed;
     public GameObject LaserBeam;

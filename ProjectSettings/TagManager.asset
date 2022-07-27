@@ -13,6 +13,7 @@ TagManager:
   - AfroditeMainShip
   - SatelliteLaserCollider
   - PlayerShield
+  - AfroditeMember
   layers:
   - Default
   - TransparentFX

@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 9153439354029248830}
   m_Layer: 8
   m_Name: Afrodite Fourth Stage Satellite
-  m_TagString: Satellite
+  m_TagString: AfroditeMember
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1052,7 +1052,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _flashHitEffect: {fileID: 7118340565849060400}
-  IsFlashing: 0
 --- !u!114 &7118340565849060400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,7 +1076,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 2, y: 0}
@@ -1093,7 +1092,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -2, y: 0}
@@ -1109,7 +1108,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 2}
@@ -1125,7 +1124,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -2}
@@ -1520,6 +1519,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4695234230253866103, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
+      propertyPath: m_TagString
+      value: AfroditeMember
+      objectReference: {fileID: 0}
     - target: {fileID: 4791635045843959854, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.38268343
@@ -1679,6 +1682,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4695234230253866103, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
+      propertyPath: m_TagString
+      value: AfroditeMember
+      objectReference: {fileID: 0}
     - target: {fileID: 4791635045843959854, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.92387956
@@ -1833,6 +1840,10 @@ PrefabInstance:
     - target: {fileID: 4695234230253866103, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695234230253866103, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
+      propertyPath: m_TagString
+      value: AfroditeMember
       objectReference: {fileID: 0}
     - target: {fileID: 4791635045843959854, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1992,6 +2003,10 @@ PrefabInstance:
     - target: {fileID: 4695234230253866103, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695234230253866103, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
+      propertyPath: m_TagString
+      value: AfroditeMember
       objectReference: {fileID: 0}
     - target: {fileID: 4791635045843959854, guid: 6aee6311316e45c40a502c0d1ae7c2a6, type: 3}
       propertyPath: m_LocalRotation.w

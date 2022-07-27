@@ -230,6 +230,16 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
                 other.GetComponent<BulletBase>().DestroyBullet();
             }
+
+            if (other.CompareTag("AfroditeMainShip"))
+            {
+                TakeDamage(AfroditeController.Instance.CollisionDamage);
+            }
+
+            if (other.CompareTag("AfroditeMember"))
+            {
+                TakeDamage(AfroditeController.Instance.CollisionDamage);
+            }
         }
     }
 
