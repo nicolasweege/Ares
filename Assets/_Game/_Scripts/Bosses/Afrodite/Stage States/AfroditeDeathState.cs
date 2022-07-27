@@ -12,6 +12,7 @@ public class AfroditeDeathState : AfroditeBaseState
     public override void EnterState(AfroditeController context)
     {
         _deathAnimTimer = _timeToDeathAnim;
+        context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
     }
 
     public override void UpdateState(AfroditeController context)

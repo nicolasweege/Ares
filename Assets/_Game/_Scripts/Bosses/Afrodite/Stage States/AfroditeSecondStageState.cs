@@ -8,7 +8,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
     private float _switchStateTimer;
     private float _initialTurnSpeed = 1f;
     private float _baseTurnSpeed = 15f;
-    private float _maxTurnSpeed = 22f;
+    private float _maxTurnSpeed = 20f;
     private float _currentTurnSpeed;
     private float _timeToLaserShoot = 2.3f;
     private float _laserShootTimer;
@@ -35,12 +35,6 @@ public class AfroditeSecondStageState : AfroditeBaseState
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
                 context.SwitchState(context.IdleState);
             }
-
-            /*if (_switchStateTimer > 1.9f)
-            {
-                _currentTurnSpeed = _maxTurnSpeed;
-                HandleAim(context);
-            }*/
         }
         else
         {
@@ -50,7 +44,9 @@ public class AfroditeSecondStageState : AfroditeBaseState
 
                 if (_laserShootTimer <= 0.3f)
                 {
-                    _currentTurnSpeed = _maxTurnSpeed;
+                    if (_laserShootTimer <= 0.1f)
+                        _currentTurnSpeed = _maxTurnSpeed;
+
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableFeedbackLaser();
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateFeedbackLaser();
                 }
