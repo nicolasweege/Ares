@@ -17,8 +17,11 @@ public class PlayerBulletController : BulletBase
 
         if (other.CompareTag("AfroditeMainShip"))
         {
-            AfroditeController.Instance.TakeDamage(_defaultDamage);
-            DestroyBullet();
+            if (AfroditeController.Instance.CurrentState != AfroditeController.Instance.DeathState)
+            {
+                AfroditeController.Instance.TakeDamage(_defaultDamage);
+                DestroyBullet();
+            }
         }
 
         if (other.CompareTag("Satellite"))

@@ -67,20 +67,20 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         Vector3 mousePos = Utils.GetMouseWorldPosition();
         _aimTransform.LookAt(mousePos);
 
-        HandleDamange();
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
         HandleShield();
+        HandleDamange();
 
         if (_playerInputActions.MainShip.Dash.IsPressed())
         {
-            if (_dashCooldownTimer <= 0f && _canMove)
+            if (_dashCooldownTimer <= 0f)
                 _isDashing = true;
         }
 
         _shootTimer -= Time.deltaTime;
-        if (_playerInputActions.MainShip.NormalShoot.IsPressed())
+        if (_playerInputActions.MainShip.NormalShoot.IsPressed() && _canMove)
         {
             if (_shootTimer <= 0f)
             {
@@ -101,6 +101,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             CanTakeDamage = false;
             _canMove = false;
+            _isDashing = false;
+            _dashCooldownTimer = _dashCooldown;
             _isFlickerEnabled = true;
             StartCoroutine(colorFlickerRoutine());
         }
@@ -112,10 +114,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             CanResetColors = false;
             foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
-            {
-                float a = spr.color.a;
-                spr.color = new Color(_flashColor.r, _flashColor.g, _flashColor.b, a);
-            }
+                spr.color = _flashColor;
             yield return new WaitForSeconds(0.15f);
             CanResetColors = true;
             yield return new WaitForSeconds(0.15f);
@@ -152,7 +151,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleTurbineFlame()
     {
-        if (_playerInputActions.MainShip.Movement.IsPressed())
+        if (_playerInputActions.MainShip.Movement.IsPressed() && CanTakeDamage)
             _turbineFlame.Play();
         else
             _turbineFlame.Stop();
@@ -180,13 +179,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleMove()
     {
-        _dashCooldownTimer -= Time.deltaTime;
-
         if (_canMove)
         {
             _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
             transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
 
+            _dashCooldownTimer -= Time.deltaTime;
             if (_isDashing && _dashCooldownTimer <= 0f)
             {
                 var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;

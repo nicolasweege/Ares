@@ -5198,9 +5198,9 @@ MonoBehaviour:
   _aimTransform: {fileID: 3655777091004263308}
   _dashCooldown: 0.7
   _timeToActivateShield: 2
-  _timeToCanTakeDamage: 3
+  _timeToCanTakeDamage: 2.5
   _timeToCanMove: 0.7
-  _flashColor: {r: 0.101, g: 0.101, b: 0.101, a: 1}
+  _flashColor: {r: 0, g: 0, b: 0, a: 0}
   _screenShakeEvent:
     m_PersistentCalls:
       m_Calls:
