@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -40,11 +41,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private bool _canActivateShield = false;
     private bool _canMove = true;
     private bool _isFlickerEnabled = false;
-    private Vector2 _moveVector;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
     [NonSerialized] public bool CanTakeDamage = true;
     [NonSerialized] public bool CanResetColors = true;
+    [NonSerialized] public Vector2 MoveVector;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
@@ -64,9 +65,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void Update()
     {
-        Vector3 mousePos = Utils.GetMouseWorldPosition();
-        _aimTransform.LookAt(mousePos);
-
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
@@ -181,15 +179,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (_canMove)
         {
-            _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
-            transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
+            MoveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
+            transform.position += new Vector3(MoveVector.x, MoveVector.y) * Time.deltaTime * _speed;
 
             _dashCooldownTimer -= Time.deltaTime;
             if (_isDashing && _dashCooldownTimer <= 0f)
             {
-                var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;
+                var dashPos = transform.position + new Vector3(MoveVector.x, MoveVector.y) * _dashAmount;
 
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveVector, _dashAmount, _dashRaycastLayerMask);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveVector, _dashAmount, _dashRaycastLayerMask);
                 if (hit.collider != null)
                 {
                     dashPos = hit.point;

@@ -1232,6 +1232,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &476453415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3655777091004263308, guid: fc19de1ed3dd11d40834e9c8649d80e7, type: 3}
+  m_PrefabInstance: {fileID: 1476075955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484012161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 827775846319180489, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1463419017436258478, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2773,6 +2782,18 @@ PrefabInstance:
     - target: {fileID: 1463419017436258479, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_Name
       value: Afrodite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1463419017436258479, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598008685187418162, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041833243059976316, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: MovePointUp
@@ -4576,11 +4597,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628629844}
   m_CullTransparentMesh: 1
---- !u!4 &1662106468 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5823822772601936702, guid: fc19de1ed3dd11d40834e9c8649d80e7, type: 3}
-  m_PrefabInstance: {fileID: 1476075955}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1735342561
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,7 +5068,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1662106468}
+  m_Follow: {fileID: 476453415}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7
