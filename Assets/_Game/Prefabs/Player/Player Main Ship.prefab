@@ -5200,7 +5200,7 @@ MonoBehaviour:
   _timeToActivateShield: 2
   _timeToCanTakeDamage: 3
   _timeToCanMove: 0.7
-  _flashColor: {r: 0, g: 0, b: 0, a: 1}
+  _flashColor: {r: 0.101, g: 0.101, b: 0.101, a: 1}
   _screenShakeEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5241,7 +5241,7 @@ MonoBehaviour:
     m_ImpulseType: 3
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 6873e797b62038c4a94c21cc7483940e, type: 2}
-    m_AmplitudeGain: 0.6
+    m_AmplitudeGain: 0.8
     m_FrequencyGain: 0.6
     m_RepeatMode: 0
     m_Randomize: 1

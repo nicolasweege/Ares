@@ -116,9 +116,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 float a = spr.color.a;
                 spr.color = new Color(_flashColor.r, _flashColor.g, _flashColor.b, a);
             }
-            yield return new WaitForSeconds(0.125f);
+            yield return new WaitForSeconds(0.15f);
             CanResetColors = true;
-            yield return new WaitForSeconds(0.125f);
+            yield return new WaitForSeconds(0.15f);
             StartCoroutine(colorFlickerRoutine());
             _isFlickerEnabled = false;
         }
