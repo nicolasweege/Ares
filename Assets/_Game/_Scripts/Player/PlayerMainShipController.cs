@@ -29,6 +29,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private float _timeToCanTakeDamage;
     [SerializeField] private float _timeToCanMove;
     [SerializeField] private Color _flashColor;
+    [SerializeField] private Texture2D _cursorTexture;
     [SerializeField] private UnityEvent _screenShakeEvent;
 
     private bool _isShieldEnabled = false;
@@ -58,6 +59,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _shield.SetActive(false);
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
+
+        Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
             spr.gameObject.AddComponent<PlayerResetColor>();
@@ -113,8 +116,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             CanResetColors = false;
             foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
                 spr.color = _flashColor;
+            _turbineFlame.Stop();
             yield return new WaitForSeconds(0.15f);
             CanResetColors = true;
+            _turbineFlame.Play();
             yield return new WaitForSeconds(0.15f);
             StartCoroutine(colorFlickerRoutine());
             _isFlickerEnabled = false;
