@@ -5137,6 +5137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5823822772601936702}
   - component: {fileID: 2084794780939713411}
+  - component: {fileID: 3548479632411412883}
   - component: {fileID: 5840707007084685990}
   - component: {fileID: 926220734505401159}
   - component: {fileID: 5152461630013085035}
@@ -5198,11 +5199,9 @@ MonoBehaviour:
   _aimTransform: {fileID: 3655777091004263308}
   _dashCooldown: 0.7
   _timeToActivateShield: 2
-  _timeToCanTakeDamage: 2
-  _spriteRenderer: {fileID: 4937780150823617191}
-  _baseColor: {r: 0.6039216, g: 0.62352943, b: 0.85882354, a: 1}
-  _timeToCanMove: 0.4
-  CanTakeDamage: 1
+  _timeToCanTakeDamage: 3
+  _timeToCanMove: 0.5
+  _flashHitEffect: {fileID: 3548479632411412883}
   _screenShakeEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5218,6 +5217,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3548479632411412883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238636717248138835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0a456c8bafe84ab3c332e4c2cc2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _duration: 0.125
 --- !u!114 &5840707007084685990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,8 +5256,8 @@ MonoBehaviour:
     m_ImpulseType: 3
     m_DissipationRate: 0.25
     m_RawSignal: {fileID: 11400000, guid: 6873e797b62038c4a94c21cc7483940e, type: 2}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
+    m_AmplitudeGain: 0.6
+    m_FrequencyGain: 0.6
     m_RepeatMode: 0
     m_Randomize: 1
     m_TimeEnvelope:

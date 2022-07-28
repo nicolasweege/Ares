@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,13 +36,16 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private Vector2 _moveVector;
     [SerializeField] private float _timeToCanTakeDamage;
     private float _canTakeDamageTimer;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Color _baseColor;
     private bool _canMove = true;
     [SerializeField] private float _timeToCanMove;
     private float _canMoveTimer;
+    [SerializeField] private FlashHitEffect _flashHitEffect;
+    private float _timeToBlink = 0.125f;
+    private float _blinkTimer;
+    private bool _canFlash = true;
 
-    public bool CanTakeDamage = true;
+    [NonSerialized] public bool CanTakeDamage = true;
+    [NonSerialized] public bool IsFlashing = false;
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     [SerializeField] private UnityEvent _screenShakeEvent;
@@ -55,10 +59,17 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _shield.SetActive(false);
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
+        _blinkTimer = _timeToBlink;
+
+        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+        {
+            spr.gameObject.AddComponent<PlayerResetColor>();
+        }
     }
 
     private void Update()
     {
+        IsFlashing = _flashHitEffect.IsFlashing;
         Vector3 mousePos = Utils.GetMouseWorldPosition();
         _aimTransform.LookAt(mousePos);
 
@@ -98,15 +109,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             CanTakeDamage = false;
             _canMove = false;
-
-            if (_moveVector.x == 0f && _moveVector.y == 0f)
-            {
-                transform.position += Vector3.right;
-            }
-            else
-            {
-                transform.position -= new Vector3(_moveVector.x, _moveVector.y);
-            }
         }
     }
 
@@ -115,11 +117,19 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (!CanTakeDamage)
         {
             _canTakeDamageTimer -= Time.deltaTime;
-            _spriteRenderer.color = Color.white;
-        }
-        else
-        {
-            _spriteRenderer.color = _baseColor;
+
+            _blinkTimer -= Time.deltaTime;
+            if (_blinkTimer <= 0f)
+            {
+                _canFlash = true;
+                _blinkTimer = _timeToBlink;
+            }
+
+            if (_canFlash)
+            {
+                _flashHitEffect.Flash();
+                _canFlash = false;
+            }
         }
 
         if (_canTakeDamageTimer <= 0f)
