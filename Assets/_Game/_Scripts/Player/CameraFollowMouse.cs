@@ -4,32 +4,17 @@ using UnityEngine;
 
 public class CameraFollowMouse : MonoBehaviour
 {
-    [SerializeField] private float sensitivity = 0.15f;
-    private Vector2 targetPosition = Vector2.zero;
-    private Rect screenRect = Rect.zero;
-    [Space(8)]
-    [SerializeField] private float movementOffset = 10f;
-    [SerializeField] float offsetMoveSpeed = 25f;
-    private Vector3 cameraOffset = Vector2.zero;
-    private float targetOffsetX = 0f;
-    private Transform playerTransform = null;
-
-    private void Start()
-    {
-        playerTransform = PlayerMainShipController.Instance.transform;
-    }
+    [SerializeField] private float threshold;
 
     private void Update()
     {
-        screenRect = new Rect(0f, 0f, Screen.width, Screen.height);
+        Vector3 mousePos = Utils.GetMouseWorldPosition();
+        Vector3 playerPos = PlayerMainShipController.Instance.transform.position;
+        Vector3 targetPos = (playerPos + mousePos) / 2f;
 
-        targetOffsetX = PlayerMainShipController.Instance.MoveVector.x != 0f || PlayerMainShipController.Instance.MoveVector.y != 0f ?
-            (PlayerMainShipController.Instance.MoveVector.x > 0f ? movementOffset : -movementOffset) : 0f;
-        cameraOffset.x = Mathf.MoveTowards(cameraOffset.x, targetOffsetX, offsetMoveSpeed * Time.fixedDeltaTime);
+        targetPos.x = Mathf.Clamp(targetPos.x, -threshold + playerPos.x, threshold + playerPos.x);
+        targetPos.y = Mathf.Clamp(targetPos.y, -threshold + playerPos.y, threshold + playerPos.y);
 
-        if (screenRect.Contains(Input.mousePosition))
-            targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + cameraOffset;
-
-        transform.position = Vector2.Lerp(playerTransform.position, targetPosition, sensitivity);
+        transform.position = targetPos;
     }
 }

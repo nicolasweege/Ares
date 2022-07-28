@@ -5125,7 +5125,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5823822772601936702}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6760702280949214283
 MonoBehaviour:
@@ -5139,9 +5139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7bf35a53e37eb4ab6198ff1226023f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.15
-  movementOffset: 10
-  offsetMoveSpeed: 25
+  threshold: 3
 --- !u!1 &2238636717248138835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,8 +5175,8 @@ Transform:
   - {fileID: 7736306944639637940}
   - {fileID: 6908857856628704186}
   - {fileID: 8289923135552445970}
-  - {fileID: 2832813882447726846}
   - {fileID: 3655777091004263308}
+  - {fileID: 2832813882447726846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5716,7 +5714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
       propertyPath: m_LocalPosition.x
