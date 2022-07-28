@@ -15,7 +15,7 @@ public class PlayerResetColor : MonoBehaviour
 
     private void Update()
     {
-        if (!PlayerMainShipController.Instance.IsFlashing)
+        if (PlayerMainShipController.Instance.CanResetColors)
         {
             _spriteRenderer.color = _originalColor;
         }

@@ -23,32 +23,30 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private float _dashAmount;
     [SerializeField] private LayerMask _dashRaycastLayerMask;
     [SerializeField] private Transform _aimTransform;
+    [SerializeField] private float _dashCooldown;
+    [SerializeField] private float _timeToActivateShield;
+    [SerializeField] private float _timeToCanTakeDamage;
+    [SerializeField] private float _timeToCanMove;
+    [SerializeField] private Color _flashColor;
+    [SerializeField] private UnityEvent _screenShakeEvent;
+
     private bool _isShieldEnabled = false;
     private float _shootTimer;
+    private float _canMoveTimer;
+    private float _canTakeDamageTimer;
+    private float _dashCooldownTimer;
+    private float _activateShieldTimer;
+    private bool _isDashing = false;
+    private bool _canActivateShield = false;
+    private bool _canMove = true;
+    private bool _isFlickerEnabled = false;
+    private Vector2 _moveVector;
     private Camera _camera;
     private PlayerInputActions _playerInputActions;
-    private bool _isDashing = false;
-    [SerializeField] private float _dashCooldown;
-    private float _dashCooldownTimer;
-    [SerializeField] private float _timeToActivateShield;
-    private float _activateShieldTimer;
-    private bool _canActivateShield = false;
-    private Vector2 _moveVector;
-    [SerializeField] private float _timeToCanTakeDamage;
-    private float _canTakeDamageTimer;
-    private bool _canMove = true;
-    [SerializeField] private float _timeToCanMove;
-    private float _canMoveTimer;
-    [SerializeField] private FlashHitEffect _flashHitEffect;
-    private float _timeToBlink = 0.125f;
-    private float _blinkTimer;
-    private bool _canFlash = true;
-
     [NonSerialized] public bool CanTakeDamage = true;
-    [NonSerialized] public bool IsFlashing = false;
-    public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
+    [NonSerialized] public bool CanResetColors = true;
 
-    [SerializeField] private UnityEvent _screenShakeEvent;
+    public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     protected override void Awake()
     {
@@ -59,17 +57,13 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _shield.SetActive(false);
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
-        _blinkTimer = _timeToBlink;
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
-        {
             spr.gameObject.AddComponent<PlayerResetColor>();
-        }
     }
 
     private void Update()
     {
-        IsFlashing = _flashHitEffect.IsFlashing;
         Vector3 mousePos = Utils.GetMouseWorldPosition();
         _aimTransform.LookAt(mousePos);
 
@@ -81,10 +75,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (_playerInputActions.MainShip.Dash.IsPressed())
         {
-            if (_dashCooldownTimer <= 0f)
-            {
+            if (_dashCooldownTimer <= 0f && _canMove)
                 _isDashing = true;
-            }
         }
 
         _shootTimer -= Time.deltaTime;
@@ -109,6 +101,26 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             CanTakeDamage = false;
             _canMove = false;
+            _isFlickerEnabled = true;
+            StartCoroutine(colorFlickerRoutine());
+        }
+    }
+
+    IEnumerator colorFlickerRoutine()
+    {
+        while (_isFlickerEnabled == true)
+        {
+            CanResetColors = false;
+            foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+            {
+                float a = spr.color.a;
+                spr.color = new Color(_flashColor.r, _flashColor.g, _flashColor.b, a);
+            }
+            yield return new WaitForSeconds(0.125f);
+            CanResetColors = true;
+            yield return new WaitForSeconds(0.125f);
+            StartCoroutine(colorFlickerRoutine());
+            _isFlickerEnabled = false;
         }
     }
 
@@ -117,20 +129,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (!CanTakeDamage)
         {
             _canTakeDamageTimer -= Time.deltaTime;
-
-            _blinkTimer -= Time.deltaTime;
-            if (_blinkTimer <= 0f)
-            {
-                _canFlash = true;
-                _blinkTimer = _timeToBlink;
-            }
-
-            if (_canFlash)
-            {
-                _flashHitEffect.Flash();
-                _canFlash = false;
-            }
+            _isFlickerEnabled = true;
         }
+        else _isFlickerEnabled = false;
 
         if (_canTakeDamageTimer <= 0f)
         {
@@ -179,28 +180,27 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleMove()
     {
-        _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
+        _dashCooldownTimer -= Time.deltaTime;
+
         if (_canMove)
+        {
+            _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
             transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
 
-        /*float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
-        float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);
-        transform.position = new Vector3(xx, yy);*/
-
-        _dashCooldownTimer -= Time.deltaTime;
-        if (_isDashing && _dashCooldownTimer <= 0f)
-        {
-            var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;
-
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveVector, _dashAmount, _dashRaycastLayerMask);
-            if (hit.collider != null)
+            if (_isDashing && _dashCooldownTimer <= 0f)
             {
-                dashPos = hit.point;
-            }
+                var dashPos = transform.position + new Vector3(_moveVector.x, _moveVector.y) * _dashAmount;
 
-            transform.position = dashPos;
-            _isDashing = false;
-            _dashCooldownTimer = _dashCooldown;
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveVector, _dashAmount, _dashRaycastLayerMask);
+                if (hit.collider != null)
+                {
+                    dashPos = hit.point;
+                }
+
+                transform.position = dashPos;
+                _isDashing = false;
+                _dashCooldownTimer = _dashCooldown;
+            }
         }
     }
 
