@@ -74,17 +74,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
         _laserDir = (Vector2)_fireDir.position - (Vector2)transform.position;
         _startVFX.transform.position = new Vector3(_fireStartingPos.position.x, _fireStartingPos.position.y, _startVFX.transform.position.z);
 
-        RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
-
-        if (laserHit && _lineRenderer.enabled)
-        {
-            if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
-            {
-                // laserHit.collider.GetComponent<PlayerMainShipController>().TakeDamage(_damage);
-            }
-
-            // _lineRenderer.SetPosition(1, laserHit.point);
-        }
+        // RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }
 

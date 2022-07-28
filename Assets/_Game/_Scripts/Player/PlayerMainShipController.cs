@@ -37,12 +37,14 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private float _canTakeDamageTimer;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Color _baseColor;
+    private bool _canMove = true;
+    [SerializeField] private float _timeToCanMove;
+    private float _canMoveTimer;
 
     public bool CanTakeDamage = true;
+    public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     [SerializeField] private UnityEvent _screenShakeEvent;
-
-    public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
 
     protected override void Awake()
     {
@@ -52,6 +54,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _playerInputActions.MainShip.Enable();
         _shield.SetActive(false);
         _canTakeDamageTimer = _timeToCanTakeDamage;
+        _canMoveTimer = _timeToCanMove;
     }
 
     private void Update()
@@ -85,19 +88,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (_health <= 0)
             Death();
-
-        /*if (Input.GetMouseButtonDown(1))
-        {
-            _laserBeam.GetComponent<PlayerLaserBeamController>().EnableLaser();
-        }
-        if (Input.GetMouseButton(1))
-        {
-            _laserBeam.GetComponent<PlayerLaserBeamController>().UpdateLaser();
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            _laserBeam.GetComponent<PlayerLaserBeamController>().DisableLaser();
-        }*/
     }
 
     public void TakeDamage(int damage)
@@ -107,6 +97,16 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _health -= damage;
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             CanTakeDamage = false;
+            _canMove = false;
+
+            if (_moveVector.x == 0f && _moveVector.y == 0f)
+            {
+                transform.position += Vector3.right;
+            }
+            else
+            {
+                transform.position -= new Vector3(_moveVector.x, _moveVector.y);
+            }
         }
     }
 
@@ -126,6 +126,16 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             CanTakeDamage = true;
             _canTakeDamageTimer = _timeToCanTakeDamage;
+        }
+
+        if (!_canMove)
+        {
+            _canMoveTimer -= Time.deltaTime;
+            if (_canMoveTimer <= 0f)
+            {
+                _canMove = true;
+                _canMoveTimer = _timeToCanMove;
+            }
         }
     }
 
@@ -160,7 +170,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private void HandleMove()
     {
         _moveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
-        transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
+        if (_canMove)
+            transform.position += new Vector3(_moveVector.x, _moveVector.y) * Time.deltaTime * _speed;
 
         /*float xx = Mathf.Clamp(transform.position.x, -LevelManager.Instance.MapWidth, LevelManager.Instance.MapWidth);
         float yy = Mathf.Clamp(transform.position.y, -LevelManager.Instance.MapHight, LevelManager.Instance.MapHight);
