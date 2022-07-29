@@ -1005,6 +1005,10 @@ GameObject:
   - component: {fileID: 6740819407340510781}
   - component: {fileID: 7701062776988194592}
   - component: {fileID: 9153439354029248830}
+  - component: {fileID: 1794683323874738465}
+  - component: {fileID: 1407065292743242567}
+  - component: {fileID: 147585120250783183}
+  - component: {fileID: 2036594724856593093}
   m_Layer: 8
   m_Name: Afrodite Fourth Stage Satellite
   m_TagString: AfroditeMember
@@ -1126,6 +1130,126 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -2}
   serializedVersion: 2
   m_Radius: 0.33
+--- !u!60 &1794683323874738465
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032598689108833374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.13957971, y: 1.8104241}
+      - {x: 0.2133916, y: 2.0900908}
+      - {x: 1.107955, y: 1.116291}
+      - {x: 2.0304568, y: 0.18044885}
+      - {x: 1.9058495, y: 0.040676624}
+--- !u!60 &1407065292743242567
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032598689108833374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8734974, y: -0.073168434}
+      - {x: 0.98307186, y: -0.97635996}
+      - {x: 0.16403896, y: -1.7912393}
+      - {x: 0.18762085, y: -1.9003749}
+      - {x: 1.8847737, y: -0.1699677}
+--- !u!60 &147585120250783183
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032598689108833374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.18189293, y: 1.9155279}
+      - {x: -1.9150894, y: 0.14531331}
+      - {x: -1.8367836, y: 0.10651082}
+      - {x: -0.1761651, y: 1.7920525}
+      - {x: -0.122112036, y: 1.9218016}
+--- !u!60 &2036594724856593093
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032598689108833374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.8189297, y: -0.13379943}
+      - {x: -1.9029629, y: -0.10933682}
+      - {x: -1.9034774, y: -0.18451792}
+      - {x: -0.048839927, y: -2.0034475}
+      - {x: -0.13712418, y: -1.812419}
 --- !u!1 &7071642348992222348
 GameObject:
   m_ObjectHideFlags: 0

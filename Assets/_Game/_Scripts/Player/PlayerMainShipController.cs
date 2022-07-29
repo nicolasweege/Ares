@@ -60,7 +60,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
-        Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(_cursorTexture, new Vector2(_cursorTexture.width / 2, _cursorTexture.height / 2), CursorMode.ForceSoftware);
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
             spr.gameObject.AddComponent<PlayerResetColor>();

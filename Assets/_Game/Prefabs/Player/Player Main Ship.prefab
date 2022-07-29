@@ -5214,7 +5214,7 @@ MonoBehaviour:
   _timeToCanTakeDamage: 2.5
   _timeToCanMove: 0.7
   _flashColor: {r: 0, g: 0, b: 0, a: 0}
-  _cursorTexture: {fileID: 2800000, guid: a3b5fadf009ba7440a3dd3a9b96df06d, type: 3}
+  _cursorTexture: {fileID: 2800000, guid: 0e6ee0f6470a48d40b43dee7cee5049d, type: 3}
   _screenShakeEvent:
     m_PersistentCalls:
       m_Calls:
