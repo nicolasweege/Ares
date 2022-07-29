@@ -86,6 +86,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             if (_shootTimer <= 0f)
             {
                 GenerateBullet();
+                SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position);
                 _shootTimer = _timeToShoot;
             }
         }
