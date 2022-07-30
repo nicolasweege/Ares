@@ -141,7 +141,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         else
         {
             _isFlickerEnabled = false;
-            _renderer2DData.rendererFeatures[0].SetActive(false);
         }
 
         if (_canTakeDamageTimer <= 0f)
@@ -158,6 +157,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 _canMove = true;
                 _canMoveTimer = _timeToCanMove;
             }
+        }
+        else
+        {
+            _renderer2DData.rendererFeatures[0].SetActive(false);
         }
     }
 
