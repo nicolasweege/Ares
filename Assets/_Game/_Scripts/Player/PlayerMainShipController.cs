@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -30,6 +31,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private float _timeToCanMove;
     [SerializeField] private Color _flashColor;
     [SerializeField] private Texture2D _cursorTexture;
+    [SerializeField] private Renderer2DData _renderer2DData;
+
     [SerializeField] private UnityEvent _screenShakeEvent;
 
     private bool _isShieldEnabled = false;
@@ -105,6 +108,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canMove = false;
             _isDashing = false;
             _dashCooldownTimer = _dashCooldown;
+            _renderer2DData.rendererFeatures[0].SetActive(true);
             _isFlickerEnabled = true;
             StartCoroutine(colorFlickerRoutine());
         }
@@ -134,7 +138,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canTakeDamageTimer -= Time.deltaTime;
             _isFlickerEnabled = true;
         }
-        else _isFlickerEnabled = false;
+        else
+        {
+            _isFlickerEnabled = false;
+            _renderer2DData.rendererFeatures[0].SetActive(false);
+        }
 
         if (_canTakeDamageTimer <= 0f)
         {
