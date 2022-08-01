@@ -12,6 +12,8 @@ public class AfroditeFirstStageState : AfroditeBaseState
     private float _firstWaveShootTimer;
     private float _timeToSecondWaveShoot = 0.25f;
     private float _secondWaveShootTimer;
+    private float _timeToSecondAttack = 1f;
+    private float _secondAttackTimer;
     private bool _isFirstWaveFinished = false;
 
     public override void EnterState(AfroditeController context)
@@ -19,6 +21,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         _switchStateTimer = _timeToSwitchState;
         _randomIndex = Random.Range(0, context.MovePoints.Count);
         _currentMovePoint = context.MovePoints[_randomIndex].position;
+        _secondAttackTimer = _timeToSecondAttack;
     }
 
     public override void UpdateState(AfroditeController context)
@@ -31,11 +34,15 @@ public class AfroditeFirstStageState : AfroditeBaseState
                 context.SwitchState(context.FirstStageState);
             }
         }
+        else
+        {
+            HandleSecondAttack(context);
+        }
 
         HandleMovement(context);
         HandleTurretAim(context.TurretTransform1);
         HandleTurretAim(context.TurretTransform2);
-        HandleAttack(context);
+        HandleFirstAttack(context);
     }
 
     private void HandleMovement(AfroditeController context)
@@ -48,7 +55,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, context.Speed);
     }
 
-    private void HandleAttack(AfroditeController context)
+    private void HandleFirstAttack(AfroditeController context)
     {
         if (!_isFirstWaveFinished)
         {
@@ -75,6 +82,19 @@ public class AfroditeFirstStageState : AfroditeBaseState
         }
     }
 
+    private void HandleSecondAttack(AfroditeController context)
+    {
+        _secondAttackTimer -= Time.deltaTime;
+        if (_secondAttackTimer <= 0f)
+        {
+            for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++)
+            {
+                GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
+            }
+            _secondAttackTimer = _timeToSecondAttack;
+        }
+    }
+
     private void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
     {
         if (PlayerMainShipController.Instance == null)
@@ -84,6 +104,16 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.CurrentFirstStageProjectileDir = projectileDir.position - bulletInst.transform.position;
         context.CurrentFirstStageProjectileDir.Normalize();
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(context.CurrentFirstStageProjectileDir.x, context.CurrentFirstStageProjectileDir.y);
+    }
+
+    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
+    {
+        var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
+        Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
+        bulletDir.Normalize();
+        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
     private Vector2 HandleTurretAim(Transform turretTransform)
