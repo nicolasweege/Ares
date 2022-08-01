@@ -41,6 +41,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public GameObject ThirdStageProjectile;
     public List<Transform> ThirdStageFirstWaveShootDirections = new List<Transform>();
     public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
+    public bool CanGoToThirdStage = false;
     #endregion
 
     #region Fourth Stage Props

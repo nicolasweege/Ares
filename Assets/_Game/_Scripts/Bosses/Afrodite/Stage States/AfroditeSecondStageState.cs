@@ -12,12 +12,14 @@ public class AfroditeSecondStageState : AfroditeBaseState
     private float _currentTurnSpeed;
     private float _timeToLaserShoot = 2.3f;
     private float _laserShootTimer;
+    private bool _laserShootAudioHasPlayed = false;
 
     public override void EnterState(AfroditeController context)
     {
         _switchStateTimer = _timeToSwitchState;
         _laserShootTimer = _timeToLaserShoot;
         _currentTurnSpeed = _initialTurnSpeed;
+        _laserShootAudioHasPlayed = false;
     }
 
     public override void UpdateState(AfroditeController context)
@@ -28,6 +30,13 @@ public class AfroditeSecondStageState : AfroditeBaseState
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableFeedbackLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();
+
+            if (!_laserShootAudioHasPlayed)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeSecondStageLaserShoot, context.transform.position, 0.3f);
+                CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
+                _laserShootAudioHasPlayed = true;
+            }
 
             _switchStateTimer -= Time.deltaTime;
             if (_switchStateTimer <= 0f)

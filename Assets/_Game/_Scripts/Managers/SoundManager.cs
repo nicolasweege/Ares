@@ -9,6 +9,8 @@ public static class SoundManager
     {
         PlayerShoot,
         PlayerTakingDamage,
+        AfroditeSecondStageLaserShoot,
+        AfroditeFirstStageShoot,
         TestSound
     }
 
@@ -71,7 +73,25 @@ public static class SoundManager
             audioSource.spatialBlend = 1f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;
             audioSource.dopplerLevel = 0f;
-            audioSource.volume = 0.1f;
+            audioSource.Play();
+
+            UnityEngine.Object.Destroy(soundGameObject, audioSource.clip.length);
+        }
+    }
+
+    public static void PlaySound(Sound sound, Vector3 pos, float volume)
+    {
+        if (CanPlaySound(sound))
+        {
+            GameObject soundGameObject = new GameObject("One Shot Sound");
+            soundGameObject.transform.position = pos;
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.maxDistance = 100f;
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
+            audioSource.dopplerLevel = 0f;
+            audioSource.volume = volume;
             audioSource.Play();
 
             UnityEngine.Object.Destroy(soundGameObject, audioSource.clip.length);
