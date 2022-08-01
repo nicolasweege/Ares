@@ -41,7 +41,7 @@ Material:
     - _FogSize: 10
     - _FogSize_2: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 4, a: 1}
+    - _Color: {r: 0.15686275, g: 0, b: 4, a: 1}
     - _Color_2: {r: 1, g: 1, b: 1, a: 1}
     - _Speed: {r: 0, g: 0, b: 0, a: 0}
     - _Speed_2: {r: 0, g: 0, b: 0, a: 0}

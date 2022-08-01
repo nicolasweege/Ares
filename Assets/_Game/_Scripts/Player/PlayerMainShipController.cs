@@ -17,6 +17,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private Transform _bulletStartingPos;
     [SerializeField] private Transform _bulletDir;
     [SerializeField] private GameObject _deathAnim;
+    [SerializeField] private GameObject _dashAnim;
     [SerializeField] private float _timeToShoot;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private GameObject _shield;
@@ -80,7 +81,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (_playerInputActions.MainShip.Dash.IsPressed())
         {
             if (_dashCooldownTimer <= 0f)
+            {
+                Instantiate(_dashAnim, transform.position, Quaternion.identity);
                 _isDashing = true;
+            }
         }
 
         _shootTimer -= Time.deltaTime;
@@ -138,10 +142,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canTakeDamageTimer -= Time.deltaTime;
             _isFlickerEnabled = true;
         }
-        else
-        {
-            _isFlickerEnabled = false;
-        }
+        else _isFlickerEnabled = false;
 
         if (_canTakeDamageTimer <= 0f)
         {
@@ -158,10 +159,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 _canMoveTimer = _timeToCanMove;
             }
         }
-        else
-        {
-            _renderer2DData.rendererFeatures[0].SetActive(false);
-        }
+        else _renderer2DData.rendererFeatures[0].SetActive(false);
     }
 
     private void HandleTurbineFlame()
@@ -211,6 +209,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 }
 
                 transform.position = dashPos;
+                Instantiate(_dashAnim, transform.position, Quaternion.identity);
                 _isDashing = false;
                 _dashCooldownTimer = _dashCooldown;
             }
