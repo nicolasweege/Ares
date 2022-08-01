@@ -8,6 +8,11 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     [SerializeField] private int _health;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private FlashHitEffect _flashHitEffect;
+    [SerializeField] private GameObject _projectile;
+    [SerializeField] private float _timeToShoot;
+    [SerializeField] private List<Transform> _shootDirections = new List<Transform>();
+    private float _shootTimer;
+
     [NonSerialized] public bool IsFlashing = false;
 
     protected override void Awake()
@@ -22,6 +27,8 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     {
         IsFlashing = _flashHitEffect.IsFlashing;
 
+        HandleAttack();
+
         if (_health <= 0)
             Destroy(gameObject);
     }
@@ -30,6 +37,29 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     {
         _health -= damage;
         _flashHitEffect.Flash();
+    }
+
+    private void HandleAttack()
+    {
+        _shootTimer -= Time.deltaTime;
+        if (_shootTimer <= 0f)
+        {
+            for (int i = 0; i < _shootDirections.Count; i++)
+            {
+                GenerateBullet(transform, _projectile, _shootDirections[i]);
+            }
+            _shootTimer = _timeToShoot;
+        }
+    }
+
+    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
+    {
+        var bulletInst = Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
+        Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
+        bulletDir.Normalize();
+        float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+        bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+        bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

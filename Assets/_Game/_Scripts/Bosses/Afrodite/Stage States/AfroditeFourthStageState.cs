@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class AfroditeFourthStageState : AfroditeBaseState
 {
-    private float _timeToSwitchState = 7f;
+    private float _timeToSwitchState = 5f;
     private float _switchStateTimer;
     private Vector2 _currentMovePoint;
     private Vector2 _currentAimPoint;
     private Vector2 _otherAimPoint;
-    private float _baseTurnSpeed = 0.6f;
+    private float _baseTurnSpeed = 0.7f;
     private float _currentTurnSpeed;
-    private float _speedToMovePoint = 2f;
+    private float _speedToMovePoint = 1f;
     private GameObject _satelliteInst;
     private float _timeToCreateSatellite = 2f;
     private float _createSatelliteTimer;
     private bool _isSatelliteInstantiated = false;
+    private bool _laserShootAudioHasPlayed = false;
 
     public override void EnterState(AfroditeController context)
     {
         _switchStateTimer = _timeToSwitchState;
         _createSatelliteTimer = _timeToCreateSatellite;
+        _laserShootAudioHasPlayed = false;
 
         if (PlayerMainShipController.Instance.transform.position.x > 0f)
         {
@@ -45,7 +47,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
 
     public override void UpdateState(AfroditeController context)
     {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f)
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 1f)
         {
             _currentTurnSpeed = 1f;
             HandleAim(context, _otherAimPoint);
@@ -67,6 +69,13 @@ public class AfroditeFourthStageState : AfroditeBaseState
         {
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();
+            if (!_laserShootAudioHasPlayed)
+            {
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeSecondStageLaserShoot, context.transform.position, 0.3f);
+                CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
+                _laserShootAudioHasPlayed = true;
+            }
+
             _currentTurnSpeed = _baseTurnSpeed;
             HandleAim(context, _currentAimPoint);
 

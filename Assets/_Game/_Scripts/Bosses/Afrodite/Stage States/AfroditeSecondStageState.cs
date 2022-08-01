@@ -13,6 +13,8 @@ public class AfroditeSecondStageState : AfroditeBaseState
     private float _timeToLaserShoot = 2.3f;
     private float _laserShootTimer;
     private bool _laserShootAudioHasPlayed = false;
+    private Vector2 _currentMovePoint;
+    private float _speedToMovePoint = 2f;
 
     public override void EnterState(AfroditeController context)
     {
@@ -20,9 +22,32 @@ public class AfroditeSecondStageState : AfroditeBaseState
         _laserShootTimer = _timeToLaserShoot;
         _currentTurnSpeed = _initialTurnSpeed;
         _laserShootAudioHasPlayed = false;
+
+        if (PlayerMainShipController.Instance.transform.position.x > 0f)
+        {
+            _currentMovePoint = context.FourthStageMovePointLeft.position;
+        }
+        else
+        {
+            _currentMovePoint = context.FourthStageMovePointRight.position;
+        }
     }
 
     public override void UpdateState(AfroditeController context)
+    {
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 1f)
+        {
+            HandleMovement(context);
+            _currentTurnSpeed = _initialTurnSpeed;
+            HandleAim(context);
+        }
+        else
+        {
+            HandleLaserShoot(context);
+        }
+    }
+
+    private void HandleLaserShoot(AfroditeController context)
     {
         _laserShootTimer -= Time.deltaTime;
         if (_laserShootTimer <= 0f)
@@ -42,7 +67,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
             if (_switchStateTimer <= 0f)
             {
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
-                context.SwitchState(context.IdleState);
+                context.SwitchState(context.FirstStageState);
             }
         }
         else
@@ -67,6 +92,11 @@ public class AfroditeSecondStageState : AfroditeBaseState
 
             HandleAim(context);
         }
+    }
+
+    private void HandleMovement(AfroditeController context)
+    {
+        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _speedToMovePoint);
     }
 
     private void HandleAim(AfroditeController context)
