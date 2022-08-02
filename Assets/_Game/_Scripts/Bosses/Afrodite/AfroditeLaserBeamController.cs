@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AfroditeLaserBeamController : MonoBehaviour
 {
-    [SerializeField] private int _damage;
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private LineRenderer _laserFeedbackLineRenderer;
     [SerializeField] private BoxCollider2D _laserBoxCollider;
@@ -13,7 +11,6 @@ public class AfroditeLaserBeamController : MonoBehaviour
     [SerializeField] private GameObject _startVFX;
     [SerializeField] private GameObject _endVFX;
     [SerializeField] private LayerMask _layerMask;
-    private Vector2 _laserDir;
     private List<ParticleSystem> _particles = new List<ParticleSystem>();
 
     private void Awake()
@@ -71,10 +68,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
 
         _lineRenderer.SetPosition(0, (Vector2)_fireStartingPos.position);
         _lineRenderer.SetPosition(1, (Vector2)_fireDir.position);
-        _laserDir = (Vector2)_fireDir.position - (Vector2)transform.position;
         _startVFX.transform.position = new Vector3(_fireStartingPos.position.x, _fireStartingPos.position.y, _startVFX.transform.position.z);
-
-        // RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }
 

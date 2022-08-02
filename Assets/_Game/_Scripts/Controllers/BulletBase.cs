@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BulletBase : StaticInstance<BulletBase>
@@ -20,21 +18,6 @@ public abstract class BulletBase : StaticInstance<BulletBase>
     {
         Destroy(gameObject);
         Instantiate(_damageAnim, transform.position, Quaternion.identity);
-    }
-
-    public virtual void DeactiveBullet()
-    {
-        _timeToDeactiveBullet -= Time.deltaTime;
-        bool isShotVisible = GetComponentInChildren<SpriteRenderer>().isVisible;
-        if (!isShotVisible && _timeToDeactiveBullet <= 0f)
-            Destroy(gameObject);
-    }
-
-    protected virtual void DestroyVisibleBullet()
-    {
-        _destroyVisibleBulletTimer -= Time.deltaTime;
-        if (_destroyVisibleBulletTimer <= 0f)
-            DestroyBullet();
     }
 
     protected virtual void MoveBullet() => transform.position += _direction * Time.deltaTime * _speed;

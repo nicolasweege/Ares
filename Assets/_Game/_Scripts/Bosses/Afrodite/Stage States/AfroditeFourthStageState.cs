@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AfroditeFourthStageState : AfroditeBaseState
@@ -9,7 +7,8 @@ public class AfroditeFourthStageState : AfroditeBaseState
     private Vector2 _currentMovePoint;
     private Vector2 _currentAimPoint;
     private Vector2 _otherAimPoint;
-    private float _baseTurnSpeed = 0.7f;
+    private Vector2 _currentSatellitePoint;
+    private float _baseTurnSpeed = 0.8f;
     private float _currentTurnSpeed;
     private float _speedToMovePoint = 1f;
     private GameObject _satelliteInst;
@@ -22,6 +21,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
     {
         _switchStateTimer = _timeToSwitchState;
         _createSatelliteTimer = _timeToCreateSatellite;
+        _isSatelliteInstantiated = false;
         _laserShootAudioHasPlayed = false;
 
         if (PlayerMainShipController.Instance.transform.position.x > 0f)
@@ -37,11 +37,13 @@ public class AfroditeFourthStageState : AfroditeBaseState
         {
             _currentAimPoint = context.FourthStageAimPointUp.position;
             _otherAimPoint = context.FourthStageAimPointDown.position;
+            _currentSatellitePoint = context.FourthStageSatelliteUpPoint.position;
         }
         else
         {
             _currentAimPoint = context.FourthStageAimPointDown.position;
             _otherAimPoint = context.FourthStageAimPointUp.position;
+            _currentSatellitePoint = context.FourthStageSatelliteDownPoint.position;
         }
     }
 
@@ -58,9 +60,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
             {
                 if (!_isSatelliteInstantiated)
                 {
-                    _satelliteInst = Object.Instantiate(context.FourthStageSatellite,
-                    new Vector3(PlayerMainShipController.Instance.transform.position.x, PlayerMainShipController.Instance.transform.position.y, context.transform.position.z),
-                    context.transform.rotation);
+                    _satelliteInst = Object.Instantiate(context.FourthStageSatellite, _currentSatellitePoint, context.transform.rotation);
                     _isSatelliteInstantiated = true;
                 }
             }
@@ -83,17 +83,15 @@ public class AfroditeFourthStageState : AfroditeBaseState
             if (_switchStateTimer <= 0f)
             {
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
-                Object.Destroy(_satelliteInst);
-                context.SwitchState(context.IdleState);
+                _satelliteInst.GetComponent<AfroditeFourthStageSatelliteController>().HandleDeath();
+                _isSatelliteInstantiated = false;
+                context.SwitchState(context.FirstStageState);
             }
         }
     }
 
     private void HandleMovement(AfroditeController context)
     {
-        if (PlayerMainShipController.Instance == null)
-            return;
-
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _speedToMovePoint);
     }
 

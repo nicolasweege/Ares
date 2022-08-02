@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Cinemachine;
 using UnityEngine.Rendering.Universal;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
@@ -99,7 +96,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
 
         if (_health <= 0)
-            Death();
+        {
+            HandleDeath();
+        }
     }
 
     public void TakeDamage(int damage)
@@ -216,7 +215,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
     }
 
-    public void Death()
+    public void HandleDeath()
     {
         Destroy(gameObject);
         Instantiate(_deathAnim, transform.position, Quaternion.identity);
@@ -276,6 +275,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite"))
-            Death();
+            HandleDeath();
     }
 }

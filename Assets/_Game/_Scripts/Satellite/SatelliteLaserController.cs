@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,16 +51,6 @@ public class SatelliteLaserController : MonoBehaviour
         _lineRenderer.SetPosition(1, (Vector2)_fireDir.position);
         _laserDir = (Vector2)_fireDir.position - (Vector2)transform.position;
         _startVFX.transform.position = new Vector3(_fireStartingPos.position.x, _fireStartingPos.position.y, _startVFX.transform.position.z);
-
-        RaycastHit2D laserHit = Physics2D.Raycast((Vector2)transform.position, _laserDir.normalized, _laserDir.magnitude, _layerMask);
-
-        if (laserHit && _lineRenderer.enabled)
-        {
-            if (laserHit.collider.gameObject.CompareTag("PlayerMainShip"))
-            {
-                // laserHit.collider.GetComponent<PlayerMainShipController>().Death();
-            }
-        }
         _endVFX.transform.position = _lineRenderer.GetPosition(1);
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBulletController : BulletBase
@@ -7,7 +5,6 @@ public class PlayerBulletController : BulletBase
     private void Update()
     {
         MoveBullet();
-        DeactiveBullet();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

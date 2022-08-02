@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -41,7 +40,6 @@ public class AfroditeController : Singleton<AfroditeController>
     public GameObject ThirdStageProjectile;
     public List<Transform> ThirdStageFirstWaveShootDirections = new List<Transform>();
     public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
-    public bool CanGoToThirdStage = false;
     #endregion
 
     #region Fourth Stage Props
@@ -52,6 +50,8 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform FourthStageAimPointUp;
     public Transform FourthStageAimPointDown;
     public GameObject FourthStageSatellite;
+    public Transform FourthStageSatelliteUpPoint;
+    public Transform FourthStageSatelliteDownPoint;
     #endregion
 
     #region Stage States

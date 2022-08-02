@@ -1,11 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthStageSatelliteController>
 {
     [SerializeField] private int _health;
+    [SerializeField] private GameObject _deathAnim;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private FlashHitEffect _flashHitEffect;
     [SerializeField] private GameObject _projectile;
@@ -30,13 +30,21 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
         HandleAttack();
 
         if (_health <= 0)
-            Destroy(gameObject);
+        {
+            HandleDeath();
+        }
     }
 
     private void TakeDamage(int damage)
     {
         _health -= damage;
         _flashHitEffect.Flash();
+    }
+
+    public void HandleDeath()
+    {
+        Destroy(gameObject);
+        Instantiate(_deathAnim, transform.position, Quaternion.identity);
     }
 
     private void HandleAttack()
