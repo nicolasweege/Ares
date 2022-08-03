@@ -73,7 +73,6 @@ public class AfroditeFirstStageState : AfroditeBaseState
             if (_secondWaveShootTimer <= 0f)
             {
                 GenerateBullet(context, context.FirstStageProjectileStartingPoint2, context.FirstStageProjectile, context.FirstStageProjectileDir2);
-                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.3f);
                 _isFirstWaveFinished = false;
                 _secondWaveShootTimer = _timeToSecondWaveShoot;
             }
@@ -87,7 +86,8 @@ public class AfroditeFirstStageState : AfroditeBaseState
         {
             for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++)
             {
-                GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
+                GenerateBulletSecondAttack(context, context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.3f);
             }
             _secondAttackTimer = _timeToSecondAttack;
         }
@@ -104,8 +104,9 @@ public class AfroditeFirstStageState : AfroditeBaseState
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(context.CurrentFirstStageProjectileDir.x, context.CurrentFirstStageProjectileDir.y);
     }
 
-    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
+    private void GenerateBulletSecondAttack(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
     {
+        Object.Instantiate(context.ThirdStageShootAnim, bulletStartingPos.position, bulletStartingPos.rotation);
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
         bulletDir.Normalize();

@@ -61,8 +61,9 @@ public class AfroditeThirdStageState : AfroditeBaseState
             {
                 for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++)
                 {
-                    GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
+                    GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i], context);
                 }
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeThirdStageShoot, context.transform.position, 0.3f);
                 _isFirstWaveFinished = true;
                 _firstWaveShootTimer = _timeToFirstWaveShoot;
             }
@@ -75,16 +76,18 @@ public class AfroditeThirdStageState : AfroditeBaseState
             {
                 for (int i = 0; i < context.ThirdStageSecondWaveShootDirections.Count; i++)
                 {
-                    GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageSecondWaveShootDirections[i]);
+                    GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageSecondWaveShootDirections[i], context);
                 }
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeThirdStageShoot, context.transform.position, 0.3f);
                 _isFirstWaveFinished = false;
                 _secondWaveShootTimer = _timeToSecondWaveShoot;
             }
         }
     }
 
-    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
+    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir, AfroditeController context)
     {
+        Object.Instantiate(context.ThirdStageShootAnim, bulletStartingPos.position, bulletStartingPos.rotation);
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
         bulletDir.Normalize();

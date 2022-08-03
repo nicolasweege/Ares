@@ -29,7 +29,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
 
         HandleAttack();
 
-        if (_health <= 0)
+        if (_health <= 0 || AfroditeController.Instance.CurrentState != AfroditeController.Instance.FourthStageState)
         {
             HandleDeath();
         }
@@ -55,6 +55,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
             for (int i = 0; i < _shootDirections.Count; i++)
             {
                 GenerateBullet(transform, _projectile, _shootDirections[i]);
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeThirdStageShoot, transform.position, 0.1f);
             }
             _shootTimer = _timeToShoot;
         }

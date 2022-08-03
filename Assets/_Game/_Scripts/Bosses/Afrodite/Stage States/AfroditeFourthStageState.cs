@@ -10,8 +10,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
     private Vector2 _currentSatellitePoint;
     private float _baseTurnSpeed = 0.8f;
     private float _currentTurnSpeed;
-    private float _speedToMovePoint = 1f;
-    private GameObject _satelliteInst;
+    private float _speedToMovePoint = 1.5f;
     private float _timeToCreateSatellite = 2f;
     private float _createSatelliteTimer;
     private bool _isSatelliteInstantiated = false;
@@ -60,7 +59,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
             {
                 if (!_isSatelliteInstantiated)
                 {
-                    _satelliteInst = Object.Instantiate(context.FourthStageSatellite, _currentSatellitePoint, context.transform.rotation);
+                    Object.Instantiate(context.FourthStageSatellite, _currentSatellitePoint, context.transform.rotation);
                     _isSatelliteInstantiated = true;
                 }
             }
@@ -83,8 +82,6 @@ public class AfroditeFourthStageState : AfroditeBaseState
             if (_switchStateTimer <= 0f)
             {
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
-                _satelliteInst.GetComponent<AfroditeFourthStageSatelliteController>().HandleDeath();
-                _isSatelliteInstantiated = false;
                 context.SwitchState(context.FirstStageState);
             }
         }

@@ -8,18 +8,20 @@ public class AfroditeSecondStageState : AfroditeBaseState
     private float _baseTurnSpeed = 15f;
     private float _maxTurnSpeed = 20f;
     private float _currentTurnSpeed;
-    private float _timeToLaserShoot = 2.3f;
+    private float _timeToLaserShoot = 2f;
     private float _laserShootTimer;
-    private bool _laserShootAudioHasPlayed = false;
+    private bool _laserShootSoundPlayed = false;
     private Vector2 _currentMovePoint;
     private float _speedToMovePoint = 2f;
+    private bool _laserLockOnSoundPlayed = false;
 
     public override void EnterState(AfroditeController context)
     {
         _switchStateTimer = _timeToSwitchState;
         _laserShootTimer = _timeToLaserShoot;
         _currentTurnSpeed = _initialTurnSpeed;
-        _laserShootAudioHasPlayed = false;
+        _laserShootSoundPlayed = false;
+        _laserLockOnSoundPlayed = false;
 
         if (PlayerMainShipController.Instance.transform.position.x > 0f)
         {
@@ -33,7 +35,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
 
     public override void UpdateState(AfroditeController context)
     {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 1f)
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 3f)
         {
             HandleMovement(context);
             _currentTurnSpeed = _initialTurnSpeed;
@@ -54,11 +56,11 @@ public class AfroditeSecondStageState : AfroditeBaseState
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();
 
-            if (!_laserShootAudioHasPlayed)
+            if (!_laserShootSoundPlayed)
             {
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeSecondStageLaserShoot, context.transform.position, 0.3f);
                 CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
-                _laserShootAudioHasPlayed = true;
+                _laserShootSoundPlayed = true;
             }
 
             _switchStateTimer -= Time.deltaTime;
@@ -74,18 +76,25 @@ public class AfroditeSecondStageState : AfroditeBaseState
             {
                 _currentTurnSpeed = _baseTurnSpeed;
 
-                if (_laserShootTimer <= 0.3f)
+                if (_laserShootTimer <= 0.4f)
                 {
                     if (_laserShootTimer <= 0.1f)
+                    {
                         _currentTurnSpeed = _maxTurnSpeed;
+                    }
 
+                    if (!_laserLockOnSoundPlayed)
+                    {
+                        SoundManager.PlaySound(SoundManager.Sound.AfroditeLaserLockOn, context.transform.position, 0.3f);
+                        _laserLockOnSoundPlayed = true;
+                    }
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableFeedbackLaser();
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateFeedbackLaser();
                 }
             }
             else
             {
-                _currentTurnSpeed += 0.05f;
+                _currentTurnSpeed += 0.07f;
             }
 
             HandleAim(context);

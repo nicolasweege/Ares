@@ -38,6 +38,7 @@ public class AfroditeController : Singleton<AfroditeController>
     [SerializeField] private float _timeToThirdStage;
     private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
+    public GameObject ThirdStageShootAnim;
     public List<Transform> ThirdStageFirstWaveShootDirections = new List<Transform>();
     public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
     #endregion
