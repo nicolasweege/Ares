@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.Audio;
+using System.Linq;
+using Cyan;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -32,6 +33,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private Color _flashColor;
     [SerializeField] private Texture2D _cursorTexture;
     [SerializeField] private Renderer2DData _renderer2DData;
+    private float dissolveAmount = 0f;
+    private bool _isDissolving = false;
 
     [SerializeField] private UnityEvent _screenShakeEvent;
 
@@ -102,6 +105,17 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         {
             HandleDeath();
         }
+
+        if (_isDissolving)
+        {
+            if (dissolveAmount < 1f)
+                dissolveAmount += 0.02f;
+
+            foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
+            {
+                renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dissolveAmount);
+            }
+        }
     }
 
     public void TakeDamage(int damage)
@@ -114,6 +128,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canMove = false;
             _isDashing = false;
             _dashCooldownTimer = _dashCooldown;
+            _isDissolving = true;
             _renderer2DData.rendererFeatures[0].SetActive(true);
             _isFlickerEnabled = true;
             StartCoroutine(colorFlickerRoutine());
@@ -168,6 +183,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         else
         {
             _renderer2DData.rendererFeatures[0].SetActive(false);
+            dissolveAmount = 0f;
             AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(2f);
         }
     }
