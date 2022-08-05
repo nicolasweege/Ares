@@ -11,16 +11,11 @@ public class AfroditeFourthStageState : AfroditeBaseState
     private float _baseTurnSpeed = 0.8f;
     private float _currentTurnSpeed;
     private float _speedToMovePoint = 1.5f;
-    private float _timeToCreateSatellite = 2f;
-    private float _createSatelliteTimer;
-    private bool _isSatelliteInstantiated = false;
     private bool _laserShootAudioHasPlayed = false;
 
     public override void EnterState(AfroditeController context)
     {
         _switchStateTimer = _timeToSwitchState;
-        _createSatelliteTimer = _timeToCreateSatellite;
-        _isSatelliteInstantiated = false;
         _laserShootAudioHasPlayed = false;
 
         if (PlayerMainShipController.Instance.transform.position.x > 0f)
@@ -44,25 +39,17 @@ public class AfroditeFourthStageState : AfroditeBaseState
             _otherAimPoint = context.FourthStageAimPointUp.position;
             _currentSatellitePoint = context.FourthStageSatelliteDownPoint.position;
         }
+
+        HandleSatellite(context);
     }
 
     public override void UpdateState(AfroditeController context)
     {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 1f)
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 3f)
         {
             _currentTurnSpeed = 1f;
             HandleAim(context, _otherAimPoint);
             HandleMovement(context);
-
-            _createSatelliteTimer -= Time.deltaTime;
-            if (_createSatelliteTimer <= 0f)
-            {
-                if (!_isSatelliteInstantiated)
-                {
-                    Object.Instantiate(context.FourthStageSatellite, _currentSatellitePoint, context.transform.rotation);
-                    _isSatelliteInstantiated = true;
-                }
-            }
         }
         else
         {
@@ -85,6 +72,11 @@ public class AfroditeFourthStageState : AfroditeBaseState
                 context.SwitchState(context.FirstStageState);
             }
         }
+    }
+
+    private void HandleSatellite(AfroditeController context)
+    {
+        Object.Instantiate(context.FourthStageSatellite, _currentSatellitePoint, context.transform.rotation);
     }
 
     private void HandleMovement(AfroditeController context)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public static class SoundManager
 {
@@ -57,6 +58,7 @@ public static class SoundManager
             {
                 _oneShotGameObject = new GameObject("One Shot Sound");
                 _oneShotAudioSource = _oneShotGameObject.AddComponent<AudioSource>();
+                _oneShotAudioSource.outputAudioMixerGroup = AssetsManager.Instance.SoundsAudioMixerGroup;
             }
             _oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
         }
@@ -74,13 +76,14 @@ public static class SoundManager
             audioSource.spatialBlend = 1f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;
             audioSource.dopplerLevel = 0f;
+            audioSource.outputAudioMixerGroup = AssetsManager.Instance.SoundsAudioMixerGroup;
             audioSource.Play();
 
             UnityEngine.Object.Destroy(soundGameObject, audioSource.clip.length);
         }
     }
 
-    public static void PlaySound(Sound sound, Vector3 pos, float volume)
+    public static void PlaySound(Sound sound, Vector3 pos, float volume = 1f)
     {
         if (CanPlaySound(sound))
         {
@@ -94,13 +97,14 @@ public static class SoundManager
             audioSource.dopplerLevel = 0f;
             audioSource.volume = volume;
             audioSource.priority = 100;
+            audioSource.outputAudioMixerGroup = AssetsManager.Instance.SoundsAudioMixerGroup;
             audioSource.Play();
 
             Object.Destroy(soundGameObject, audioSource.clip.length);
         }
     }
 
-    public static void PlaySound(Sound sound, Vector3 pos, float volume, int priority)
+    public static void PlaySound(Sound sound, Vector3 pos, float volume = 1f, int priority = 0)
     {
         if (CanPlaySound(sound))
         {
@@ -114,6 +118,28 @@ public static class SoundManager
             audioSource.dopplerLevel = 0f;
             audioSource.volume = volume;
             audioSource.priority = priority;
+            audioSource.outputAudioMixerGroup = AssetsManager.Instance.SoundsAudioMixerGroup;
+            audioSource.Play();
+
+            Object.Destroy(soundGameObject, audioSource.clip.length);
+        }
+    }
+
+    public static void PlaySound(Sound sound, Vector3 pos, AudioMixerGroup audioMixerGroup, float volume = 1f, int priority = 0)
+    {
+        if (CanPlaySound(sound))
+        {
+            GameObject soundGameObject = new GameObject("One Shot Sound");
+            soundGameObject.transform.position = pos;
+            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.clip = GetAudioClip(sound);
+            audioSource.maxDistance = 100f;
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
+            audioSource.dopplerLevel = 0f;
+            audioSource.volume = volume;
+            audioSource.priority = priority;
+            audioSource.outputAudioMixerGroup = audioMixerGroup;
             audioSource.Play();
 
             Object.Destroy(soundGameObject, audioSource.clip.length);

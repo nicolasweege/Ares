@@ -44,4 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31e87f40741d744c9507972f7d7d8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainAudioMixer: {fileID: 24100000, guid: a16f4f34984ff0c4a9bbb43afd8537a0, type: 2}
+  PlayerIsNotTakingDamageSnapshot: {fileID: 24500006, guid: a16f4f34984ff0c4a9bbb43afd8537a0, type: 2}
+  PlayerIsTakingDamageSnapshot: {fileID: -3808655934863413368, guid: a16f4f34984ff0c4a9bbb43afd8537a0, type: 2}
+  MasterAudioMixerGroup: {fileID: 24300002, guid: a16f4f34984ff0c4a9bbb43afd8537a0, type: 2}
+  SoundsAudioMixerGroup: {fileID: -4845584512034169464, guid: a16f4f34984ff0c4a9bbb43afd8537a0, type: 2}
+  MusicAudioMixerGroup: {fileID: 4393603660415162216, guid: a16f4f34984ff0c4a9bbb43afd8537a0, type: 2}
   SoundAudioClips: []

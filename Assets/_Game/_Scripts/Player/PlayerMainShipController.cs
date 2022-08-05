@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Audio;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
+    #region Variables
     [SerializeField] private int _health;
     [SerializeField] private float _speed;
     [SerializeField] private int _defaultDamage;
@@ -50,6 +52,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [NonSerialized] public Vector2 MoveVector;
 
     public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
+    #endregion
 
     protected override void Awake()
     {
@@ -114,6 +117,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _renderer2DData.rendererFeatures[0].SetActive(true);
             _isFlickerEnabled = true;
             StartCoroutine(colorFlickerRoutine());
+            AssetsManager.Instance.PlayerIsTakingDamageSnapshot.TransitionTo(0.01f);
         }
     }
 
@@ -141,7 +145,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canTakeDamageTimer -= Time.deltaTime;
             _isFlickerEnabled = true;
         }
-        else _isFlickerEnabled = false;
+        else
+        {
+            StopCoroutine(colorFlickerRoutine());
+        }
 
         if (_canTakeDamageTimer <= 0f)
         {
@@ -158,7 +165,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 _canMoveTimer = _timeToCanMove;
             }
         }
-        else _renderer2DData.rendererFeatures[0].SetActive(false);
+        else
+        {
+            _renderer2DData.rendererFeatures[0].SetActive(false);
+            AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(2f);
+        }
     }
 
     private void HandleTurbineFlame()
