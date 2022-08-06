@@ -33,9 +33,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private Color _flashColor;
     [SerializeField] private Texture2D _cursorTexture;
     [SerializeField] private Renderer2DData _renderer2DData;
-    private float dissolveAmount = 0f;
-    private bool _isDissolving = false;
-
+    
     [SerializeField] private UnityEvent _screenShakeEvent;
 
     private bool _isShieldEnabled = false;
@@ -48,22 +46,20 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private bool _canActivateShield = false;
     private bool _canMove = true;
     private bool _isFlickerEnabled = false;
-    private Camera _camera;
-    private PlayerInputActions _playerInputActions;
+    private float dmgAnimAmount = 0f;
+    private bool _dmgAnimEnabled = false;
+    [NonSerialized] public PlayerInputActions PlayerInputActions;
     [NonSerialized] public bool CanTakeDamage = true;
     [NonSerialized] public bool CanResetColors = true;
     [NonSerialized] public Vector2 MoveVector;
-
-    public PlayerInputActions PlayerInputActions { get => _playerInputActions; set => _playerInputActions = value; }
     #endregion
 
     protected override void Awake()
     {
         base.Awake();
-        _camera = FindObjectOfType<Camera>();
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.MainShip.Enable();
-        _shield.SetActive(false);
+        PlayerInputActions = new PlayerInputActions();
+        PlayerInputActions.MainShip.Enable();
+        DisableShield();
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
@@ -80,8 +76,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         HandleTurbineFlame();
         // HandleShield();
         HandleDamange();
+        HandleDamageAnimation();
 
-        if (_playerInputActions.MainShip.Dash.IsPressed())
+        if (PlayerInputActions.MainShip.Dash.IsPressed())
         {
             if (_dashCooldownTimer <= 0f)
             {
@@ -91,7 +88,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
 
         _shootTimer -= Time.deltaTime;
-        if (_playerInputActions.MainShip.NormalShoot.IsPressed() && _canMove)
+        if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove)
         {
             if (_shootTimer <= 0f)
             {
@@ -102,24 +99,23 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
 
         if (_health <= 0)
-        {
             HandleDeath();
-        }
+    }
 
-        if (_isDissolving)
+    private void HandleDamageAnimation()
+    {
+        if (_dmgAnimEnabled)
         {
-            if (dissolveAmount < 0.8f)
-                dissolveAmount += 0.08f;
+            if (dmgAnimAmount < 0.8f)
+                dmgAnimAmount += 0.08f;
         }
         else
         {
-            if (dissolveAmount > 0f)
-                dissolveAmount -= 0.02f;
+            if (dmgAnimAmount > 0f)
+                dmgAnimAmount -= 0.02f;
         }
         foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
-        {
-            renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dissolveAmount);
-        }
+            renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dmgAnimAmount);
     }
 
     public void TakeDamage(int damage)
@@ -132,7 +128,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canMove = false;
             _isDashing = false;
             _dashCooldownTimer = _dashCooldown;
-            _isDissolving = true;
+            _dmgAnimEnabled = true;
             _renderer2DData.rendererFeatures[0].SetActive(true);
             _isFlickerEnabled = true;
             StartCoroutine(colorFlickerRoutine());
@@ -165,10 +161,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canTakeDamageTimer -= Time.deltaTime;
             _isFlickerEnabled = true;
         }
-        else
-        {
-            StopCoroutine(colorFlickerRoutine());
-        }
+        else StopCoroutine(colorFlickerRoutine());
 
         if (_canTakeDamageTimer <= 0f)
         {
@@ -187,15 +180,14 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         }
         else
         {
-            // _renderer2DData.rendererFeatures[0].SetActive(false);
-            _isDissolving = false;
             AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(2f);
+            _dmgAnimEnabled = false;
         }
     }
 
     private void HandleTurbineFlame()
     {
-        if (_playerInputActions.MainShip.Movement.IsPressed() && CanTakeDamage)
+        if (PlayerInputActions.MainShip.Movement.IsPressed() && CanTakeDamage)
             _turbineFlame.Play();
         else
             _turbineFlame.Stop();
@@ -213,7 +205,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private Vector2 HandleAim()
     {
-        Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = Utils.GetMouseWorldPosition();
         Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
@@ -225,7 +217,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (_canMove)
         {
-            MoveVector = _playerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
+            MoveVector = PlayerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
             transform.position += new Vector3(MoveVector.x, MoveVector.y) * Time.deltaTime * _speed;
 
             _dashCooldownTimer -= Time.deltaTime;
@@ -258,22 +250,26 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         _activateShieldTimer -= Time.deltaTime;
         if (_activateShieldTimer <= 0f && !_canActivateShield)
-        {
             _canActivateShield = true;
-        }
-        if (_playerInputActions.MainShip.ActivateShield.IsPressed() && _canActivateShield)
-        {
-            _shield.SetActive(true);
-            _isShieldEnabled = true;
-        }
-        if (!_playerInputActions.MainShip.ActivateShield.IsPressed())
-        {
-            _shield.SetActive(false);
-            _isShieldEnabled = false;
-        }
+        if (PlayerInputActions.MainShip.ActivateShield.IsPressed() && _canActivateShield)
+            EnableShield();
+        if (!PlayerInputActions.MainShip.ActivateShield.IsPressed())
+            DisableShield();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void EnableShield()
+    {
+        _shield.SetActive(true);
+        _isShieldEnabled = true;
+    }
+
+    private void DisableShield()
+    {
+        _shield.SetActive(false);
+        _isShieldEnabled = false;
+    }
+
+        private void OnTriggerEnter2D(Collider2D other)
     {
         if (CanTakeDamage)
         {
@@ -288,8 +284,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 {
                     _canActivateShield = false;
                     _activateShieldTimer = _timeToActivateShield;
-                    _shield.SetActive(false);
-                    _isShieldEnabled = false;
+                    DisableShield();
                 }
 
                 other.GetComponent<BulletBase>().DestroyBullet();

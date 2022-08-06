@@ -46,7 +46,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _FullScreenIntensity: -0.019997586
+    - _FullScreenIntensity: -0.019999612
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
@@ -54,7 +54,7 @@ Material:
     - _VignetteIntensity: 0.8
     - _VignetteRadiusPower: 5
     - _VoronoiPower: 1.7
-    - _VoronoiScale: 7
+    - _VoronoiScale: 8
     - _VoronoiSpeed: 2
     - _ZTest: 4
     - _ZWrite: 0
