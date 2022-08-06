@@ -6,6 +6,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
 {
     [SerializeField] private int _health;
     [SerializeField] private GameObject _deathAnim;
+    [SerializeField] private GameObject _shootAnim;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private FlashHitEffect _flashHitEffect;
     [SerializeField] private GameObject _projectile;
@@ -63,6 +64,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
 
     private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
     {
+        Instantiate(_shootAnim, transform.position, Quaternion.identity);
         var bulletInst = Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
         bulletDir.Normalize();

@@ -106,15 +106,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (_dmgAnimEnabled)
         {
-            if (_fullScreenIntensity < 0.8f)
+            if (_fullScreenIntensity < 0.9f)
                 _fullScreenIntensity += 0.08f;
         }
         else
         {
             if (_fullScreenIntensity > 0f)
                 _fullScreenIntensity -= 0.017f;
-            if (_fullScreenIntensity <= 0f)
-                _renderer2DData.rendererFeatures[0].SetActive(false);
+            /*if (_fullScreenIntensity <= 0f)
+                _renderer2DData.rendererFeatures[0].SetActive(false);*/
         }
         foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
             renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", _fullScreenIntensity);
