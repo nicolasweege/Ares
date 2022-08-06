@@ -46,7 +46,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private bool _canActivateShield = false;
     private bool _canMove = true;
     private bool _isFlickerEnabled = false;
-    private float dmgAnimAmount = 0f;
+    private float _fullScreenIntensity = 0f;
     private bool _dmgAnimEnabled = false;
     [NonSerialized] public PlayerInputActions PlayerInputActions;
     [NonSerialized] public bool CanTakeDamage = true;
@@ -106,16 +106,16 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (_dmgAnimEnabled)
         {
-            if (dmgAnimAmount < 0.8f)
-                dmgAnimAmount += 0.08f;
+            if (_fullScreenIntensity < 0.8f)
+                _fullScreenIntensity += 0.085f;
         }
         else
         {
-            if (dmgAnimAmount > 0f)
-                dmgAnimAmount -= 0.02f;
+            if (_fullScreenIntensity > 0f)
+                _fullScreenIntensity -= 0.01f;
         }
         foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
-            renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dmgAnimAmount);
+            renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", _fullScreenIntensity);
     }
 
     public void TakeDamage(int damage)
