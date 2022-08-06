@@ -106,7 +106,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     {
         if (_dmgAnimEnabled)
         {
-            if (_fullScreenIntensity < 0.9f)
+            if (_fullScreenIntensity < 0.8f)
                 _fullScreenIntensity += 0.08f;
         }
         else
