@@ -78,7 +78,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
-        HandleShield();
+        // HandleShield();
         HandleDamange();
 
         if (_playerInputActions.MainShip.Dash.IsPressed())
@@ -108,23 +108,17 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (_isDissolving)
         {
-            if (dissolveAmount < 0.5f)
+            if (dissolveAmount < 0.8f)
                 dissolveAmount += 0.08f;
-
-            foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
-            {
-                renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dissolveAmount);
-            }
         }
         else
         {
             if (dissolveAmount > 0f)
                 dissolveAmount -= 0.02f;
-
-            foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
-            {
-                renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dissolveAmount);
-            }
+        }
+        foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
+        {
+            renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", dissolveAmount);
         }
     }
 
@@ -143,7 +137,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _isFlickerEnabled = true;
             StartCoroutine(colorFlickerRoutine());
             AssetsManager.Instance.PlayerIsTakingDamageSnapshot.TransitionTo(0.01f);
-            SoundManager.PlaySound(SoundManager.Sound.PlayerTakingDamage, 1f);
+            SoundManager.PlaySound(SoundManager.Sound.PlayerTakingDamage);
         }
     }
 
