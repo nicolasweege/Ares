@@ -107,12 +107,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         if (_dmgAnimEnabled)
         {
             if (_fullScreenIntensity < 0.8f)
-                _fullScreenIntensity += 0.085f;
+                _fullScreenIntensity += 0.08f;
         }
         else
         {
             if (_fullScreenIntensity > 0f)
-                _fullScreenIntensity -= 0.01f;
+                _fullScreenIntensity -= 0.015f;
         }
         foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
             renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", _fullScreenIntensity);

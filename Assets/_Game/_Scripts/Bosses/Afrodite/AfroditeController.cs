@@ -17,7 +17,7 @@ public class AfroditeController : Singleton<AfroditeController>
     [NonSerialized] public Vector2 Velocity = Vector2.zero;
     [NonSerialized] public bool IsFlashing = false;
 
-    #region First Stage Props
+    #region First Stage Variables
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
     public GameObject FirstStageProjectile;
     public Transform FirstStageProjectileStartingPoint1;
@@ -29,12 +29,12 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform TurretTransform2;
     #endregion
 
-    #region Second Stage Props
+    #region Second Stage Variables
     [SerializeField] private float _timeToSecondStage;
     private float _secondStageTimer;
     #endregion
 
-    #region Third Stage Props
+    #region Third Stage Variables
     [SerializeField] private float _timeToThirdStage;
     private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
@@ -43,7 +43,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public List<Transform> ThirdStageSecondWaveShootDirections = new List<Transform>();
     #endregion
 
-    #region Fourth Stage Props
+    #region Fourth Stage Variables
     [SerializeField] private float _timeToFourthStage;
     private float _fourthStageTimer;
     public Transform FourthStageMovePointLeft;
@@ -55,7 +55,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform FourthStageSatelliteDownPoint;
     #endregion
 
-    #region Stage States
+    #region Stage States Variables
     [NonSerialized] public AfroditeBaseState CurrentState;
     [NonSerialized] public AfroditeIdleState IdleState = new AfroditeIdleState();
     [NonSerialized] public AfroditeDeathState DeathState = new AfroditeDeathState();
@@ -74,9 +74,7 @@ public class AfroditeController : Singleton<AfroditeController>
         CurrentState.EnterState(this);
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
-        {
             spr.gameObject.AddComponent<AfroditeResetColor>();
-        }
     }
 
     private void Update()

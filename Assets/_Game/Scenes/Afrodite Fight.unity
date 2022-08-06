@@ -1883,6 +1883,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
+      propertyPath: SoundAudioClips.Array.data[7].Sound
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
       propertyPath: SoundAudioClips.Array.data[0].AudioClip
       value: 
       objectReference: {fileID: 8300000, guid: e4c2b01b70fce3443a1de6de17a4c4fe, type: 3}
@@ -1910,6 +1914,10 @@ PrefabInstance:
       propertyPath: SoundAudioClips.Array.data[6].AudioClip
       value: 
       objectReference: {fileID: 8300000, guid: c02462533059d8c42aab068dbba84c24, type: 3}
+    - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
+      propertyPath: SoundAudioClips.Array.data[7].AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 895ad20bd06ef1948b13be5b14784f88, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
 --- !u!4 &637275287 stripped

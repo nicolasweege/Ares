@@ -46,21 +46,21 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _FullScreenIntensity: -0.009993846
+    - _FullScreenIntensity: -0.014998582
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
     - _Surface: 1
-    - _VignetteIntensity: 0.7
-    - _VignetteRadiusPower: 5
+    - _VignetteIntensity: 0.8
+    - _VignetteRadiusPower: 4
     - _VoronoiPower: 2
-    - _VoronoiScale: 10
-    - _VoronoiSpeed: 2
+    - _VoronoiScale: 12
+    - _VoronoiSpeed: 1
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0, g: 0.77647066, b: 1, a: 1}
+    - _Color: {r: 0.125, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2601160197976263272
 MonoBehaviour:
