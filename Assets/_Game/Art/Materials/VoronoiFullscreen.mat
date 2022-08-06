@@ -15,7 +15,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -46,7 +46,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _FullScreenIntensity: 0.02
+    - _FullScreenIntensity: -0.00000059604645
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
@@ -54,8 +54,8 @@ Material:
     - _VignetteIntensity: 0.7
     - _VignetteRadiusPower: 5
     - _VoronoiPower: 1
-    - _VoronoiScale: 5
-    - _VoronoiSpeed: 1
+    - _VoronoiScale: 7
+    - _VoronoiSpeed: 5
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0

@@ -64,6 +64,21 @@ public static class SoundManager
         }
     }
 
+    public static void PlaySound(Sound sound, float volume = 1f)
+    {
+        if (CanPlaySound(sound))
+        {
+            if (_oneShotGameObject == null)
+            {
+                _oneShotGameObject = new GameObject("One Shot Sound");
+                _oneShotAudioSource = _oneShotGameObject.AddComponent<AudioSource>();
+                _oneShotAudioSource.volume = volume;
+                _oneShotAudioSource.outputAudioMixerGroup = AssetsManager.Instance.SoundsAudioMixerGroup;
+            }
+            _oneShotAudioSource.PlayOneShot(GetAudioClip(sound));
+        }
+    }
+
     public static void PlaySound(Sound sound, Vector3 pos)
     {
         if (CanPlaySound(sound))

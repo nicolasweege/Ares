@@ -1856,7 +1856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
       propertyPath: SoundAudioClips.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
       propertyPath: SoundAudioClips.Array.data[1].Sound
@@ -1877,6 +1877,10 @@ PrefabInstance:
     - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
       propertyPath: SoundAudioClips.Array.data[5].Sound
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
+      propertyPath: SoundAudioClips.Array.data[6].Sound
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
       propertyPath: SoundAudioClips.Array.data[0].AudioClip
@@ -1902,6 +1906,10 @@ PrefabInstance:
       propertyPath: SoundAudioClips.Array.data[5].AudioClip
       value: 
       objectReference: {fileID: 8300000, guid: fc53b14f028ad8b42b9e83a2211e6d78, type: 3}
+    - target: {fileID: 4883886843138341442, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
+      propertyPath: SoundAudioClips.Array.data[6].AudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c02462533059d8c42aab068dbba84c24, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa6bd48a14ed1b439c437635e927894, type: 3}
 --- !u!4 &637275287 stripped
