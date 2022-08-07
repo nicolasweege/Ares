@@ -25,7 +25,7 @@ public class UIMainMenu : MonoBehaviour
     public void OpenOptionsMenu()
     {
         LeanTween.moveLocal(_optionsMenuComponents, new Vector3(0, 0, 0), _leanTweenDuration).setEaseOutExpo();
-        LeanTween.moveLocal(_optionsMenuComponents, new Vector3(0, 10f, 0), _leanTweenDuration).setDelay(0.25f);
+        // LeanTween.moveLocal(_optionsMenuComponents, new Vector3(0, 10f, 0), _leanTweenDuration).setDelay(0.25f);
     }
 
     public void CloseOptionsMenu()

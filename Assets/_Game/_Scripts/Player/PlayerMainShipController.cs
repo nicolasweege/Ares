@@ -133,11 +133,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", _fullScreenIntensity);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
         if (CanTakeDamage)
         {
-            _health -= damage;
+            _health -= 1;
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             CanTakeDamage = false;
             _canMove = false;
@@ -292,7 +292,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             {
                 if (!_isShieldEnabled)
                 {
-                    TakeDamage(other.GetComponent<BulletBase>().DefaultDamage);
+                    TakeDamage();
                 }
 
                 if (_isShieldEnabled)
@@ -307,12 +307,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
             if (other.CompareTag("AfroditeMainShip"))
             {
-                TakeDamage(AfroditeController.Instance.CollisionDamage);
+                TakeDamage();
             }
 
             if (other.CompareTag("AfroditeMember"))
             {
-                TakeDamage(AfroditeController.Instance.CollisionDamage);
+                TakeDamage();
             }
         }
 

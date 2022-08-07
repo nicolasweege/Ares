@@ -32,6 +32,9 @@
         },
         {
             "m_Id": "703305fb0119ae87bcf8977848a4224f"
+        },
+        {
+            "m_Id": "9e0681106a1441acbbb2f847f61cc1db"
         }
     ],
     "m_Keywords": [],
@@ -1387,6 +1390,12 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
+    "m_ObjectId": "279eabd443ad4d29986ca6286fb1d8e5"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "27c3c598d5b141809f95e6185b59cc97",
     "m_Id": 0,
@@ -2163,7 +2172,7 @@
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalTarget",
     "m_ObjectId": "5477586f266140279a4df571a62d7126",
     "m_ActiveSubTarget": {
-        "m_Id": "9fa1ab2b7c974c79a06e292b2c97bace"
+        "m_Id": "279eabd443ad4d29986ca6286fb1d8e5"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 1,
@@ -3591,8 +3600,31 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalUnlitSubTarget",
-    "m_ObjectId": "9fa1ab2b7c974c79a06e292b2c97bace"
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "9e0681106a1441acbbb2f847f61cc1db",
+    "m_Guid": {
+        "m_GuidSerialized": "a9269561-8a85-4ecc-ae42-36e653200b56"
+    },
+    "m_Name": "MainTex",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "MainTex",
+    "m_DefaultReferenceName": "_MainTex",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_Guid": ""
+    },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
+    "m_Modifiable": true,
+    "m_DefaultType": 0
 }
 
 {
@@ -4792,6 +4824,9 @@
     "m_ObjectId": "e8abc6fd2d2f45a5b2c8af05e00fa106",
     "m_Name": "",
     "m_ChildObjectList": [
+        {
+            "m_Id": "9e0681106a1441acbbb2f847f61cc1db"
+        },
         {
             "m_Id": "1fbd462f2ae4df85b99657b65f4f7121"
         },

@@ -80,7 +80,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
-    - _Brightness: 3.48
+    - _Brightness: 1.54
     - _BrightnessPower: 4
     - _BrightnessVariationScale: 0.2
     - _BumpScale: 1
@@ -108,9 +108,9 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _StarsScale: 10.9
+    - _StarsScale: 10
     - _Surface: 0
-    - _Threshold: 0.99
+    - _Threshold: 0.9766
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

@@ -80,7 +80,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _Blend: 0
-    - _Brightness: 3.07
+    - _Brightness: 1.14
     - _BrightnessPower: 4
     - _BrightnessVariationScale: 0.2
     - _BumpScale: 1
@@ -97,13 +97,13 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OverallScale: 1.06
+    - _OverallScale: 4.99
     - _Parallax: 0.005
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Randomness: 5
     - _ReceiveShadows: 1
-    - _Rotation: 13.4
+    - _Rotation: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -115,7 +115,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1335.418, g: 1062.741, b: 0, a: 1}
+    - _Color: {r: 342.59415, g: 1076.7245, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
