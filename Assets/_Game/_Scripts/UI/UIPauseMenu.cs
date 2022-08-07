@@ -43,6 +43,6 @@ public class UIPauseMenu : MonoBehaviour
         PlayerMainShipController.Instance.PlayerInputActions.Disable();
         _playerInputActions.Disable();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Main Menu");
     }
 }
