@@ -1,11 +1,13 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using System.Linq;
 using Cyan;
+using System.Threading.Tasks;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -33,7 +35,8 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private Color _flashColor;
     [SerializeField] private Texture2D _cursorTexture;
     [SerializeField] private Renderer2DData _renderer2DData;
-    
+    [SerializeField] private List<Image> _heartImages;
+
     [SerializeField] private UnityEvent _screenShakeEvent;
 
     private bool _isShieldEnabled = false;
@@ -77,6 +80,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         // HandleShield();
         HandleDamange();
         HandleDamageAnimation();
+        HandleHealthHUD();
 
         if (PlayerInputActions.MainShip.Dash.IsPressed())
         {
@@ -100,6 +104,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (_health <= 0)
             HandleDeath();
+    }
+
+    private void HandleHealthHUD()
+    {
+        for (int i = 0; i < _heartImages.Count; i++)
+        {
+            if (i < _health)_heartImages[i].enabled = true;
+            else _heartImages[i].enabled = false;
+        }
     }
 
     private void HandleDamageAnimation()
@@ -133,13 +146,13 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _dmgAnimEnabled = true;
             _renderer2DData.rendererFeatures[0].SetActive(true);
             _isFlickerEnabled = true;
-            StartCoroutine(colorFlickerRoutine());
+            ColorFlicker(150);
             AssetsManager.Instance.PlayerIsTakingDamageSnapshot.TransitionTo(0.01f);
             SoundManager.PlaySound(SoundManager.Sound.PlayerTakingDamage);
         }
     }
 
-    IEnumerator colorFlickerRoutine()
+    private async void ColorFlicker(int millisecondsDelay)
     {
         while (_isFlickerEnabled == true)
         {
@@ -147,11 +160,11 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
                 spr.color = _flashColor;
             _turbineFlame.Stop();
-            yield return new WaitForSeconds(0.15f);
+            await Task.Delay(millisecondsDelay);
             CanResetColors = true;
             _turbineFlame.Play();
-            yield return new WaitForSeconds(0.15f);
-            StartCoroutine(colorFlickerRoutine());
+            await Task.Delay(millisecondsDelay);
+            ColorFlicker(150);
             _isFlickerEnabled = false;
         }
     }
@@ -163,7 +176,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             _canTakeDamageTimer -= Time.deltaTime;
             _isFlickerEnabled = true;
         }
-        else StopCoroutine(colorFlickerRoutine());
+        else ColorFlicker(150);
 
         if (_canTakeDamageTimer <= 0f)
         {
