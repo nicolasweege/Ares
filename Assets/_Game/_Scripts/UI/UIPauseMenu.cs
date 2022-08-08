@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class UIPauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private Renderer2DData _renderer2DData;
     private PlayerInputActions _playerInputActions;
     public static bool GameIsPaused = false;
 
@@ -44,5 +46,6 @@ public class UIPauseMenu : MonoBehaviour
         _playerInputActions.Disable();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
+        _renderer2DData.rendererFeatures[0].SetActive(false);
     }
 }
