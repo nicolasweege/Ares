@@ -14,6 +14,7 @@ public class UIMainMenu : MonoBehaviour
     private void Awake()
     {
         LeanTween.reset();
+        // SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position);
     }
 
     public void OpenMainMenu()
