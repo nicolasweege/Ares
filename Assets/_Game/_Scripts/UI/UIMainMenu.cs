@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -40,9 +39,12 @@ public class UIMainMenu : MonoBehaviour
         LeanTween.moveLocal(_optionsMenuComponents, new Vector3(1200, 0, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenMainMenu);
     }
 
-    public void ButtonSelected(Button button)
-    {
-        LeanTween.moveLocal(button.gameObject, new Vector3(0, 5, 0), _leanTweenDuration).setEaseOutBounce();
+    public void _SelectButtonAnim(GameObject button) {
+        LeanTween.moveLocalX(button, 50, 0.15f).setEaseOutExpo();
+    }
+
+    public void _DeselectButtonAnim(GameObject button) {
+        LeanTween.moveLocalX(button, 0, 0.15f).setEaseOutExpo();
     }
 
     public void PlayGame() => SceneManager.LoadScene("Afrodite Fight");

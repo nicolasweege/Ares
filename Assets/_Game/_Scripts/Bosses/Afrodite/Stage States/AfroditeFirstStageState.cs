@@ -61,7 +61,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
             if (_firstWaveShootTimer <= 0f)
             {
                 GenerateBullet(context, context.FirstStageProjectileStartingPoint1, context.FirstStageProjectile, context.FirstStageProjectileDir1);
-                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.3f);
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.5f);
                 _isFirstWaveFinished = true;
                 _firstWaveShootTimer = _timeToFirstWaveShoot;
             }
@@ -87,7 +87,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
             for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++)
             {
                 GenerateBulletSecondAttack(context, context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
-                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.3f);
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.5f);
             }
             _secondAttackTimer = _timeToSecondAttack;
         }
