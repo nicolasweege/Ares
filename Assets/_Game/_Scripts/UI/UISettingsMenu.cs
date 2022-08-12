@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class UISettingsMenu : MonoBehaviour
 {
@@ -52,7 +50,7 @@ public class UISettingsMenu : MonoBehaviour
 
     public void SetVSync(bool isVSync) {
         if (isVSync)
-            QualitySettings.vSyncCount = 1;
+            QualitySettings.vSyncCount = 4;
             else QualitySettings.vSyncCount = 0;
     }
 

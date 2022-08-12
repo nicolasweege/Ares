@@ -13,6 +13,7 @@ public class UIMainMenu : MonoBehaviour
     private void Awake()
     {
         LeanTween.reset();
+        Utils.DisableMouse();
     }
 
     public void OpenMainMenu()
@@ -36,7 +37,7 @@ public class UIMainMenu : MonoBehaviour
     public void CloseOptionsMenu()
     {
         DisableUIInput();
-        LeanTween.moveLocal(_optionsMenuComponents, new Vector3(1200, 0, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenMainMenu);
+        LeanTween.moveLocal(_optionsMenuComponents, new Vector3(420, -1060, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenMainMenu);
     }
 
     public void _SelectButtonAnim(GameObject button) {
@@ -47,7 +48,10 @@ public class UIMainMenu : MonoBehaviour
         LeanTween.moveLocalX(button, 0, 0.15f).setEaseOutExpo();
     }
 
-    public void PlayGame() => SceneManager.LoadScene("Afrodite Fight");
+    public void PlayGame() {
+        Utils.EnableMouse();
+        SceneManager.LoadScene("Afrodite Fight");
+    }
 
     public void QuitGame()
     {
