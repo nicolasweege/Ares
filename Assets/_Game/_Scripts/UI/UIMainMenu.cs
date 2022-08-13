@@ -9,6 +9,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
+    [SerializeField] private float _defaultSoundsVolume;
 
     private void Awake()
     {
@@ -47,6 +48,24 @@ public class UIMainMenu : MonoBehaviour
     public void _DeselectButtonAnim(GameObject button) {
         LeanTween.moveLocalX(button, 0, 0.15f).setEaseOutExpo();
     }
+
+#region Sound Functions
+    public void _PlayUIClickSound() {
+        SoundManager.PlaySound(SoundManager.Sound.UIButtonClick, _defaultSoundsVolume);
+    }
+
+    public void _PlayUIClickSound(float volume) {
+        SoundManager.PlaySound(SoundManager.Sound.UIButtonClick, volume);
+    }
+
+    public void _PlayUISelectionSound() {
+        SoundManager.PlaySound(SoundManager.Sound.UIButtonSelection, _defaultSoundsVolume);
+    }
+
+    public void _PlayUISelectionSound(float volume) {
+        SoundManager.PlaySound(SoundManager.Sound.UIButtonSelection, volume);
+    }
+#endregion
 
     public void PlayGame() {
         Utils.EnableMouse();

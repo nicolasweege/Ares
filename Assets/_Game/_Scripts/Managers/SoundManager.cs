@@ -13,6 +13,8 @@ public static class SoundManager
         AfroditeThirdStageShoot,
         AfroditeLaserShootAntecipation,
         AfroditeLaserLockOn,
+        UIButtonSelection,
+        UIButtonClick,
         TestSound
     }
 
