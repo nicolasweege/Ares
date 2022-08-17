@@ -15,7 +15,7 @@ public class UILoadMenuPrefs : MonoBehaviour
     [SerializeField] private TMP_Text _musicValueText = null;
     [SerializeField] private TMP_Text _soundsValueText = null;
 
-    private void Awake() {
+    private void Start() {
         LoadAudioPrefs();
     }
 
