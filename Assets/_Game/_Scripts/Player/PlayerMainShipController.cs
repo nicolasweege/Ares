@@ -12,6 +12,7 @@ using System.Collections.Generic;
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
     #region Variables
+    [Header("General")]
     [SerializeField] private int _health;
     [SerializeField] private float _speed;
     [SerializeField] private int _defaultDamage;
@@ -22,14 +23,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private GameObject _dashAnim;
     [SerializeField] private float _timeToShoot;
     [SerializeField] private float _turnSpeed;
-    [SerializeField] private GameObject _shield;
     [SerializeField] private GameObject _laserBeam;
     [SerializeField] private ParticleSystem _turbineFlame;
     [SerializeField] private float _dashAmount;
     [SerializeField] private LayerMask _dashRaycastLayerMask;
     [SerializeField] private Transform _aimTransform;
     [SerializeField] private float _dashCooldown;
-    [SerializeField] private float _timeToActivateShield;
     [SerializeField] private float _timeToCanTakeDamage;
     [SerializeField] private float _timeToCanMove;
     [SerializeField] private Color _flashColor;
@@ -37,16 +36,14 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     [SerializeField] private Renderer2DData _renderer2DData;
     [SerializeField] private List<Image> _heartImages;
 
+    [Header("Events")]
     [SerializeField] private UnityEvent _screenShakeEvent;
 
-    private bool _isShieldEnabled = false;
     private float _shootTimer;
     private float _canMoveTimer;
     private float _canTakeDamageTimer;
     private float _dashCooldownTimer;
-    private float _activateShieldTimer;
     private bool _isDashing = false;
-    private bool _canActivateShield = false;
     private bool _canMove = true;
     private bool _isFlickerEnabled = false;
     private float _fullScreenIntensity = 0f;
@@ -62,7 +59,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         base.Awake();
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.MainShip.Enable();
-        DisableShield();
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
@@ -201,10 +197,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private void HandleTurbineFlame()
     {
-        if (PlayerInputActions.MainShip.Movement.IsPressed() && CanTakeDamage)
+        if (PlayerInputActions.MainShip.Movement.IsPressed() && CanTakeDamage) {
             _turbineFlame.Play();
-        else
+        }
+        else {
             _turbineFlame.Stop();
+        }
     }
 
     private void GenerateBullet()
@@ -260,47 +258,13 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         SceneManager.LoadScene("Afrodite Fight");
     }
 
-    private void HandleShield()
-    {
-        _activateShieldTimer -= Time.deltaTime;
-        if (_activateShieldTimer <= 0f && !_canActivateShield)
-            _canActivateShield = true;
-        if (PlayerInputActions.MainShip.ActivateShield.IsPressed() && _canActivateShield)
-            EnableShield();
-        if (!PlayerInputActions.MainShip.ActivateShield.IsPressed())
-            DisableShield();
-    }
-
-    private void EnableShield()
-    {
-        _shield.SetActive(true);
-        _isShieldEnabled = true;
-    }
-
-    private void DisableShield()
-    {
-        _shield.SetActive(false);
-        _isShieldEnabled = false;
-    }
-
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (CanTakeDamage)
         {
             if (other.CompareTag("Bullet"))
             {
-                if (!_isShieldEnabled)
-                {
-                    TakeDamage();
-                }
-
-                if (_isShieldEnabled)
-                {
-                    _canActivateShield = false;
-                    _activateShieldTimer = _timeToActivateShield;
-                    DisableShield();
-                }
-
+                TakeDamage();
                 other.GetComponent<BulletBase>().DestroyBullet();
             }
 

@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class AfroditeController : Singleton<AfroditeController>
 {
+    #region Variables
+    [Header("General")]
     public int Health;
     public float Speed;
     public int CollisionDamage;
@@ -18,6 +20,7 @@ public class AfroditeController : Singleton<AfroditeController>
     [NonSerialized] public bool IsFlashing = false;
 
     #region First Stage Variables
+    [Header("First Stage")]
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
     public GameObject FirstStageProjectile;
     public Transform FirstStageProjectileStartingPoint1;
@@ -30,11 +33,13 @@ public class AfroditeController : Singleton<AfroditeController>
     #endregion
 
     #region Second Stage Variables
+    [Header("Second Stage")]
     [SerializeField] private float _timeToSecondStage;
     private float _secondStageTimer;
     #endregion
 
     #region Third Stage Variables
+    [Header("Third Stage")]
     [SerializeField] private float _timeToThirdStage;
     private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
@@ -44,6 +49,7 @@ public class AfroditeController : Singleton<AfroditeController>
     #endregion
 
     #region Fourth Stage Variables
+    [Header("Fourth Stage")]
     [SerializeField] private float _timeToFourthStage;
     private float _fourthStageTimer;
     public Transform FourthStageMovePointLeft;
@@ -65,7 +71,9 @@ public class AfroditeController : Singleton<AfroditeController>
     [NonSerialized] public AfroditeFourthStageState FourthStageState = new AfroditeFourthStageState();
     #endregion
 
+    [Header("Events")]
     public UnityEvent ScreenShakeEvent;
+    #endregion
 
     protected override void Awake()
     {

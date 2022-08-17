@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class AfroditeFirstStageState : AfroditeBaseState
 {
-    private float _timeToSwitchState = 5f;
+    private float _defaultSpeed = 1.8f;
+    private float _timeToSwitchState = 1.5f;
     private float _switchStateTimer;
     private int _randomIndex;
     private Vector2 _currentMovePoint;
@@ -50,7 +51,8 @@ public class AfroditeFirstStageState : AfroditeBaseState
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
-        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, context.Speed);
+        // context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, context.Speed);
+        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _defaultSpeed);
     }
 
     private void HandleFirstAttack(AfroditeController context)

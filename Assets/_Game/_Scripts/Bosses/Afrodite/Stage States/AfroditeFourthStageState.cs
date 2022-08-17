@@ -20,11 +20,11 @@ public class AfroditeFourthStageState : AfroditeBaseState
 
         if (PlayerMainShipController.Instance.transform.position.x > 0f)
         {
-            _currentMovePoint = context.FourthStageMovePointLeft.position;
+            _currentMovePoint = context.FourthStageMovePointRight.position;
         }
         else
         {
-            _currentMovePoint = context.FourthStageMovePointRight.position;
+            _currentMovePoint = context.FourthStageMovePointLeft.position;
         }
 
         if (PlayerMainShipController.Instance.transform.position.y > 0f)
