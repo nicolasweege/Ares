@@ -82,6 +82,14 @@ public class UIMainMenu : MonoBehaviour
     public void _PlayUISelectionSound(float volume) {
         SoundManager.PlaySound(SoundManager.Sound.UIButtonSelection, volume);
     }
+
+    public void _PlayUILightClickSound() {
+        SoundManager.PlaySound(SoundManager.Sound.UIButtonLightClick, _defaultSoundsVolume);
+    }
+
+    public void _PlayUILightClickSound(float volume) {
+        SoundManager.PlaySound(SoundManager.Sound.UIButtonLightClick, volume);
+    }
     #endregion
 
     public void PlayGame() {

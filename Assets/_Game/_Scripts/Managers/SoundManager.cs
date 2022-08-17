@@ -15,6 +15,7 @@ public static class SoundManager
         AfroditeLaserLockOn,
         UIButtonSelection,
         UIButtonClick,
+        UIButtonLightClick,
         TestSound
     }
 
