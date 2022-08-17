@@ -18,7 +18,7 @@ public class UIMainMenu : MonoBehaviour
         Utils.DisableMouse();
     }
 
-    #region Menu Handlers
+    #region Menu Functions
     public void OpenMainMenu()
     {
         LeanTween.moveLocal(_mainMenuComponents, new Vector3(0, 0, 0), _leanTweenDuration).setEaseOutExpo().setOnComplete(EnableUIInput);
@@ -56,7 +56,7 @@ public class UIMainMenu : MonoBehaviour
     }
     #endregion
 
-    #region Animations
+    #region Animation Functions
     public void _SelectButtonAnim(GameObject button) {
         LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
     }
@@ -92,9 +92,16 @@ public class UIMainMenu : MonoBehaviour
     }
     #endregion
 
-    public void PlayGame() {
-        Utils.EnableMouse();
-        SceneManager.LoadScene("Afrodite Fight");
+    public void EnableUIInput()
+    {
+        _eventSystem.sendNavigationEvents = true;
+        _canvasGroup.interactable = true;
+    }
+
+    public void DisableUIInput()
+    {
+        _eventSystem.sendNavigationEvents = false;
+        _canvasGroup.interactable = false;
     }
 
     public void LoadScene(string sceneName) {
@@ -109,17 +116,5 @@ public class UIMainMenu : MonoBehaviour
         #else
             Application.Quit();
         #endif
-    }
-
-    public void EnableUIInput()
-    {
-        _eventSystem.sendNavigationEvents = true;
-        _canvasGroup.interactable = true;
-    }
-
-    public void DisableUIInput()
-    {
-        _eventSystem.sendNavigationEvents = false;
-        _canvasGroup.interactable = false;
     }
 }
