@@ -1,15 +1,24 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
 public class UISettingsMenu : MonoBehaviour
 {
+    [SerializeField] private float _defaultVolume = 1;
     [SerializeField] private AudioMixer _mainMixer;
-    // [SerializeField] private Dropdown _resolutionsDropdown;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private Slider _soundSlider;
+    [SerializeField] private TMP_Text _musicValueText = null;
+    [SerializeField] private TMP_Text _soundsValueText = null;
     private Resolution[] _resolutions;
+    // [SerializeField] private Dropdown _resolutionsDropdown;
 
     private void Start()
     {
         // HandleResolutions();
+        LoadPlayerAudioPrefs();
     }
 
     // private void HandleResolutions(){
@@ -40,9 +49,26 @@ public class UISettingsMenu : MonoBehaviour
         _mainMixer.SetFloat("MusicVolume", masterVolume);
     }
 
-    public void SetSoundsVolume(float soundsVolume) => _mainMixer.SetFloat("SoundsVolume", soundsVolume);
+    public void SetSoundsVolume(float soundsVolume) {
+        _mainMixer.SetFloat("SoundsVolume", Mathf.Log10(soundsVolume) * 20);
+        PlayerPrefs.SetFloat("soundsVolume", soundsVolume);
+        _soundsValueText.text = (Math.Truncate(_soundSlider.value * 100) / 10).ToString();
+    }
 
-    public void SetMusicVolume(float musicVolume) => _mainMixer.SetFloat("MusicVolume", musicVolume);
+    public void SetMusicVolume(float musicVolume) {
+        _mainMixer.SetFloat("MusicVolume", Mathf.Log10(musicVolume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        _musicValueText.text = (Math.Truncate(_musicSlider.value * 100) / 10).ToString();
+    }
+
+    private void LoadPlayerAudioPrefs() {
+        _mainMixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume", _defaultVolume)) * 20);
+        _mainMixer.SetFloat("SoundsVolume", Mathf.Log10(PlayerPrefs.GetFloat("soundsVolume", _defaultVolume)) * 20);
+        _musicSlider.value = PlayerPrefs.GetFloat("musicVolume", _defaultVolume);
+        _soundSlider.value = PlayerPrefs.GetFloat("soundsVolume", _defaultVolume);
+        _musicValueText.text = (Math.Truncate(_musicSlider.value * 100) / 10).ToString();
+        _soundsValueText.text = (Math.Truncate(_soundSlider.value * 100) / 10).ToString();
+    }
 
     public void SetQuality(int qualityIndex) => QualitySettings.SetQualityLevel(qualityIndex);
 

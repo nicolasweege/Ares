@@ -18,6 +18,7 @@ public class UIMainMenu : MonoBehaviour
         Utils.DisableMouse();
     }
 
+    #region Menu Handlers
     public void OpenMainMenu()
     {
         LeanTween.moveLocal(_mainMenuComponents, new Vector3(0, 0, 0), _leanTweenDuration).setEaseOutExpo().setOnComplete(EnableUIInput);
@@ -53,7 +54,9 @@ public class UIMainMenu : MonoBehaviour
         DisableUIInput();
         LeanTween.moveLocal(_optionsMenuComponents, new Vector3(420, -1060, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenMainMenu);
     }
+    #endregion
 
+    #region Animations
     public void _SelectButtonAnim(GameObject button) {
         LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
     }
@@ -61,8 +64,9 @@ public class UIMainMenu : MonoBehaviour
     public void _DeselectButtonAnim(GameObject button) {
         LeanTween.scale(button, new Vector3(1f, 1f, 0), 0.15f);
     }
+    #endregion
 
-#region Sound Functions
+    #region Sound Functions
     public void _PlayUIClickSound() {
         SoundManager.PlaySound(SoundManager.Sound.UIButtonClick, _defaultSoundsVolume);
     }
@@ -78,7 +82,7 @@ public class UIMainMenu : MonoBehaviour
     public void _PlayUISelectionSound(float volume) {
         SoundManager.PlaySound(SoundManager.Sound.UIButtonSelection, volume);
     }
-#endregion
+    #endregion
 
     public void PlayGame() {
         Utils.EnableMouse();
@@ -92,11 +96,11 @@ public class UIMainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     public void EnableUIInput()
