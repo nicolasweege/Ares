@@ -18,6 +18,10 @@ public class UIMainMenu : MonoBehaviour
         Utils.DisableMouse();
     }
 
+    private void Update() {
+        Debug.Log(QualitySettings.vSyncCount);
+    }
+
     #region Menu Functions
     public void OpenMainMenu()
     {

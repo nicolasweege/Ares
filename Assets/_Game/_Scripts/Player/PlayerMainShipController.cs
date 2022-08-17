@@ -77,7 +77,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
-        // HandleShield();
         HandleDamange();
         HandleDamageAnimation();
         HandleHealthHUD();
