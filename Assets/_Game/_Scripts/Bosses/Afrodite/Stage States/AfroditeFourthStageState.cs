@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AfroditeFourthStageState : AfroditeBaseState
 {
-    private float _timeToSwitchState = 4f;
+    private float _timeToSwitchState = 3f;
     private float _switchStateTimer;
     private Vector2 _currentMovePoint;
     private Vector2 _currentAimPoint;
@@ -10,7 +10,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
     private Vector2 _currentSatellitePoint;
     private float _baseTurnSpeed = 0.8f;
     private float _currentTurnSpeed;
-    private float _speedToMovePoint = 1.5f;
+    private float _speedToMovePoint = 1.7f;
     private bool _laserShootAudioHasPlayed = false;
 
     public override void EnterState(AfroditeController context)
@@ -18,14 +18,21 @@ public class AfroditeFourthStageState : AfroditeBaseState
         _switchStateTimer = _timeToSwitchState;
         _laserShootAudioHasPlayed = false;
 
-        if (PlayerMainShipController.Instance.transform.position.x > 0f)
-        {
-            _currentMovePoint = context.FourthStageMovePointRight.position;
-        }
-        else
-        {
+        if (context.transform.position.x > 0f) {
             _currentMovePoint = context.FourthStageMovePointLeft.position;
         }
+        else {
+            _currentMovePoint = context.FourthStageMovePointRight.position;
+        }
+
+        // if (PlayerMainShipController.Instance.transform.position.x > 0f)
+        // {
+        //     _currentMovePoint = context.FourthStageMovePointRight.position;
+        // }
+        // else
+        // {
+        //     _currentMovePoint = context.FourthStageMovePointLeft.position;
+        // }
 
         if (PlayerMainShipController.Instance.transform.position.y > 0f)
         {
@@ -45,7 +52,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
 
     public override void UpdateState(AfroditeController context)
     {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 3f)
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f)
         {
             _currentTurnSpeed = 1f;
             HandleAim(context, _otherAimPoint);

@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 
 public class AfroditeFirstStageState : AfroditeBaseState
 {
-    private float _defaultSpeed = 6f;
-    private int _timeToSwitchState = 1500;
+    private float _defaultSpeed = 2f;
+    private float _timeToSwitchState = 1.5f;
+    private float _switchStateTimer;
     private int _randomIndex;
     private Vector2 _currentMovePoint;
     private float _timeToFirstWaveShoot = 0.1f;
@@ -14,27 +15,25 @@ public class AfroditeFirstStageState : AfroditeBaseState
     private float _timeToSecondAttack = 1f;
     private float _secondAttackTimer;
     private bool _isFirstWaveFinished = false;
-    private bool _canSwitchState = false;
 
     public override void EnterState(AfroditeController context)
     {
-        _canSwitchState = true;
+        _switchStateTimer = _timeToSwitchState;
         _randomIndex = Random.Range(0, context.MovePoints.Count);
         _currentMovePoint = context.MovePoints[_randomIndex].position;
         _secondAttackTimer = _timeToSecondAttack;
-        LeanTween.move(context.gameObject, _currentMovePoint, _defaultSpeed).setEaseInOutQuart();
     }
 
     public override void UpdateState(AfroditeController context)
     {
         if (Vector2.Distance(context.transform.position, _currentMovePoint) < 0.5f)
         {
-            SwitchStateTimer(_timeToSwitchState, context);
+            _switchStateTimer -= Time.deltaTime;
+            if (_switchStateTimer <= 0f) {
+                context.SwitchState(context.FirstStageState);
+            }
         }
-        else
-        {
-            HandleSecondAttack(context);
-        }
+        else HandleSecondAttack(context);
 
         HandleMovement(context);
         HandleTurretAim(context.TurretTransform1);
@@ -49,8 +48,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
         context.transform.rotation = Quaternion.Slerp(context.transform.rotation, Quaternion.Euler(0, 0, lookAngle), context.TurnSpeed * Time.deltaTime);
-        // context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, context.Speed);
-        // context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _defaultSpeed);
+        context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _defaultSpeed);
     }
 
     private void HandleFirstAttack(AfroditeController context)
@@ -123,13 +121,5 @@ public class AfroditeFirstStageState : AfroditeBaseState
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         turretTransform.rotation = Quaternion.Slerp(turretTransform.rotation, Quaternion.Euler(0, 0, lookAngle), 20f * Time.deltaTime);
         return lookDir;
-    }
-
-    private async void SwitchStateTimer(int millisecondsDelay, AfroditeController context) {
-        if (_canSwitchState) {
-            await Task.Delay(millisecondsDelay);
-            context.SwitchState(context.FirstStageState);
-            _canSwitchState = false;
-        }
     }
 }

@@ -12,7 +12,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
     private float _laserShootTimer;
     private bool _laserShootSoundPlayed = false;
     private Vector2 _currentMovePoint;
-    private float _speedToMovePoint = 2f;
+    private float _speedToMovePoint = 1.5f;
     private bool _laserLockOnSoundPlayed = false;
 
     public override void EnterState(AfroditeController context)
@@ -23,19 +23,17 @@ public class AfroditeSecondStageState : AfroditeBaseState
         _laserShootSoundPlayed = false;
         _laserLockOnSoundPlayed = false;
 
-        if (PlayerMainShipController.Instance.transform.position.x > 0f)
-        {
+        if (context.transform.position.x > 0f) {
             _currentMovePoint = context.FourthStageMovePointLeft.position;
         }
-        else
-        {
+        else {
             _currentMovePoint = context.FourthStageMovePointRight.position;
         }
     }
 
     public override void UpdateState(AfroditeController context)
     {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 3f)
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f)
         {
             HandleMovement(context);
             _currentTurnSpeed = _initialTurnSpeed;
