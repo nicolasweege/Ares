@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AfroditeFourthStageState : AfroditeBaseState
 {
-    private float _timeToSwitchState = 5f;
+    private float _timeToSwitchState = 4f;
     private float _switchStateTimer;
     private Vector2 _currentMovePoint;
     private Vector2 _currentAimPoint;
