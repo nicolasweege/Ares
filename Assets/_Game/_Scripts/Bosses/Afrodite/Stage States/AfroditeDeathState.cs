@@ -1,40 +1,33 @@
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class AfroditeDeathState : AfroditeBaseState
 {
-    private float _timeToDeathAnim = 2f;
-    private float _deathAnimTimer;
-    private float _timeToShakeScreen = 0.5f;
-    private float _screenShakeTimer;
+    private int _timeToDeathAnim = 2000;
+    private int _timeToShakeScreen = 500;
+    private bool _canScreenShake = false;
 
-    public override void EnterState(AfroditeController context)
-    {
-        _deathAnimTimer = _timeToDeathAnim;
+    public override void EnterState(AfroditeController context) {
         context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
+        _canScreenShake = true;
+        HandleScreenShake(_timeToShakeScreen, context);
+        HandleDeath(_timeToDeathAnim, context);
     }
 
-    public override void UpdateState(AfroditeController context)
-    {
-        HandleDeath(context);
+    public override void UpdateState(AfroditeController context) {}
+
+    private async void HandleDeath(int millisecondsDelay, AfroditeController context) {
+        await Task.Delay(millisecondsDelay);
+        _canScreenShake = false;
+        Object.Destroy(context.gameObject);
+        Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
+        context.SwitchState(context.IdleState);
     }
 
-    private void HandleDeath(AfroditeController context)
-    {
-        _deathAnimTimer -= Time.deltaTime;
-        if (_deathAnimTimer <= 0f)
-        {
-            Object.Destroy(context.gameObject);
-            Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
-            context.SwitchState(context.IdleState);
-        }
-        else
-        {
-            _screenShakeTimer -= Time.deltaTime;
-            if (_screenShakeTimer <= 0f)
-            {
-                CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
-                _screenShakeTimer = _timeToShakeScreen;
-            }
+    private async void HandleScreenShake(int millisecondsDelay, AfroditeController context) {
+        while (_canScreenShake) {
+            await Task.Delay(millisecondsDelay);
+            CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
         }
     }
 }

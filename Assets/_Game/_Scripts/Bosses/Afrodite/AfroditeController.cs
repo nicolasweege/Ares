@@ -19,6 +19,14 @@ public class AfroditeController : Singleton<AfroditeController>
     [NonSerialized] public Vector2 Velocity = Vector2.zero;
     [NonSerialized] public bool IsFlashing = false;
 
+    [Header("Timers")]
+    [SerializeField] private float _timeToSecondStage;
+    private float _secondStageTimer;
+    [SerializeField] private float _timeToThirdStage;
+    private float _thirdStageTimer;
+    [SerializeField] private float _timeToFourthStage;
+    private float _fourthStageTimer;
+
     #region First Stage Variables
     [Header("First Stage")]
     [NonSerialized] public Vector3 CurrentFirstStageProjectileDir;
@@ -32,16 +40,8 @@ public class AfroditeController : Singleton<AfroditeController>
     public Transform TurretTransform2;
     #endregion
 
-    #region Second Stage Variables
-    [Header("Second Stage")]
-    [SerializeField] private float _timeToSecondStage;
-    private float _secondStageTimer;
-    #endregion
-
     #region Third Stage Variables
     [Header("Third Stage")]
-    [SerializeField] private float _timeToThirdStage;
-    private float _thirdStageTimer;
     public GameObject ThirdStageProjectile;
     public GameObject ThirdStageShootAnim;
     public List<Transform> ThirdStageFirstWaveShootDirections = new List<Transform>();
@@ -50,8 +50,6 @@ public class AfroditeController : Singleton<AfroditeController>
 
     #region Fourth Stage Variables
     [Header("Fourth Stage")]
-    [SerializeField] private float _timeToFourthStage;
-    private float _fourthStageTimer;
     public Transform FourthStageMovePointLeft;
     public Transform FourthStageMovePointRight;
     public Transform FourthStageAimPointUp;
@@ -80,6 +78,9 @@ public class AfroditeController : Singleton<AfroditeController>
         base.Awake();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
+        _secondStageTimer = _timeToSecondStage;
+        _thirdStageTimer = _timeToThirdStage;
+        _fourthStageTimer = _timeToFourthStage;
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
             spr.gameObject.AddComponent<AfroditeResetColor>();
@@ -93,67 +94,32 @@ public class AfroditeController : Singleton<AfroditeController>
         IsFlashing = _flashHitEffect.IsFlashing;
         CurrentState.UpdateState(this);
 
-        if (Health <= 20 && Health > 0)
-        {
-            if (CurrentState != SecondStageState && CurrentState != ThirdStageState && CurrentState != FourthStageState)
-            {
-                _secondStageTimer -= Time.deltaTime;
-                if (_secondStageTimer <= 0f)
-                {
-                    SwitchState(SecondStageState);
-                    _secondStageTimer = _timeToSecondStage;
-                }
-
-                _thirdStageTimer -= Time.deltaTime;
-                if (_thirdStageTimer <= 0f)
-                {
-                    SwitchState(ThirdStageState);
-                    _thirdStageTimer = _timeToThirdStage;
-                }
-
-                _fourthStageTimer -= Time.deltaTime;
-                if (_fourthStageTimer <= 0f)
-                {
-                    SwitchState(FourthStageState);
-                    _fourthStageTimer = _timeToFourthStage;
-                }
-            }
-        }
-
-        if (Health <= 40 && Health > 20)
-        {
-            if (CurrentState != SecondStageState && CurrentState != ThirdStageState)
-            {
-                _secondStageTimer -= Time.deltaTime;
-                if (_secondStageTimer <= 0f)
-                {
-                    SwitchState(SecondStageState);
-                    _secondStageTimer = _timeToSecondStage;
-                }
-
-                _thirdStageTimer -= Time.deltaTime;
-                if (_thirdStageTimer <= 0f)
-                {
-                    SwitchState(ThirdStageState);
-                    _thirdStageTimer = _timeToThirdStage;
-                }
-            }
-        }
-
-        if (Health <= 60 && Health > 40)
+        if (CurrentState != SecondStageState && CurrentState != ThirdStageState && CurrentState != FourthStageState)
         {
             _secondStageTimer -= Time.deltaTime;
-            if (_secondStageTimer <= 0f && CurrentState != SecondStageState)
+            if (_secondStageTimer <= 0f)
             {
                 SwitchState(SecondStageState);
                 _secondStageTimer = _timeToSecondStage;
             }
+
+            _thirdStageTimer -= Time.deltaTime;
+            if (_thirdStageTimer <= 0f)
+            {
+                SwitchState(ThirdStageState);
+                _thirdStageTimer = _timeToThirdStage;
+            }
+
+            _fourthStageTimer -= Time.deltaTime;
+            if (_fourthStageTimer <= 0f)
+            {
+                SwitchState(FourthStageState);
+                _fourthStageTimer = _timeToFourthStage;
+            }
         }
 
         if (Health <= 0 && CurrentState != DeathState)
-        {
             SwitchState(DeathState);
-        }
     }
 
     public void SwitchState(AfroditeBaseState state)

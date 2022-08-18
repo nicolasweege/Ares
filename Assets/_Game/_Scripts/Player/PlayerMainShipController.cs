@@ -57,6 +57,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     protected override void Awake()
     {
         base.Awake();
+        LeanTween.reset();
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.MainShip.Enable();
         _canTakeDamageTimer = _timeToCanTakeDamage;

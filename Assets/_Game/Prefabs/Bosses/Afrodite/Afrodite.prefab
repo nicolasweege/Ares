@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07919b299eb4e6448d07f2511a58aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 80
+  Health: 100
   Speed: 2.5
   CollisionDamage: 0
   DeathAnim: {fileID: 8921673329648153652, guid: a33ec7d9639f7b440a132d9aafe9dc5c, type: 3}
@@ -2013,6 +2013,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _timeToSecondStage: 20
+  _timeToThirdStage: 30
+  _timeToFourthStage: 30
   FirstStageProjectile: {fileID: 7005881553436677744, guid: c8f4a3da12e3d32418067d257718db44, type: 3}
   FirstStageProjectileStartingPoint1: {fileID: 337551333127773696}
   FirstStageProjectileStartingPoint2: {fileID: 5352337545257554005}
@@ -2021,8 +2024,6 @@ MonoBehaviour:
   FirstStageProjectileTurnSpeed: 8
   TurretTransform1: {fileID: 2306212057705355940}
   TurretTransform2: {fileID: 1521764583869096347}
-  _timeToSecondStage: 15
-  _timeToThirdStage: 30
   ThirdStageProjectile: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
   ThirdStageShootAnim: {fileID: 8921673329648153652, guid: 6628d9f945d28e24498870917d18a252, type: 3}
   ThirdStageFirstWaveShootDirections:
@@ -2035,7 +2036,6 @@ MonoBehaviour:
   - {fileID: 3353711287837984122}
   - {fileID: 4415106784888062572}
   - {fileID: 7361440172720490730}
-  _timeToFourthStage: 45
   FourthStageMovePointLeft: {fileID: 0}
   FourthStageMovePointRight: {fileID: 0}
   FourthStageAimPointUp: {fileID: 0}
