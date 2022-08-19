@@ -18,10 +18,6 @@ public class UIMainMenu : MonoBehaviour
         Utils.DisableMouse();
     }
 
-    private void Update() {
-        Debug.Log(QualitySettings.vSyncCount);
-    }
-
     #region Menu Functions
     public void OpenMainMenu()
     {
@@ -96,6 +92,7 @@ public class UIMainMenu : MonoBehaviour
     }
     #endregion
 
+    #region Input Functions
     public void EnableUIInput()
     {
         _eventSystem.sendNavigationEvents = true;
@@ -107,9 +104,9 @@ public class UIMainMenu : MonoBehaviour
         _eventSystem.sendNavigationEvents = false;
         _canvasGroup.interactable = false;
     }
+    #endregion
 
     public void LoadScene(string sceneName) {
-        Utils.EnableMouse();
         SceneManager.LoadScene(sceneName);
     }
 

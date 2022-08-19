@@ -6,7 +6,6 @@ using UnityEngine;
 public class UILoadMenuPrefs : MonoBehaviour
 {
     [SerializeField] private bool _canUse = false;
-    [SerializeField] private UIMainMenu _mainMenuController;
     [SerializeField] private UISettingsMenu _settingsMenuController;
 
     [Header("Audio")]
