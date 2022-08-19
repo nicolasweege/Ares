@@ -5140,6 +5140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   threshold: 3
+  _playerController: {fileID: 2084794780939713411}
 --- !u!1 &2238636717248138835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5150,6 +5151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5823822772601936702}
   - component: {fileID: 2084794780939713411}
+  - component: {fileID: 7455244276761938406}
   - component: {fileID: 5840707007084685990}
   - component: {fileID: 926220734505401159}
   - component: {fileID: 5152461630013085035}
@@ -5191,7 +5193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 50
   _speed: 6
   _defaultDamage: 1
   _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
@@ -5200,10 +5202,10 @@ MonoBehaviour:
   _deathAnim: {fileID: 8921673329648153652, guid: 2adc510d8779ced45a490092d7dbe5b9, type: 3}
   _dashAnim: {fileID: 8921673329648153652, guid: 2fd92bf9a4ab2524c85105efd7ccd957, type: 3}
   _timeToShoot: 0.5
-  _turnSpeed: 20
+  _turnSpeed: 10
   _laserBeam: {fileID: 4005503774356786776}
   _turbineFlame: {fileID: 637379536331507086}
-  _dashAmount: 1.5
+  _dashAmount: 2
   _dashRaycastLayerMask:
     serializedVersion: 2
     m_Bits: 401271
@@ -5230,6 +5232,75 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _controllerDeadzone: 0.1
+  _aimObjectTransform: {fileID: 3655777091004263308}
+  IsGamepad: 0
+--- !u!114 &7455244276761938406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238636717248138835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c08d6a3420dfd764095dbcb694b2911e, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2084794780939713411}
+        m_TargetAssemblyTypeName: PlayerMainShipController, Assembly-CSharp
+        m_MethodName: OnDeviceChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f550a154-ac92-4479-a6ce-2b1325d353b6
+    m_ActionName: Main Ship/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e31bd29-55a8-43fc-841e-ec532c9af8a1
+    m_ActionName: Main Ship/Aim[/XInputControllerWindows/rightStick,/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 294ad2b4-d5da-4626-8068-175141d846b2
+    m_ActionName: Main Ship/Pause[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9efee4b3-e99e-4755-881a-59e06550a7f9
+    m_ActionName: Main Ship/Normal Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0de0f38b-9876-4af0-96aa-1ed3a6bb5ef1
+    m_ActionName: Main Ship/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 42701a3f-20bf-44a0-920a-6ce339aca40a
+    m_ActionName: Main Ship/Dash[/Keyboard/space,/XInputControllerWindows/buttonWest]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Main Ship
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &5840707007084685990
 MonoBehaviour:
   m_ObjectHideFlags: 0

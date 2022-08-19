@@ -45,6 +45,7 @@ public class UISettingsMenu : MonoBehaviour
         _VSyncValueText.text = VSyncValue == 1 ? "On" : "Off";
         PlayerPrefs.SetInt("vsync", (_isVSync ? 1 : 0));
         QualitySettings.vSyncCount = _isVSync ? 1 : 0;
+        Application.targetFrameRate = _isVSync ? -1 : -1;
     }
     #endregion
 

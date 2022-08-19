@@ -8,6 +8,7 @@ using Cyan;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class PlayerMainShipController : Singleton<PlayerMainShipController>
 {
@@ -48,10 +49,19 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private bool _isFlickerEnabled = false;
     private float _fullScreenIntensity = 0f;
     private bool _dmgAnimEnabled = false;
+    private float _dashCooldownTimer2;
     [NonSerialized] public PlayerInputActions PlayerInputActions;
     [NonSerialized] public bool CanTakeDamage = true;
     [NonSerialized] public bool CanResetColors = true;
     [NonSerialized] public Vector2 MoveVector;
+
+    [Header("Gamepad Settings")]
+    [SerializeField] private float _controllerDeadzone = 0.1f;
+    [SerializeField] private Transform _aimObjectTransform;
+    [NonSerialized] public Vector2 _playerDirGamepadMode;
+    public bool IsGamepad;
+    private Vector2 _aimVector;
+    private PlayerInput _playerInputComponent;
     #endregion
 
     protected override void Awake()
@@ -59,10 +69,12 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         base.Awake();
         Utils.EnableMouse();
         LeanTween.reset();
+        _playerInputComponent = GetComponent<PlayerInput>();
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.MainShip.Enable();
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
+        _dashCooldownTimer2 = _dashCooldown;
 
         Cursor.SetCursor(_cursorTexture, new Vector2(_cursorTexture.width / 2, _cursorTexture.height / 2), CursorMode.ForceSoftware);
 
@@ -219,9 +231,33 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
     private Vector2 HandleAim()
     {
+        _aimVector = PlayerInputActions.MainShip.Aim.ReadValue<Vector2>();
+
+        if (IsGamepad) {
+            Utils.HideMouse();
+            Vector2 playerDir;
+            if (Math.Abs(_aimVector.x) > _controllerDeadzone || Math.Abs(_aimVector.y) > _controllerDeadzone) {
+                playerDir = Vector2.right * _aimVector.x + Vector2.up * _aimVector.y;
+                playerDir.Normalize();
+                _playerDirGamepadMode = playerDir;
+                float playerAngle = Mathf.Atan2(playerDir.y, playerDir.x) * Mathf.Rad2Deg - 90f;
+                if (playerDir.sqrMagnitude > 0.0f)
+                    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, playerAngle), _turnSpeed * Time.deltaTime);
+                return playerDir;
+            }
+            else {
+                playerDir = Vector2.zero;
+                playerDir.Normalize();
+                _playerDirGamepadMode = playerDir;
+                return playerDir;
+            }
+        }
+        
+        Utils.ShowMouse();
         Vector2 mousePos = Utils.GetMouseWorldPosition();
         Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
+        _playerDirGamepadMode = lookDir;
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, lookAngle), _turnSpeed * Time.deltaTime);
         return lookDir;
@@ -283,5 +319,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite"))
             HandleDeath();
+    }
+
+    public void OnDeviceChange(PlayerInput playerInputActions) {
+        IsGamepad = playerInputActions.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 }

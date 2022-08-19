@@ -34,4 +34,12 @@ public class Utils : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    public static void ShowMouse() {
+        Cursor.visible = true;
+    }
+
+    public static void HideMouse() {
+        Cursor.visible = false;
+    }
 }
