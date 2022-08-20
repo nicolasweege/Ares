@@ -234,8 +234,9 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         _aimVector = PlayerInputActions.MainShip.Aim.ReadValue<Vector2>();
 
         if (IsGamepad) {
-            Utils.HideMouse();
+            Utils.SetMouseInvisible();
             Vector2 playerDir;
+
             if (Math.Abs(_aimVector.x) > _controllerDeadzone || Math.Abs(_aimVector.y) > _controllerDeadzone) {
                 playerDir = Vector2.right * _aimVector.x + Vector2.up * _aimVector.y;
                 playerDir.Normalize();
@@ -244,16 +245,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
                 if (playerDir.sqrMagnitude > 0.0f)
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, playerAngle), _turnSpeed * Time.deltaTime);
                 return playerDir;
-            }
-            else {
+            } else {
                 playerDir = Vector2.zero;
                 playerDir.Normalize();
                 _playerDirGamepadMode = playerDir;
                 return playerDir;
             }
         }
-        
-        Utils.ShowMouse();
+
+        Utils.SetMouseVisible();
         Vector2 mousePos = Utils.GetMouseWorldPosition();
         Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
         lookDir.Normalize();
@@ -321,7 +321,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             HandleDeath();
     }
 
-    public void OnDeviceChange(PlayerInput playerInputActions) {
-        IsGamepad = playerInputActions.currentControlScheme.Equals("Gamepad") ? true : false;
+    public void OnDeviceChange(PlayerInput playerInput) {
+        IsGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
     }
 }

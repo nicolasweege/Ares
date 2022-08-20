@@ -35,11 +35,11 @@ public class Utils : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public static void ShowMouse() {
+    public static void SetMouseVisible() {
         Cursor.visible = true;
     }
 
-    public static void HideMouse() {
+    public static void SetMouseInvisible() {
         Cursor.visible = false;
     }
 }

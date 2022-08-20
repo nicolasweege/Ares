@@ -9,9 +9,6 @@ public class PlayerBulletController : BulletBase
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
-            DestroyBullet();
-
         if (other.CompareTag("AfroditeMainShip"))
         {
             if (AfroditeController.Instance.CurrentState != AfroditeController.Instance.DeathState)
