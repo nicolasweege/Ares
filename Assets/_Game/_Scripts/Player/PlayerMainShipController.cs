@@ -49,7 +49,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     private bool _isFlickerEnabled = false;
     private float _fullScreenIntensity = 0f;
     private bool _dmgAnimEnabled = false;
-    private float _dashCooldownTimer2;
     [NonSerialized] public PlayerInputActions PlayerInputActions;
     [NonSerialized] public bool CanTakeDamage = true;
     [NonSerialized] public bool CanResetColors = true;
@@ -74,7 +73,6 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         PlayerInputActions.MainShip.Enable();
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
-        _dashCooldownTimer2 = _dashCooldown;
 
         Cursor.SetCursor(_cursorTexture, new Vector2(_cursorTexture.width / 2, _cursorTexture.height / 2), CursorMode.ForceSoftware);
 
