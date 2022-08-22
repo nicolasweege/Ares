@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class UIPauseMenu : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private float _defaultSoundsVolume;
     [SerializeField] private float _buttonSelectedScaleBuffer;
     [SerializeField] private Renderer2DData _renderer2DData;
+    [SerializeField] private Animator _sceneTransition;
+    [SerializeField] private int _sceneTransitionTime;
     private PlayerInputActions _playerInputActions;
     public static bool GameIsPaused = false;
 
@@ -30,30 +33,38 @@ public class UIPauseMenu : MonoBehaviour
             return;
         }
 
-        EnableUIInput();
+        Time.timeScale = 0f;
+        GameIsPaused = true;
         DisablePlayerInput();
         _mainMenuComponents.SetActive(true);
-        _optionsMenuComponents.SetActive(true);
-        GameIsPaused = true;
-        Time.timeScale = 0f;
+        EnableUIInput();
     }
 
     public void HandleResume()
     {
         DisableUIInput();
-        EnablePlayerInput();
         _mainMenuComponents.SetActive(false);
-        _optionsMenuComponents.SetActive(false);
-        GameIsPaused = false;
+        EnablePlayerInput();
         Time.timeScale = 1f;
+        GameIsPaused = false;
     }
 
     public void ExitToMainMenu()
     {
         _playerInputActions.Disable();
         Time.timeScale = 1f;
+        GameIsPaused = false;
         _renderer2DData.rendererFeatures[0].SetActive(false);
-        LoadScene("Main Menu");
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public async void HandleExit() {
+        _sceneTransition.SetTrigger("Start");
+        await Task.Delay(_sceneTransitionTime);
+        _playerInputActions.Disable();
+        Time.timeScale = 1f;
+        _renderer2DData.rendererFeatures[0].SetActive(false);
+        SceneManager.LoadScene("Main Menu");
     }
     #endregion
 

@@ -723,8 +723,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 107f60eed7b6325449de3c3da6a25f29, type: 2}
-  m_sharedMaterial: {fileID: -7859569727068880744, guid: 107f60eed7b6325449de3c3da6a25f29, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
+  m_sharedMaterial: {fileID: -7859569727068880744, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3613,8 +3613,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 107f60eed7b6325449de3c3da6a25f29, type: 2}
-  m_sharedMaterial: {fileID: -7859569727068880744, guid: 107f60eed7b6325449de3c3da6a25f29, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
+  m_sharedMaterial: {fileID: -7859569727068880744, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4189,8 +4189,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Fight
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 107f60eed7b6325449de3c3da6a25f29, type: 2}
-  m_sharedMaterial: {fileID: -7859569727068880744, guid: 107f60eed7b6325449de3c3da6a25f29, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
+  m_sharedMaterial: {fileID: -7859569727068880744, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5027,7 +5027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1093182187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5061,7 +5061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7667,7 +7667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canUse: 1
-  _mainMenuController: {fileID: 1884226436}
   _settingsMenuController: {fileID: 1801612808}
   _musicSlider: {fileID: 2083076293}
   _soundSlider: {fileID: 1642187248}

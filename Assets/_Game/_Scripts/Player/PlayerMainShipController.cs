@@ -319,6 +319,10 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
             HandleDeath();
     }
 
+    private void OnDestroy() {
+        _renderer2DData.rendererFeatures[0].SetActive(false);   
+    }
+
     public void OnDeviceChange(PlayerInput playerInput) {
         IsGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
     }
