@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
@@ -16,44 +15,31 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private Renderer2DData _renderer2DData;
     [SerializeField] private Animator _sceneTransition;
     [SerializeField] private int _sceneTransitionTime;
-    private PlayerInputActions _playerInputActions;
-    public static bool GameIsPaused = false;
 
     private void Awake() {
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.MainShip.Enable();
-        _playerInputActions.MainShip.Pause.performed += HandlePause;
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
     }
 
     #region Menu Functions
-    public void HandlePause(InputAction.CallbackContext context)
+    public void HandlePause()
     {
-        if (GameIsPaused) {
-            HandleResume();
-            return;
-        }
-
-        Time.timeScale = 0f;
-        GameIsPaused = true;
         DisablePlayerInput();
-        _mainMenuComponents.SetActive(true);
         EnableUIInput();
+        _mainMenuComponents.SetActive(true);
+        // AudioListener.pause = true;
     }
 
     public void HandleResume()
     {
+        EnablePlayerInput();
         DisableUIInput();
         _mainMenuComponents.SetActive(false);
-        EnablePlayerInput();
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        // AudioListener.pause = false;
     }
 
     public void ExitToMainMenu()
     {
-        _playerInputActions.Disable();
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        // AudioListener.pause = false;
         _renderer2DData.rendererFeatures[0].SetActive(false);
         SceneManager.LoadScene("Main Menu");
     }
@@ -61,8 +47,7 @@ public class UIPauseMenu : MonoBehaviour
     public async void HandleExit() {
         _sceneTransition.SetTrigger("Start");
         await Task.Delay(_sceneTransitionTime);
-        _playerInputActions.Disable();
-        Time.timeScale = 1f;
+        // AudioListener.pause = false;
         _renderer2DData.rendererFeatures[0].SetActive(false);
         SceneManager.LoadScene("Main Menu");
     }
@@ -106,11 +91,11 @@ public class UIPauseMenu : MonoBehaviour
 
     #region Input Functions
     public void EnablePlayerInput() {
-        PlayerMainShipController.Instance.PlayerInputActions.Enable();
+        PlayerController.Instance.PlayerInputActions.Enable();
     }
 
     public void DisablePlayerInput() {
-        PlayerMainShipController.Instance.PlayerInputActions.Disable();
+        PlayerController.Instance.PlayerInputActions.Disable();
     }
 
     public void EnableUIInput()
@@ -128,5 +113,17 @@ public class UIPauseMenu : MonoBehaviour
 
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        if (newState == GameState.Paused) {
+            HandlePause();
+        } else {
+            HandleResume();
+        }
     }
 }

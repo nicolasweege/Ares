@@ -46,15 +46,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""294ad2b4-d5da-4626-8068-175141d846b2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Normal Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""9efee4b3-e99e-4755-881a-59e06550a7f9"",
@@ -162,28 +153,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""44e754d8-cd5d-4bd9-8eb5-6544820ecab4"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0a4657e3-6515-4cc2-be39-e25a79b5e71d"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""95c1f450-dd66-41d7-b13d-e415984a007c"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -196,7 +165,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c2d966a5-1c72-4f17-ac4b-779eba5799bd"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -218,7 +187,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""31fcd363-5d8f-4bc1-889c-ae808df5592e"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -245,6 +214,45 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""c958da09-ced9-4dba-8f14-3b2b98c5db31"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""2122c7e4-985d-439f-a4c4-0c7d37a03d6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5f1f295b-d24c-4443-90ea-d9da626b28ad"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""436b1052-6484-4cf8-98cb-eb0753a58ee6"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -291,10 +299,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_MainShip = asset.FindActionMap("Main Ship", throwIfNotFound: true);
         m_MainShip_Movement = m_MainShip.FindAction("Movement", throwIfNotFound: true);
         m_MainShip_Aim = m_MainShip.FindAction("Aim", throwIfNotFound: true);
-        m_MainShip_Pause = m_MainShip.FindAction("Pause", throwIfNotFound: true);
         m_MainShip_NormalShoot = m_MainShip.FindAction("Normal Shoot", throwIfNotFound: true);
         m_MainShip_Shoot = m_MainShip.FindAction("Shoot", throwIfNotFound: true);
         m_MainShip_Dash = m_MainShip.FindAction("Dash", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -356,7 +366,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IMainShipActions m_MainShipActionsCallbackInterface;
     private readonly InputAction m_MainShip_Movement;
     private readonly InputAction m_MainShip_Aim;
-    private readonly InputAction m_MainShip_Pause;
     private readonly InputAction m_MainShip_NormalShoot;
     private readonly InputAction m_MainShip_Shoot;
     private readonly InputAction m_MainShip_Dash;
@@ -366,7 +375,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public MainShipActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_MainShip_Movement;
         public InputAction @Aim => m_Wrapper.m_MainShip_Aim;
-        public InputAction @Pause => m_Wrapper.m_MainShip_Pause;
         public InputAction @NormalShoot => m_Wrapper.m_MainShip_NormalShoot;
         public InputAction @Shoot => m_Wrapper.m_MainShip_Shoot;
         public InputAction @Dash => m_Wrapper.m_MainShip_Dash;
@@ -385,9 +393,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Aim.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnAim;
-                @Pause.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnPause;
                 @NormalShoot.started -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
                 @NormalShoot.performed -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
                 @NormalShoot.canceled -= m_Wrapper.m_MainShipActionsCallbackInterface.OnNormalShoot;
@@ -407,9 +412,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
                 @NormalShoot.started += instance.OnNormalShoot;
                 @NormalShoot.performed += instance.OnNormalShoot;
                 @NormalShoot.canceled += instance.OnNormalShoot;
@@ -423,6 +425,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public MainShipActions @MainShip => new MainShipActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_Pause;
+    public struct UIActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public UIActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -454,9 +489,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
         void OnNormalShoot(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class PlayerMainShipController : Singleton<PlayerMainShipController>
+public class PlayerController : Singleton<PlayerController>
 {
     #region Variables
     [Header("General")]
@@ -68,6 +68,7 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
         base.Awake();
         Utils.EnableMouse();
         LeanTween.reset();
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         _playerInputComponent = GetComponent<PlayerInput>();
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.MainShip.Enable();
@@ -320,10 +321,15 @@ public class PlayerMainShipController : Singleton<PlayerMainShipController>
     }
 
     private void OnDestroy() {
-        _renderer2DData.rendererFeatures[0].SetActive(false);   
+        _renderer2DData.rendererFeatures[0].SetActive(false);
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
     }
 
     public void OnDeviceChange(PlayerInput playerInput) {
         IsGamepad = playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

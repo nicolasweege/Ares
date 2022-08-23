@@ -9,6 +9,10 @@ public class FlashHitEffect : MonoBehaviour
     private Coroutine _flashRoutine;
     [NonSerialized] public bool IsFlashing = false;
 
+    private void Awake() {
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
+    }
+
     public void Flash()
     {
         if (_flashRoutine != null)
@@ -34,5 +38,13 @@ public class FlashHitEffect : MonoBehaviour
 
         IsFlashing = false;
         _flashRoutine = null;
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

@@ -2,19 +2,23 @@ using System;
 
 public class GameManager : Singleton<GameManager>
 {
-    public GameState State { get; private set; }
-    public static event Action<GameState> OnBeforeGameStateChanged;
-    public static event Action<GameState> OnAfterGameStateChanged;
+    public GameState CurrentState { get; private set; }
+    public delegate void GameStateChangeHandler(GameState newState);
+    public static event GameStateChangeHandler OnBeforeGameStateChanged;
+    public static event GameStateChangeHandler OnAfterGameStateChanged;
 
-    public void UpdateGameState(GameState newState)
+    public void SetGameState(GameState newState)
     {
+        if (newState == CurrentState)
+            return;
+
         OnBeforeGameStateChanged?.Invoke(newState);
 
-        State = newState;
+        CurrentState = newState;
 
         switch (newState)
         {
-            case GameState.Starting:
+            case GameState.Gameplay:
                 break;
             case GameState.Paused:
                 break;
@@ -26,6 +30,6 @@ public class GameManager : Singleton<GameManager>
 
 [Serializable] public enum GameState
 {
-    Starting = 0,
-    Paused = 1
+    Gameplay,
+    Paused
 }

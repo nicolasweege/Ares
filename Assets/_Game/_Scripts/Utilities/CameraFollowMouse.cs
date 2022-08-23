@@ -3,12 +3,12 @@ using UnityEngine;
 public class CameraFollowMouse : MonoBehaviour
 {
     [SerializeField] private float threshold;
-    [SerializeField] private PlayerMainShipController _playerController;
+    [SerializeField] private PlayerController _playerController;
 
     private void Update()
     {
         Vector3 mousePos = Utils.GetMouseWorldPosition();
-        Vector3 playerPos = PlayerMainShipController.Instance.transform.position;
+        Vector3 playerPos = PlayerController.Instance.transform.position;
         Vector3 targetPos;
 
         if (_playerController.IsGamepad) {

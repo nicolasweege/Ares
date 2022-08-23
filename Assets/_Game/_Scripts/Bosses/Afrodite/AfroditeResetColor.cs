@@ -5,6 +5,10 @@ public class AfroditeResetColor : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Color _originalColor;
 
+    private void Awake() {
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
+    }
+
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -17,5 +21,13 @@ public class AfroditeResetColor : MonoBehaviour
         {
             _spriteRenderer.color = _originalColor;
         }
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

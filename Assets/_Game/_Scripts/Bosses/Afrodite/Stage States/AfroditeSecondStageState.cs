@@ -38,9 +38,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
             HandleMovement(context);
             _currentTurnSpeed = _initialTurnSpeed;
             HandleAim(context);
-        }
-        else
-        {
+        } else {
             HandleLaserShoot(context);
         }
     }
@@ -89,9 +87,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableFeedbackLaser();
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateFeedbackLaser();
                 }
-            }
-            else
-            {
+            } else {
                 _currentTurnSpeed += 0.07f;
             }
 
@@ -106,7 +102,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
 
     private void HandleAim(AfroditeController context)
     {
-        Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
+        Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;

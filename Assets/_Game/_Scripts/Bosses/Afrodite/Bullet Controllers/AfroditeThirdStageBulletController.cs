@@ -7,6 +7,7 @@ public class AfroditeThirdStageBulletController : BulletBase
     protected override void Awake()
     {
         base.Awake();
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         _destroyVisibleBulletTimer = _timeToDestroyVisibleBullet;
     }
 
@@ -33,5 +34,13 @@ public class AfroditeThirdStageBulletController : BulletBase
     private void MoveProjectile()
     {
         transform.position += _direction * Time.deltaTime * _speed;
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

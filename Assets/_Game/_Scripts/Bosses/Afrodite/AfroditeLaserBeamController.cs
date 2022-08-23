@@ -15,6 +15,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         FillLists();
         DisableLaser();
     }
@@ -59,7 +60,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
     {
         if (_lineRenderer.enabled)
         {
-            _laserBoxCollider.enabled = PlayerMainShipController.Instance.CanTakeDamage;
+            _laserBoxCollider.enabled = PlayerController.Instance.CanTakeDamage;
         }
         else
         {
@@ -91,5 +92,13 @@ public class AfroditeLaserBeamController : MonoBehaviour
                 _particles.Add(particleSystem);
             }
         }
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

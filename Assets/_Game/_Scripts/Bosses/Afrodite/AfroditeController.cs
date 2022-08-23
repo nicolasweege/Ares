@@ -76,6 +76,7 @@ public class AfroditeController : Singleton<AfroditeController>
     protected override void Awake()
     {
         base.Awake();
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         CurrentState = IdleState;
         CurrentState.EnterState(this);
 
@@ -175,5 +176,13 @@ public class AfroditeController : Singleton<AfroditeController>
     {
         Health -= damage;
         _flashHitEffect.Flash();
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+    
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

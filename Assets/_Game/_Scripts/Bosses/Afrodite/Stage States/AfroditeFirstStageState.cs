@@ -43,7 +43,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
 
     private void HandleMovement(AfroditeController context)
     {
-        Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
+        Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;
@@ -93,7 +93,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
 
     private void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
     {
-        if (PlayerMainShipController.Instance == null)
+        if (PlayerController.Instance == null)
             return;
 
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
@@ -115,7 +115,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
 
     private Vector2 HandleTurretAim(Transform turretTransform)
     {
-        Vector2 playerPos = PlayerMainShipController.Instance.transform.position;
+        Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(turretTransform.position.x, turretTransform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;

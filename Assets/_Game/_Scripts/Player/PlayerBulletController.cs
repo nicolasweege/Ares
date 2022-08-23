@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerBulletController : BulletBase
 {
+    protected override void Awake() {
+        base.Awake();
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
+    }
+
     private void Update()
     {
         MoveBullet();
@@ -26,5 +31,13 @@ public class PlayerBulletController : BulletBase
 
         if (other.CompareTag("ArenaCollider"))
             DestroyBullet();
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }
