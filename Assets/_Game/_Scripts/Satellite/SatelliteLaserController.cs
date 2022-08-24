@@ -15,7 +15,6 @@ public class SatelliteLaserController : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         FillLists();
         DisableLaser();
     }
@@ -74,13 +73,5 @@ public class SatelliteLaserController : MonoBehaviour
                 _particles.Add(particleSystem);
             }
         }
-    }
-
-    private void OnDestroy() {
-        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
-    }
-
-    private void OnGameStateChanged(GameState newState) {
-        enabled = newState == GameState.Gameplay;
     }
 }

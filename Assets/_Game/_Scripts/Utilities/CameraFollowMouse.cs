@@ -5,6 +5,10 @@ public class CameraFollowMouse : MonoBehaviour
     [SerializeField] private float threshold;
     [SerializeField] private PlayerController _playerController;
 
+    private void Awake() {
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
+    }
+
     private void Update()
     {
         Vector3 mousePos = Utils.GetMouseWorldPosition();
@@ -22,5 +26,13 @@ public class CameraFollowMouse : MonoBehaviour
         targetPos.y = Mathf.Clamp(targetPos.y, -threshold + playerPos.y, threshold + playerPos.y);
 
         transform.position = targetPos;
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

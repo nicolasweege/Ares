@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
-
 public class UIPauseMenu : MonoBehaviour
 {
     [SerializeField] private float _leanTweenDuration;
@@ -23,31 +21,25 @@ public class UIPauseMenu : MonoBehaviour
     #region Menu Functions
     public void HandlePause()
     {
-        DisablePlayerInput();
         EnableUIInput();
+        DisablePlayerInput();
         _mainMenuComponents.SetActive(true);
-        // AudioListener.pause = true;
+        AudioListener.pause = true;
+        GameManager.Instance.SetGameState(GameState.Paused);
     }
 
     public void HandleResume()
     {
-        EnablePlayerInput();
         DisableUIInput();
+        EnablePlayerInput();
         _mainMenuComponents.SetActive(false);
-        // AudioListener.pause = false;
+        AudioListener.pause = false;
+        GameManager.Instance.SetGameState(GameState.Gameplay);
     }
 
     public void ExitToMainMenu()
     {
-        // AudioListener.pause = false;
-        _renderer2DData.rendererFeatures[0].SetActive(false);
-        SceneManager.LoadScene("Main Menu");
-    }
-
-    public async void HandleExit() {
-        _sceneTransition.SetTrigger("Start");
-        await Task.Delay(_sceneTransitionTime);
-        // AudioListener.pause = false;
+        AudioListener.pause = false;
         _renderer2DData.rendererFeatures[0].SetActive(false);
         SceneManager.LoadScene("Main Menu");
     }

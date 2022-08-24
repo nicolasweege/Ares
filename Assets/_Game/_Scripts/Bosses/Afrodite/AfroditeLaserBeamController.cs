@@ -58,15 +58,7 @@ public class AfroditeLaserBeamController : MonoBehaviour
 
     public void UpdateLaser()
     {
-        if (_lineRenderer.enabled)
-        {
-            _laserBoxCollider.enabled = PlayerController.Instance.CanTakeDamage;
-        }
-        else
-        {
-            _laserBoxCollider.enabled = false;
-        }
-
+        _laserBoxCollider.enabled = _lineRenderer.enabled ? PlayerController.Instance.CanTakeDamage : false;
         _lineRenderer.SetPosition(0, (Vector2)_fireStartingPos.position);
         _lineRenderer.SetPosition(1, (Vector2)_fireDir.position);
         _startVFX.transform.position = new Vector3(_fireStartingPos.position.x, _fireStartingPos.position.y, _startVFX.transform.position.z);

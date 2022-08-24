@@ -8,7 +8,6 @@ public class AfroditeThirdStageBulletController : BulletBase
     {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
-        _destroyVisibleBulletTimer = _timeToDestroyVisibleBullet;
     }
 
     private void Update()

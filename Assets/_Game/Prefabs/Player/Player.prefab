@@ -5156,7 +5156,7 @@ GameObject:
   - component: {fileID: 926220734505401159}
   - component: {fileID: 5152461630013085035}
   m_Layer: 13
-  m_Name: Player Main Ship
+  m_Name: Player
   m_TagString: PlayerMainShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5177,7 +5177,6 @@ Transform:
   - {fileID: 7736306944639637940}
   - {fileID: 6908857856628704186}
   - {fileID: 3655777091004263308}
-  - {fileID: 2832813882447726846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5203,7 +5202,7 @@ MonoBehaviour:
   _dashAnim: {fileID: 8921673329648153652, guid: 2fd92bf9a4ab2524c85105efd7ccd957, type: 3}
   _timeToShoot: 0.5
   _turnSpeed: 10
-  _laserBeam: {fileID: 4005503774356786776}
+  _laserBeam: {fileID: 0}
   _turbineFlame: {fileID: 637379536331507086}
   _dashAmount: 2
   _dashRaycastLayerMask:
@@ -5282,10 +5281,6 @@ MonoBehaviour:
     m_ActionName: Main Ship/Aim[/XInputControllerWindows/rightStick,/Mouse/position]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 294ad2b4-d5da-4626-8068-175141d846b2
-    m_ActionName: Main Ship/Pause[/Keyboard/escape,/XInputControllerWindows/start]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9efee4b3-e99e-4755-881a-59e06550a7f9
     m_ActionName: Main Ship/Normal Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -5296,6 +5291,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 42701a3f-20bf-44a0-920a-6ce339aca40a
     m_ActionName: Main Ship/Dash[/Keyboard/space,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2122c7e4-985d-439f-a4c4-0c7d37a03d6e
+    m_ActionName: UI/Pause[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Main Ship
@@ -5660,138 +5659,3 @@ Transform:
   m_Father: {fileID: 5823822772601936702}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3717665639980681860
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 5823822772601936702}
-    m_Modifications:
-    - target: {fileID: 188523795549292374, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Name
-      value: Player Laser Beam
-      objectReference: {fileID: 0}
-    - target: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.568
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526442506186889314, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3407550114908391497, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3828662145417251770, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4448001778417333106, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4448001778417333106, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5144824477821537567, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371843745005849578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 5371843745005849578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5601675473985291446, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6643281708167107599, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: looping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6643281708167107599, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: prewarm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7201181484652790586, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344445280116436978, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8908978293857866113, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
---- !u!4 &2832813882447726846 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1497411710027219578, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-  m_PrefabInstance: {fileID: 3717665639980681860}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4005503774356786776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 288693571894936796, guid: 071ba3aa011c3954597d0ed3fc318663, type: 3}
-  m_PrefabInstance: {fileID: 3717665639980681860}
-  m_PrefabAsset: {fileID: 0}

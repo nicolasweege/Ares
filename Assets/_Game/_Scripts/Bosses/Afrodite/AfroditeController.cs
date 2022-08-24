@@ -8,8 +8,6 @@ public class AfroditeController : Singleton<AfroditeController>
     #region Variables
     [Header("General")]
     public int Health;
-    public float Speed;
-    public int CollisionDamage;
     public GameObject DeathAnim;
     [Range(0f, 100f)] public float TurnSpeed;
     public GameObject LaserBeam;
@@ -87,12 +85,9 @@ public class AfroditeController : Singleton<AfroditeController>
     private void Update()
     {
         // Debug.Log(Health);
-
         IsFlashing = _flashHitEffect.IsFlashing;
         CurrentState.UpdateState(this);
-
         HandleAI();
-
         if (Health <= 0 && CurrentState != DeathState)
             SwitchState(DeathState);
     }
