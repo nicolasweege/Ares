@@ -16,6 +16,7 @@ public class UIMainMenu : MonoBehaviour
     {
         LeanTween.reset();
         Utils.DisableMouse();
+        AudioListener.pause = false;
     }
 
     #region Menu Functions

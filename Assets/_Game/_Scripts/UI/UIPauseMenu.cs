@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+
 public class UIPauseMenu : MonoBehaviour
 {
     [SerializeField] private float _leanTweenDuration;
@@ -13,6 +16,9 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private Renderer2DData _renderer2DData;
     [SerializeField] private Animator _sceneTransition;
     [SerializeField] private int _sceneTransitionTime;
+    [SerializeField] private Button _resumeButton;
+    [SerializeField] private Color _buttonSelectedColor;
+    [SerializeField] private Color _buttonDeselectedColor;
 
     private void Awake() {
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
@@ -25,7 +31,6 @@ public class UIPauseMenu : MonoBehaviour
         DisablePlayerInput();
         _mainMenuComponents.SetActive(true);
         AudioListener.pause = true;
-        GameManager.Instance.SetGameState(GameState.Paused);
     }
 
     public void HandleResume()
@@ -34,12 +39,10 @@ public class UIPauseMenu : MonoBehaviour
         EnablePlayerInput();
         _mainMenuComponents.SetActive(false);
         AudioListener.pause = false;
-        GameManager.Instance.SetGameState(GameState.Gameplay);
     }
 
     public void ExitToMainMenu()
     {
-        AudioListener.pause = false;
         _renderer2DData.rendererFeatures[0].SetActive(false);
         SceneManager.LoadScene("Main Menu");
     }
@@ -47,11 +50,23 @@ public class UIPauseMenu : MonoBehaviour
 
     #region Animation Functions
     public void _SelectButtonAnim(GameObject button) {
-        LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
+        // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
+        button.GetComponent<TMP_Text>().color = _buttonSelectedColor;
+    }
+
+    public void _SelectButtonAnim(TMP_Text buttonText) {
+        // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
+        buttonText.color = _buttonSelectedColor;
     }
 
     public void _DeselectButtonAnim(GameObject button) {
-        LeanTween.scale(button, new Vector3(1f, 1f, 0), 0.15f);
+        // LeanTween.scale(button, new Vector3(1f, 1f, 0), 0.15f);
+        button.GetComponent<TMP_Text>().color = _buttonDeselectedColor;
+    }
+
+    public void _DeselectButtonAnim(TMP_Text buttonText) {
+        // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
+        buttonText.color = _buttonDeselectedColor;
     }
     #endregion
 
@@ -107,6 +122,14 @@ public class UIPauseMenu : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void SetPuasedGameState() {
+        GameManager.Instance.SetGameState(GameState.Paused);
+    }
+
+    public void SetGameplayGameState() {
+        GameManager.Instance.SetGameState(GameState.Gameplay);
+    }
+
     private void OnDestroy() {
         GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
     }
@@ -114,8 +137,11 @@ public class UIPauseMenu : MonoBehaviour
     private void OnGameStateChanged(GameState newState) {
         if (newState == GameState.Paused) {
             HandlePause();
+            _resumeButton.Select();
+            _renderer2DData.rendererFeatures[0].SetActive(false);
         } else {
             HandleResume();
+            _renderer2DData.rendererFeatures[0].SetActive(true);
         }
     }
 }
