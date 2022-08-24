@@ -49,19 +49,9 @@ public class UIPauseMenu : MonoBehaviour
     #endregion
 
     #region Animation Functions
-    public void _SelectButtonAnim(GameObject button) {
-        // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
-        button.GetComponent<TMP_Text>().color = _buttonSelectedColor;
-    }
-
     public void _SelectButtonAnim(TMP_Text buttonText) {
         // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
         buttonText.color = _buttonSelectedColor;
-    }
-
-    public void _DeselectButtonAnim(GameObject button) {
-        // LeanTween.scale(button, new Vector3(1f, 1f, 0), 0.15f);
-        button.GetComponent<TMP_Text>().color = _buttonDeselectedColor;
     }
 
     public void _DeselectButtonAnim(TMP_Text buttonText) {

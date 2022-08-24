@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -11,11 +12,12 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private float _defaultSoundsVolume;
     [SerializeField] private float _buttonSelectedScaleBuffer;
+    [SerializeField] private Color _buttonSelectedColor;
+    [SerializeField] private Color _buttonDeselectedColor;
 
     private void Awake()
     {
         LeanTween.reset();
-        Utils.DisableMouse();
         AudioListener.pause = false;
     }
 
@@ -64,6 +66,14 @@ public class UIMainMenu : MonoBehaviour
 
     public void _DeselectButtonAnim(GameObject button) {
         LeanTween.scale(button, new Vector3(1f, 1f, 0), 0.15f);
+    }
+
+    public void _SelectButtonAnim(TMP_Text buttonText) {
+        buttonText.color = _buttonSelectedColor;
+    }
+
+    public void _DeselectButtonAnim(TMP_Text buttonText) {
+        buttonText.color = _buttonDeselectedColor;
     }
     #endregion
 

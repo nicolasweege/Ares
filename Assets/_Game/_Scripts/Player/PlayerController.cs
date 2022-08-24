@@ -72,6 +72,7 @@ public class PlayerController : Singleton<PlayerController>
         _playerInputComponent = GetComponent<PlayerInput>();
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.MainShip.Enable();
+        PlayerInputActions.MainShip.Dash.performed += Dash;
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
@@ -79,6 +80,14 @@ public class PlayerController : Singleton<PlayerController>
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
             spr.gameObject.AddComponent<PlayerResetColor>();
+    }
+
+    private void Dash(InputAction.CallbackContext context) {
+        if (_dashCooldownTimer <= 0f)
+            {
+                Instantiate(_dashAnim, transform.position, Quaternion.identity);
+                _isDashing = true;
+            }
     }
 
     private void Update()
@@ -89,15 +98,6 @@ public class PlayerController : Singleton<PlayerController>
         HandleDamange();
         HandleDamageAnimation();
         HandleHealthHUD();
-
-        if (PlayerInputActions.MainShip.Dash.IsPressed())
-        {
-            if (_dashCooldownTimer <= 0f)
-            {
-                Instantiate(_dashAnim, transform.position, Quaternion.identity);
-                _isDashing = true;
-            }
-        }
 
         _shootTimer -= Time.deltaTime;
         if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove)
@@ -323,6 +323,9 @@ public class PlayerController : Singleton<PlayerController>
     private void OnDestroy() {
         _renderer2DData.rendererFeatures[0].SetActive(false);
         GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+        PlayerInputActions.MainShip.Dash.performed -= Dash;
+        PlayerInputActions.Disable();
+        PlayerInputActions = null;
     }
 
     public void OnDeviceChange(PlayerInput playerInput) {

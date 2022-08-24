@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Renogare-Regular SDF
   m_EditorClassIdentifier: 
-  hashCode: -393385599
+  hashCode: -476612926
   material: {fileID: -7859569727068880744}
-  materialHashCode: -216029311
+  materialHashCode: -1301450590
   m_Version: 1.1.0
   m_SourceFontFileGUID: 99b6ec98a25b49a47bbb9a21b6be57e7
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 99b6ec98a25b49a47bbb9a21b6be57e7, type: 3}
