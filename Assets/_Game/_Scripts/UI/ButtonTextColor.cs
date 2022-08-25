@@ -8,7 +8,7 @@ public class ButtonTextColor : MonoBehaviour
 
     private void Awake() {
         _text = GetComponent<TMP_Text>();
-        _transparency = _text.color.a / 2;
+        _transparency = _text.color.a * 0.3f;
         _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, _transparency);
     }
 }

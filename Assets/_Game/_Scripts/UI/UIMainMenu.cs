@@ -6,12 +6,10 @@ using TMPro;
 
 public class UIMainMenu : MonoBehaviour
 {
-    [SerializeField] private float _leanTweenDuration;
-    [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents, _levelsMenuComponents;
+    [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private float _defaultSoundsVolume;
-    [SerializeField] private float _buttonSelectedScaleBuffer;
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
 
@@ -21,53 +19,7 @@ public class UIMainMenu : MonoBehaviour
         AudioListener.pause = false;
     }
 
-    #region Menu Functions
-    public void OpenMainMenu()
-    {
-        LeanTween.moveLocal(_mainMenuComponents, new Vector3(0, 0, 0), _leanTweenDuration).setEaseOutExpo().setOnComplete(EnableUIInput);
-    }
-
-    public void CloseMainMenu()
-    {
-        DisableUIInput();
-        LeanTween.moveLocal(_mainMenuComponents, new Vector3(-1200, 0, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenOptionsMenu);
-    }
-
-    public void OpenOptionsMenu()
-    {
-        LeanTween.moveLocal(_optionsMenuComponents, new Vector3(0, 0, 0), _leanTweenDuration).setEaseOutExpo().setOnComplete(EnableUIInput);
-    }
-
-    public void OpenLevelsMenu() {
-        DisableUIInput();
-        LeanTween.moveLocal(_mainMenuComponents, new Vector3(-1200, 0, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenLevelsMenuAnim);
-    }
-
-    public void OpenLevelsMenuAnim() {
-        LeanTween.moveLocal(_levelsMenuComponents, new Vector3(0, 0, 0), _leanTweenDuration).setEaseOutExpo().setOnComplete(EnableUIInput);
-    }
-
-    public void CloseLevelsMenu() {
-        DisableUIInput();
-        LeanTween.moveLocal(_levelsMenuComponents, new Vector3(960, -1060, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenMainMenu);
-    }
-
-    public void CloseOptionsMenu()
-    {
-        DisableUIInput();
-        LeanTween.moveLocal(_optionsMenuComponents, new Vector3(420, -1060, 0), _leanTweenDuration).setEaseInExpo().setOnComplete(OpenMainMenu);
-    }
-    #endregion
-
     #region Animation Functions
-    public void _SelectButtonAnim(GameObject button) {
-        LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
-    }
-
-    public void _DeselectButtonAnim(GameObject button) {
-        LeanTween.scale(button, new Vector3(1f, 1f, 0), 0.15f);
-    }
-
     public void _SelectButtonAnim(TMP_Text buttonText) {
         buttonText.color = _buttonSelectedColor;
     }
@@ -103,7 +55,6 @@ public class UIMainMenu : MonoBehaviour
     }
     #endregion
 
-    #region Input Functions
     public void EnableUIInput()
     {
         _eventSystem.sendNavigationEvents = true;
@@ -115,7 +66,6 @@ public class UIMainMenu : MonoBehaviour
         _eventSystem.sendNavigationEvents = false;
         _canvasGroup.interactable = false;
     }
-    #endregion
 
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);

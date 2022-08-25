@@ -7,15 +7,11 @@ using TMPro;
 
 public class UIPauseMenu : MonoBehaviour
 {
-    [SerializeField] private float _leanTweenDuration;
     [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private float _defaultSoundsVolume;
-    [SerializeField] private float _buttonSelectedScaleBuffer;
     [SerializeField] private Renderer2DData _renderer2DData;
-    [SerializeField] private Animator _sceneTransition;
-    [SerializeField] private int _sceneTransitionTime;
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
@@ -50,12 +46,10 @@ public class UIPauseMenu : MonoBehaviour
 
     #region Animation Functions
     public void _SelectButtonAnim(TMP_Text buttonText) {
-        // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
         buttonText.color = _buttonSelectedColor;
     }
 
     public void _DeselectButtonAnim(TMP_Text buttonText) {
-        // LeanTween.scale(button, new Vector3(_buttonSelectedScaleBuffer, _buttonSelectedScaleBuffer, 0), 0.15f);
         buttonText.color = _buttonDeselectedColor;
     }
     #endregion
@@ -86,7 +80,6 @@ public class UIPauseMenu : MonoBehaviour
     }
     #endregion
 
-    #region Input Functions
     public void EnablePlayerInput() {
         PlayerController.Instance.PlayerInputActions.Enable();
     }
@@ -106,7 +99,6 @@ public class UIPauseMenu : MonoBehaviour
         _eventSystem.sendNavigationEvents = false;
         _canvasGroup.interactable = false;
     }
-    #endregion
 
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
