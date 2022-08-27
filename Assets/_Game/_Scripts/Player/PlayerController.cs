@@ -30,6 +30,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private LayerMask _dashRaycastLayerMask;
     [SerializeField] private Transform _aimTransform;
     [SerializeField] private float _dashCooldown;
+    [SerializeField] private float _timeToFinishDash;
     [SerializeField] private float _timeToCanTakeDamage;
     [SerializeField] private float _timeToCanMove;
     [SerializeField] private Color _flashColor;
@@ -53,6 +54,7 @@ public class PlayerController : Singleton<PlayerController>
     [NonSerialized] public bool CanTakeDamage = true;
     [NonSerialized] public bool CanResetColors = true;
     [NonSerialized] public Vector2 MoveVector;
+    private Vector3 _dashPos;
 
     [Header("Gamepad Settings")]
     [SerializeField] private float _controllerDeadzone = 0.1f;
@@ -66,8 +68,6 @@ public class PlayerController : Singleton<PlayerController>
     protected override void Awake()
     {
         base.Awake();
-        Utils.EnableMouse();
-        LeanTween.reset();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         _playerInputComponent = GetComponent<PlayerInput>();
         PlayerInputActions = new PlayerInputActions();
@@ -83,11 +83,31 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void Dash(InputAction.CallbackContext context) {
-        if (_dashCooldownTimer <= 0f)
-            {
-                Instantiate(_dashAnim, transform.position, Quaternion.identity);
-                _isDashing = true;
-            }
+        if (!_isDashing && _dashCooldownTimer <= 0f && MoveVector != Vector2.zero) {
+            _isDashing = true;
+
+            foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+                spr.enabled = false;
+
+            _dashPos = transform.position + new Vector3(MoveVector.x, MoveVector.y) * _dashAmount;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveVector, _dashAmount, _dashRaycastLayerMask);
+            if (hit.collider != null && !hit.collider.gameObject.CompareTag("AfroditeMember"))
+                _dashPos = hit.point;
+            
+            Instantiate(_dashAnim, transform.position, Quaternion.identity);
+
+            Invoke(nameof(FinishDash), _timeToFinishDash);
+        }
+    }
+
+    private void FinishDash() {
+        transform.position = _dashPos;
+        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+            spr.enabled = true;
+        Instantiate(_dashAnim, transform.position, Quaternion.identity);
+        _isDashing = false;
+        _dashCooldownTimer = _dashCooldown;
     }
 
     private void Update()
@@ -100,10 +120,8 @@ public class PlayerController : Singleton<PlayerController>
         HandleHealthHUD();
 
         _shootTimer -= Time.deltaTime;
-        if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove)
-        {
-            if (_shootTimer <= 0f)
-            {
+        if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove) {
+            if (_shootTimer <= 0f) {
                 GenerateBullet();
                 SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position);
                 _shootTimer = _timeToShoot;
@@ -210,12 +228,14 @@ public class PlayerController : Singleton<PlayerController>
 
     private void HandleTurbineFlame()
     {
+        if (_isDashing) {
+            _turbineFlame.Stop();
+            return;
+        }
+
         if (PlayerInputActions.MainShip.Movement.IsPressed() && CanTakeDamage) {
             _turbineFlame.Play();
-        }
-        else {
-            _turbineFlame.Stop();
-        }
+        } else _turbineFlame.Stop();
     }
 
     private void GenerateBullet()
@@ -264,27 +284,10 @@ public class PlayerController : Singleton<PlayerController>
 
     private void HandleMove()
     {
-        if (_canMove)
-        {
+        if (_canMove) {
             MoveVector = PlayerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
             transform.position += new Vector3(MoveVector.x, MoveVector.y) * Time.deltaTime * _speed;
-
             _dashCooldownTimer -= Time.deltaTime;
-            if (_isDashing && _dashCooldownTimer <= 0f)
-            {
-                var dashPos = transform.position + new Vector3(MoveVector.x, MoveVector.y) * _dashAmount;
-
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveVector, _dashAmount, _dashRaycastLayerMask);
-                if (hit.collider != null)
-                {
-                    dashPos = hit.point;
-                }
-
-                transform.position = dashPos;
-                Instantiate(_dashAnim, transform.position, Quaternion.identity);
-                _isDashing = false;
-                _dashCooldownTimer = _dashCooldown;
-            }
         }
     }
 
@@ -295,25 +298,19 @@ public class PlayerController : Singleton<PlayerController>
         SceneManager.LoadScene("Afrodite Fight");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (CanTakeDamage)
         {
-            if (other.CompareTag("Bullet"))
-            {
+            if (other.CompareTag("Bullet") && !_isDashing) {
                 TakeDamage();
                 other.GetComponent<BulletBase>().DestroyBullet();
             }
 
             if (other.CompareTag("AfroditeMainShip"))
-            {
                 TakeDamage();
-            }
 
-            if (other.CompareTag("AfroditeMember"))
-            {
+            if (other.CompareTag("AfroditeMember") && !_isDashing)
                 TakeDamage();
-            }
         }
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite"))

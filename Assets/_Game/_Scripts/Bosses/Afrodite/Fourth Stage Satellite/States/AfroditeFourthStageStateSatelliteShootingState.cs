@@ -17,6 +17,9 @@ public class AfroditeFourthStageStateSatelliteShootingState : AfroditeFourthStag
         while (_canShoot) {
             await Task.Delay(_timeToShoot);
             for (int i = 0; i < context.ShootDirections.Count; i++) {
+                if (context == null)
+                    return;
+                    
                 GenerateBullet(context.transform, context.Projectile, context.ShootDirections[i], context);
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeThirdStageShoot, context.transform.position, 0.1f);
             }

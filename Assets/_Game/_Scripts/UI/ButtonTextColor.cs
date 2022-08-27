@@ -11,4 +11,8 @@ public class ButtonTextColor : MonoBehaviour
         _transparency = _text.color.a * 0.3f;
         _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, _transparency);
     }
+
+    private void OnEnable() {
+        _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, _transparency);
+    }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    [SerializeField] private Vector3 _rotation;
+    public Vector3 Rotation;
 
     private void Awake() {
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
@@ -10,7 +10,7 @@ public class Rotate : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(_rotation * Time.deltaTime);
+        transform.Rotate(Rotation * Time.deltaTime);
     }
 
     private void OnDestroy() {

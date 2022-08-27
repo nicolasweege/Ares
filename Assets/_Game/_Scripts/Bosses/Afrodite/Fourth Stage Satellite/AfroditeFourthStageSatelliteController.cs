@@ -7,6 +7,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     public GameObject DeathAnim;
     public GameObject ShootAnim;
     public GameObject Projectile;
+    public Rotate RotateComponent;
     public List<Transform> ShootDirections = new List<Transform>();
 
     #region States
@@ -18,6 +19,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     protected override void Awake()
     {
         base.Awake();
+        RotateComponent = GetComponent<Rotate>();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
     }
@@ -26,8 +28,10 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     {
         CurrentState.UpdateState(this);
 
-        if (AfroditeController.Instance.CurrentState != AfroditeController.Instance.FourthStageState)
-            HandleDeath();
+        if (AfroditeController.Instance.CurrentState != AfroditeController.Instance.FourthStageState) {
+            SwitchState(IdleState);
+            Invoke(nameof(HandleDeath), 2f);
+        }
     }
 
     public void HandleDeath()
