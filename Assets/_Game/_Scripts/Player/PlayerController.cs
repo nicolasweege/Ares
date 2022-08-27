@@ -50,11 +50,12 @@ public class PlayerController : Singleton<PlayerController>
     private bool _isFlickerEnabled = false;
     private float _fullScreenIntensity = 0f;
     private bool _dmgAnimEnabled = false;
+    private bool _canDie = true;
+    private Vector3 _dashPos;
     [NonSerialized] public PlayerInputActions PlayerInputActions;
     [NonSerialized] public bool CanTakeDamage = true;
     [NonSerialized] public bool CanResetColors = true;
     [NonSerialized] public Vector2 MoveVector;
-    private Vector3 _dashPos;
 
     [Header("Gamepad Settings")]
     [SerializeField] private float _controllerDeadzone = 0.1f;
@@ -128,8 +129,10 @@ public class PlayerController : Singleton<PlayerController>
             }
         }
 
-        if (_health <= 0)
-            HandleDeath();
+        if (_health <= 0 && _canDie) {
+            FunctionTimer.Create(HandleDeath, 0.1f);
+            _canDie = false;
+        }
     }
 
     private void HandleHealthHUD()
@@ -293,9 +296,8 @@ public class PlayerController : Singleton<PlayerController>
 
     public void HandleDeath()
     {
-        Destroy(gameObject);
-        Instantiate(_deathAnim, transform.position, Quaternion.identity);
-        SceneManager.LoadScene("Afrodite Fight");
+        FunctionTimer.Create(() => CinematicBars.Instance.Show(540f, 0.2f), 0.5f);
+        FunctionTimer.Create(() => CinematicBars.Instance.Hide(0.2f), 3f);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -313,8 +315,11 @@ public class PlayerController : Singleton<PlayerController>
                 TakeDamage();
         }
 
-        if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite"))
-            HandleDeath();
+        if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite")) {
+            // FunctionTimer.Create(() => Instantiate(_deathAnim, transform.position, Quaternion.identity), 0.1f);
+            // FunctionTimer.Create(() => Destroy(gameObject), 0.1f);
+            SceneManager.LoadScene("Afrodite Fight");
+        }
     }
 
     private void OnDestroy() {
