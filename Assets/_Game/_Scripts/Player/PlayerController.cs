@@ -322,8 +322,6 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite")) {
-            // FunctionTimer.Create(() => Instantiate(_deathAnim, transform.position, Quaternion.identity), 0.1f);
-            // FunctionTimer.Create(() => Destroy(gameObject), 0.1f);
             SceneManager.LoadScene("Afrodite Fight");
         }
     }
