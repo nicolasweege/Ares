@@ -2872,7 +2872,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 827775846319180489, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1463419017436258478, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_RootOrder
@@ -2924,15 +2924,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1463419017436258479, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5598008685187418162, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8041833243059976316, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8453892432992078889, guid: 615bc62fd8f0e114384e09e9f2f9f54f, type: 3}
       propertyPath: MovePointUp
@@ -4973,6 +4973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc947ad56b2e144791c09cbe4032490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseOrthographicSize: 7
+  _followTransform: {fileID: 920544586}
 --- !u!114 &1977282936
 MonoBehaviour:
   m_ObjectHideFlags: 0
