@@ -17,6 +17,7 @@ public class UIMainMenu : MonoBehaviour
     {
         LeanTween.reset();
         AudioListener.pause = false;
+        AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(0f);
     }
 
     #region Animation Functions

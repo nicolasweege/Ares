@@ -5125,7 +5125,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5823822772601936702}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6760702280949214283
 MonoBehaviour:
@@ -5176,6 +5176,7 @@ Transform:
   m_Children:
   - {fileID: 7736306944639637940}
   - {fileID: 6908857856628704186}
+  - {fileID: 9149013871240149547}
   - {fileID: 3655777091004263308}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5192,7 +5193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883d5a3772c198e4aa8d4da1d22d1448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 2
+  _health: 5
   _speed: 6
   _defaultDamage: 1
   _bulletPrefab: {fileID: 5665722100170480527, guid: 9356a7d9d1f6ee949bf1b7c008fee6a4, type: 3}
@@ -5200,6 +5201,7 @@ MonoBehaviour:
   _bulletDir: {fileID: 8101181073452533380}
   _deathAnim: {fileID: 8921673329648153652, guid: 2adc510d8779ced45a490092d7dbe5b9, type: 3}
   _dashAnim: {fileID: 8921673329648153652, guid: 2fd92bf9a4ab2524c85105efd7ccd957, type: 3}
+  _dashAnimStartingPos: {fileID: 9149013871240149547}
   _timeToShoot: 0.5
   _turnSpeed: 10
   _laserBeam: {fileID: 0}
@@ -5209,8 +5211,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 398656
   _aimTransform: {fileID: 3655777091004263308}
-  _dashCooldown: 0.3
-  _timeToFinishDash: 0.3
+  _dashCooldown: 0.2
+  _timeToFinishDash: 0.35
   _timeToCanTakeDamage: 2.5
   _timeToCanMove: 0.6
   _flashColor: {r: 0, g: 0, b: 0, a: 0}
@@ -5391,6 +5393,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!1 &4044698832627284325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9149013871240149547}
+  m_Layer: 13
+  m_Name: Dash Anim Starting Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9149013871240149547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4044698832627284325}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.53000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5823822772601936702}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5056792570467571788
 GameObject:
   m_ObjectHideFlags: 0

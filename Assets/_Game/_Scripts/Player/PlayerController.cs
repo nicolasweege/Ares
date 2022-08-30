@@ -22,6 +22,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Transform _bulletDir;
     [SerializeField] private GameObject _deathAnim;
     [SerializeField] private GameObject _dashAnim;
+    [SerializeField] private Transform _dashAnimStartingPos;
     [SerializeField] private float _timeToShoot;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private GameObject _laserBeam;
@@ -70,10 +71,14 @@ public class PlayerController : Singleton<PlayerController>
     {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
+        AudioListener.pause = false;
+
         _playerInputComponent = GetComponent<PlayerInput>();
+
         PlayerInputActions = new PlayerInputActions();
         PlayerInputActions.MainShip.Enable();
         PlayerInputActions.MainShip.Dash.performed += Dash;
+
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
@@ -96,7 +101,7 @@ public class PlayerController : Singleton<PlayerController>
             if (hit.collider != null && !hit.collider.gameObject.CompareTag("AfroditeMember"))
                 _dashPos = hit.point;
             
-            Instantiate(_dashAnim, transform.position, Quaternion.identity);
+            Instantiate(_dashAnim, _dashAnimStartingPos.position, Quaternion.identity);
 
             Invoke(nameof(FinishDash), _timeToFinishDash);
         }
@@ -106,7 +111,7 @@ public class PlayerController : Singleton<PlayerController>
         transform.position = _dashPos;
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
             spr.enabled = true;
-        Instantiate(_dashAnim, transform.position, Quaternion.identity);
+        Instantiate(_dashAnim, _dashAnimStartingPos.position, Quaternion.identity);
         _isDashing = false;
         _dashCooldownTimer = _dashCooldown;
     }

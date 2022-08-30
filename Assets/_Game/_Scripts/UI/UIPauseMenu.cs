@@ -50,6 +50,7 @@ public class UIPauseMenu : MonoBehaviour
         EnableUIInput();
         _deathMenuComponents.SetActive(true);
         _retryButton.Select();
+        AudioListener.pause = true;
     }
     #endregion
 
