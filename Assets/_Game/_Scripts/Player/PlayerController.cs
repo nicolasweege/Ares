@@ -300,10 +300,11 @@ public class PlayerController : Singleton<PlayerController>
 
     public void HandleDeath()
     {
-        FunctionTimer.Create(() => CinemachineManager.Instance.ZoomIn(5f, 5f), 0.5f);
-        FunctionTimer.Create(() => CinematicBars.Instance.Show(540f, 0.2f), 0.5f);
-        FunctionTimer.Create(() => CinematicBars.Instance.Hide(0.2f), 3f);
-        FunctionTimer.Create(() => CinemachineManager.Instance.ZoomOut(7f, 5f), 3f);
+        // FunctionTimer.Create(() => CinemachineManager.Instance.ZoomIn(5f, 5f), 0.5f);
+        // FunctionTimer.Create(() => CinematicBars.Instance.Show(540f, 0.2f), 0.5f);
+        // FunctionTimer.Create(() => CinematicBars.Instance.Hide(0.2f), 3f);
+        // FunctionTimer.Create(() => CinemachineManager.Instance.ZoomOut(7f, 5f), 3f);
+        GameManager.Instance.SetGameState(GameState.DeathMenu);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

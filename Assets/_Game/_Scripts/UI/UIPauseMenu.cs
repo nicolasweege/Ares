@@ -7,12 +7,13 @@ using TMPro;
 
 public class UIPauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents;
+    [SerializeField] private GameObject _mainMenuComponents, _deathMenuComponents;
+    // [SerializeField] private GameObject _optionsMenuComponent;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private float _defaultSoundsVolume;
     [SerializeField] private Renderer2DData _renderer2DData;
-    [SerializeField] private Button _resumeButton;
+    [SerializeField] private Button _resumeButton, _retryButton;
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
 
@@ -26,6 +27,7 @@ public class UIPauseMenu : MonoBehaviour
         EnableUIInput();
         DisablePlayerInput();
         _mainMenuComponents.SetActive(true);
+        _resumeButton.Select();
         AudioListener.pause = true;
     }
 
@@ -41,6 +43,13 @@ public class UIPauseMenu : MonoBehaviour
     {
         _renderer2DData.rendererFeatures[0].SetActive(false);
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void HandleDeathMenu() {
+        DisablePlayerInput();
+        EnableUIInput();
+        _deathMenuComponents.SetActive(true);
+        _retryButton.Select();
     }
     #endregion
 
@@ -117,13 +126,24 @@ public class UIPauseMenu : MonoBehaviour
     }
 
     private void OnGameStateChanged(GameState newState) {
-        if (newState == GameState.Paused) {
-            HandlePause();
-            _resumeButton.Select();
-            _renderer2DData.rendererFeatures[0].SetActive(false);
-        } else {
-            HandleResume();
-            _renderer2DData.rendererFeatures[0].SetActive(true);
+        switch (newState) {
+            case GameState.Paused:
+                HandlePause();
+                _renderer2DData.rendererFeatures[0].SetActive(false);
+                break;
+
+            case GameState.DeathMenu:
+                if (_renderer2DData.rendererFeatures[0].isActive) {
+                    _renderer2DData.rendererFeatures[0].SetActive(false);
+                }
+
+                HandleDeathMenu();
+                break;
+
+            case GameState.Gameplay:
+                HandleResume();
+                _renderer2DData.rendererFeatures[0].SetActive(true);
+                break;
         }
     }
 }
