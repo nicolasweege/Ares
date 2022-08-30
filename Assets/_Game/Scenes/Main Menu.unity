@@ -369,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 86.81995, y: -421.8}
+  m_AnchoredPosition: {x: 898.31, y: -421.8}
   m_SizeDelta: {x: 273.6421, y: 36.343}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &145352211
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2022 Nicolas & Ruan."
+  m_text: "\xA9 2022 Nicolas & Ruan"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
   m_sharedMaterial: {fileID: -7859569727068880744, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.95
+  m_fontSize: 22.35
   m_fontSizeBase: 265.27
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2002,7 +2002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &574177563
 Transform:
   m_ObjectHideFlags: 0

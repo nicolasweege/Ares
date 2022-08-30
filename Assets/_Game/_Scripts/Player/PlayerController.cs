@@ -71,6 +71,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
+
         AudioListener.pause = false;
 
         _playerInputComponent = GetComponent<PlayerInput>();
