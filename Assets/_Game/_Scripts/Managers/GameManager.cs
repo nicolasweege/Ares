@@ -21,7 +21,20 @@ public class GameManager : Singleton<GameManager>
             return;
 
         OnBeforeGameStateChanged?.Invoke(newState);
+
         CurrentState = newState;
+
+        switch (newState) {
+            case GameState.DeathMenu:
+                CinemachineManager.Instance.SetTargetTransform(PlayerController.Instance.transform);
+                FunctionTimer.Create(() => CinemachineManager.Instance.ZoomIn(5f, 3f), 0.1f);
+                FunctionTimer.Create(() => CinematicBars.Instance.Show(500f, 0.5f), 0.5f);
+                // FunctionTimer.Create(() => CinematicBars.Instance.Hide(0.2f), 3f);
+                // FunctionTimer.Create(() => CinemachineManager.Instance.ZoomOut(7f, 5f), 3f);
+                FunctionTimer.Create(_UIPauseMenu.HandleDeathMenu, 1.4f);
+                break;
+        }
+
         OnAfterGameStateChanged?.Invoke(newState);
     }
 }

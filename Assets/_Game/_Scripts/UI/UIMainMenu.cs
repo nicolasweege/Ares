@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class UIMainMenu : MonoBehaviour
-{
+public class UIMainMenu : MonoBehaviour {
     [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
@@ -18,6 +17,8 @@ public class UIMainMenu : MonoBehaviour
         LeanTween.reset();
         AudioListener.pause = false;
         AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(0f);
+
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     #region Animation Functions

@@ -35,9 +35,9 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private float _timeToCanTakeDamage;
     [SerializeField] private float _timeToCanMove;
     [SerializeField] private Color _flashColor;
-    [SerializeField] private Texture2D _cursorTexture;
     [SerializeField] private Renderer2DData _renderer2DData;
     [SerializeField] private List<Image> _heartImages;
+    [SerializeField] private Texture2D _cursorTexture;
 
     [Header("Events")]
     [SerializeField] private UnityEvent _screenShakeEvent;
@@ -74,6 +74,8 @@ public class PlayerController : Singleton<PlayerController>
 
         AudioListener.pause = false;
 
+        Cursor.SetCursor(_cursorTexture, new Vector2(_cursorTexture.width / 2, _cursorTexture.height / 2), CursorMode.ForceSoftware);
+
         _playerInputComponent = GetComponent<PlayerInput>();
 
         PlayerInputActions = new PlayerInputActions();
@@ -82,8 +84,6 @@ public class PlayerController : Singleton<PlayerController>
 
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
-
-        Cursor.SetCursor(_cursorTexture, new Vector2(_cursorTexture.width / 2, _cursorTexture.height / 2), CursorMode.ForceSoftware);
 
         foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
             spr.gameObject.AddComponent<PlayerResetColor>();
@@ -126,10 +126,6 @@ public class PlayerController : Singleton<PlayerController>
         HandleDamageAnimation();
         HandleHealthHUD();
 
-        if (Input.GetKeyDown(KeyCode.G)) {
-            HandleDeath();
-        }
-
         _shootTimer -= Time.deltaTime;
         if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove) {
             if (_shootTimer <= 0f) {
@@ -140,7 +136,7 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         if (_health <= 0 && _canDie) {
-            FunctionTimer.Create(HandleDeath, 0.1f);
+            GameManager.Instance.SetGameState(GameState.DeathMenu);
             _canDie = false;
         }
     }
@@ -302,15 +298,6 @@ public class PlayerController : Singleton<PlayerController>
             transform.position += new Vector3(MoveVector.x, MoveVector.y) * Time.deltaTime * _speed;
             _dashCooldownTimer -= Time.deltaTime;
         }
-    }
-
-    public void HandleDeath()
-    {
-        // FunctionTimer.Create(() => CinemachineManager.Instance.ZoomIn(5f, 5f), 0.5f);
-        // FunctionTimer.Create(() => CinematicBars.Instance.Show(540f, 0.2f), 0.5f);
-        // FunctionTimer.Create(() => CinematicBars.Instance.Hide(0.2f), 3f);
-        // FunctionTimer.Create(() => CinemachineManager.Instance.ZoomOut(7f, 5f), 3f);
-        GameManager.Instance.SetGameState(GameState.DeathMenu);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

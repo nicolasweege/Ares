@@ -61,4 +61,8 @@ public class CinemachineManager : Singleton<CinemachineManager> {
     public void ResetOrthographicSize() {
         CinemachineVirtualCamera.m_Lens.OrthographicSize = BaseOrthographicSize;
     }
+
+    public void SetTargetTransform(Transform transform) {
+        CinemachineVirtualCamera.Follow = transform;
+    }
 }

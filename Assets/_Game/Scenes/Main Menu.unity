@@ -1391,6 +1391,7 @@ MonoBehaviour:
   _defaultSoundsVolume: 0.4
   _buttonSelectedColor: {r: 1, g: 1, b: 1, a: 1}
   _buttonDeselectedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
+  _cursorTexture: {fileID: 0}
 --- !u!1 &340512901
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,6 +5510,7 @@ MonoBehaviour:
   _defaultSoundsVolume: 0.4
   _buttonSelectedColor: {r: 1, g: 1, b: 1, a: 1}
   _buttonDeselectedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
+  _cursorTexture: {fileID: 2800000, guid: 79dd60673c33ef74cbc7091421b9b8cc, type: 3}
 --- !u!1 &1911520577
 GameObject:
   m_ObjectHideFlags: 0
