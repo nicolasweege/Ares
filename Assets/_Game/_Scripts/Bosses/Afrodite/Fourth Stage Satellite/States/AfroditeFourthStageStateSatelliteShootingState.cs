@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 public class AfroditeFourthStageStateSatelliteShootingState : AfroditeFourthStageStateSatelliteBaseState
 {
-    private int _timeToShoot = 1000;
+    private int _timeToShoot = 500;
     private bool _canShoot = false;
 
     public override void EnterState(AfroditeFourthStageSatelliteController context) {

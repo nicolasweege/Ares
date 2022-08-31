@@ -71,8 +71,7 @@ public class AfroditeController : Singleton<AfroditeController>
     public UnityEvent ScreenShakeEvent;
     #endregion
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         CurrentState = IdleState;
@@ -82,93 +81,80 @@ public class AfroditeController : Singleton<AfroditeController>
             spr.gameObject.AddComponent<AfroditeResetColor>();
     }
 
-    private void Update()
-    {
+    private void Update() {
         // Debug.Log(Health);
+        
         IsFlashing = _flashHitEffect.IsFlashing;
         CurrentState.UpdateState(this);
         HandleAI();
-        if (Health <= 0 && CurrentState != DeathState)
+
+        if (Health <= 0 && CurrentState != DeathState) {
             SwitchState(DeathState);
+        }
     }
 
     private void HandleAI() {
-        if (Health <= 30 && Health > 0)
-        {
-            if (CurrentState != SecondStageState && CurrentState != ThirdStageState && CurrentState != FourthStageState)
-            {
+        if (Health <= 50 && Health > 0) {
+            if (CurrentState != SecondStageState && CurrentState != ThirdStageState && CurrentState != FourthStageState) {
                 _secondStageTimer -= Time.deltaTime;
-                if (_secondStageTimer <= 0f)
-                {
+                if (_secondStageTimer <= 0f) {
                     SwitchState(SecondStageState);
                     _secondStageTimer = _timeToSecondStage;
                 }
 
                 _thirdStageTimer -= Time.deltaTime;
-                if (_thirdStageTimer <= 0f)
-                {
+                if (_thirdStageTimer <= 0f) {
                     SwitchState(ThirdStageState);
                     _thirdStageTimer = _timeToThirdStage;
                 }
 
                 _fourthStageTimer -= Time.deltaTime;
-                if (_fourthStageTimer <= 0f)
-                {
+                if (_fourthStageTimer <= 0f) {
                     SwitchState(FourthStageState);
                     _fourthStageTimer = _timeToFourthStage;
                 }
             }
         }
 
-        if (Health <= 50 && Health > 30)
-        {
-            if (CurrentState != SecondStageState && CurrentState != FourthStageState)
-            {
+        if (Health <= 70 && Health > 50) {
+            if (CurrentState != SecondStageState && CurrentState != FourthStageState) {
                 _secondStageTimer -= Time.deltaTime;
-                if (_secondStageTimer <= 0f)
-                {
+                if (_secondStageTimer <= 0f) {
                     SwitchState(SecondStageState);
                     _secondStageTimer = _timeToSecondStage;
                 }
 
                 _fourthStageTimer -= Time.deltaTime;
-                if (_fourthStageTimer <= 0f)
-                {
+                if (_fourthStageTimer <= 0f) {
                     SwitchState(FourthStageState);
                     _fourthStageTimer = _timeToFourthStage;
                 }
             }
         }
 
-        if (Health <= 70 && Health > 50)
-        {
+        if (Health <= 100 && Health > 70) {
             _secondStageTimer -= Time.deltaTime;
-            if (_secondStageTimer <= 0f)
-            {
+            if (_secondStageTimer <= 0f) {
                 SwitchState(SecondStageState);
                 _secondStageTimer = _timeToSecondStage;
             }
         }
     }
 
-    public void SwitchState(AfroditeBaseState state)
-    {
+    public void SwitchState(AfroditeBaseState state) {
         CurrentState = state;
         state.EnterState(this);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    private void OnTriggerEnter2D(Collider2D other) {
         CurrentState.OnTriggerEnter(this, other);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
+    private void OnTriggerExit2D(Collider2D other) {
         CurrentState.OnTriggerExit(this, other);
     }
 
-    public void TakeDamage(int damage)
-    {
+    public void TakeDamage(int damage) {
         Health -= damage;
         _flashHitEffect.Flash();
     }

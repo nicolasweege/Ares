@@ -16,7 +16,7 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private Button _resumeButton, _retryButton;
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
-    [SerializeField] private GameObject _youDiedText;
+    [SerializeField] private GameObject _youDiedText, _youWonText;
 
     private void Awake() {
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
@@ -53,6 +53,10 @@ public class UIPauseMenu : MonoBehaviour
         FunctionTimer.Create(() => _deathMenuComponents.SetActive(true), 1f);
         FunctionTimer.Create(_retryButton.Select, 1f);
         AudioListener.pause = true;
+    }
+
+    public void SetWonTextActive() {
+        _youWonText.SetActive(true);
     }
     #endregion
 

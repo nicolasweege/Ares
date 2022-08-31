@@ -22,6 +22,7 @@ public class AfroditeDeathState : AfroditeBaseState
         Object.Destroy(context.gameObject);
         Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
         context.SwitchState(context.IdleState);
+        GameManager.Instance.HandleWonLevel();
     }
 
     private async void HandleScreenShake(int millisecondsDelay, AfroditeController context) {

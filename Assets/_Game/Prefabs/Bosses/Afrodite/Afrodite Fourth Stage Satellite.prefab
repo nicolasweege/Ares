@@ -832,7 +832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f93d5dbc7172645afc790d2b9a2e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: {x: 0, y: 0, z: 0}
+  Rotation: {x: 0, y: 0, z: 200}
 --- !u!58 &2367016215590092283
 CircleCollider2D:
   m_ObjectHideFlags: 0
