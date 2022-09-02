@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIPauseMenu : MonoBehaviour
-{
-    [SerializeField] private GameObject _mainMenuComponents, _deathMenuComponents, _playerHudComponents;
+public class UIPauseMenuController : Singleton<UIPauseMenuController> {
+    [SerializeField] private GameObject _mainMenuComponents, _deathMenuComponents, _playerHudComponents, _youDiedText;
     // [SerializeField] private GameObject _optionsMenuComponent;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
@@ -16,15 +15,14 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private Button _resumeButton, _retryButton;
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
-    [SerializeField] private GameObject _youDiedText;
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
     }
 
     #region Menu Functions
-    public void HandlePause()
-    {
+    public void HandlePause() {
         EnableUIInput();
         DisablePlayerInput();
         _mainMenuComponents.SetActive(true);
@@ -32,16 +30,14 @@ public class UIPauseMenu : MonoBehaviour
         AudioListener.pause = true;
     }
 
-    public void HandleResume()
-    {
+    public void HandleResume() {
         DisableUIInput();
         EnablePlayerInput();
         _mainMenuComponents.SetActive(false);
         AudioListener.pause = false;
     }
 
-    public void ExitToMainMenu()
-    {
+    public void ExitToMainMenu() {
         _renderer2DData.rendererFeatures[0].SetActive(false);
         SceneManager.LoadScene("Main Menu");
     }
@@ -138,15 +134,14 @@ public class UIPauseMenu : MonoBehaviour
                 _renderer2DData.rendererFeatures[0].SetActive(false);
                 break;
 
-            case GameState.DeathMenu:
-                if (_renderer2DData.rendererFeatures[0].isActive) {
-                    _renderer2DData.rendererFeatures[0].SetActive(false);
-                }
-                break;
-
             case GameState.Gameplay:
                 HandleResume();
                 _renderer2DData.rendererFeatures[0].SetActive(true);
+                break;
+
+            case GameState.DeathMenu:
+            case GameState.WinState:
+                _renderer2DData.rendererFeatures[0].SetActive(false);
                 break;
         }
     }

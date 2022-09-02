@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class UIMainMenu : MonoBehaviour {
+public class UIMainMenuController : Singleton<UIMainMenuController> {
     [SerializeField] private GameObject _mainMenuComponents, _optionsMenuComponents;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
@@ -12,8 +12,7 @@ public class UIMainMenu : MonoBehaviour {
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
 
-    private void Awake()
-    {
+    protected override void Awake() {
         LeanTween.reset();
         AudioListener.pause = false;
         AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(0f);

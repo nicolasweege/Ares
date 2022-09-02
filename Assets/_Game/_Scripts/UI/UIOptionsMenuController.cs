@@ -3,8 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class UISettingsMenu : MonoBehaviour
-{
+public class UIOptionsMenuController : Singleton<UIOptionsMenuController> {
     [Header("Audio")]
     [SerializeField] private float _defaultVolume = 1;
     [SerializeField] private Slider _musicSlider;

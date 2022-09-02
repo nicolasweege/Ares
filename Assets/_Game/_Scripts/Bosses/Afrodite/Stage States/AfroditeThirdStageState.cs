@@ -4,9 +4,9 @@ public class AfroditeThirdStageState : AfroditeBaseState
 {
     private float _timeToSwitchState = 8f;
     private float _switchStateTimer;
-    private float _timeToFirstWaveShoot = 0.1f;
+    private float _timeToFirstWaveShoot = 0.08f;
     private float _firstWaveShootTimer;
-    private float _timeToSecondWaveShoot = 0.1f;
+    private float _timeToSecondWaveShoot = 0.08f;
     private float _secondWaveShootTimer;
     private float _timeToBreak = 2f;
     private float _breakTimer;

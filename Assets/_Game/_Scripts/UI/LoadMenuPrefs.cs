@@ -6,7 +6,6 @@ using UnityEngine;
 public class LoadMenuPrefs : MonoBehaviour
 {
     [SerializeField] private bool _canUse = false;
-    [SerializeField] private UISettingsMenu _settingsMenuController;
 
     [Header("Audio")]
     [SerializeField] private Slider _musicSlider;
@@ -33,7 +32,7 @@ public class LoadMenuPrefs : MonoBehaviour
                 _musicSlider.value = localVolumeValue;
                 AssetsManager.Instance.MainAudioMixer.SetFloat("MusicVolume", Mathf.Log10(localVolumeValue) * 20);
             }
-            else _settingsMenuController.ResetMusicVolume();
+            else UIOptionsMenuController.Instance.ResetMusicVolume();
 
             if (PlayerPrefs.HasKey("soundsVolume")) {
                 float localVolumeValue = PlayerPrefs.GetFloat("soundsVolume");
@@ -41,7 +40,7 @@ public class LoadMenuPrefs : MonoBehaviour
                 _soundSlider.value = localVolumeValue;
                 AssetsManager.Instance.MainAudioMixer.SetFloat("SoundsVolume", Mathf.Log10(localVolumeValue) * 20);
             }
-            else _settingsMenuController.ResetSoundsVolume();
+            else UIOptionsMenuController.Instance.ResetSoundsVolume();
         }
     }
 
@@ -62,7 +61,7 @@ public class LoadMenuPrefs : MonoBehaviour
                     _fullscreenSlider.value = 0;
                 }
             }
-            else _settingsMenuController.ResetFullscreen();
+            else UIOptionsMenuController.Instance.ResetFullscreen();
 
             // VSync
             if (PlayerPrefs.HasKey("vsync")) {
@@ -79,7 +78,7 @@ public class LoadMenuPrefs : MonoBehaviour
                     _VSyncSlider.value = 0;
                 }
             }
-            else _settingsMenuController.ResetVSync();
+            else UIOptionsMenuController.Instance.ResetVSync();
         }
     }
 }
