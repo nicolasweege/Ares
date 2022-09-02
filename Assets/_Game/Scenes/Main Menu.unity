@@ -5151,7 +5151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canUse: 1
-  _settingsMenuController: {fileID: 1801612808}
   _musicSlider: {fileID: 2083076293}
   _soundSlider: {fileID: 1642187248}
   _musicValueText: {fileID: 876759950}

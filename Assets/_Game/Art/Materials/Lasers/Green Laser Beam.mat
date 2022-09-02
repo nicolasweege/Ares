@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_LaserBeam Afrodite
+  m_Name: Green Laser Beam
   m_Shader: {fileID: -6465566751694194690, guid: 768d1f73a8cb1d84b8c948338768499e, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
