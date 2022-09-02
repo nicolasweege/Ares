@@ -12,6 +12,12 @@ public class PauseController : MonoBehaviour
     }
 
     private void Pause_Performed(InputAction.CallbackContext context) {
+        switch (GameManager.Instance.CurrentState) {
+            case GameState.DeathMenu:
+            case GameState.WinState:
+                return;
+        }
+
         GameState currentState = GameManager.Instance.CurrentState;
         GameState newState = currentState == GameState.Gameplay ? GameState.Paused : GameState.Gameplay;
         GameManager.Instance.SetGameState(newState);

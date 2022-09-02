@@ -19,6 +19,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     protected override void Awake()
     {
         base.Awake();
+        GameManager.OnAfterGameStateChanged += OnGameStateChanged;
         RotateComponent = GetComponent<Rotate>();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
@@ -29,8 +30,7 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
         CurrentState.UpdateState(this);
 
         if (AfroditeController.Instance.CurrentState != AfroditeController.Instance.FourthStageState) {
-            SwitchState(IdleState);
-            Invoke(nameof(HandleDeath), 2f);
+            Invoke(nameof(HandleDeath), 1f);
         }
     }
 
@@ -44,5 +44,13 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
     {
         CurrentState = state;
         state.EnterState(this);
+    }
+
+    private void OnDestroy() {
+        GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameState newState) {
+        enabled = newState == GameState.Gameplay;
     }
 }

@@ -902,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainMenuComponents: {fileID: 1240356033}
   _deathMenuComponents: {fileID: 1601781904}
+  _playerHudComponents: {fileID: 499861360}
   _canvasGroup: {fileID: 268493156}
   _eventSystem: {fileID: 1590212827}
   _defaultSoundsVolume: 0.4
@@ -911,7 +912,6 @@ MonoBehaviour:
   _buttonSelectedColor: {r: 1, g: 1, b: 1, a: 1}
   _buttonDeselectedColor: {r: 1, g: 1, b: 1, a: 0.5019608}
   _youDiedText: {fileID: 2010065671}
-  _youWonText: {fileID: 1345538408}
 --- !u!1001 &351585857
 PrefabInstance:
   m_ObjectHideFlags: 0

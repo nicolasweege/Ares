@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class UILoadMenuPrefs : MonoBehaviour
+public class LoadMenuPrefs : MonoBehaviour
 {
     [SerializeField] private bool _canUse = false;
     [SerializeField] private UISettingsMenu _settingsMenuController;

@@ -7,7 +7,7 @@ using TMPro;
 
 public class UIPauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject _mainMenuComponents, _deathMenuComponents;
+    [SerializeField] private GameObject _mainMenuComponents, _deathMenuComponents, _playerHudComponents;
     // [SerializeField] private GameObject _optionsMenuComponent;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private EventSystem _eventSystem;
@@ -16,7 +16,7 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private Button _resumeButton, _retryButton;
     [SerializeField] private Color _buttonSelectedColor;
     [SerializeField] private Color _buttonDeselectedColor;
-    [SerializeField] private GameObject _youDiedText, _youWonText;
+    [SerializeField] private GameObject _youDiedText;
 
     private void Awake() {
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
@@ -52,11 +52,10 @@ public class UIPauseMenu : MonoBehaviour
         _youDiedText.SetActive(true);
         FunctionTimer.Create(() => _deathMenuComponents.SetActive(true), 1f);
         FunctionTimer.Create(_retryButton.Select, 1f);
-        AudioListener.pause = true;
     }
 
-    public void SetWonTextActive() {
-        _youWonText.SetActive(true);
+    public void DisablePlayerHud() {
+        _playerHudComponents.SetActive(false);
     }
     #endregion
 

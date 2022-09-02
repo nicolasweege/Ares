@@ -1,4 +1,3 @@
-using UnityEngine;
 using System.Threading.Tasks;
 
 public class AfroditeFourthStageStateSatelliteIdleState : AfroditeFourthStageStateSatelliteBaseState
@@ -6,7 +5,6 @@ public class AfroditeFourthStageStateSatelliteIdleState : AfroditeFourthStageSta
     private int _timeToSwitchState = 2000;
 
     public override void EnterState(AfroditeFourthStageSatelliteController context) {
-        // context.RotateComponent.Rotation = new Vector3(0, 0, 100);
         SwitchStateTimer(_timeToSwitchState, context);
     }
 

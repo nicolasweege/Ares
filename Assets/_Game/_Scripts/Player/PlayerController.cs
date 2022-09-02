@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.Universal;
 using System.Linq;
 using Cyan;
@@ -38,6 +37,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Renderer2DData _renderer2DData;
     [SerializeField] private List<Image> _heartImages;
     [SerializeField] private Texture2D _cursorTexture;
+	private float _testValue;
 
     [Header("Events")]
     [SerializeField] private UnityEvent _screenShakeEvent;
@@ -316,7 +316,7 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite")) {
-            SceneManager.LoadScene("Afrodite Fight");
+            GameManager.Instance.SetGameState(GameState.DeathMenu);
         }
     }
 

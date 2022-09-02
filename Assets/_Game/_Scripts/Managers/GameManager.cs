@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -26,24 +27,28 @@ public class GameManager : Singleton<GameManager>
 
         switch (newState) {
             case GameState.DeathMenu:
+                AudioListener.pause = true;
                 CinemachineManager.Instance.SetTargetTransform(PlayerController.Instance.transform);
+                _UIPauseMenu.DisablePlayerHud();
                 FunctionTimer.Create(() => CinemachineManager.Instance.ZoomIn(5f, 3f), 0.1f);
                 FunctionTimer.Create(() => CinematicBars.Instance.Show(500f, 0.5f), 0.5f);
                 FunctionTimer.Create(_UIPauseMenu.HandleDeathMenu, 1.4f);
                 break;
+
+            case GameState.WinState:
+                _UIPauseMenu.DisablePlayerHud();
+                FunctionTimer.Create(() => CinematicBars.Instance.Show(1500f, 0.5f), 1f);
+                FunctionTimer.Create(() => SceneManager.LoadScene("Main Menu"), 2.5f);
+                break;
         }
 
         OnAfterGameStateChanged?.Invoke(newState);
-    }
-
-    public void HandleWonLevel() {
-        FunctionTimer.Create(_UIPauseMenu.SetWonTextActive, 0.5f);
-        FunctionTimer.Create(() => CinematicBars.Instance.Show(500f, 0.8f), 0.5f);
     }
 }
 
 [Serializable] public enum GameState {
     Gameplay,
     Paused,
-    DeathMenu
+    DeathMenu,
+    WinState
 }
