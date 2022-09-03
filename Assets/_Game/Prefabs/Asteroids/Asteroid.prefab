@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1547106074127806059}
   - component: {fileID: 4876622858402893733}
   - component: {fileID: 7014104301765212086}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Asteroid
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.3
-  _rotation: {x: 0, y: 0, z: -10}
   _direction: {x: -1, y: -1, z: 0}
 --- !u!114 &7014104301765212086
 MonoBehaviour:
@@ -63,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f93d5dbc7172645afc790d2b9a2e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotation: {x: 0, y: 0, z: -10}
+  Rotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1945607257764517786
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5031853006478647543}
   - component: {fileID: 8782341022597741000}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3440693439716943299}
   - component: {fileID: 7363189371973460318}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Sprites (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3170818640747423526}
   - component: {fileID: 5637183599661114540}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Sprites (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

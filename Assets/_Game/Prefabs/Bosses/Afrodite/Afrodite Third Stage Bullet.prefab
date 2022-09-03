@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6477652166558181461}
   - component: {fileID: 4500098329704754100}
   - component: {fileID: 4576815658492387195}
-  m_Layer: 14
+  m_Layer: 7
   m_Name: Afrodite Third Stage Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1145866435953524558, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1145866435953524559, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
       propertyPath: m_SortingOrder

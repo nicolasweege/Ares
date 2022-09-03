@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager> {
             case GameState.WinState:
                 UIPauseMenuController.Instance.DisablePlayerHud();
                 FunctionTimer.Create(() => CinematicBars.Instance.Show(1500f, 0.5f), 1f);
-                FunctionTimer.Create(() => SceneManager.LoadScene("Main Menu"), 2.5f);
+                FunctionTimer.Create(() => SceneManager.LoadScene("MainMenu"), 2.5f);
                 break;
         }
 

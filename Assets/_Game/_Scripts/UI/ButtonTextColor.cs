@@ -1,8 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class ButtonTextColor : MonoBehaviour
-{
+public class ButtonTextColor : MonoBehaviour {
     [SerializeField] private float _transparency;
     private TMP_Text _text;
 

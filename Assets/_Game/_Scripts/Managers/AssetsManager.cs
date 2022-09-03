@@ -2,8 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AssetsManager : Singleton<AssetsManager>
-{
+public class AssetsManager : Singleton<AssetsManager> {
     public AudioMixer MainAudioMixer;
     public AudioMixerSnapshot PlayerIsNotTakingDamageSnapshot;
     public AudioMixerSnapshot PlayerIsTakingDamageSnapshot;
@@ -13,8 +12,7 @@ public class AssetsManager : Singleton<AssetsManager>
     public SoundAudioClip[] SoundAudioClips;
 
     [Serializable]
-    public class SoundAudioClip
-    {
+    public class SoundAudioClip {
         public SoundManager.Sound Sound;
         public AudioClip AudioClip;
     }

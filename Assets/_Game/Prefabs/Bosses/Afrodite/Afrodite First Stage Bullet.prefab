@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1218058738133402839}
   - component: {fileID: 5996134733978132641}
   - component: {fileID: 1265122124294693116}
-  m_Layer: 14
+  m_Layer: 7
   m_Name: Afrodite First Stage Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1145866435953524558, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1827148834464362862, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}

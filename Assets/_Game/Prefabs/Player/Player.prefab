@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2498433792727630468}
   - component: {fileID: 637379536331507086}
   - component: {fileID: 8145223774005957017}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Flame Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4822,7 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6430284971134191192}
   - component: {fileID: 4937780150823617191}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: BSB7_26_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6558689991554879848}
   - component: {fileID: 6234206087795378812}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: BSB7_26_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4989,7 +4989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2080581498894607699}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5021,7 +5021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1702383244427179707}
   - component: {fileID: 5447684854508427950}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: BSB7_26_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5105,7 +5105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3655777091004263308}
   - component: {fileID: 6760702280949214283}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5155,7 +5155,7 @@ GameObject:
   - component: {fileID: 5840707007084685990}
   - component: {fileID: 926220734505401159}
   - component: {fileID: 5152461630013085035}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Player
   m_TagString: PlayerMainShip
   m_Icon: {fileID: 0}
@@ -5402,7 +5402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9149013871240149547}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Dash Anim Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5433,7 +5433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8101181073452533380}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Bullet Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5465,7 +5465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2122218036647728951}
   - component: {fileID: 2661690245394529845}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: BSB7_26_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5549,7 +5549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2609468570415231837}
   - component: {fileID: 1336665033097329905}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: BSB7_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5632,7 +5632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6908857856628704186}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Bullet Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5665,7 +5665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7736306944639637940}
-  m_Layer: 13
+  m_Layer: 6
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}

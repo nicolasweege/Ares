@@ -3,8 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class LoadMenuPrefs : MonoBehaviour
-{
+public class LoadMenuPrefs : MonoBehaviour {
     [SerializeField] private bool _canUse = false;
 
     [Header("Audio")]

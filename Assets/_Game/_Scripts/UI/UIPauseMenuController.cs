@@ -39,7 +39,7 @@ public class UIPauseMenuController : Singleton<UIPauseMenuController> {
 
     public void ExitToMainMenu() {
         _renderer2DData.rendererFeatures[0].SetActive(false);
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void HandleDeathMenu() {

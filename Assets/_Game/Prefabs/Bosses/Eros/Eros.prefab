@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2170262957435679337}
   - component: {fileID: 8999360639381504072}
-  m_Layer: 14
+  m_Layer: 7
   m_Name: BSB1_16 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 903460179
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 62150472ffb41ce458f1b2e4f65a9ff2, type: 3}
   m_Color: {r: 0.63, g: 0.64166665, b: 0.7, a: 1}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5047775240831584902}
   - component: {fileID: 8282861343682942010}
   - component: {fileID: 8635878712706574350}
-  m_Layer: 14
+  m_Layer: 7
   m_Name: Eros
   m_TagString: Eros
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860774733247340783}
   - component: {fileID: 9049614976728397285}
-  m_Layer: 14
+  m_Layer: 7
   m_Name: BSB1_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 903460179
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 00493a8675c92b949829b3e69b1bc9f2, type: 3}
   m_Color: {r: 0.45, g: 0.4583333, b: 0.5, a: 1}

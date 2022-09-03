@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PauseController : MonoBehaviour
-{
+public class PauseController : MonoBehaviour {
     private PlayerInputActions _inputActions;
 
     private void Awake() {

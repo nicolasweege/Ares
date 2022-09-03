@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6232771798821579286}
   - component: {fileID: 4642356149687419355}
-  m_Layer: 14
+  m_Layer: 7
   m_Name: Collider
   m_TagString: AfroditeMember
   m_Icon: {fileID: 0}
@@ -146,9 +146,6 @@ MonoBehaviour:
   _fireStartingPos: {fileID: 2466176862008024909}
   _fireDir: {fileID: 3601124844114529875}
   _startVFX: {fileID: 188523795549292374}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 466944
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
