@@ -66,6 +66,12 @@ TagManager:
   - name: Afrodite
     uniqueID: 1307419071
     locked: 0
+  - name: Eros
+    uniqueID: 903460179
+    locked: 0
+  - name: Eros Bullet
+    uniqueID: 1906709089
+    locked: 0
   - name: Player Trail
     uniqueID: 1254644431
     locked: 0

@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 32512
+  controlID: 53923
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -403,9 +403,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 236.20642, y: -84.80805, z: 320.04004}
+    m_Target: {x: -3.4776828, y: -8.575314, z: 183.06142}
     speed: 2
-    m_Value: {x: 236.20642, y: -84.80805, z: 320.04004}
+    m_Value: {x: -3.4776828, y: -8.575314, z: 183.06142}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -456,9 +456,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 288.73328
+    m_Target: 32.417664
     speed: 2
-    m_Value: 288.73328
+    m_Value: 32.417664
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 32477
+  controlID: 53924
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -565,9 +565,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: bc480100
-      m_LastClickedID: 84156
-      m_ExpandedIDs: 1a35ffffc23bffffda55ffff125cfffff688fffffe93ffff02a8ffff94aaffffeafaffff92e4000010e5000060e500007cef0000c8ef00008c180100dc180100fc1c0100481d01000e4401005e440100
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 4295faffc04ffbffde60fbff0476fbff2287fbff489cfbff66adfbffdac3fbfff8d4fbff1eeafbff3cfbfbff6210fcffe435fcff8836fcffc04dfcffd44dfcff265efcff1a35ffffc23bffffda55ffff125cfffff688fffffe93ffff02a8ffff94aaffffeafaffff92e4000010e5000060e500007cef0000c8ef00008c180100dc180100fc1c0100481d01000e4401005e44010032cf040068cf0400
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -660,21 +660,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Game/_Scripts/UI
+    - Assets/_Game/Prefabs/Bosses/Eros
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/_Game/_Scripts/UI
+  - Assets/_Game/Prefabs/Bosses/Eros
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nicolas\Documents\GitHub\Ares
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 15}
-    m_SelectedIDs: 6a700000
-    m_LastClickedID: 28778
+    scrollPos: {x: 0, y: 195}
+    m_SelectedIDs: 7a700000
+    m_LastClickedID: 28794
     m_ExpandedIDs: 00000000586e00005a6e00005c6e00005e6e0000606e0000626e0000646e0000666e00006a6e0000707000003e820000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -728,9 +728,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: bc480100
-    m_LastClickedInstanceID: 84156
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000e2750000d6730000648e0000542d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

@@ -97,13 +97,13 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OverallScale: 1.17
+    - _OverallScale: 1.05
     - _Parallax: 0.005
     - _QueueControl: 1
     - _QueueOffset: 0
     - _Randomness: 5
     - _ReceiveShadows: 1
-    - _Rotation: 14.74
+    - _Rotation: 15.6
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -115,7 +115,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 4343.44, g: 0, b: 87.77793, a: 1}
+    - _Color: {r: 4343.44, g: 80.922, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
