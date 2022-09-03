@@ -1,61 +1,50 @@
 using UnityEngine;
 
-public class AfroditeFirstStageBulletController : BulletBase
-{
-    [SerializeField] private float _stopingDist;
-    [SerializeField] private Transform _damageAnimSpawnPoint;
+public class AfroditeFirstStageBulletController : BulletBase {
+    // [SerializeField] private float _stopingDist;
     // private bool _isOnStopingDist = false;
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
     }
 
-    private void Update()
-    {
-        MoveProjectile();
+    private void Update() {
+        MoveBullet();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Satellite"))
-            DestroyBullet();
-
-        if (other.CompareTag("ArenaCollider"))
-            DestroyBullet();
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch (other.gameObject.tag) {
+            case "Satellite":
+            case "ArenaCollider":
+                DestroyBullet();
+                break;
+        }
     }
 
-    public override void DestroyBullet()
-    {
-        Instantiate(_damageAnim, _damageAnimSpawnPoint.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
+    // talvez eu possa sobreescrever o metodo MoveBullet do BulletBase, ao inves de criar um novo metodo pra isso
 
-    private void MoveProjectile()
-    {
-        transform.position += _direction * Time.deltaTime * _speed;
+    // private void MoveProjectile() {
+    //     Script de projetil que segue o player (pode ser usado em outras ocasioes)
+    //     var playerPos = PlayerController.Instance.transform.position;
 
-        // Script de projetil que segue o player (pode ser usado em outras ocasioes)
-        // var playerPos = PlayerController.Instance.transform.position;
+    //     if (Vector2.Distance(transform.position, playerPos) < _stopingDist)
+    //         _isOnStopingDist = true;
 
-        // if (Vector2.Distance(transform.position, playerPos) < _stopingDist)
-        //     _isOnStopingDist = true;
+    //     if (Vector2.Distance(transform.position, playerPos) >= _stopingDist && !_isOnStopingDist)
+    //     {
+    //         Vector2 bulletDir = PlayerController.Instance.transform.position - transform.position;
+    //         bulletDir.Normalize();
+    //         float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
+    //         transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+    //         // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, bulletAngle), AfroditeController.Instance.FirstStageProjectileTurnSpeed * Time.deltaTime);
+    //         _direction = new Vector3(bulletDir.x, bulletDir.y);
+    //         transform.position += _direction * Time.deltaTime * _speed;
+    //     }
 
-        // if (Vector2.Distance(transform.position, playerPos) >= _stopingDist && !_isOnStopingDist)
-        // {
-        //     Vector2 bulletDir = PlayerController.Instance.transform.position - transform.position;
-        //     bulletDir.Normalize();
-        //     float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
-        //     transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        //     // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, bulletAngle), AfroditeController.Instance.FirstStageProjectileTurnSpeed * Time.deltaTime);
-        //     _direction = new Vector3(bulletDir.x, bulletDir.y);
-        //     transform.position += _direction * Time.deltaTime * _speed;
-        // }
-
-        // if (_isOnStopingDist)
-        //     transform.position += _direction * Time.deltaTime * _speed;
-    }
+    //     if (_isOnStopingDist)
+    //         transform.position += _direction * Time.deltaTime * _speed;
+    // }
 
     private void OnDestroy() {
         GameManager.OnAfterGameStateChanged -= OnGameStateChanged;

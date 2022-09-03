@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1497411066506613583
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6155630927327588110}
-  m_Layer: 9
-  m_Name: Deamage Hit Anim Spawn Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6155630927327588110
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497411066506613583}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 590369421192707291}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7005881553436677744
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +12,7 @@ GameObject:
   - component: {fileID: 1218058738133402839}
   - component: {fileID: 5996134733978132641}
   - component: {fileID: 1265122124294693116}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Afrodite First Stage Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -62,7 +31,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6155630927327588110}
   - {fileID: 8677432926476135581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,9 +50,6 @@ MonoBehaviour:
   _speed: 20
   _defaultDamage: 1
   _damageAnim: {fileID: 8921673329648153652, guid: ffb06d0759bb6a745b8cc275add29499, type: 3}
-  _timeToDestroyVisibleBullet: 2
-  _stopingDist: 2
-  _damageAnimSpawnPoint: {fileID: 6155630927327588110}
 --- !u!58 &5996134733978132641
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1145866435953524545, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1145866435953524545, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
       propertyPath: m_LocalScale.x
@@ -224,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 1145866435953524558, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
       propertyPath: m_Name
       value: ElectricityVFXGraph
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145866435953524558, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1827148834464362862, guid: b4c25d70483a3da469d6b3dde8e0f5a7, type: 3}

@@ -2,31 +2,26 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthStageSatelliteController>
-{
+public class AfroditeMemberController : Singleton<AfroditeMemberController> {
     public GameObject DeathAnim;
     public GameObject ShootAnim;
-    public GameObject Projectile;
-    public Rotate RotateComponent;
+    public GameObject Bullet;
     public List<Transform> ShootDirections = new List<Transform>();
 
     #region States
-    [NonSerialized] public AfroditeFourthStageStateSatelliteBaseState CurrentState;
-    [NonSerialized] public AfroditeFourthStageStateSatelliteIdleState IdleState = new AfroditeFourthStageStateSatelliteIdleState();
-    [NonSerialized] public AfroditeFourthStageStateSatelliteShootingState ShootingState = new AfroditeFourthStageStateSatelliteShootingState();
+    [NonSerialized] public BaseState_Afrodite_M CurrentState;
+    [NonSerialized] public IdleState_Afrodite_M IdleState = new IdleState_Afrodite_M();
+    [NonSerialized] public ShootingState_Afrodite_M ShootingState = new ShootingState_Afrodite_M();
     #endregion
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
-        RotateComponent = GetComponent<Rotate>();
         CurrentState = IdleState;
         CurrentState.EnterState(this);
     }
 
-    private void Update()
-    {
+    private void Update() {
         CurrentState.UpdateState(this);
 
         if (AfroditeController.Instance.CurrentState != AfroditeController.Instance.FourthStageState) {
@@ -34,14 +29,12 @@ public class AfroditeFourthStageSatelliteController : Singleton<AfroditeFourthSt
         }
     }
 
-    public void HandleDeath()
-    {
+    public void HandleDeath() {
         Destroy(gameObject);
         Instantiate(DeathAnim, transform.position, Quaternion.identity);
     }
 
-    public void SwitchState(AfroditeFourthStageStateSatelliteBaseState state)
-    {
+    public void SwitchState(BaseState_Afrodite_M state) {
         CurrentState = state;
         state.EnterState(this);
     }

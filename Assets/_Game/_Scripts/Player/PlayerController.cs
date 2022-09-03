@@ -301,18 +301,25 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (CanTakeDamage)
-        {
-            if (other.CompareTag("Bullet") && !_isDashing) {
-                TakeDamage();
-                other.GetComponent<BulletBase>().DestroyBullet();
+        if (CanTakeDamage) {
+            switch (other.gameObject.tag) {
+                case "Bullet":
+                    if (!_isDashing) {
+                        TakeDamage();
+                        other.GetComponent<BulletBase>().DestroyBullet();
+                    }
+                    break;
+                
+                case "AfroditeMainShip":
+                    TakeDamage();
+                    break;
+
+                case "AfroditeMember":
+                    if (!_isDashing) {
+                        TakeDamage();
+                    }
+                    break;
             }
-
-            if (other.CompareTag("AfroditeMainShip"))
-                TakeDamage();
-
-            if (other.CompareTag("AfroditeMember") && !_isDashing)
-                TakeDamage();
         }
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite")) {

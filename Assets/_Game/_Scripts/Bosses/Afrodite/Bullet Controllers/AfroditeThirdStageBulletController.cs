@@ -1,40 +1,24 @@
 using UnityEngine;
 
-public class AfroditeThirdStageBulletController : BulletBase
-{
-    [SerializeField] private Transform _damageAnimSpawnPoint;
-
-    protected override void Awake()
-    {
+public class AfroditeThirdStageBulletController : BulletBase {
+    protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
     }
 
-    private void Update()
-    {
-        MoveProjectile();
+    private void Update() {
+        MoveBullet();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Satellite"))
-            DestroyBullet();
-
-        if (other.CompareTag("ArenaCollider"))
-            DestroyBullet();
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch (other.gameObject.tag) {
+            case "Satellite":
+            case "ArenaCollider":
+                DestroyBullet();
+                break;
+        }
     }
-
-    public override void DestroyBullet()
-    {
-        Instantiate(_damageAnim, _damageAnimSpawnPoint.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
-
-    private void MoveProjectile()
-    {
-        transform.position += _direction * Time.deltaTime * _speed;
-    }
-
+    
     private void OnDestroy() {
         GameManager.OnAfterGameStateChanged -= OnGameStateChanged;
     }

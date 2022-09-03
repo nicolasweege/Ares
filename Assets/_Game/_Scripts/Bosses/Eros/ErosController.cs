@@ -31,6 +31,8 @@ public class ErosController : Singleton<ErosController> {
     }
 
     private void Update() {
+        Debug.Log($"Health: {Health} CurrentState: {CurrentState}");
+
         IsFlashing = _flashHitEffect.IsFlashing;
         CurrentState.UpdateState(this);
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BulletBase : StaticInstance<BulletBase> {
     [SerializeField] protected float _speed;
-    [SerializeField] protected int _defaultDamage;
+    [SerializeField] protected int _defaultDamage = 1;
     [SerializeField] protected GameObject _damageAnim;
     protected Vector3 _direction;
 
