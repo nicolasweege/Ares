@@ -310,6 +310,7 @@ public class PlayerController : Singleton<PlayerController>
                     }
                     break;
                 
+                case "Eros":
                 case "AfroditeMainShip":
                     TakeDamage();
                     break;

@@ -56,7 +56,7 @@ public class AfroditeController : Singleton<AfroditeController> {
     public Transform FourthStageSatelliteDownPoint;
     #endregion
 
-    #region Stage States Variables
+    #region State Variables
     [NonSerialized] public AfroditeBaseState CurrentState;
     [NonSerialized] public AfroditeIdleState IdleState = new AfroditeIdleState();
     [NonSerialized] public AfroditeDeathState DeathState = new AfroditeDeathState();

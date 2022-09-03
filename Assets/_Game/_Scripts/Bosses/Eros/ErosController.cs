@@ -7,13 +7,15 @@ public class ErosController : Singleton<ErosController> {
     [Header("General")]
     public int Health;
     public GameObject DeathAnim;
+    public Rotate RotateComponent;
     [SerializeField] private FlashHitEffect _flashHitEffect;
     [NonSerialized] public bool IsFlashing = false;
 
-    #region Stage States Variables
+    #region State Variables
     [NonSerialized] public ErosBaseState CurrentState;
     [NonSerialized] public ErosIdleState IdleState = new ErosIdleState();
     [NonSerialized] public ErosDeathState DeathState = new ErosDeathState();
+    [NonSerialized] public ErosFirstStageState FirstStageState = new ErosFirstStageState();
     #endregion
 
     [Header("Events")]
@@ -26,8 +28,9 @@ public class ErosController : Singleton<ErosController> {
         CurrentState = IdleState;
         CurrentState.EnterState(this);
 
-        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
+        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>()) {
             renderer.gameObject.AddComponent<ErosResetColor>();
+        }
     }
 
     private void Update() {
