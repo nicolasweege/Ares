@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class AfroditeFourthStageState : AfroditeBaseState
-{
+public class AfroditeFourthStageState : AfroditeBaseState {
     private float _timeToSwitchState = 3f;
     private float _switchStateTimer;
     private Vector2 _currentMovePoint;
@@ -13,8 +12,7 @@ public class AfroditeFourthStageState : AfroditeBaseState
     private float _speedToMovePoint = 1.7f;
     private bool _laserShootAudioHasPlayed = false;
 
-    public override void EnterState(AfroditeController context)
-    {
+    public override void EnterState(AfroditeController context) {
         _switchStateTimer = _timeToSwitchState;
         _laserShootAudioHasPlayed = false;
 
@@ -25,14 +23,12 @@ public class AfroditeFourthStageState : AfroditeBaseState
             _currentMovePoint = context.FourthStageMovePointRight.position;
         }
 
-        if (PlayerController.Instance.transform.position.y > 0f)
-        {
+        if (PlayerController.Instance.transform.position.y > 0f) {
             _currentAimPoint = context.FourthStageAimPointUp.position;
             _otherAimPoint = context.FourthStageAimPointDown.position;
             _currentSatellitePoint = context.FourthStageSatelliteUpPoint.position;
         }
-        else
-        {
+        else {
             _currentAimPoint = context.FourthStageAimPointDown.position;
             _otherAimPoint = context.FourthStageAimPointUp.position;
             _currentSatellitePoint = context.FourthStageSatelliteDownPoint.position;
@@ -41,20 +37,16 @@ public class AfroditeFourthStageState : AfroditeBaseState
         HandleSatellite(context);
     }
 
-    public override void UpdateState(AfroditeController context)
-    {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f)
-        {
+    public override void UpdateState(AfroditeController context) {
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
             _currentTurnSpeed = 1f;
             HandleAim(context, _otherAimPoint);
             HandleMovement(context);
         }
-        else
-        {
+        else {
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();
-            if (!_laserShootAudioHasPlayed)
-            {
+            if (!_laserShootAudioHasPlayed) {
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeSecondStageLaserShoot, context.transform.position, 0.3f);
                 CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
                 _laserShootAudioHasPlayed = true;
@@ -64,26 +56,22 @@ public class AfroditeFourthStageState : AfroditeBaseState
             HandleAim(context, _currentAimPoint);
 
             _switchStateTimer -= Time.deltaTime;
-            if (_switchStateTimer <= 0f)
-            {
+            if (_switchStateTimer <= 0f) {
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
                 context.SwitchState(context.FirstStageState);
             }
         }
     }
 
-    private void HandleSatellite(AfroditeController context)
-    {
+    private void HandleSatellite(AfroditeController context) {
         Object.Instantiate(context.FourthStageSatellite, _currentSatellitePoint, context.transform.rotation);
     }
 
-    private void HandleMovement(AfroditeController context)
-    {
+    private void HandleMovement(AfroditeController context) {
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _speedToMovePoint);
     }
 
-    private void HandleAim(AfroditeController context, Vector2 aimPoint)
-    {
+    private void HandleAim(AfroditeController context, Vector2 aimPoint) {
         Vector2 lookDir = aimPoint - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
         float lookAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 270f;

@@ -81,7 +81,7 @@ public class AfroditeController : Singleton<AfroditeController> {
     }
 
     private void Update() {
-        // Debug.Log(Health);
+        Debug.Log($"Health: {Health} / Current State: {CurrentState}");
         
         IsFlashing = _flashHitEffect.IsFlashing;
         CurrentState.UpdateState(this);

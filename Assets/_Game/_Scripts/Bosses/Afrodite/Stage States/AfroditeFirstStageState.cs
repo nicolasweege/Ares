@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class AfroditeFirstStageState : AfroditeBaseState
-{
+public class AfroditeFirstStageState : AfroditeBaseState {
     private float _defaultSpeed = 2f;
     private float _timeToSwitchState = 1.5f;
     private float _switchStateTimer;
@@ -15,18 +14,15 @@ public class AfroditeFirstStageState : AfroditeBaseState
     private float _secondAttackTimer;
     private bool _isFirstWaveFinished = false;
 
-    public override void EnterState(AfroditeController context)
-    {
+    public override void EnterState(AfroditeController context) {
         _switchStateTimer = _timeToSwitchState;
         _randomIndex = Random.Range(0, context.MovePoints.Count);
         _currentMovePoint = context.MovePoints[_randomIndex].position;
         _secondAttackTimer = _timeToSecondAttack;
     }
 
-    public override void UpdateState(AfroditeController context)
-    {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) < 0.5f)
-        {
+    public override void UpdateState(AfroditeController context) {
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) < 0.5f) {
             _switchStateTimer -= Time.deltaTime;
             if (_switchStateTimer <= 0f) {
                 context.SwitchState(context.FirstStageState);
@@ -40,8 +36,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         HandleFirstAttack(context);
     }
 
-    private void HandleMovement(AfroditeController context)
-    {
+    private void HandleMovement(AfroditeController context) {
         Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
@@ -50,13 +45,10 @@ public class AfroditeFirstStageState : AfroditeBaseState
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _defaultSpeed);
     }
 
-    private void HandleFirstAttack(AfroditeController context)
-    {
-        if (!_isFirstWaveFinished)
-        {
+    private void HandleFirstAttack(AfroditeController context) {
+        if (!_isFirstWaveFinished) {
             _firstWaveShootTimer -= Time.deltaTime;
-            if (_firstWaveShootTimer <= 0f)
-            {
+            if (_firstWaveShootTimer <= 0f) {
                 GenerateBullet(context, context.FirstStageProjectileStartingPoint1, context.FirstStageProjectile, context.FirstStageProjectileDir1);
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.5f);
                 _isFirstWaveFinished = true;
@@ -64,11 +56,9 @@ public class AfroditeFirstStageState : AfroditeBaseState
             }
         }
 
-        if (_isFirstWaveFinished)
-        {
+        if (_isFirstWaveFinished) {
             _secondWaveShootTimer -= Time.deltaTime;
-            if (_secondWaveShootTimer <= 0f)
-            {
+            if (_secondWaveShootTimer <= 0f) {
                 GenerateBullet(context, context.FirstStageProjectileStartingPoint2, context.FirstStageProjectile, context.FirstStageProjectileDir2);
                 _isFirstWaveFinished = false;
                 _secondWaveShootTimer = _timeToSecondWaveShoot;
@@ -76,13 +66,10 @@ public class AfroditeFirstStageState : AfroditeBaseState
         }
     }
 
-    private void HandleSecondAttack(AfroditeController context)
-    {
+    private void HandleSecondAttack(AfroditeController context) {
         _secondAttackTimer -= Time.deltaTime;
-        if (_secondAttackTimer <= 0f)
-        {
-            for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++)
-            {
+        if (_secondAttackTimer <= 0f) {
+            for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++) {
                 GenerateBulletSecondAttack(context, context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.5f);
             }
@@ -90,10 +77,10 @@ public class AfroditeFirstStageState : AfroditeBaseState
         }
     }
 
-    private void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
-    {
-        if (PlayerController.Instance == null)
+    private void GenerateBullet(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir) {
+        if (PlayerController.Instance == null) {
             return;
+        }
 
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         context.CurrentFirstStageProjectileDir = projectileDir.position - bulletInst.transform.position;
@@ -101,8 +88,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(context.CurrentFirstStageProjectileDir.x, context.CurrentFirstStageProjectileDir.y);
     }
 
-    private void GenerateBulletSecondAttack(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir)
-    {
+    private void GenerateBulletSecondAttack(AfroditeController context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir) {
         Object.Instantiate(context.ThirdStageShootAnim, bulletStartingPos.position, bulletStartingPos.rotation);
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;
@@ -112,8 +98,7 @@ public class AfroditeFirstStageState : AfroditeBaseState
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
-    private Vector2 HandleTurretAim(Transform turretTransform)
-    {
+    private Vector2 HandleTurretAim(Transform turretTransform) {
         Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(turretTransform.position.x, turretTransform.position.y);
         lookDir.Normalize();

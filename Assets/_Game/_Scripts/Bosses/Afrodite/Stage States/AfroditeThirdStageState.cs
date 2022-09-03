@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class AfroditeThirdStageState : AfroditeBaseState
-{
+public class AfroditeThirdStageState : AfroditeBaseState {
     private float _timeToSwitchState = 8f;
     private float _switchStateTimer;
     private float _timeToFirstWaveShoot = 0.08f;
@@ -15,36 +14,28 @@ public class AfroditeThirdStageState : AfroditeBaseState
     private bool _isFirstWaveFinished = false;
     private float _speedToMovePointCenter = 1f;
 
-    public override void EnterState(AfroditeController context)
-    {
+    public override void EnterState(AfroditeController context) {
         _switchStateTimer = _timeToSwitchState;
         _breakTimer = _timeToBreak;
     }
 
-    public override void UpdateState(AfroditeController context)
-    {
-        if (Vector2.Distance(context.transform.position, context.MovePointCenter.position) > 0.5f)
-        {
+    public override void UpdateState(AfroditeController context) {
+        if (Vector2.Distance(context.transform.position, context.MovePointCenter.position) > 0.5f) {
             context.transform.position = Vector2.SmoothDamp(context.transform.position, context.MovePointCenter.position, ref context.Velocity, _speedToMovePointCenter);
         }
-        else
-        {
+        else {
             _breakTimer -= Time.deltaTime;
-            if (_breakTimer <= 0f)
-            {
+            if (_breakTimer <= 0f) {
                 _switchStateTimer -= Time.deltaTime;
-                if (_switchStateTimer <= 0f)
-                {
+                if (_switchStateTimer <= 0f) {
                     context.SwitchState(context.IdleState);
                 }
 
                 HandleAttack(context);
             }
-            else
-            {
+            else {
                 _screenShakeTimer -= Time.deltaTime;
-                if (_screenShakeTimer <= 0f)
-                {
+                if (_screenShakeTimer <= 0f) {
                     CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
                     _screenShakeTimer = _timeToShakeScreen;
                 }
@@ -52,32 +43,27 @@ public class AfroditeThirdStageState : AfroditeBaseState
         }
     }
 
-    private void HandleAttack(AfroditeController context)
-    {
-        if (!_isFirstWaveFinished)
-        {
+    private void HandleAttack(AfroditeController context) {
+        if (!_isFirstWaveFinished) {
             _firstWaveShootTimer -= Time.deltaTime;
-            if (_firstWaveShootTimer <= 0f)
-            {
-                for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++)
-                {
+            if (_firstWaveShootTimer <= 0f) {
+                for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++) {
                     GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i], context);
                 }
+
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeThirdStageShoot, context.transform.position, 0.3f);
                 _isFirstWaveFinished = true;
                 _firstWaveShootTimer = _timeToFirstWaveShoot;
             }
         }
 
-        if (_isFirstWaveFinished)
-        {
+        if (_isFirstWaveFinished) {
             _secondWaveShootTimer -= Time.deltaTime;
-            if (_secondWaveShootTimer <= 0f)
-            {
-                for (int i = 0; i < context.ThirdStageSecondWaveShootDirections.Count; i++)
-                {
+            if (_secondWaveShootTimer <= 0f) {
+                for (int i = 0; i < context.ThirdStageSecondWaveShootDirections.Count; i++) {
                     GenerateBullet(context.transform, context.ThirdStageProjectile, context.ThirdStageSecondWaveShootDirections[i], context);
                 }
+
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeThirdStageShoot, context.transform.position, 0.3f);
                 _isFirstWaveFinished = false;
                 _secondWaveShootTimer = _timeToSecondWaveShoot;
@@ -85,8 +71,7 @@ public class AfroditeThirdStageState : AfroditeBaseState
         }
     }
 
-    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir, AfroditeController context)
-    {
+    private void GenerateBullet(Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir, AfroditeController context) {
         Object.Instantiate(context.ThirdStageShootAnim, bulletStartingPos.position, bulletStartingPos.rotation);
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         Vector2 bulletDir = projectileDir.position - bulletInst.transform.position;

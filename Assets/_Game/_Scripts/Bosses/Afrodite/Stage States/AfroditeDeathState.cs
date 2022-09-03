@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Threading.Tasks;
 
-public class AfroditeDeathState : AfroditeBaseState
-{
+public class AfroditeDeathState : AfroditeBaseState {
     private int _timeToDeathAnim = 2000;
     private int _timeToShakeScreen = 500;
     private bool _canScreenShake = false;
@@ -23,7 +22,6 @@ public class AfroditeDeathState : AfroditeBaseState
         Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
         context.SwitchState(context.IdleState);
         GameManager.Instance.SetGameState(GameState.WinState);
-        // GameManager.Instance.HandleWonLevel();
     }
 
     private async void HandleScreenShake(int millisecondsDelay, AfroditeController context) {

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class AfroditeSecondStageState : AfroditeBaseState
-{
+public class AfroditeSecondStageState : AfroditeBaseState {
     private float _timeToSwitchState = 2f;
     private float _switchStateTimer;
     private float _initialTurnSpeed = 1f;
@@ -15,8 +14,7 @@ public class AfroditeSecondStageState : AfroditeBaseState
     private float _speedToMovePoint = 1.5f;
     private bool _laserLockOnSoundPlayed = false;
 
-    public override void EnterState(AfroditeController context)
-    {
+    public override void EnterState(AfroditeController context) {
         _switchStateTimer = _timeToSwitchState;
         _laserShootTimer = _timeToLaserShoot;
         _currentTurnSpeed = _initialTurnSpeed;
@@ -31,10 +29,8 @@ public class AfroditeSecondStageState : AfroditeBaseState
         }
     }
 
-    public override void UpdateState(AfroditeController context)
-    {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f)
-        {
+    public override void UpdateState(AfroditeController context) {
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
             HandleMovement(context);
             _currentTurnSpeed = _initialTurnSpeed;
             HandleAim(context);
@@ -43,44 +39,35 @@ public class AfroditeSecondStageState : AfroditeBaseState
         }
     }
 
-    private void HandleLaserShoot(AfroditeController context)
-    {
+    private void HandleLaserShoot(AfroditeController context) {
         _laserShootTimer -= Time.deltaTime;
-        if (_laserShootTimer <= 0f)
-        {
+        if (_laserShootTimer <= 0f) {
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableFeedbackLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();
 
-            if (!_laserShootSoundPlayed)
-            {
+            if (!_laserShootSoundPlayed) {
                 SoundManager.PlaySound(SoundManager.Sound.AfroditeSecondStageLaserShoot, context.transform.position, 0.3f);
                 CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
                 _laserShootSoundPlayed = true;
             }
 
             _switchStateTimer -= Time.deltaTime;
-            if (_switchStateTimer <= 0f)
-            {
+            if (_switchStateTimer <= 0f) {
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
                 context.SwitchState(context.FirstStageState);
             }
         }
-        else
-        {
-            if (_laserShootTimer <= 0.6f)
-            {
+        else {
+            if (_laserShootTimer <= 0.6f) {
                 _currentTurnSpeed = _baseTurnSpeed;
 
-                if (_laserShootTimer <= 0.4f)
-                {
-                    if (_laserShootTimer <= 0.1f)
-                    {
+                if (_laserShootTimer <= 0.4f) {
+                    if (_laserShootTimer <= 0.1f) {
                         _currentTurnSpeed = _maxTurnSpeed;
                     }
 
-                    if (!_laserLockOnSoundPlayed)
-                    {
+                    if (!_laserLockOnSoundPlayed) {
                         SoundManager.PlaySound(SoundManager.Sound.AfroditeLaserLockOn, context.transform.position, 0.3f);
                         _laserLockOnSoundPlayed = true;
                     }
@@ -95,13 +82,11 @@ public class AfroditeSecondStageState : AfroditeBaseState
         }
     }
 
-    private void HandleMovement(AfroditeController context)
-    {
+    private void HandleMovement(AfroditeController context) {
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _speedToMovePoint);
     }
 
-    private void HandleAim(AfroditeController context)
-    {
+    private void HandleAim(AfroditeController context) {
         Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
