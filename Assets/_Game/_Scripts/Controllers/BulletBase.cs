@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public abstract class BulletBase : StaticInstance<BulletBase>
-{
+public abstract class BulletBase : StaticInstance<BulletBase> {
     [SerializeField] protected float _speed;
     [SerializeField] protected int _defaultDamage;
     [SerializeField] protected GameObject _damageAnim;
@@ -11,8 +10,7 @@ public abstract class BulletBase : StaticInstance<BulletBase>
     public int DefaultDamage { get => _defaultDamage; set => _defaultDamage = value; }
     public Vector3 Direction { get => _direction; set => _direction = value; }
 
-    public virtual void DestroyBullet()
-    {
+    public virtual void DestroyBullet() {
         Destroy(gameObject);
         Instantiate(_damageAnim, transform.position, Quaternion.identity);
     }

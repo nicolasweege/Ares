@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AfroditeController : Singleton<AfroditeController>
-{
+public class AfroditeController : Singleton<AfroditeController> {
     #region Variables
     [Header("General")]
     public int Health;
@@ -77,8 +76,8 @@ public class AfroditeController : Singleton<AfroditeController>
         CurrentState = IdleState;
         CurrentState.EnterState(this);
 
-        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
-            spr.gameObject.AddComponent<AfroditeResetColor>();
+        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
+            renderer.gameObject.AddComponent<AfroditeResetColor>();
     }
 
     private void Update() {

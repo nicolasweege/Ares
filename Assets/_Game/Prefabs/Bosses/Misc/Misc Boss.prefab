@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2158305005727998568}
   - component: {fileID: 2983432557412977965}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2682344254919942365}
   - component: {fileID: 5452997477992156155}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,8 +154,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: caba0ed9baffc12449790ed2ffa6748b, type: 3}
   m_Color: {r: 0.28813633, g: 0.33968425, b: 0.3490566, a: 1}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731822068578539695}
   - component: {fileID: 5820545932592018966}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Sub Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,8 +238,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 85ac3476c8878d64987213cf2be96429, type: 3}
   m_Color: {r: 0.54509807, g: 0.61960787, b: 0.6313726, a: 1}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5693211035897743032}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Sockets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8795006982491592081}
   - component: {fileID: 1950987337022337751}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (D/Right/Back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,8 +365,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1077700206214934035}
   - component: {fileID: 7942538227192107867}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (D/Left/Back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,8 +449,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 5783485674317025923}
   - component: {fileID: 6199443109228917262}
   - component: {fileID: 2473111102979957170}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5242,7 +5242,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -5286,7 +5286,7 @@ GameObject:
   - component: {fileID: 3640519123598194194}
   - component: {fileID: 7290614884874405263}
   - component: {fileID: 6395506052214717810}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10054,7 +10054,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -10097,7 +10097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3346358855606389660}
   - component: {fileID: 5253543373304924618}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wing (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10157,8 +10157,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b048c9e05955ff04a9a166bdfbc575ec, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -10181,7 +10181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6776551724698299519}
   - component: {fileID: 2169965171427849649}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wing Stem (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10241,8 +10241,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e4fe5391040d0b743980423067e1f70a, type: 3}
   m_Color: {r: 0.5803922, g: 0.59607846, b: 0.59607846, a: 1}
@@ -10265,7 +10265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3037567350839942611}
   - component: {fileID: 897518710503152070}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Turbine Socket (Front/Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10325,8 +10325,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 33022ace728c88d4eb659325fb46ddc2, type: 3}
   m_Color: {r: 0.46747062, g: 0.51419544, b: 0.5188679, a: 1}
@@ -10349,7 +10349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810888036088151177}
   - component: {fileID: 2650215547947616551}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem Socket (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10409,8 +10409,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 7ca818d94f544f0468feb38f4bb07632, type: 3}
   m_Color: {r: 0.3254902, g: 0.38039216, b: 0.3882353, a: 1}
@@ -10433,7 +10433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289364693639943034}
   - component: {fileID: 3658430488466793333}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wing Stem (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10493,8 +10493,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e4fe5391040d0b743980423067e1f70a, type: 3}
   m_Color: {r: 0.5803922, g: 0.59607846, b: 0.59607846, a: 1}
@@ -10517,7 +10517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6763486195124410376}
   - component: {fileID: 1874089833806936885}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Turbine Socket (Back/Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10577,8 +10577,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 33022ace728c88d4eb659325fb46ddc2, type: 3}
   m_Color: {r: 0.46747062, g: 0.51419544, b: 0.5188679, a: 1}
@@ -10601,7 +10601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893956438161953652}
   - component: {fileID: 6032714212537854746}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10661,8 +10661,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -10684,7 +10684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4714242183604274009}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10721,7 +10721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8581161041789912490}
   - component: {fileID: 5592588455341216207}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (D/Left/Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10781,8 +10781,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -10805,7 +10805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8307758205734421146}
   - component: {fileID: 6357743689304668742}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem Socket (Right) 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10865,8 +10865,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 352fa9973378f1c44b8bae8ecc23e672, type: 3}
   m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
@@ -10890,7 +10890,7 @@ GameObject:
   - component: {fileID: 8882260146909884679}
   - component: {fileID: 6940910904641643740}
   - component: {fileID: 2474397277801179762}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (D/Left/Back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15658,7 +15658,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -15701,7 +15701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 645040422591682011}
   - component: {fileID: 4173875890265637496}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (Back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15761,8 +15761,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -15785,7 +15785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3486622784373116578}
   - component: {fileID: 2969279595905930632}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15845,8 +15845,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -15869,7 +15869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664315490273120241}
   - component: {fileID: 7877982007988772168}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem Socket (Right) 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15929,8 +15929,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 58810fc6b39dece4a8223d1af97080a7, type: 3}
   m_Color: {r: 0.5598077, g: 0.6312967, b: 0.6415094, a: 1}
@@ -15954,7 +15954,7 @@ GameObject:
   - component: {fileID: 5852734563324663211}
   - component: {fileID: 2864642571698003563}
   - component: {fileID: 6277253890234461474}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (Back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20722,7 +20722,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -20765,7 +20765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4343316132913882222}
   - component: {fileID: 2669289348396272582}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Main Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20825,8 +20825,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7cfd9ad632ece1c4b8c51ad91a4f2435, type: 3}
   m_Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
@@ -20849,7 +20849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5523023859932783552}
   - component: {fileID: 7711278972664253359}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wing Socket (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20909,8 +20909,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d9bd98d8e853fb0498b206f4652c9f73, type: 3}
   m_Color: {r: 0.32658422, g: 0.38018426, b: 0.38679248, a: 1}
@@ -20934,7 +20934,7 @@ GameObject:
   - component: {fileID: 765917735988110044}
   - component: {fileID: 475466920491866326}
   - component: {fileID: 2363865801815186795}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (D/Left/Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25702,7 +25702,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -25744,7 +25744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3651117254587174558}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Bullet Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25776,7 +25776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955771553328481948}
   - component: {fileID: 2588895948477275754}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wing Socket (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25836,8 +25836,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d9bd98d8e853fb0498b206f4652c9f73, type: 3}
   m_Color: {r: 0.32658422, g: 0.38018426, b: 0.38679248, a: 1}
@@ -25860,7 +25860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4173634215357896730}
   - component: {fileID: 2616780757968318929}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25922,8 +25922,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 7735bc2ac5eeec44a9f96829654f277f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -25945,7 +25945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2305570790867399165}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Pieces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25984,7 +25984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2182452008638854828}
   - component: {fileID: 9012936952025138595}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Turbine Socket (Front/Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26044,8 +26044,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 33022ace728c88d4eb659325fb46ddc2, type: 3}
   m_Color: {r: 0.46747062, g: 0.51419544, b: 0.5188679, a: 1}
@@ -26068,7 +26068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8884158617971843358}
   - component: {fileID: 5747812389115571504}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Disk (Center) 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26128,8 +26128,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 87695f6722b46924484e1fd5ccc184ac, type: 3}
   m_Color: {r: 0.5456123, g: 0.61972356, b: 0.6320754, a: 1}
@@ -26151,7 +26151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4769653278460780044}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Bullet Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26185,7 +26185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4595910189310835431}
   - component: {fileID: 3302782275603905705}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26245,8 +26245,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: caba0ed9baffc12449790ed2ffa6748b, type: 3}
   m_Color: {r: 0.28813633, g: 0.33968425, b: 0.3490566, a: 1}
@@ -26268,7 +26268,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4985281228881803549}
-  m_Layer: 0
+  - component: {fileID: 4358784722715322186}
+  - component: {fileID: 8398696558049595791}
+  - component: {fileID: 8306139608934669474}
+  - component: {fileID: 590887052147320436}
+  - component: {fileID: 7082931660602050516}
+  m_Layer: 14
   m_Name: Misc Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26291,6 +26296,111 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &4358784722715322186
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828845425563672958}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!70 &8398696558049595791
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828845425563672958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.45, y: 0}
+  m_Size: {x: 0.4, y: 2.12}
+  m_Direction: 0
+--- !u!70 &8306139608934669474
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828845425563672958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.45, y: 0}
+  m_Size: {x: 0.4, y: 2.12}
+  m_Direction: 0
+--- !u!61 &590887052147320436
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828845425563672958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.74, y: 0.58}
+  m_EdgeRadius: 0
+--- !u!61 &7082931660602050516
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828845425563672958}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.23, y: 1.24}
+  m_EdgeRadius: 0
 --- !u!1 &6096830213079035107
 GameObject:
   m_ObjectHideFlags: 0
@@ -26301,7 +26411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035275229943392584}
   - component: {fileID: 1402270148998348092}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem Socket (Left) 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26361,8 +26471,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 58810fc6b39dece4a8223d1af97080a7, type: 3}
   m_Color: {r: 0.5598077, g: 0.6312967, b: 0.6415094, a: 1}
@@ -26385,7 +26495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4283826109869816030}
   - component: {fileID: 5424174707922832505}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem Socket (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26445,8 +26555,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 7ca818d94f544f0468feb38f4bb07632, type: 3}
   m_Color: {r: 0.3254902, g: 0.38039216, b: 0.3882353, a: 1}
@@ -26468,7 +26578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8497333455713139086}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Bullet Starting Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26499,7 +26609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7461286677197161773}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26534,7 +26644,7 @@ GameObject:
   - component: {fileID: 8607279885209313523}
   - component: {fileID: 2375487848382407457}
   - component: {fileID: 6165840873461093986}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (D/Right/Back)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31302,7 +31412,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -31345,7 +31455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9073557057750313708}
   - component: {fileID: 898492736577449482}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Wing (Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31405,8 +31515,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b048c9e05955ff04a9a166bdfbc575ec, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -31429,7 +31539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3680581289062461248}
   - component: {fileID: 2007855538204098821}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem Socket (Left) 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31489,8 +31599,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 352fa9973378f1c44b8bae8ecc23e672, type: 3}
   m_Color: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
@@ -31512,7 +31622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4882888563111500865}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Disks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31545,7 +31655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5968895608654329320}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31586,7 +31696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4789768663632987938}
   - component: {fileID: 2705450330434158449}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Disk (Center)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31646,8 +31756,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 87695f6722b46924484e1fd5ccc184ac, type: 3}
   m_Color: {r: 0.56078434, g: 0.6313726, b: 0.6431373, a: 1}
@@ -31671,7 +31781,7 @@ GameObject:
   - component: {fileID: 6983509729954579273}
   - component: {fileID: 5958514970792306139}
   - component: {fileID: 7889530012301483091}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (D/Right/Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36439,7 +36549,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1
@@ -36482,7 +36592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 31372331944002323}
   - component: {fileID: 8495038747677293657}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer (D/Right/Front)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36542,8 +36652,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: d7d1fca5cf0af9146ab8c629244d7155, type: 3}
   m_Color: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
@@ -36565,7 +36675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4054333662784010729}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36605,7 +36715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2192860034462629322}
   - component: {fileID: 5367805020494530087}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stem (Center)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36665,8 +36775,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e4fe5391040d0b743980423067e1f70a, type: 3}
   m_Color: {r: 0.58032215, g: 0.59380716, b: 0.5943396, a: 1}
@@ -36689,7 +36799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6928261663306861668}
   - component: {fileID: 5368028216935878120}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Turbine Socket (Back/Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36749,8 +36859,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -229089657
-  m_SortingLayer: 7
+  m_SortingLayerID: 903460179
+  m_SortingLayer: 6
   m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 33022ace728c88d4eb659325fb46ddc2, type: 3}
   m_Color: {r: 0.46747062, g: 0.51419544, b: 0.5188679, a: 1}
@@ -36774,7 +36884,7 @@ GameObject:
   - component: {fileID: 901615932640555706}
   - component: {fileID: 8548467082716492500}
   - component: {fileID: 724555857283767023}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Stabilizer Trail (Left)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41542,7 +41652,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1254644431
+  m_SortingLayerID: 903460179
   m_SortingLayer: 6
   m_SortingOrder: -1
   m_RenderMode: 1

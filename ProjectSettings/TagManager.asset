@@ -12,8 +12,8 @@ TagManager:
   - ArenaCollider
   - AfroditeMainShip
   - SatelliteLaserCollider
-  - PlayerShield
   - AfroditeMember
+  - Eros
   layers:
   - Default
   - TransparentFX
@@ -29,8 +29,8 @@ TagManager:
   - Asteroid
   - Satellite Laser Collider
   - Player Ship
-  - 
-  - 
+  - Enemy
+  - Enemy Bullet
   - 
   - 
   - 

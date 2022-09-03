@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AfroditeResetColor : MonoBehaviour {
+public class ErosResetColor : MonoBehaviour {
     private SpriteRenderer _spriteRenderer;
     private Color _originalColor;
 
@@ -14,7 +14,7 @@ public class AfroditeResetColor : MonoBehaviour {
     }
 
     private void Update() {
-        if (!AfroditeController.Instance.IsFlashing)
+        if (!ErosController.Instance.IsFlashing)
             _spriteRenderer.color = _originalColor;
     }
 
