@@ -37,6 +37,10 @@ public class AfroditeFirstStageState : AfroditeBaseState {
     }
 
     private void HandleMovement(AfroditeController context) {
+        if (PlayerController.Instance == null) {
+            return;
+        }
+
         Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();
@@ -99,6 +103,10 @@ public class AfroditeFirstStageState : AfroditeBaseState {
     }
 
     private Vector2 HandleTurretAim(Transform turretTransform) {
+        if (PlayerController.Instance == null) {
+            return Vector2.zero;
+        }
+
         Vector2 playerPos = PlayerController.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(turretTransform.position.x, turretTransform.position.y);
         lookDir.Normalize();

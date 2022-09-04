@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,13 @@ public class ErosController : Singleton<ErosController> {
     public Rotate RotateComponent;
     [SerializeField] private FlashHitEffect _flashHitEffect;
     [NonSerialized] public bool IsFlashing = false;
+    [NonSerialized] public Vector2 Velocity = Vector2.zero;
+
+    #region First Stage Variables
+    [Header("First Stage")]
+    public GameObject FirstStageBullet;
+    public List<Transform> FirstStageBulletDirs = new List<Transform>();
+    #endregion
 
     #region State Variables
     [NonSerialized] public ErosBaseState CurrentState;

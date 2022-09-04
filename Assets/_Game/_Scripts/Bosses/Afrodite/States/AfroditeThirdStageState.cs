@@ -22,8 +22,7 @@ public class AfroditeThirdStageState : AfroditeBaseState {
     public override void UpdateState(AfroditeController context) {
         if (Vector2.Distance(context.transform.position, context.MovePointCenter.position) > 0.5f) {
             context.transform.position = Vector2.SmoothDamp(context.transform.position, context.MovePointCenter.position, ref context.Velocity, _speedToMovePointCenter);
-        }
-        else {
+        } else {
             _breakTimer -= Time.deltaTime;
             if (_breakTimer <= 0f) {
                 _switchStateTimer -= Time.deltaTime;
@@ -32,8 +31,7 @@ public class AfroditeThirdStageState : AfroditeBaseState {
                 }
 
                 HandleAttack(context);
-            }
-            else {
+            } else {
                 _screenShakeTimer -= Time.deltaTime;
                 if (_screenShakeTimer <= 0f) {
                     CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
