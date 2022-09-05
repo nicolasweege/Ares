@@ -21,22 +21,29 @@ public class AfroditeSecondStageState : AfroditeBaseState {
         _laserShootSoundPlayed = false;
         _laserLockOnSoundPlayed = false;
 
-        if (context.transform.position.x > 0f) {
+        if (PlayerController.Instance.transform.position.x > 0) {
+            _currentMovePoint = context.FourthStageMovePointRight.position;
+        } else {
             _currentMovePoint = context.FourthStageMovePointLeft.position;
         }
-        else {
-            _currentMovePoint = context.FourthStageMovePointRight.position;
-        }
+
+        // if (context.transform.position.x > 0f) {
+        //     _currentMovePoint = context.FourthStageMovePointRight.position;
+        // } else {
+        //     _currentMovePoint = context.FourthStageMovePointLeft.position;
+        // }
     }
 
     public override void UpdateState(AfroditeController context) {
-        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
-            HandleMovement(context);
-            _currentTurnSpeed = _initialTurnSpeed;
-            HandleAim(context);
-        } else {
-            HandleLaserShoot(context);
-        }
+        // if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
+        //     HandleMovement(context);
+        //     _currentTurnSpeed = _initialTurnSpeed;
+        //     HandleAim(context);
+        // } else {
+        //     HandleLaserShoot(context);
+        // }
+
+        HandleLaserShoot(context);
     }
 
     private void HandleLaserShoot(AfroditeController context) {

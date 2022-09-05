@@ -17,18 +17,16 @@ public class AfroditeFourthStageState : AfroditeBaseState {
         _laserShootAudioHasPlayed = false;
 
         if (context.transform.position.x > 0f) {
-            _currentMovePoint = context.FourthStageMovePointLeft.position;
-        }
-        else {
             _currentMovePoint = context.FourthStageMovePointRight.position;
+        } else {
+            _currentMovePoint = context.FourthStageMovePointLeft.position;
         }
 
         if (PlayerController.Instance.transform.position.y > 0f) {
             _currentAimPoint = context.FourthStageAimPointUp.position;
             _otherAimPoint = context.FourthStageAimPointDown.position;
             _currentSatellitePoint = context.FourthStageSatelliteUpPoint.position;
-        }
-        else {
+        } else {
             _currentAimPoint = context.FourthStageAimPointDown.position;
             _otherAimPoint = context.FourthStageAimPointUp.position;
             _currentSatellitePoint = context.FourthStageSatelliteDownPoint.position;
@@ -42,8 +40,7 @@ public class AfroditeFourthStageState : AfroditeBaseState {
             _currentTurnSpeed = 1f;
             HandleAim(context, _otherAimPoint);
             HandleMovement(context);
-        }
-        else {
+        } else {
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableLaser();
             context.LaserBeam.GetComponent<AfroditeLaserBeamController>().UpdateLaser();
             if (!_laserShootAudioHasPlayed) {
