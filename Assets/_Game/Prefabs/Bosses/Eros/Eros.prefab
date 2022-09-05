@@ -237,7 +237,7 @@ MonoBehaviour:
   DeathAnim: {fileID: 8921673329648153652, guid: 3f8c6c28d96cec145967679bb0aea104, type: 3}
   RotateComponent: {fileID: 1290390224690836479}
   _flashHitEffect: {fileID: 5047775240831584902}
-  FirstStageBullet: {fileID: 7547373421268327926, guid: ff2f8977e3cc2994ba0be1a246c66fc6, type: 3}
+  FirstStageBullet: {fileID: 5665722100170480527, guid: 9634dd6d4c726884ba85a8a28bbe8b49, type: 3}
   FirstStageBulletDirs:
   - {fileID: 8534739963001420116}
   - {fileID: 5936597020808362783}
