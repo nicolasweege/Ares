@@ -50,16 +50,6 @@ public class ErosFirstStageState : ErosBaseState {
         }
     }
 
-    // private void HandleAttack(ErosController context) {
-    //     _shootTimer -= Time.deltaTime;
-    //     if (_shootTimer <= 0) {
-    //         for (int i = 0; i < context.FirstStageBulletDirs.Count; i++) {
-    //             CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs[i]);
-    //         }
-    //         _shootTimer = _timeToShoot;
-    //     }
-    // }
-
     private void CreateBullet(Transform startingPos, GameObject bullet, Transform bulletDir) {
         var bulletInst = Object.Instantiate(bullet, startingPos.position, Quaternion.identity);
         Vector2 _bulletDir = (bulletDir.position - bulletInst.transform.position).normalized;
