@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8921673329648153650}
   - component: {fileID: 8921673329648153653}
   m_Layer: 0
-  m_Name: Afrodite First Stage Projectile Hit
+  m_Name: Eros_Death_Anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8921673329648153652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,13 +97,13 @@ VisualEffect:
       - m_Value: {x: 0, y: 1, z: 0, w: 1}
         m_Name: Color 2
         m_Overridden: 1
-      - m_Value: {x: 0.078431375, y: 2, z: 0, w: 0.39215687}
+      - m_Value: {x: 2, y: 0.03957638, z: 0, w: 0.39215687}
         m_Name: FlashColor
         m_Overridden: 1
-      - m_Value: {x: 0.78431374, y: 4, z: 0, w: 0.39215687}
+      - m_Value: {x: 3.9999995, y: 0.560434, z: 0, w: 0.39215687}
         m_Name: CrossColor
         m_Overridden: 1
-      - m_Value: {x: 0.78431374, y: 4, z: 0, w: 0.39215687}
+      - m_Value: {x: 3.9999995, y: 0.7425712, z: 0, w: 0.39215687}
         m_Name: ParticlesColor
         m_Overridden: 1
     m_Uint:

@@ -7,8 +7,8 @@ public class ErosIdleState : ErosBaseState {
 
     public override void UpdateState(ErosController context) {}
 
-    private async void SwitchStateTimer(int millisecondsDelay, ErosController context) {
-        await Task.Delay(millisecondsDelay);
+    private async void SwitchStateTimer(int delay, ErosController context) {
+        await Task.Delay(delay);
         context.SwitchState(context.FirstStageState);
     }
 }

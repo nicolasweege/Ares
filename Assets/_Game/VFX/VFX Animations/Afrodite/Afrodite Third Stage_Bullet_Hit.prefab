@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8921673329648153650}
   - component: {fileID: 8921673329648153653}
   m_Layer: 0
-  m_Name: Afrodite Third Stage Projectile Hit
+  m_Name: Afrodite Third Stage_Bullet_Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

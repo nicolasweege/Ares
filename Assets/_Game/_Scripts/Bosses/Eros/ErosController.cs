@@ -16,7 +16,8 @@ public class ErosController : Singleton<ErosController> {
     #region First Stage Variables
     [Header("First Stage")]
     public GameObject FirstStageBullet;
-    public List<Transform> FirstStageBulletDirs = new List<Transform>();
+    public List<Transform> FirstStageBulletDirs_1 = new List<Transform>();
+    public List<Transform> FirstStageBulletDirs_2 = new List<Transform>();
     #endregion
 
     #region State Variables
@@ -24,6 +25,7 @@ public class ErosController : Singleton<ErosController> {
     [NonSerialized] public ErosIdleState IdleState = new ErosIdleState();
     [NonSerialized] public ErosDeathState DeathState = new ErosDeathState();
     [NonSerialized] public ErosFirstStageState FirstStageState = new ErosFirstStageState();
+    [NonSerialized] public ErosSecondStageState SecondStageState = new ErosSecondStageState();
     #endregion
 
     [Header("Events")]

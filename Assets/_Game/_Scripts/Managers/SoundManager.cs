@@ -6,16 +6,29 @@ public static class SoundManager
 {
     public enum Sound
     {
-        PlayerShoot,
-        PlayerTakingDamage,
-        AfroditeSecondStageLaserShoot,
-        AfroditeFirstStageShoot,
-        AfroditeThirdStageShoot,
-        AfroditeLaserShootAntecipation,
-        AfroditeLaserLockOn,
-        UIButtonSelection,
-        UIButtonClick,
-        UIButtonLightClick,
+        #region Player
+            PlayerShoot,
+            PlayerTakingDamage,
+        #endregion
+
+        #region Afrodite
+            AfroditeSecondStageLaserShoot,
+            AfroditeFirstStageShoot,
+            AfroditeThirdStageShoot,
+            AfroditeLaserShootAntecipation,
+            AfroditeLaserLockOn,
+        #endregion
+
+        #region UI
+            UIButtonSelection,
+            UIButtonClick,
+            UIButtonLightClick,
+        #endregion
+
+        #region Eros
+            ErosShoot_1,
+        #endregion
+
         TestSound
     }
 
@@ -26,7 +39,8 @@ public static class SoundManager
 
     private static void InitializeDictionary()
     {
-        // SoundManager.InitializeDictionary(); call it when start the game or a scene, idk yet
+        // call it when start the game or a scene
+        // SoundManager.InitializeDictionary();
         _soundTimerDictionary = new Dictionary<Sound, float>();
     }
 
