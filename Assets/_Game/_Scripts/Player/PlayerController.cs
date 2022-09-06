@@ -130,7 +130,7 @@ public class PlayerController : Singleton<PlayerController>
         if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove) {
             if (_shootTimer <= 0f) {
                 GenerateBullet();
-                SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position);
+                SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position, 1);
                 _shootTimer = _timeToShoot;
             }
         }

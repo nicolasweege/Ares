@@ -75,7 +75,7 @@ public class AfroditeFirstStageState : AfroditeBaseState {
         if (_secondAttackTimer <= 0f) {
             for (int i = 0; i < context.ThirdStageFirstWaveShootDirections.Count; i++) {
                 GenerateBulletSecondAttack(context, context.transform, context.ThirdStageProjectile, context.ThirdStageFirstWaveShootDirections[i]);
-                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.5f);
+                SoundManager.PlaySound(SoundManager.Sound.AfroditeFirstStageShoot, context.transform.position, 0.3f);
             }
             _secondAttackTimer = _timeToSecondAttack;
         }

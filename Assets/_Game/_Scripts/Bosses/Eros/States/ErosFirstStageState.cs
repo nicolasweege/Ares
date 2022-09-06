@@ -30,7 +30,7 @@ public class ErosFirstStageState : ErosBaseState {
                     CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_1[i]);
                 }
 
-                SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.3f);
+                SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
                 _isFirstWaveFinished = true;
                 _firstWaveShootTimer = _timeToFirstWaveShoot;
             }
@@ -43,7 +43,7 @@ public class ErosFirstStageState : ErosBaseState {
                     CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_2[i]);
                 }
 
-                SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.3f);
+                SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
                 _isFirstWaveFinished = false;
                 _secondWaveShootTimer = _timeToSecondWaveShoot;
             }

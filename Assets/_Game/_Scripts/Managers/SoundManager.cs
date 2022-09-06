@@ -96,25 +96,6 @@ public static class SoundManager
         }
     }
 
-    public static void PlaySound(Sound sound, Vector3 pos)
-    {
-        if (CanPlaySound(sound))
-        {
-            GameObject soundGameObject = new GameObject("One Shot Sound");
-            soundGameObject.transform.position = pos;
-            AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-            audioSource.clip = GetAudioClip(sound);
-            audioSource.maxDistance = 100f;
-            audioSource.spatialBlend = 1f;
-            audioSource.rolloffMode = AudioRolloffMode.Linear;
-            audioSource.dopplerLevel = 0f;
-            audioSource.outputAudioMixerGroup = AssetsManager.Instance.SoundsAudioMixerGroup;
-            audioSource.Play();
-
-            UnityEngine.Object.Destroy(soundGameObject, audioSource.clip.length);
-        }
-    }
-
     public static void PlaySound(Sound sound, Vector3 pos, float volume = 1f)
     {
         if (CanPlaySound(sound))

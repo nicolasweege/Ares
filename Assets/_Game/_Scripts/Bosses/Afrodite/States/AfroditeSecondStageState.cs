@@ -35,15 +35,13 @@ public class AfroditeSecondStageState : AfroditeBaseState {
     }
 
     public override void UpdateState(AfroditeController context) {
-        // if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
-        //     HandleMovement(context);
-        //     _currentTurnSpeed = _initialTurnSpeed;
-        //     HandleAim(context);
-        // } else {
-        //     HandleLaserShoot(context);
-        // }
-
-        HandleLaserShoot(context);
+        if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
+            HandleMovement(context);
+            _currentTurnSpeed = _initialTurnSpeed;
+            HandleAim(context);
+        } else {
+            HandleLaserShoot(context);
+        }
     }
 
     private void HandleLaserShoot(AfroditeController context) {
@@ -64,8 +62,7 @@ public class AfroditeSecondStageState : AfroditeBaseState {
                 context.LaserBeam.GetComponent<AfroditeLaserBeamController>().DisableLaser();
                 context.SwitchState(context.FirstStageState);
             }
-        }
-        else {
+        } else {
             if (_laserShootTimer <= 0.6f) {
                 _currentTurnSpeed = _baseTurnSpeed;
 
@@ -75,7 +72,7 @@ public class AfroditeSecondStageState : AfroditeBaseState {
                     }
 
                     if (!_laserLockOnSoundPlayed) {
-                        SoundManager.PlaySound(SoundManager.Sound.AfroditeLaserLockOn, context.transform.position, 0.3f);
+                        SoundManager.PlaySound(SoundManager.Sound.AfroditeLaserLockOn, context.transform.position, 0.5f);
                         _laserLockOnSoundPlayed = true;
                     }
                     context.LaserBeam.GetComponent<AfroditeLaserBeamController>().EnableFeedbackLaser();
