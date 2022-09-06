@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5665722100170480531}
-  - component: {fileID: 1027220296342660916}
+  - component: {fileID: 6489903663145229725}
   - component: {fileID: 355565710538274321}
   - component: {fileID: 5665722100170480526}
   m_Layer: 7
-  m_Name: Eros Bullet_1
+  m_Name: Eros Bullet_2
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,14 +28,14 @@ Transform:
   m_GameObject: {fileID: 5665722100170480527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 693477175700576172}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1027220296342660916
+--- !u!114 &6489903663145229725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,13 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5665722100170480527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63d934d5ea6697d479527136472f1565, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c1b7c4e950c62943b82168f48d9fd8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 7
   _defaultDamage: 1
   _damageAnim: {fileID: 8921673329648153652, guid: af98b2d34e85d3548b10174839a1dfae, type: 3}
-  _stopingDist: 1
+  _stopingDist: 2
 --- !u!58 &355565710538274321
 CircleCollider2D:
   m_ObjectHideFlags: 0

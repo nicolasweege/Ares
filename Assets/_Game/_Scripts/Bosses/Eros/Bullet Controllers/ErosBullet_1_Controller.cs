@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AfroditeFirstStageBulletController : BulletBase {
+public class ErosBullet_1_Controller : BulletBase {
     protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;

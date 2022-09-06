@@ -20,6 +20,11 @@ public class ErosController : Singleton<ErosController> {
     public List<Transform> FirstStageBulletDirs_2 = new List<Transform>();
     #endregion
 
+    #region Second Stage Variables
+    [Header("Second Stage")]
+    public GameObject SecondStageBullet;
+    #endregion
+
     #region State Variables
     [NonSerialized] public ErosBaseState CurrentState;
     [NonSerialized] public ErosIdleState IdleState = new ErosIdleState();
