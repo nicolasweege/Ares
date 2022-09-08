@@ -9,7 +9,7 @@ public class LevelManager : PersistentSingleton<LevelManager> {
     private float _target;
 
     private void Update() {
-        _progressBar.fillAmount = Mathf.MoveTowards(_progressBar.fillAmount, _target, 2 * Time.deltaTime);
+        _progressBar.fillAmount = Mathf.MoveTowards(_progressBar.fillAmount, _target, 3 * Time.deltaTime);
     }
 
     public async void LoadScene(string sceneName) {
