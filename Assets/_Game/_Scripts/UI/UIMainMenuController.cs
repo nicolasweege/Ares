@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -56,24 +55,21 @@ public class UIMainMenuController : Singleton<UIMainMenuController> {
     }
     #endregion
 
-    public void EnableUIInput()
-    {
+    public void EnableUIInput() {
         _eventSystem.sendNavigationEvents = true;
         _canvasGroup.interactable = true;
     }
 
-    public void DisableUIInput()
-    {
+    public void DisableUIInput() {
         _eventSystem.sendNavigationEvents = false;
         _canvasGroup.interactable = false;
     }
 
     public void LoadScene(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        LevelManager.Instance.LoadScene(sceneName);
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
         #else

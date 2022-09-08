@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : Singleton<GameManager> {
     [SerializeField] private GameState _startingGameState;
+    [SerializeField] private Renderer2DData _renderer2DData;
 
     public GameState CurrentState { get; private set; }
     public delegate void GameStateChangeHandler(GameState newState);
@@ -24,7 +25,12 @@ public class GameManager : Singleton<GameManager> {
         CurrentState = newState;
 
         switch (newState) {
+            case GameState.Gameplay:
+                _renderer2DData.rendererFeatures[0].SetActive(true);
+                break;
+
             case GameState.DeathMenu:
+                _renderer2DData.rendererFeatures[0].SetActive(false);
                 AudioListener.pause = true;
                 CinemachineManager.Instance.SetTargetTransform(PlayerController.Instance.transform);
                 UIPauseMenuController.Instance.DisablePlayerHud();
@@ -34,9 +40,14 @@ public class GameManager : Singleton<GameManager> {
                 break;
 
             case GameState.WinState:
+                _renderer2DData.rendererFeatures[0].SetActive(false);
                 UIPauseMenuController.Instance.DisablePlayerHud();
                 FunctionTimer.Create(() => CinematicBars.Instance.Show(1500f, 0.5f), 1f);
-                FunctionTimer.Create(() => SceneManager.LoadScene("MainMenu"), 2.5f);
+                FunctionTimer.Create(() => LevelManager.Instance.LoadScene("MainMenu"), 2.5f);
+                break;
+
+            case GameState.Paused :
+                _renderer2DData.rendererFeatures[0].SetActive(false);
                 break;
         }
 

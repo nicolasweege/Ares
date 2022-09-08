@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -35,11 +34,6 @@ public class UIPauseMenuController : Singleton<UIPauseMenuController> {
         EnablePlayerInput();
         _mainMenuComponents.SetActive(false);
         AudioListener.pause = false;
-    }
-
-    public void ExitToMainMenu() {
-        _renderer2DData.rendererFeatures[0].SetActive(false);
-        SceneManager.LoadScene("MainMenu");
     }
 
     public void HandleDeathMenu() {
@@ -99,20 +93,18 @@ public class UIPauseMenuController : Singleton<UIPauseMenuController> {
         PlayerController.Instance.PlayerInputActions.Disable();
     }
 
-    public void EnableUIInput()
-    {
+    public void EnableUIInput() {
         _eventSystem.sendNavigationEvents = true;
         _canvasGroup.interactable = true;
     }
 
-    public void DisableUIInput()
-    {
+    public void DisableUIInput() {
         _eventSystem.sendNavigationEvents = false;
         _canvasGroup.interactable = false;
     }
 
     public void LoadScene(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        LevelManager.Instance.LoadScene(sceneName);
     }
 
     public void SetPuasedGameState() {

@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Game/Scenes/ErosFight.unity
-    guid: f10e3db6dc97cd744abc0149f9dce44e
-  - enabled: 1
     path: Assets/_Game/Scenes/MainMenu.unity
     guid: f2ed64c3986ac6045953272fcd360ca2
   - enabled: 1
