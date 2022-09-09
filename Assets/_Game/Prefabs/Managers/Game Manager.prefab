@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingGameState: 0
   _renderer2DData: {fileID: 11400000, guid: f5909fb328a18b1499e62581ea4f2d87, type: 2}
+  _levelManager: {fileID: 5656903061812232839, guid: a86c9c3dc03b416409cd7e0edecb9dc0, type: 3}

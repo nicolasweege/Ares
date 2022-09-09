@@ -9,8 +9,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class PlayerController : Singleton<PlayerController>
-{
+public class PlayerController : Singleton<PlayerController> {
     #region Variables
     [Header("General")]
     [SerializeField] private int _health;
@@ -67,8 +66,7 @@ public class PlayerController : Singleton<PlayerController>
     private PlayerInput _playerInputComponent;
     #endregion
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
 
@@ -85,22 +83,26 @@ public class PlayerController : Singleton<PlayerController>
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
-        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>()) {
             spr.gameObject.AddComponent<PlayerResetColor>();
+        }
     }
 
     private void Dash(InputAction.CallbackContext context) {
         if (!_isDashing && _dashCooldownTimer <= 0f && MoveVector != Vector2.zero) {
             _isDashing = true;
 
-            foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+            foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>()) {
                 spr.enabled = false;
+            }
 
             _dashPos = transform.position + new Vector3(MoveVector.x, MoveVector.y) * _dashAmount;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, MoveVector, _dashAmount, _dashRaycastLayerMask);
-            if (hit.collider != null && !hit.collider.gameObject.CompareTag("AfroditeMember"))
-                _dashPos = hit.point;
+
+            if (hit.collider != null && !hit.collider.gameObject.CompareTag("AfroditeMember")) {
+                _dashPos = hit.point;                
+            }
             
             Instantiate(_dashAnim, _dashAnimStartingPos.position, Quaternion.identity);
 
@@ -110,15 +112,17 @@ public class PlayerController : Singleton<PlayerController>
 
     private void FinishDash() {
         transform.position = _dashPos;
-        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+
+        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>()) {
             spr.enabled = true;
+        }
+
         Instantiate(_dashAnim, _dashAnimStartingPos.position, Quaternion.identity);
         _isDashing = false;
         _dashCooldownTimer = _dashCooldown;
     }
 
-    private void Update()
-    {
+    private void Update() {
         HandleMove();
         HandleAim();
         HandleTurbineFlame();
@@ -141,37 +145,34 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private void HandleHealthHUD()
-    {
-        for (int i = 0; i < _heartImages.Count; i++)
-        {
-            if (i < _health)_heartImages[i].enabled = true;
-            else _heartImages[i].enabled = false;
+    private void HandleHealthHUD() {
+        for (int i = 0; i < _heartImages.Count; i++) {
+            if (i < _health) {
+                _heartImages[i].enabled = true;
+            } else {
+                _heartImages[i].enabled = false;
+            }
         }
     }
 
-    private void HandleDamageAnimation()
-    {
-        if (_dmgAnimEnabled)
-        {
+    private void HandleDamageAnimation() {
+        if (_dmgAnimEnabled) {
             if (_fullScreenIntensity < 0.5f)
                 _fullScreenIntensity += 0.08f;
-        }
-        else
-        {
+        } else {
             if (_fullScreenIntensity > 0f)
                 _fullScreenIntensity -= 0.017f;
             if (_fullScreenIntensity <= 0f)
                 _renderer2DData.rendererFeatures[0].SetActive(false);
         }
-        foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>())
+
+        foreach (var renderObjSetting in _renderer2DData.rendererFeatures.OfType<Blit>()) {
             renderObjSetting.settings.blitMaterial.SetFloat("_FullScreenIntensity", _fullScreenIntensity);
+        }
     }
 
-    public void TakeDamage()
-    {
-        if (CanTakeDamage)
-        {
+    public void TakeDamage() {
+        if (CanTakeDamage) {
             _health -= 1;
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
             CanTakeDamage = false;
@@ -187,56 +188,53 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
 
-    private async void ColorFlicker(int millisecondsDelay)
-    {
-        while (_isFlickerEnabled == true)
-        {
+    private async void ColorFlicker(int millisecondsDelay) {
+        while (_isFlickerEnabled == true) {
             CanResetColors = false;
-            foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+
+            foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>()) {
                 spr.color = _flashColor;
+            }
+
             _turbineFlame.Stop();
+
             await Task.Delay(millisecondsDelay);
+
             CanResetColors = true;
             _turbineFlame.Play();
+
             await Task.Delay(millisecondsDelay);
+
             ColorFlicker(150);
             _isFlickerEnabled = false;
         }
     }
 
-    public void HandleDamange()
-    {
-        if (!CanTakeDamage)
-        {
+    public void HandleDamange() {
+        if (!CanTakeDamage) {
             _canTakeDamageTimer -= Time.deltaTime;
             _isFlickerEnabled = true;
-        }
-        else ColorFlicker(150);
+        } else ColorFlicker(150);
 
-        if (_canTakeDamageTimer <= 0f)
-        {
+        if (_canTakeDamageTimer <= 0f) {
             CanTakeDamage = true;
             _canTakeDamageTimer = _timeToCanTakeDamage;
         }
 
-        if (!_canMove)
-        {
+        if (!_canMove) {
             _canMoveTimer -= Time.deltaTime;
             if (_canMoveTimer <= 0f)
             {
                 _canMove = true;
                 _canMoveTimer = _timeToCanMove;
             }
-        }
-        else
-        {
+        } else {
             AssetsManager.Instance.PlayerIsNotTakingDamageSnapshot.TransitionTo(2f);
             _dmgAnimEnabled = false;
         }
     }
 
-    private void HandleTurbineFlame()
-    {
+    private void HandleTurbineFlame() {
         if (_isDashing) {
             _turbineFlame.Stop();
             return;
@@ -247,8 +245,7 @@ public class PlayerController : Singleton<PlayerController>
         } else _turbineFlame.Stop();
     }
 
-    private void GenerateBullet()
-    {
+    private void GenerateBullet() {
         var bulletInst = Instantiate(_bulletPrefab, _bulletStartingPos.position, _bulletStartingPos.rotation);
         Vector2 bulletDir = _bulletDir.position - bulletInst.transform.position;
         bulletDir.Normalize();
@@ -257,8 +254,7 @@ public class PlayerController : Singleton<PlayerController>
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
-    private Vector2 HandleAim()
-    {
+    private Vector2 HandleAim() {
         _aimVector = PlayerInputActions.MainShip.Aim.ReadValue<Vector2>();
 
         if (IsGamepad) {
@@ -270,8 +266,11 @@ public class PlayerController : Singleton<PlayerController>
                 playerDir.Normalize();
                 _playerDirGamepadMode = playerDir;
                 float playerAngle = Mathf.Atan2(playerDir.y, playerDir.x) * Mathf.Rad2Deg - 90f;
-                if (playerDir.sqrMagnitude > 0.0f)
+
+                if (playerDir.sqrMagnitude > 0.0f) {
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, playerAngle), _turnSpeed * Time.deltaTime);
+                }
+
                 return playerDir;
             } else {
                 playerDir = Vector2.zero;
@@ -291,8 +290,7 @@ public class PlayerController : Singleton<PlayerController>
         return lookDir;
     }
 
-    private void HandleMove()
-    {
+    private void HandleMove() {
         if (_canMove) {
             MoveVector = PlayerInputActions.MainShip.Movement.ReadValue<Vector2>().normalized;
             transform.position += new Vector3(MoveVector.x, MoveVector.y) * Time.deltaTime * _speed;

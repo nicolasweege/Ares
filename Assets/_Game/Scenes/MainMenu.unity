@@ -1602,7 +1602,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: AfroditeFight
+          m_StringArgument: ErosFight
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &408623394
@@ -5471,6 +5471,63 @@ MonoBehaviour:
   _defaultSoundsVolume: 0.4
   _buttonSelectedColor: {r: 1, g: 1, b: 1, a: 1}
   _buttonDeselectedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
+--- !u!1001 &1884547722
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163936, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934501490747163937, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cae95c4acc6a7a54d8cd3548c5363316, type: 3}
 --- !u!1 &1911520577
 GameObject:
   m_ObjectHideFlags: 0

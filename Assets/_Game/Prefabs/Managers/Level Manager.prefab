@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 134}
-  m_SizeDelta: {x: -76.2708, y: -334.1509}
+  m_AnchoredPosition: {x: 693, y: -349}
+  m_SizeDelta: {x: -638.5759, y: -615.3036}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2588514131204677489
 CanvasRenderer:
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 345.3
-  m_fontSizeBase: 345.3
+  m_fontSize: 244.04
+  m_fontSizeBase: 244.04
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 7230844492312883591}
   m_Layer: 0
   m_Name: Progress Bar
-  m_TagString: Untagged
+  m_TagString: ProgressBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000013351, y: 0.0000076294}
-  m_SizeDelta: {x: 1317.848, y: 36.834}
+  m_AnchoredPosition: {x: 693, y: -411}
+  m_SizeDelta: {x: 312.9877, y: 25.9824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3222417267114208993
 CanvasRenderer:
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 7482667652216324306, guid: 89b75e42327eabd48905a5627fb3eaa3, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loaderCanvas: {fileID: 8486061570150918443}
   _progressBar: {fileID: 7230844492312883591}
+  _sceneTargetName: MainMenu
 --- !u!1 &8486061570150918443
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ TagManager:
   - SatelliteLaserCollider
   - AfroditeMember
   - Eros
+  - ProgressBar
   layers:
   - Default
   - TransparentFX

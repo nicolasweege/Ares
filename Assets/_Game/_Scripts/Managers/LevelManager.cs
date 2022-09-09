@@ -6,7 +6,13 @@ using UnityEngine.UI;
 public class LevelManager : PersistentSingleton<LevelManager> {
     [SerializeField] private GameObject _loaderCanvas;
     [SerializeField] private Image _progressBar;
+    [SerializeField] private string _sceneTargetName;
     private float _target;
+
+    protected override void Awake() {
+        base.Awake();
+        FunctionTimer.Create(() => LoadScene(_sceneTargetName), 0.1f);
+    }
 
     private void Update() {
         _progressBar.fillAmount = Mathf.MoveTowards(_progressBar.fillAmount, _target, 3 * Time.deltaTime);

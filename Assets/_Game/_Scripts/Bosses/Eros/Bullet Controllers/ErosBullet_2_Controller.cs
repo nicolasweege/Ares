@@ -20,8 +20,6 @@ public class ErosBullet_2_Controller : BulletBase {
 
         if (Vector2.Distance(transform.position, PlayerController.Instance.transform.position) >= _stopingDist && !_isOnStopingDist) {
             Vector2 bulletDir = (PlayerController.Instance.transform.position - transform.position).normalized;
-            // float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
-            // transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
             _direction = new Vector3(bulletDir.x, bulletDir.y);
             transform.position += _direction * Time.deltaTime * _speed;
         }
