@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AfroditeController" Collapsed="true">
+    <Position X="8.75" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>JAQBCQGAAsAAAAAEKABOACAQiMAhAAAAADYGhDIFSEk=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\AfroditeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeBaseState" Collapsed="true">
+    <Position X="9.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAQAAABAAAAAA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeBaseState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeDeathState" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAEAAAAAAAAAQAAAAgAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeDeathState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeFirstStageState" Collapsed="true">
+    <Position X="11.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABKEAAQAAAAMAAAAQBBCAAACgAEAAJKQAAAA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeFirstStageState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeFourthStageState" Collapsed="true">
+    <Position X="9.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQBAMAAAAAAAAEAAAAQABAAAAAAAAAiRCAhACA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeFourthStageState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeIdleState" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAQABAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeIdleState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeSecondStageState" Collapsed="true">
+    <Position X="11.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCAAAAAANAQAgAAAAEAAAEQABAAAAAAAAAiBCAgACA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeSecondStageState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AfroditeThirdStageState" Collapsed="true">
+    <Position X="8" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABYgAAAAAAAAAgBAQABAAAACgQEAAJAQAAAA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Bosses\Afrodite\States\AfroditeThirdStageState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticInstance&lt;T&gt;" Collapsed="true">
+    <Position X="9" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Utilities\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="10.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Utilities\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersistentSingleton&lt;T&gt;" Collapsed="true">
+    <Position X="10.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\_Game\_Scripts\Utilities\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
