@@ -2,6 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+[Serializable]
+public enum GameState
+{
+    Gameplay,
+    Paused,
+    DeathMenu,
+    WinState
+}
+
 public class GameManager : Singleton<GameManager> {
     [SerializeField] private GameState _startingGameState;
     [SerializeField] private Renderer2DData _renderer2DData;
@@ -53,11 +62,4 @@ public class GameManager : Singleton<GameManager> {
 
         OnAfterGameStateChanged?.Invoke(newState);
     }
-}
-
-[Serializable] public enum GameState {
-    Gameplay,
-    Paused,
-    DeathMenu,
-    WinState
 }

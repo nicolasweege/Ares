@@ -32,6 +32,8 @@ public class ErosController : Singleton<ErosController> {
     #region Second Stage Variables
     [Header("Second Stage")]
     public GameObject SecondStageBullet;
+    public List<Transform> BulletSpawnPoints_1 = new List<Transform>();
+    public List<Transform> BulletSpawnPoints_2 = new List<Transform>();
     #endregion
 
     #region State Variables

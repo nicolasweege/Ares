@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 
 public class ErosBullet_1_Controller : BulletBase {
+    [NonSerialized] public bool IgnoreArenaColliders = false;
+
     protected override void Awake() {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
@@ -14,7 +17,7 @@ public class ErosBullet_1_Controller : BulletBase {
         switch (other.gameObject.tag) {
             case "Satellite":
             case "ArenaCollider":
-                DestroyBullet();
+                if (!IgnoreArenaColliders) DestroyBullet();
                 break;
         }
     }
