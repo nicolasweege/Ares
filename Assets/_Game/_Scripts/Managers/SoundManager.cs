@@ -7,26 +7,26 @@ public static class SoundManager
     public enum Sound
     {
         #region Player
-            PlayerShoot,
-            PlayerTakingDamage,
+        PlayerShoot,
+        PlayerTakingDamage,
         #endregion
 
         #region Afrodite
-            AfroditeSecondStageLaserShoot,
-            AfroditeFirstStageShoot,
-            AfroditeThirdStageShoot,
-            AfroditeLaserShootAntecipation,
-            AfroditeLaserLockOn,
+        AfroditeSecondStageLaserShoot,
+        AfroditeFirstStageShoot,
+        AfroditeThirdStageShoot,
+        AfroditeLaserShootAntecipation,
+        AfroditeLaserLockOn,
         #endregion
 
         #region UI
-            UIButtonSelection,
-            UIButtonClick,
-            UIButtonLightClick,
+        UIButtonSelection,
+        UIButtonClick,
+        UIButtonLightClick,
         #endregion
 
         #region Eros
-            ErosShoot_1,
+        ErosShoot_1,
         #endregion
 
         TestSound

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class ErosController : Singleton<ErosController> {
     #region Variables
@@ -9,9 +10,17 @@ public class ErosController : Singleton<ErosController> {
     public int Health;
     public GameObject DeathAnim;
     public Rotate RotateComponent;
+    public GameObject SpritesGameObject;
     [SerializeField] private FlashHitEffect _flashHitEffect;
     [NonSerialized] public bool IsFlashing = false;
     [NonSerialized] public Vector2 Velocity = Vector2.zero;
+
+    [Header("Move Points")]
+    public Transform NullMovePoint;
+    public Transform MovePointUp;
+    public Transform MovePointDown;
+    public Transform MovePointRight;
+    public Transform MovePointLeft;
 
     #region First Stage Variables
     [Header("First Stage")]

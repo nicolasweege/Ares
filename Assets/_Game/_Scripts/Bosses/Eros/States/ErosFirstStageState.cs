@@ -14,9 +14,7 @@ public class ErosFirstStageState : ErosBaseState {
     }
 
     public override void UpdateState(ErosController context) {
-        if (PlayerController.Instance == null || context == null) {
-            return;
-        }
+        if (PlayerController.Instance == null || context == null) return;
 
         context.transform.position = Vector2.SmoothDamp(context.transform.position, PlayerController.Instance.transform.position, ref context.Velocity, 2.5f);
         HandleAttack(context);
