@@ -11,6 +11,16 @@ public class ErosBullet_1_Controller : BulletBase {
 
     private void Update() {
         MoveBullet();
+
+        if (_direction.x == 1 && transform.position.x >= 0)
+        {
+            IgnoreArenaColliders = false;
+        }
+
+        if (_direction.x == -1 && transform.position.x <= 0)
+        {
+            IgnoreArenaColliders = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

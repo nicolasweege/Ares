@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5879926370405108451}
   - component: {fileID: 3677179481942095756}
   m_Layer: 0
-  m_Name: Default Portal VFX Graph
+  m_Name: Default Portal VFX Graph 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,16 +56,16 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 4.2980394, y: 2.6039217, z: 5.992157, w: 0}
+      - m_Value: {x: 7.5950713, y: 1.5900847, z: 1.468858, w: 0}
         m_Name: ParticleColor
         m_Overridden: 1
-      - m_Value: {x: 1.9764706, y: 3.2627451, z: 5.992157, w: 0}
+      - m_Value: {x: 7.1948805, y: 1.3235866, z: 1.6050916, w: 0}
         m_Name: CircleColor
         m_Overridden: 1
-      - m_Value: {x: 1.3975757, y: 2.307109, z: 4.237095, w: 0}
+      - m_Value: {x: 4.4294243, y: 1.374972, z: 0.9044373, w: 0}
         m_Name: BreatingCircleColor
         m_Overridden: 1
-      - m_Value: {x: 17.192158, y: 10.415687, z: 23.968628, w: 0}
+      - m_Value: {x: 34.052174, y: 19.25791, z: 5.943068, w: 0}
         m_Name: ShaderColor
         m_Overridden: 1
     m_Uint:
@@ -120,5 +120,5 @@ VFXRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1198733669
-  m_SortingLayer: 14
+  m_SortingLayer: 3
   m_SortingOrder: 0

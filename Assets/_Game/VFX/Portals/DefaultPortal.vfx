@@ -71,9 +71,9 @@ MonoBehaviour:
   - title: Beam Flash
     position:
       serializedVersion: 2
-      x: 98
+      x: 68
       y: -2651
-      width: 641
+      width: 671
       height: 1671
     contents:
     - model: {fileID: 8926484042661614745}

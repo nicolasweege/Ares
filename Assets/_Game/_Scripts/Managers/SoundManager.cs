@@ -27,6 +27,7 @@ public static class SoundManager
 
         #region Eros
         ErosShoot_1,
+        ErosShoot_2,
         #endregion
 
         TestSound

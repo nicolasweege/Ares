@@ -62,4 +62,8 @@ public class GameManager : Singleton<GameManager> {
 
         OnAfterGameStateChanged?.Invoke(newState);
     }
+
+    private void OnDestroy() {
+        FunctionTimer.ClearTimers();
+    }
 }

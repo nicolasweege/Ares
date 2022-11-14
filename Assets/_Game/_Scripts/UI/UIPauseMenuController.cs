@@ -39,7 +39,7 @@ public class UIPauseMenuController : Singleton<UIPauseMenuController> {
     public void HandleDeathMenu() {
         DisablePlayerInput();
         EnableUIInput();
-        _youDiedText.SetActive(true);
+        // _youDiedText.SetActive(true);
         FunctionTimer.Create(() => _deathMenuComponents.SetActive(true), 1f);
         FunctionTimer.Create(_retryButton.Select, 1f);
     }

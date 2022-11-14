@@ -37,6 +37,11 @@ public class FunctionTimer {
         return funcTimer;
     }
 
+    public static void ClearTimers() {
+        UnityEngine.Object.Destroy(_initGameObject);
+        _activeTimersList.Clear();
+    }
+
     public class MonoBehaviourHook : MonoBehaviour {
         public Action OnUpdate;
 
@@ -53,11 +58,11 @@ public class FunctionTimer {
     private GameObject _hookedGameObject;
 
     private FunctionTimer(Action action, float timer, string timerName, GameObject hookedGameObject) {
-        this._action = action;
-        this._timer = timer;
-        this._timerName = timerName;
-        this._hookedGameObject = hookedGameObject;
-        this._isDestroyed = false;
+        _action = action;
+        _timer = timer;
+        _timerName = timerName;
+        _hookedGameObject = hookedGameObject;
+        _isDestroyed = false;
     }
 
     public void Update() {

@@ -57,6 +57,9 @@ TagManager:
   - name: Asteroid
     uniqueID: 2482356265
     locked: 0
+  - name: Portal
+    uniqueID: 1198733669
+    locked: 0
   - name: Afrodite Flame Trail
     uniqueID: 62210781
     locked: 0
@@ -89,7 +92,4 @@ TagManager:
     locked: 0
   - name: Damage Animation
     uniqueID: 3138669063
-    locked: 0
-  - name: Portal
-    uniqueID: 1198733669
     locked: 0
