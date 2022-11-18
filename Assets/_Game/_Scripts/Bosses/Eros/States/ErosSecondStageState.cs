@@ -23,17 +23,17 @@ public class ErosSecondStageState : ErosBaseState {
             _bulletsXSpawnPosition = -40;
         }
 
-        FunctionTimer.Create(() => _canShoot = true, 1f, "Set _canShoot to true");
+        FunctionTimer.Create(() => _canShoot = true, 0.7f, "Set _canShoot to true");
 
         // Teleport
-        FunctionTimer.Create(() => context.transform.position = context.NullMovePoint.position, 1.5f, "Set Eros null position");
+        FunctionTimer.Create(() => context.transform.position = context.NullMovePoint.position, 1f, "Set Eros null position");
 
         FunctionTimer.Create(() => {
             if (PlayerController.Instance.transform.position.y >= 0)
                 context.transform.position = context.MovePointDown.position;
             if (PlayerController.Instance.transform.position.y < 0)
                 context.transform.position = context.MovePointUp.position;
-        }, 2f, "Set Eros DOWN or UP position");
+        }, 1.5f, "Set Eros DOWN or UP position");
 
         FunctionTimer.Create(() => _canShoot = false, 8f, "Set _canShoot to false");
         FunctionTimer.Create(() => context.SwitchState(context.FirstStageState), 12f, "Switch state");

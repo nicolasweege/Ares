@@ -15,7 +15,11 @@ public class ErosFirstStageState : ErosBaseState {
         if (PlayerController.Instance == null || context == null) 
             return;
 
-        context.transform.position = Vector2.SmoothDamp(context.transform.position, PlayerController.Instance.transform.position, ref context.Velocity, 2.5f);
+        context.transform.position = Vector2.SmoothDamp(context.transform.position, 
+                                                        PlayerController.Instance.transform.position, 
+                                                        ref context.Velocity, 
+                                                        2.5f);
+
         HandleAttack(context);
     }
 
@@ -23,9 +27,8 @@ public class ErosFirstStageState : ErosBaseState {
         if (!_isFirstWaveFinished) {
             _firstWaveShootTimer -= Time.deltaTime;
             if (_firstWaveShootTimer <= 0f) {
-                for (int i = 0; i < context.FirstStageBulletDirs_1.Count; i++) {
+                for (int i = 0; i < context.FirstStageBulletDirs_1.Count; i++)
                     CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_1[i]);
-                }
 
                 SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
                 _isFirstWaveFinished = true;
@@ -36,9 +39,8 @@ public class ErosFirstStageState : ErosBaseState {
         if (_isFirstWaveFinished) {
             _secondWaveShootTimer -= Time.deltaTime;
             if (_secondWaveShootTimer <= 0f) {
-                for (int i = 0; i < context.FirstStageBulletDirs_2.Count; i++) {
+                for (int i = 0; i < context.FirstStageBulletDirs_2.Count; i++)
                     CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_2[i]);
-                }
 
                 SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
                 _isFirstWaveFinished = false;

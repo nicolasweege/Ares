@@ -8,7 +8,13 @@ public class ErosDeathState : ErosBaseState {
         _canScreenShake = true;
         context.RotateComponent.Rotation = Vector3.zero;
         HandleScreenShake(500, context);
-        HandleDeath(2000, context);
+
+        FunctionTimer.Create(() => {
+            _canScreenShake = false;
+            Object.Destroy(context.gameObject);
+            Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
+            GameManager.Instance.SetGameState(GameState.WinState);
+        }, 2f, "Handle Eros death");
     }
 
     public override void UpdateState(ErosController context) {}
@@ -18,13 +24,5 @@ public class ErosDeathState : ErosBaseState {
             await Task.Delay(millisecondsDelay);
             CinemachineManager.Instance.ScreenShakeEvent(context.ScreenShakeEvent);
         }
-    }
-
-    private async void HandleDeath(int millisecondsDelay, ErosController context) {
-        await Task.Delay(millisecondsDelay);
-        _canScreenShake = false;
-        Object.Destroy(context.gameObject);
-        Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
-        GameManager.Instance.SetGameState(GameState.WinState);
     }
 }

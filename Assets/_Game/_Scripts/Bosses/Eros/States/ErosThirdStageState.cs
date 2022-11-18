@@ -15,7 +15,7 @@ public class ErosThirdStageState : ErosBaseState {
                 context.transform.position = context.MovePointLeft.position;
             if (playerPos.x >= 0)
                 context.transform.position = context.MovePointRight.position;
-        }, 0.4f, "Set Eros LEFT or RIGHT position");
+        }, 0.5f, "Set Eros LEFT or RIGHT position");
 
         // Attack
         FunctionTimer.Create(() => {
