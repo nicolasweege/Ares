@@ -1,9 +1,7 @@
 using UnityEngine;
-using System.Threading.Tasks;
 
 public class ErosSecondStageState : ErosBaseState {
     private bool _canShoot = false;
-    
     private float _timeToFirstWaveShoot = 0.5f;
     private float _firstWaveShootTimer;
     private float _timeToSecondWaveShoot = 0.5f;
@@ -11,18 +9,31 @@ public class ErosSecondStageState : ErosBaseState {
     private bool _isFirstWaveFinished = false;
 
     public override void EnterState(ErosController context) {
-        FunctionTimer.Create(() => Teleport(500, context), 1f);
-        FunctionTimer.Create(() => _canShoot = false, 8f);
         FunctionTimer.Create(() => context.SwitchState(context.FirstStageState), 12f);
+        FunctionTimer.Create(() => _canShoot = true, 0.1f);
+        FunctionTimer.Create(() => _canShoot = false, 8f);
         FunctionTimer.Create(() => context.SpritesGameObject.SetActive(true), 11f);
+
+        // Teleport
+        FunctionTimer.Create(() => context.SpritesGameObject.SetActive(false), 1.5f);
+        FunctionTimer.Create(() => context.transform.position = context.NullMovePoint.position, 1.6f);
+
+        FunctionTimer.Create(() => {
+            if (PlayerController.Instance.transform.position.y >= 0)
+                context.transform.position = context.MovePointDown.position;
+
+            if (PlayerController.Instance.transform.position.y < 0)
+                context.transform.position = context.MovePointUp.position;
+        }, 2f);
+
+        FunctionTimer.Create(() => context.SpritesGameObject.SetActive(true), 2.1f);
     }
 
     public override void UpdateState(ErosController context) {
-        if (PlayerController.Instance == null || context == null) 
+        if (PlayerController.Instance == null || context == null)
             return;
 
-        if (_canShoot) 
-            HandleAttack(context);
+        if (_canShoot) HandleAttack(context);
     }
 
     private void HandleAttack(ErosController context) {
@@ -73,23 +84,5 @@ public class ErosSecondStageState : ErosBaseState {
         bulletInst.GetComponent<ErosBullet_1_Controller>().Speed = Random.Range(bulletSpeed, bulletSpeed * 1.5f);
 
         return bulletInst;
-    }
-
-    private async void Teleport(int delay, ErosController context)
-    {
-        context.SpritesGameObject.SetActive(false);
-        context.transform.position = context.NullMovePoint.position;
-
-        await Task.Delay(delay);
-        if (PlayerController.Instance.transform.position.y >= 0)
-            context.transform.position = context.MovePointUp.position;
-
-        if (PlayerController.Instance.transform.position.y < 0)
-            context.transform.position = context.MovePointDown.position;
-        
-        context.SpritesGameObject.SetActive(true);
-
-        await Task.Delay(1000);
-        _canShoot = true;
     }
 }

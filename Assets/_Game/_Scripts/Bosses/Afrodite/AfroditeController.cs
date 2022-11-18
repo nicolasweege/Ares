@@ -16,6 +16,7 @@ public class AfroditeController : Singleton<AfroditeController> {
     [NonSerialized] public Vector2 Velocity = Vector2.zero;
     [NonSerialized] public bool IsFlashing = false;
 
+    #region Timers
     [Header("Timers")]
     [SerializeField] private float _timeToSecondStage;
     private float _secondStageTimer;
@@ -23,6 +24,7 @@ public class AfroditeController : Singleton<AfroditeController> {
     private float _thirdStageTimer;
     [SerializeField] private float _timeToFourthStage;
     private float _fourthStageTimer;
+    #endregion
 
     #region First Stage Variables
     [Header("First Stage")]
@@ -84,12 +86,11 @@ public class AfroditeController : Singleton<AfroditeController> {
         Debug.Log($"Health: {Health} / Current State: {CurrentState}");
         
         IsFlashing = _flashHitEffect.IsFlashing;
-        CurrentState.UpdateState(this);
         HandleAI();
+        CurrentState.UpdateState(this);
 
-        if (Health <= 0 && CurrentState != DeathState) {
+        if (Health <= 0 && CurrentState != DeathState)
             SwitchState(DeathState);
-        }
     }
 
     private void HandleAI() {
@@ -132,17 +133,21 @@ public class AfroditeController : Singleton<AfroditeController> {
         }
 
         if (Health <= 100 && Health > 70) {
-            _secondStageTimer -= Time.deltaTime;
-            if (_secondStageTimer <= 0f) {
-                SwitchState(SecondStageState);
-                _secondStageTimer = _timeToSecondStage;
+            if (CurrentState != SecondStageState) {
+                _secondStageTimer -= Time.deltaTime;
+                if (_secondStageTimer <= 0f) {
+                    SwitchState(SecondStageState);
+                    _secondStageTimer = _timeToSecondStage;
+                }
             }
         }
     }
 
     public void SwitchState(AfroditeBaseState state) {
-        CurrentState = state;
-        state.EnterState(this);
+        if (enabled) {
+            CurrentState = state;
+            state.EnterState(this);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

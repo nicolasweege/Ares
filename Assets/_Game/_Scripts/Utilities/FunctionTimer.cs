@@ -19,19 +19,19 @@ public class FunctionTimer {
         _activeTimersList.Remove(funcTimer);
     }
 
-    private static void StopTimer(string timerName) {
+    private static void StopTimer(string timerDesc) {
         for (int i = 0; i < _activeTimersList.Count; i++) {
-            if (_activeTimersList[i]._timerName == timerName) {
+            if (_activeTimersList[i]._timerDesc == timerDesc) {
                 _activeTimersList[i].DestroySelf();
                 i--;
             }
         }
     }
 
-    public static FunctionTimer Create(Action action, float timer, string timerName = null) {
+    public static FunctionTimer Create(Action action, float timer, string timerDesc = null) {
         InitTimersList();
-        GameObject hookedGameObject = new GameObject("FunctionTimer", typeof(MonoBehaviourHook));
-        FunctionTimer funcTimer = new FunctionTimer(action, timer, timerName, hookedGameObject);
+        GameObject hookedGameObject = new GameObject($"FunctionTimer ({timerDesc})", typeof(MonoBehaviourHook));
+        FunctionTimer funcTimer = new FunctionTimer(action, timer, timerDesc, hookedGameObject);
         hookedGameObject.GetComponent<MonoBehaviourHook>().OnUpdate = funcTimer.Update;
         _activeTimersList.Add(funcTimer);
         return funcTimer;
@@ -53,14 +53,14 @@ public class FunctionTimer {
 
     private Action _action;
     private float _timer;
-    private string _timerName;
+    private string _timerDesc;
     private bool _isDestroyed;
     private GameObject _hookedGameObject;
 
-    private FunctionTimer(Action action, float timer, string timerName, GameObject hookedGameObject) {
+    private FunctionTimer(Action action, float timer, string timerDesc, GameObject hookedGameObject) {
         _action = action;
         _timer = timer;
-        _timerName = timerName;
+        _timerDesc = timerDesc;
         _hookedGameObject = hookedGameObject;
         _isDestroyed = false;
     }

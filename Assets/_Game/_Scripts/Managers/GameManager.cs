@@ -2,9 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-[Serializable]
-public enum GameState
-{
+[Serializable] public enum GameState {
     Gameplay,
     Paused,
     DeathMenu,
@@ -55,7 +53,7 @@ public class GameManager : Singleton<GameManager> {
                 FunctionTimer.Create(() => LevelManager.Instance.LoadScene("MainMenu"), 2.5f);
                 break;
 
-            case GameState.Paused :
+            case GameState.Paused:
                 _renderer2DData.rendererFeatures[0].SetActive(false);
                 break;
         }

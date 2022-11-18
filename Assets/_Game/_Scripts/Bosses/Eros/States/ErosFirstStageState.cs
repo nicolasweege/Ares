@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Threading.Tasks;
 
 public class ErosFirstStageState : ErosBaseState {
     private float _timeToFirstWaveShoot = 0.25f;
@@ -10,7 +9,6 @@ public class ErosFirstStageState : ErosBaseState {
 
     public override void EnterState(ErosController context) {
         context.RotateComponent.Rotation = new Vector3(0, 0, 300);
-        SwitchStateTimer(5000, context);
     }
 
     public override void UpdateState(ErosController context) {
@@ -52,10 +50,5 @@ public class ErosFirstStageState : ErosBaseState {
         var bulletInst = Object.Instantiate(bullet, startingPos.position, Quaternion.identity);
         Vector2 _bulletDir = (bulletDir.position - bulletInst.transform.position).normalized;
         bulletInst.GetComponent<BulletBase>().Direction = new Vector3(_bulletDir.x, _bulletDir.y);
-    }
-
-    private async void SwitchStateTimer(int delay, ErosController context) {
-        await Task.Delay(delay);
-        context.SwitchState(context.SecondStageState);
     }
 }

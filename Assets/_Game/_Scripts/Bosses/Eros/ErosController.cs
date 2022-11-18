@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 public class ErosController : Singleton<ErosController> {
     #region Variables
@@ -15,12 +14,22 @@ public class ErosController : Singleton<ErosController> {
     [NonSerialized] public bool IsFlashing = false;
     [NonSerialized] public Vector2 Velocity = Vector2.zero;
 
+    #region Timers
+    [Header("Timers")]
+    [SerializeField] private float _timeToSecondStage;
+    private float _secondStageTimer;
+    [SerializeField] private float _timeToThirdStage;
+    private float _thirdStageTimer;
+    #endregion
+
+    #region Move Points
     [Header("Move Points")]
     public Transform NullMovePoint;
     public Transform MovePointUp;
     public Transform MovePointDown;
     public Transform MovePointRight;
     public Transform MovePointLeft;
+    #endregion
 
     #region First Stage Variables
     [Header("First Stage")]
@@ -32,8 +41,10 @@ public class ErosController : Singleton<ErosController> {
     #region Second Stage Variables
     [Header("Second Stage")]
     public GameObject SecondStageBullet;
-    public List<Transform> BulletSpawnPoints_1 = new List<Transform>();
-    public List<Transform> BulletSpawnPoints_2 = new List<Transform>();
+    #endregion
+
+    #region Third Stage Variables
+    [Header("Third Stage")]
     #endregion
 
     #region State Variables
@@ -42,6 +53,7 @@ public class ErosController : Singleton<ErosController> {
     [NonSerialized] public ErosDeathState DeathState = new ErosDeathState();
     [NonSerialized] public ErosFirstStageState FirstStageState = new ErosFirstStageState();
     [NonSerialized] public ErosSecondStageState SecondStageState = new ErosSecondStageState();
+    [NonSerialized] public ErosThirdStageState ThirdStageState = new ErosThirdStageState();
     #endregion
 
     [Header("Events")]
@@ -54,19 +66,54 @@ public class ErosController : Singleton<ErosController> {
         CurrentState = IdleState;
         CurrentState.EnterState(this);
 
-        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>()) {
+        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
             renderer.gameObject.AddComponent<ErosResetColor>();
-        }
     }
 
     private void Update() {
         Debug.Log($"Health: {Health} / Current State: {CurrentState}");
 
         IsFlashing = _flashHitEffect.IsFlashing;
+        HandleAI();
         CurrentState.UpdateState(this);
 
-        if (Health <= 0 && CurrentState != DeathState) {
+        if (Health <= 0 && CurrentState != DeathState) 
             SwitchState(DeathState);
+    }
+
+    private void HandleAI()
+    {
+        if (Health <= 60 && Health > 0)
+        {
+            if (CurrentState != SecondStageState && CurrentState != ThirdStageState)
+            {
+                _secondStageTimer -= Time.deltaTime;
+                if (_secondStageTimer <= 0f)
+                {
+                    SwitchState(SecondStageState);
+                    _secondStageTimer = _timeToSecondStage;
+                }
+
+                _thirdStageTimer -= Time.deltaTime;
+                if (_thirdStageTimer <= 0f)
+                {
+                    SwitchState(ThirdStageState);
+                    _thirdStageTimer = _timeToThirdStage;
+                }
+            }
+        }
+
+        if (Health <= 80 && Health > 60)
+        {
+            if (CurrentState != SecondStageState)
+            {
+                _secondStageTimer -= Time.deltaTime;
+                if (_secondStageTimer <= 0f)
+                {
+                    SwitchState(SecondStageState);
+                    _secondStageTimer = _timeToSecondStage;
+                }
+            }
         }
     }
 
@@ -76,8 +123,10 @@ public class ErosController : Singleton<ErosController> {
     }
 
     public void SwitchState(ErosBaseState state) {
-        CurrentState = state;
-        state.EnterState(this);
+        if (enabled) {
+            CurrentState = state;
+            state.EnterState(this);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

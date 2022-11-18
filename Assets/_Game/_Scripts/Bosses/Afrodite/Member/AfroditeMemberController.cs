@@ -35,8 +35,10 @@ public class AfroditeMemberController : Singleton<AfroditeMemberController> {
     }
 
     public void SwitchState(BaseState_Afrodite_M state) {
-        CurrentState = state;
-        state.EnterState(this);
+        if (enabled) {
+            CurrentState = state;
+            state.EnterState(this);
+        }
     }
 
     private void OnDestroy() {
