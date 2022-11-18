@@ -105,13 +105,13 @@ public class ErosController : Singleton<ErosController> {
 
         if (Health <= 80 && Health > 60)
         {
-            if (CurrentState != SecondStageState)
+            if (CurrentState != ThirdStageState)
             {
-                _secondStageTimer -= Time.deltaTime;
-                if (_secondStageTimer <= 0f)
+                _thirdStageTimer -= Time.deltaTime;
+                if (_thirdStageTimer <= 0f)
                 {
-                    SwitchState(SecondStageState);
-                    _secondStageTimer = _timeToSecondStage;
+                    SwitchState(ThirdStageState);
+                    _thirdStageTimer = _timeToThirdStage;
                 }
             }
         }

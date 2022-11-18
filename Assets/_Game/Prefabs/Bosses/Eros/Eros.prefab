@@ -303,8 +303,8 @@ MonoBehaviour:
   RotateComponent: {fileID: 1290390224690836479}
   SpritesGameObject: {fileID: 4797997095232854257}
   _flashHitEffect: {fileID: 5047775240831584902}
-  _timeToSecondStage: 15
-  _timeToThirdStage: 25
+  _timeToSecondStage: 25
+  _timeToThirdStage: 10
   NullMovePoint: {fileID: 0}
   MovePointUp: {fileID: 0}
   MovePointDown: {fileID: 0}
@@ -322,8 +322,6 @@ MonoBehaviour:
   - {fileID: 166668393005627716}
   - {fileID: 5930495837095021795}
   SecondStageBullet: {fileID: 5665722100170480527, guid: 928262cbdb3c19047931231dc2ab7c4e, type: 3}
-  BulletSpawnPoints_1: []
-  BulletSpawnPoints_2: []
   ScreenShakeEvent:
     m_PersistentCalls:
       m_Calls:

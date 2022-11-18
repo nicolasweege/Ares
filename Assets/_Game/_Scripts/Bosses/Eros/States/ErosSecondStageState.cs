@@ -1,39 +1,50 @@
 using UnityEngine;
 
 public class ErosSecondStageState : ErosBaseState {
-    private bool _canShoot = false;
+    private bool _canShoot = true;
     private float _timeToFirstWaveShoot = 0.5f;
     private float _firstWaveShootTimer;
     private float _timeToSecondWaveShoot = 0.5f;
     private float _secondWaveShootTimer;
     private bool _isFirstWaveFinished = false;
+    private Vector3 _bulletsDirection;
+    private float _bulletsXSpawnPosition;
+    private int _randomNumber;
 
     public override void EnterState(ErosController context) {
-        FunctionTimer.Create(() => context.SwitchState(context.FirstStageState), 12f);
-        FunctionTimer.Create(() => _canShoot = true, 0.1f);
-        FunctionTimer.Create(() => _canShoot = false, 8f);
-        FunctionTimer.Create(() => context.SpritesGameObject.SetActive(true), 11f);
+        // Set bullets' direction and X spawn position
+        _randomNumber = Random.Range(0, 2);
+        if (_randomNumber != 0) {
+            _bulletsDirection = Vector3.left;
+            _bulletsXSpawnPosition = 40;
+        }
+        if (_randomNumber == 0) {
+            _bulletsDirection = Vector3.right;
+            _bulletsXSpawnPosition = -40;
+        }
+
+        FunctionTimer.Create(() => _canShoot = true, 1f, "Set _canShoot to true");
 
         // Teleport
-        FunctionTimer.Create(() => context.SpritesGameObject.SetActive(false), 1.5f);
-        FunctionTimer.Create(() => context.transform.position = context.NullMovePoint.position, 1.6f);
+        FunctionTimer.Create(() => context.transform.position = context.NullMovePoint.position, 1.5f, "Set Eros null position");
 
         FunctionTimer.Create(() => {
             if (PlayerController.Instance.transform.position.y >= 0)
                 context.transform.position = context.MovePointDown.position;
-
             if (PlayerController.Instance.transform.position.y < 0)
                 context.transform.position = context.MovePointUp.position;
-        }, 2f);
+        }, 2f, "Set Eros DOWN or UP position");
 
-        FunctionTimer.Create(() => context.SpritesGameObject.SetActive(true), 2.1f);
+        FunctionTimer.Create(() => _canShoot = false, 8f, "Set _canShoot to false");
+        FunctionTimer.Create(() => context.SwitchState(context.FirstStageState), 12f, "Switch state");
     }
 
     public override void UpdateState(ErosController context) {
         if (PlayerController.Instance == null || context == null)
             return;
 
-        if (_canShoot) HandleAttack(context);
+        if (_canShoot)
+            HandleAttack(context);
     }
 
     private void HandleAttack(ErosController context) {
@@ -45,7 +56,7 @@ public class ErosSecondStageState : ErosBaseState {
                 float yy = 0f;
                 for (int i = 0; i < 10; i++)
                 {
-                    var bullet = CreateBullet(new Vector3(40, -9 + yy, 0), context.FirstStageBullet, Vector3.left);
+                    var bullet = CreateBullet(new Vector3(_bulletsXSpawnPosition, -9 + yy, 0), context.FirstStageBullet, _bulletsDirection);
                     yy += 2;
                 }
 
@@ -63,7 +74,7 @@ public class ErosSecondStageState : ErosBaseState {
                 float yy = 0f;
                 for (int i = 0; i < 9; i++)
                 {
-                    var bullet = CreateBullet(new Vector3(40, -8 + yy, 0), context.FirstStageBullet, Vector3.left);
+                    var bullet = CreateBullet(new Vector3(_bulletsXSpawnPosition, -8 + yy, 0), context.FirstStageBullet, _bulletsDirection);
                     yy += 2;
                 }
 
