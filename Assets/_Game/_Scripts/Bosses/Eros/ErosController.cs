@@ -7,7 +7,7 @@ public class ErosController : Singleton<ErosController> {
     #region Variables
     [Header("General")]
     public int Health;
-    public GameObject DeathAnim;
+    public GameObject MainAnimation;
     public Rotate RotateComponent;
     public GameObject SpritesGameObject;
     [SerializeField] private FlashHitEffect _flashHitEffect;

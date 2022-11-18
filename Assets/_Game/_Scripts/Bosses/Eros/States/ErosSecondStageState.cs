@@ -26,17 +26,38 @@ public class ErosSecondStageState : ErosBaseState {
         FunctionTimer.Create(() => _canShoot = true, 0.7f, "Set _canShoot to true");
 
         // Teleport
-        FunctionTimer.Create(() => context.transform.position = context.NullMovePoint.position, 1f, "Set Eros null position");
+        FunctionTimer.Create(() => {
+            var animPos = context.transform.position;
+            context.transform.position = context.NullMovePoint.position;
+            Object.Instantiate(context.MainAnimation, animPos, Quaternion.identity);
+        }, 1f, "Set Eros null position");
 
         FunctionTimer.Create(() => {
-            if (PlayerController.Instance.transform.position.y >= 0)
+            if (PlayerController.Instance.transform.position.y >= 0) {
+                Object.Instantiate(context.MainAnimation, context.MovePointDown.position, Quaternion.identity);
                 context.transform.position = context.MovePointDown.position;
-            if (PlayerController.Instance.transform.position.y < 0)
+            }
+
+            if (PlayerController.Instance.transform.position.y < 0) {
+                Object.Instantiate(context.MainAnimation, context.MovePointUp.position, Quaternion.identity);
                 context.transform.position = context.MovePointUp.position;
+            }
         }, 1.5f, "Set Eros DOWN or UP position");
 
         FunctionTimer.Create(() => _canShoot = false, 8f, "Set _canShoot to false");
-        FunctionTimer.Create(() => context.SwitchState(context.FirstStageState), 12f, "Switch state");
+
+        FunctionTimer.Create(() => {
+            var animPos = context.transform.position;
+            context.transform.position = context.NullMovePoint.position;
+            Object.Instantiate(context.MainAnimation, animPos, Quaternion.identity);
+        }, 11.5f, "Set Eros null position");
+
+        FunctionTimer.Create(() => {
+            Object.Instantiate(context.MainAnimation, new Vector3(0, 0, 0), Quaternion.identity);
+            context.transform.position = new Vector3(0, 0, 0);
+        }, 12f, "Set Eros center position");
+
+        FunctionTimer.Create(() => context.SwitchState(context.FirstStageState), 12.5f, "Switch state");
     }
 
     public override void UpdateState(ErosController context) {

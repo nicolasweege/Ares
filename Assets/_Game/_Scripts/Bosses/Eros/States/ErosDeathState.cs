@@ -12,7 +12,7 @@ public class ErosDeathState : ErosBaseState {
         FunctionTimer.Create(() => {
             _canScreenShake = false;
             Object.Destroy(context.gameObject);
-            Object.Instantiate(context.DeathAnim, context.transform.position, Quaternion.identity);
+            Object.Instantiate(context.MainAnimation, context.transform.position, Quaternion.identity);
             GameManager.Instance.SetGameState(GameState.WinState);
         }, 2f, "Handle Eros death");
     }
