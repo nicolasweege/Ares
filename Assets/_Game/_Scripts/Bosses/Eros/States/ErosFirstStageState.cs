@@ -30,6 +30,7 @@ public class ErosFirstStageState : ErosBaseState {
                 for (int i = 0; i < context.FirstStageBulletDirs_1.Count; i++)
                     CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_1[i]);
 
+                Object.Instantiate(context.MainAnimation, context.transform.position, Quaternion.identity);
                 SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
                 _isFirstWaveFinished = true;
                 _firstWaveShootTimer = _timeToFirstWaveShoot;
@@ -42,6 +43,7 @@ public class ErosFirstStageState : ErosBaseState {
                 for (int i = 0; i < context.FirstStageBulletDirs_2.Count; i++)
                     CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_2[i]);
 
+                Object.Instantiate(context.MainAnimation, context.transform.position, Quaternion.identity);
                 SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
                 _isFirstWaveFinished = false;
                 _secondWaveShootTimer = _timeToSecondWaveShoot;
