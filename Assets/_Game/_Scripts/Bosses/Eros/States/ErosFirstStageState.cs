@@ -1,14 +1,14 @@
 using UnityEngine;
 
 public class ErosFirstStageState : ErosBaseState {
-    private float _timeToFirstWaveShoot = 0.25f;
+    private float _timeToFirstWaveShoot = 0.4f;
     private float _firstWaveShootTimer;
-    private float _timeToSecondWaveShoot = 0.25f;
+    private float _timeToSecondWaveShoot = 0.4f;
     private float _secondWaveShootTimer;
     private bool _isFirstWaveFinished = false;
 
     public override void EnterState(ErosController context) {
-        context.RotateComponent.Rotation = new Vector3(0, 0, 300);
+        context.RotateComponent.Rotation = new Vector3(0, 0, 250);
     }
 
     public override void UpdateState(ErosController context) {
