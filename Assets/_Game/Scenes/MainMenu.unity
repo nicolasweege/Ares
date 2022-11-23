@@ -377,11 +377,11 @@ RectTransform:
   m_Children:
   - {fileID: 1710855044}
   m_Father: {fileID: 205197703}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -109.43}
+  m_AnchoredPosition: {x: 0, y: -228.3}
   m_SizeDelta: {x: 246.319, y: 118.873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &30385902
@@ -1494,8 +1494,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 30385901}
   - {fileID: 2040108184}
+  - {fileID: 30385901}
   - {fileID: 23253896}
   m_Father: {fileID: 1722476397}
   m_RootOrder: 1
@@ -6641,7 +6641,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Eros (beta)
+  m_text: Eros
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
   m_sharedMaterial: {fileID: -7859569727068880744, guid: f49414317252b4f40aec2a6f5aecc651, type: 2}
@@ -9925,11 +9925,11 @@ RectTransform:
   m_Children:
   - {fileID: 1335493058}
   m_Father: {fileID: 205197703}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -228.3}
+  m_AnchoredPosition: {x: 0, y: -109.43001}
   m_SizeDelta: {x: 329.653, y: 118.873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2040108185

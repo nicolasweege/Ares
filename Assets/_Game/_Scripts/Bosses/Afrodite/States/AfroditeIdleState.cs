@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class AfroditeIdleState : AfroditeBaseState {
-    private float _timeToSwitchState = 1f;
+    private float _timeToSwitchState = 2f;
     private float _timer;
 
     public override void EnterState(AfroditeController context) {
