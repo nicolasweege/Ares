@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ErosSecondStageState : ErosBaseState {
     private bool _canShoot = true;
-    private float _timeToFirstWaveShoot = 0.5f;
+    private float _timeToFirstWaveShoot = 1f;
     private float _firstWaveShootTimer;
-    private float _timeToSecondWaveShoot = 0.5f;
+    private float _timeToSecondWaveShoot = 1f;
     private float _secondWaveShootTimer;
     private bool _isFirstWaveFinished = false;
     private Vector3 _bulletsDirection;

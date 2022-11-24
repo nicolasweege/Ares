@@ -83,7 +83,7 @@ public class ErosController : Singleton<ErosController> {
 
     private void HandleAI()
     {
-        if (Health <= 60 && Health > 0)
+        if (Health <= 50 && Health > 0)
         {
             if (CurrentState != SecondStageState && CurrentState != ThirdStageState)
             {
@@ -103,7 +103,7 @@ public class ErosController : Singleton<ErosController> {
             }
         }
 
-        if (Health <= 80 && Health > 60)
+        if (Health <= 70 && Health > 50)
         {
             if (CurrentState != ThirdStageState)
             {
