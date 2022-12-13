@@ -28,7 +28,7 @@ public class Eros_State_2 : Eros_State {
         // Teleport
         FunctionTimer.Create(() => {
             var animPos = context.transform.position;
-            context.transform.position = context.NullMovePoint.position;
+            context.transform.position = context.CenterMovePoint.position;
             Object.Instantiate(context.MainAnimation, animPos, Quaternion.identity);
         }, 1f, "Set Eros null position");
 
@@ -48,7 +48,7 @@ public class Eros_State_2 : Eros_State {
 
         FunctionTimer.Create(() => {
             var animPos = context.transform.position;
-            context.transform.position = context.NullMovePoint.position;
+            context.transform.position = context.CenterMovePoint.position;
             Object.Instantiate(context.MainAnimation, animPos, Quaternion.identity);
         }, 11.5f, "Set Eros null position");
 
@@ -77,7 +77,7 @@ public class Eros_State_2 : Eros_State {
                 float yy = 0f;
                 for (int i = 0; i < 10; i++)
                 {
-                    var bullet = CreateBullet(new Vector3(_bulletsXSpawnPosition, -9 + yy, 0), context.FirstStageBullet, _bulletsDirection);
+                    var bullet = CreateBullet(new Vector3(_bulletsXSpawnPosition, -9 + yy, 0), context.State_1_Bullet, _bulletsDirection);
                     yy += 2;
                 }
 
@@ -95,7 +95,7 @@ public class Eros_State_2 : Eros_State {
                 float yy = 0f;
                 for (int i = 0; i < 9; i++)
                 {
-                    var bullet = CreateBullet(new Vector3(_bulletsXSpawnPosition, -8 + yy, 0), context.FirstStageBullet, _bulletsDirection);
+                    var bullet = CreateBullet(new Vector3(_bulletsXSpawnPosition, -8 + yy, 0), context.State_1_Bullet, _bulletsDirection);
                     yy += 2;
                 }
 

@@ -27,8 +27,8 @@ public class Eros_State_1 : Eros_State {
         if (!_isFirstWaveFinished) {
             _firstWaveShootTimer -= Time.deltaTime;
             if (_firstWaveShootTimer <= 0f) {
-                for (int i = 0; i < context.FirstStageBulletDirs_1.Count; i++)
-                    CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_1[i]);
+                for (int i = 0; i < context.State_1_BulletDirs_1.Count; i++)
+                    CreateBullet(context.transform, context.State_1_Bullet, context.State_1_BulletDirs_1[i]);
 
                 Object.Instantiate(context.MainAnimation, context.transform.position, Quaternion.identity);
                 SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);
@@ -40,8 +40,8 @@ public class Eros_State_1 : Eros_State {
         if (_isFirstWaveFinished) {
             _secondWaveShootTimer -= Time.deltaTime;
             if (_secondWaveShootTimer <= 0f) {
-                for (int i = 0; i < context.FirstStageBulletDirs_2.Count; i++)
-                    CreateBullet(context.transform, context.FirstStageBullet, context.FirstStageBulletDirs_2[i]);
+                for (int i = 0; i < context.State_1_BulletDirs_2.Count; i++)
+                    CreateBullet(context.transform, context.State_1_Bullet, context.State_1_BulletDirs_2[i]);
 
                 Object.Instantiate(context.MainAnimation, context.transform.position, Quaternion.identity);
                 SoundManager.PlaySound(SoundManager.Sound.ErosShoot_1, context.transform.position, 0.5f);

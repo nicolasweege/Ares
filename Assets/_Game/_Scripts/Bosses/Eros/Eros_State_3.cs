@@ -9,7 +9,7 @@ public class Eros_State_3 : Eros_State {
         // First Teleport
         FunctionTimer.Create(() => {
             var animPos = context.transform.position;
-            context.transform.position = context.NullMovePoint.position;
+            context.transform.position = context.CenterMovePoint.position;
             Object.Instantiate(context.MainAnimation, animPos, Quaternion.identity);
         }, 0.3f, "Set Eros null position");
 
@@ -39,7 +39,7 @@ public class Eros_State_3 : Eros_State {
 
         FunctionTimer.Create(() => {
             var animPos = context.transform.position;
-            context.transform.position = context.NullMovePoint.position;
+            context.transform.position = context.CenterMovePoint.position;
             Object.Instantiate(context.MainAnimation, animPos, Quaternion.identity);
         }, 3.1f, "Set Eros null position");
 

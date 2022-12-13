@@ -16,15 +16,15 @@ public class Eros : Singleton<Eros> {
 
     #region Timers
     [Header("Timers")]
-    [SerializeField] private float _timeToSecondStage;
-    private float _secondStageTimer;
-    [SerializeField] private float _timeToThirdStage;
-    private float _thirdStageTimer;
+    public float TimeToSecondStage;
+    private float SecondStageTimer;
+    public float TimeToThirdStage;
+    private float ThirdStageTimer;
     #endregion
 
     #region Move Points
     [Header("Move Points")]
-    public Transform NullMovePoint;
+    public Transform CenterMovePoint;
     public Transform MovePointUp;
     public Transform MovePointDown;
     public Transform MovePointRight;
@@ -32,19 +32,10 @@ public class Eros : Singleton<Eros> {
     #endregion
 
     #region State 1
-    [Header("First Stage")]
-    public GameObject FirstStageBullet;
-    public List<Transform> FirstStageBulletDirs_1 = new List<Transform>();
-    public List<Transform> FirstStageBulletDirs_2 = new List<Transform>();
-    #endregion
-
-    #region State 2
-    [Header("Second Stage")]
-    public GameObject SecondStageBullet;
-    #endregion
-
-    #region State 3
-    [Header("Third Stage")]
+    [Header("State 1")]
+    public GameObject State_1_Bullet;
+    public List<Transform> State_1_BulletDirs_1 = new List<Transform>();
+    public List<Transform> State_1_BulletDirs_2 = new List<Transform>();
     #endregion
 
     #region States
@@ -77,8 +68,7 @@ public class Eros : Singleton<Eros> {
         HandleAI();
         CurrentState.UpdateState(this);
 
-        if (Health <= 0 && CurrentState != DeathState) 
-            SwitchState(DeathState);
+        if (Health <= 0 && CurrentState != DeathState) SwitchState(DeathState);
     }
 
     private void HandleAI()
@@ -87,18 +77,18 @@ public class Eros : Singleton<Eros> {
         {
             if (CurrentState != SecondState && CurrentState != ThirdState)
             {
-                _secondStageTimer -= Time.deltaTime;
-                if (_secondStageTimer <= 0f)
+                SecondStageTimer -= Time.deltaTime;
+                if (SecondStageTimer <= 0f)
                 {
                     SwitchState(SecondState);
-                    _secondStageTimer = _timeToSecondStage;
+                    SecondStageTimer = TimeToSecondStage;
                 }
 
-                _thirdStageTimer -= Time.deltaTime;
-                if (_thirdStageTimer <= 0f)
+                ThirdStageTimer -= Time.deltaTime;
+                if (ThirdStageTimer <= 0f)
                 {
                     SwitchState(ThirdState);
-                    _thirdStageTimer = _timeToThirdStage;
+                    ThirdStageTimer = TimeToThirdStage;
                 }
             }
         }
@@ -107,11 +97,11 @@ public class Eros : Singleton<Eros> {
         {
             if (CurrentState != ThirdState)
             {
-                _thirdStageTimer -= Time.deltaTime;
-                if (_thirdStageTimer <= 0f)
+                ThirdStageTimer -= Time.deltaTime;
+                if (ThirdStageTimer <= 0f)
                 {
                     SwitchState(ThirdState);
-                    _thirdStageTimer = _timeToThirdStage;
+                    ThirdStageTimer = TimeToThirdStage;
                 }
             }
         }

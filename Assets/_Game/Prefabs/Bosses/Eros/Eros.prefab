@@ -807,25 +807,24 @@ MonoBehaviour:
   RotateComponent: {fileID: 1290390224690836479}
   SpritesGameObject: {fileID: 4797997095232854257}
   _flashHitEffect: {fileID: 5047775240831584902}
-  _timeToSecondStage: 25
-  _timeToThirdStage: 10
-  NullMovePoint: {fileID: 0}
+  TimeToSecondStage: 10
+  TimeToThirdStage: 25
+  CenterMovePoint: {fileID: 0}
   MovePointUp: {fileID: 0}
   MovePointDown: {fileID: 0}
   MovePointRight: {fileID: 0}
   MovePointLeft: {fileID: 0}
-  FirstStageBullet: {fileID: 5665722100170480527, guid: 9634dd6d4c726884ba85a8a28bbe8b49, type: 3}
-  FirstStageBulletDirs_1:
+  State_1_Bullet: {fileID: 5665722100170480527, guid: 9634dd6d4c726884ba85a8a28bbe8b49, type: 3}
+  State_1_BulletDirs_1:
   - {fileID: 8534739963001420116}
   - {fileID: 5064049383079432459}
   - {fileID: 806092622724072105}
   - {fileID: 6403524142690711470}
-  FirstStageBulletDirs_2:
+  State_1_BulletDirs_2:
   - {fileID: 5936597020808362783}
   - {fileID: 6575928246963508236}
   - {fileID: 166668393005627716}
   - {fileID: 5930495837095021795}
-  SecondStageBullet: {fileID: 5665722100170480527, guid: 928262cbdb3c19047931231dc2ab7c4e, type: 3}
   ScreenShakeEvent:
     m_PersistentCalls:
       m_Calls:

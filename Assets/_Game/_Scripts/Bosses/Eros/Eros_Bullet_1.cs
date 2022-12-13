@@ -39,7 +39,9 @@ public class Eros_Bullet_1 : MonoBehaviour {
                 break;
 
             case "PlayerMainShip": {
-                    if (!Player.Instance.IsDashing) DestroyBullet();
+                    if (Player.Instance.CanTakeDamage) {
+                        if (!Player.Instance.IsDashing) DestroyBullet();
+                    }
                 }
                 break;
         }
