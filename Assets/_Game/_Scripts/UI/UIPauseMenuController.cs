@@ -86,11 +86,11 @@ public class UIPauseMenuController : Singleton<UIPauseMenuController> {
     #endregion
 
     public void EnablePlayerInput() {
-        PlayerController.Instance.PlayerInputActions.Enable();
+        Player.Instance.PlayerInputActions.Enable();
     }
 
     public void DisablePlayerInput() {
-        PlayerController.Instance.PlayerInputActions.Disable();
+        Player.Instance.PlayerInputActions.Disable();
     }
 
     public void EnableUIInput() {

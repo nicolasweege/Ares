@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager> {
             case GameState.DeathMenu:
                 _renderer2DData.rendererFeatures[0].SetActive(false);
                 AudioListener.pause = true;
-                CinemachineManager.Instance.SetTargetTransform(PlayerController.Instance.transform);
+                CinemachineManager.Instance.SetTargetTransform(Player.Instance.transform);
                 UIPauseMenuController.Instance.DisablePlayerHud();
                 FunctionTimer.Create(() => CinemachineManager.Instance.ZoomIn(5f, 3f), 0.1f);
                 FunctionTimer.Create(() => CinematicBars.Instance.Show(500f, 0.5f), 0.5f);

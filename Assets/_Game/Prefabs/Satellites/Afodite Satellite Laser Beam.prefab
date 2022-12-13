@@ -82,12 +82,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1075c271d232248b209470bd79be57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lineRenderer: {fileID: 2526442506186889314}
-  _laserBoxCollider: {fileID: 6096758749212342335}
-  _fireStartingPos: {fileID: 2466176862008024909}
-  _fireDir: {fileID: 3601124844114529875}
-  _startVFX: {fileID: 188523795549292374}
-  _endVFX: {fileID: 5371843745005849578}
+  LineRenderer: {fileID: 2526442506186889314}
+  LaserBoxCollider: {fileID: 6096758749212342335}
+  FireStartingPos: {fileID: 2466176862008024909}
+  FireDir: {fileID: 3601124844114529875}
+  StartVFX: {fileID: 188523795549292374}
+  EndVFX: {fileID: 5371843745005849578}
+  LaserDir: {x: 0, y: 0}
 --- !u!1 &3407550114908391497
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +191,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393968281
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -5030,7 +5031,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393968281
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9932,7 +9933,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393968281
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
