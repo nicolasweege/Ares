@@ -16,10 +16,10 @@ public class Eros : Singleton<Eros> {
 
     #region Timers
     [Header("Timers")]
-    public float TimeToSecondStage;
-    private float SecondStageTimer;
-    public float TimeToThirdStage;
-    private float ThirdStageTimer;
+    public float TimeToSecondState;
+    private float SecondStateTimer;
+    public float TimeToThirdState;
+    private float ThirdStateTimer;
     #endregion
 
     #region Move Points
@@ -77,18 +77,18 @@ public class Eros : Singleton<Eros> {
         {
             if (CurrentState != SecondState && CurrentState != ThirdState)
             {
-                SecondStageTimer -= Time.deltaTime;
-                if (SecondStageTimer <= 0f)
+                SecondStateTimer -= Time.deltaTime;
+                if (SecondStateTimer <= 0f)
                 {
                     SwitchState(SecondState);
-                    SecondStageTimer = TimeToSecondStage;
+                    SecondStateTimer = TimeToSecondState;
                 }
 
-                ThirdStageTimer -= Time.deltaTime;
-                if (ThirdStageTimer <= 0f)
+                ThirdStateTimer -= Time.deltaTime;
+                if (ThirdStateTimer <= 0f)
                 {
                     SwitchState(ThirdState);
-                    ThirdStageTimer = TimeToThirdStage;
+                    ThirdStateTimer = TimeToThirdState;
                 }
             }
         }
@@ -97,11 +97,11 @@ public class Eros : Singleton<Eros> {
         {
             if (CurrentState != ThirdState)
             {
-                ThirdStageTimer -= Time.deltaTime;
-                if (ThirdStageTimer <= 0f)
+                ThirdStateTimer -= Time.deltaTime;
+                if (ThirdStateTimer <= 0f)
                 {
                     SwitchState(ThirdState);
-                    ThirdStageTimer = TimeToThirdStage;
+                    ThirdStateTimer = TimeToThirdState;
                 }
             }
         }

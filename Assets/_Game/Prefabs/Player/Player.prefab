@@ -5214,7 +5214,7 @@ MonoBehaviour:
   _dashCooldown: 0.2
   _timeToFinishDash: 0.35
   _timeToCanTakeDamage: 2.5
-  _timeToCanMove: 0.6
+  _timeToCanMove: 0.5
   _flashColor: {r: 0, g: 0, b: 0, a: 0}
   _renderer2DData: {fileID: 11400000, guid: f5909fb328a18b1499e62581ea4f2d87, type: 2}
   _heartImages: []
@@ -5234,6 +5234,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  IsDashing: 0
   _controllerDeadzone: 0.1
   _aimObjectTransform: {fileID: 3655777091004263308}
   IsGamepad: 0

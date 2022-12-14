@@ -807,8 +807,8 @@ MonoBehaviour:
   RotateComponent: {fileID: 1290390224690836479}
   SpritesGameObject: {fileID: 4797997095232854257}
   _flashHitEffect: {fileID: 5047775240831584902}
-  TimeToSecondStage: 10
-  TimeToThirdStage: 25
+  TimeToSecondState: 25
+  TimeToThirdState: 10
   CenterMovePoint: {fileID: 0}
   MovePointUp: {fileID: 0}
   MovePointDown: {fileID: 0}

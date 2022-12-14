@@ -12,6 +12,10 @@ public class Player_Bullet : MonoBehaviour {
 
     private void Update() {
         transform.position += Direction * Time.deltaTime * Speed; // move bullet
+
+        // destroy bullet outside the screen
+        if (transform.position.x > 15f || transform.position.x < -15f) Destroy(gameObject);
+        if (transform.position.y > 10f || transform.position.y < -10f) Destroy(gameObject);
     }
 
     public void DestroyBullet()

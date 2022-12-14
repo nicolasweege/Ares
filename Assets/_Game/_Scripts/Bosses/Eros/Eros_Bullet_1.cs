@@ -20,6 +20,7 @@ public class Eros_Bullet_1 : MonoBehaviour {
 
         if (Eros.Instance.CurrentState != Eros.Instance.SecondState)
         {
+            // destroy bullet outside the screen
             if (transform.position.x > 15f || transform.position.x < -15f) Destroy(gameObject);
             if (transform.position.y > 10f || transform.position.y < -10f) Destroy(gameObject);
         }
