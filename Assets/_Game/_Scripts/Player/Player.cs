@@ -296,6 +296,13 @@ public class Player : Singleton<Player> {
             transform.position += new Vector3(MoveVector.x, MoveVector.y) * Time.deltaTime * _speed;
             _dashCooldownTimer -= Time.deltaTime;
         }
+
+        // teleport the player when outside the screen
+        if (transform.position.x > 12.8f) transform.position = new Vector3(-12.8f, transform.position.y, transform.position.z);
+        if (transform.position.x < -12.8f) transform.position = new Vector3(12.8f, transform.position.y, transform.position.z);
+
+        if (transform.position.y > 7.5f) transform.position = new Vector3(transform.position.x, -7.5f, transform.position.z);
+        if (transform.position.y < -7.5f) transform.position = new Vector3(transform.position.x, 7.5f, transform.position.z);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
