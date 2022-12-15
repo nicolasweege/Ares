@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AsteroidPrefab: {fileID: 1547106074127806052, guid: 40ce89ffaa7c7614c85b7fd85d141fbe, type: 3}
+  TimeToSpawnAsteroids: 15

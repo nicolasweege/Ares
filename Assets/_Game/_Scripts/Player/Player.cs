@@ -66,12 +66,13 @@ public class Player : Singleton<Player> {
     private PlayerInput _playerInputComponent;
     #endregion
 
-    protected override void Awake() {
+    protected override void Awake()
+    {
         base.Awake();
         GameManager.OnAfterGameStateChanged += OnGameStateChanged;
 
+        // TODO: maybe move this to the GameManager?
         AudioListener.pause = false;
-
         Cursor.SetCursor(_cursorTexture, new Vector2(_cursorTexture.width / 2, _cursorTexture.height / 2), CursorMode.ForceSoftware);
 
         _playerInputComponent = GetComponent<PlayerInput>();
@@ -83,8 +84,37 @@ public class Player : Singleton<Player> {
         _canTakeDamageTimer = _timeToCanTakeDamage;
         _canMoveTimer = _timeToCanMove;
 
-        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>()) {
+        foreach (SpriteRenderer spr in GetComponentsInChildren<SpriteRenderer>())
+        {
             spr.gameObject.AddComponent<Player_Reset_Color>();
+        }
+    }
+
+    private void Update()
+    {
+        // TODO: rename the methods without "Handle"
+        HandleMove();
+        HandleAim();
+        HandleTurbineFlame();
+        HandleDamange();
+        HandleDamageAnimation();
+        HandleHealthHUD();
+
+        _shootTimer -= Time.deltaTime;
+        if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove)
+        {
+            if (_shootTimer <= 0f)
+            {
+                GenerateBullet();
+                SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position, 1);
+                _shootTimer = _timeToShoot;
+            }
+        }
+
+        if (_health <= 0 && _canDie)
+        {
+            GameManager.Instance.SetGameState(GameState.DeathMenu);
+            _canDie = false;
         }
     }
 
@@ -122,29 +152,6 @@ public class Player : Singleton<Player> {
         _dashCooldownTimer = _dashCooldown;
     }
 
-    private void Update() {
-        HandleMove();
-        HandleAim();
-        HandleTurbineFlame();
-        HandleDamange();
-        HandleDamageAnimation();
-        HandleHealthHUD();
-
-        _shootTimer -= Time.deltaTime;
-        if (PlayerInputActions.MainShip.NormalShoot.IsPressed() && _canMove) {
-            if (_shootTimer <= 0f) {
-                GenerateBullet();
-                SoundManager.PlaySound(SoundManager.Sound.PlayerShoot, transform.position, 1);
-                _shootTimer = _timeToShoot;
-            }
-        }
-
-        if (_health <= 0 && _canDie) {
-            GameManager.Instance.SetGameState(GameState.DeathMenu);
-            _canDie = false;
-        }
-    }
-
     private void HandleHealthHUD() {
         for (int i = 0; i < _heartImages.Count; i++) {
             if (i < _health) {
@@ -172,6 +179,7 @@ public class Player : Singleton<Player> {
     }
 
     public void TakeDamage() {
+        // TODO: remove the "_canMove" thing
         if (CanTakeDamage) {
             _health -= 1;
             CinemachineManager.Instance.ScreenShakeEvent(_screenShakeEvent);
@@ -320,17 +328,15 @@ public class Player : Singleton<Player> {
                     break;
 
                 case "AfroditeMember": {
-                        if (!IsDashing)
-                        {
-                            TakeDamage();
-                        }
+                        if (!IsDashing) TakeDamage();
                     }
                     break;
             }
         }
 
         if (other.CompareTag("SatelliteLaserCollider") || other.CompareTag("Satellite")) {
-            GameManager.Instance.SetGameState(GameState.DeathMenu);
+            // GameManager.Instance.SetGameState(GameState.DeathMenu);
+            // TODO: make the satellites collide with the player and cause damage
         }
     }
 

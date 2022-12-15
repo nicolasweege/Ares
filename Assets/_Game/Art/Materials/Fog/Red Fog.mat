@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _FogSize: 10
-    - _FogSize_2: 1
+    - _FogSize_2: 1.08
     m_Colors:
     - _Color: {r: 3.9999995, g: 0, b: 0, a: 1}
     - _Color_2: {r: 1, g: 1, b: 1, a: 1}
