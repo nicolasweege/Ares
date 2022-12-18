@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8921673329648153650}
   - component: {fileID: 8921673329648153653}
   m_Layer: 0
-  m_Name: Afrodite Third Stage_Bullet_Hit
+  m_Name: Afrodite_State_3_Bullet_Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd5328e00971b441b4573165d5e6052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToAutoDestroy: 0.2
+  DestroyTimer: 0.5
 --- !u!2083052967 &8921673329648153650
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -158,5 +158,5 @@ VFXRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1156298233
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 0

@@ -26,25 +26,19 @@ public class Afrodite_State_2 : Afrodite_State {
         } else {
             _currentMovePoint = context.FourthStageMovePointLeft.position;
         }
-
-        // if (context.transform.position.x > 0f) {
-        //     _currentMovePoint = context.FourthStageMovePointRight.position;
-        // } else {
-        //     _currentMovePoint = context.FourthStageMovePointLeft.position;
-        // }
     }
 
     public override void UpdateState(Afrodite context) {
         if (Vector2.Distance(context.transform.position, _currentMovePoint) > 0.5f) {
-            HandleMovement(context);
+            Move(context);
             _currentTurnSpeed = _initialTurnSpeed;
-            HandleAim(context);
+            Aim(context);
         } else {
-            HandleLaserShoot(context);
+            HandleLaser(context);
         }
     }
 
-    private void HandleLaserShoot(Afrodite context) {
+    private void HandleLaser(Afrodite context) {
         _laserShootTimer -= Time.deltaTime;
         if (_laserShootTimer <= 0f) {
             context.LaserBeam.GetComponent<Afrodite_Laser_Beam>().DisableFeedbackLaser();
@@ -82,15 +76,15 @@ public class Afrodite_State_2 : Afrodite_State {
                 _currentTurnSpeed += 0.07f;
             }
 
-            HandleAim(context);
+            Aim(context);
         }
     }
 
-    private void HandleMovement(Afrodite context) {
+    private void Move(Afrodite context) {
         context.transform.position = Vector2.SmoothDamp(context.transform.position, _currentMovePoint, ref context.Velocity, _speedToMovePoint);
     }
 
-    private void HandleAim(Afrodite context) {
+    private void Aim(Afrodite context) {
         Vector2 playerPos = Player.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
         lookDir.Normalize();

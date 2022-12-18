@@ -12,6 +12,10 @@ public class Afrodite_Bullet_2 : MonoBehaviour {
 
     private void Update() {
         transform.position += Direction * Time.deltaTime * Speed; // move bullet
+
+        // destroy bullet outside the screen
+        if (transform.position.x > 15f || transform.position.x < -15f) Destroy(gameObject);
+        if (transform.position.y > 10f || transform.position.y < -10f) Destroy(gameObject);
     }
 
     public virtual void DestroyBullet()
@@ -25,6 +29,13 @@ public class Afrodite_Bullet_2 : MonoBehaviour {
             case "Satellite":
             case "ArenaCollider":
                 DestroyBullet();
+                break;
+
+            case "PlayerMainShip": {
+                    if (Player.Instance.CanTakeDamage) {
+                        if (!Player.Instance.IsDashing) DestroyBullet();
+                    }
+                }
                 break;
         }
     }
