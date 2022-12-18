@@ -24,9 +24,7 @@ public class Afrodite_State_1 : Afrodite_State {
     public override void UpdateState(Afrodite context) {
         if (Vector2.Distance(context.transform.position, _currentMovePoint) < 0.5f) {
             _switchStateTimer -= Time.deltaTime;
-            if (_switchStateTimer <= 0f) {
-                context.SwitchState(context.FirstState);
-            }
+            if (_switchStateTimer <= 0f) context.SwitchState(context.FirstState);
         }
         else HandleSecondAttack(context);
 
@@ -37,9 +35,7 @@ public class Afrodite_State_1 : Afrodite_State {
     }
 
     private void HandleMovement(Afrodite context) {
-        if (Player.Instance == null) {
-            return;
-        }
+        if (Player.Instance == null) return;
 
         Vector2 playerPos = Player.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(context.transform.position.x, context.transform.position.y);
@@ -82,9 +78,7 @@ public class Afrodite_State_1 : Afrodite_State {
     }
 
     private void GenerateBullet(Afrodite context, Transform bulletStartingPos, GameObject bulletPrefab, Transform projectileDir) {
-        if (Player.Instance == null) {
-            return;
-        }
+        if (Player.Instance == null) return;
 
         var bulletInst = Object.Instantiate(bulletPrefab, bulletStartingPos.position, bulletStartingPos.rotation);
         context.CurrentFirstStageProjectileDir = projectileDir.position - bulletInst.transform.position;
@@ -99,13 +93,13 @@ public class Afrodite_State_1 : Afrodite_State {
         bulletDir.Normalize();
         float bulletAngle = Mathf.Atan2(bulletDir.y, bulletDir.x) * Mathf.Rad2Deg;
         bulletInst.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
-        bulletInst.GetComponent<Afrodite_Bullet_1>().Direction = new Vector3(bulletDir.x, bulletDir.y);
+
+        // this is using the 'Afrodite_Bullet_2' script
+        bulletInst.GetComponent<Afrodite_Bullet_2>().Direction = new Vector3(bulletDir.x, bulletDir.y);
     }
 
     private Vector2 HandleTurretAim(Transform turretTransform) {
-        if (Player.Instance == null) {
-            return Vector2.zero;
-        }
+        if (Player.Instance == null) return Vector2.zero;
 
         Vector2 playerPos = Player.Instance.transform.position;
         Vector2 lookDir = playerPos - new Vector2(turretTransform.position.x, turretTransform.position.y);

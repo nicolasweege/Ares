@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11e89ea538b8d44799bca057e696970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 12
-  _defaultDamage: 1
-  _damageAnim: {fileID: 8921673329648153652, guid: a33ec7d9639f7b440a132d9aafe9dc5c, type: 3}
+  Speed: 10
+  Damage: 1
+  DamageAnimation: {fileID: 8921673329648153652, guid: a33ec7d9639f7b440a132d9aafe9dc5c, type: 3}
+  Direction: {x: 0, y: 0, z: 0}
 --- !u!58 &4500098329704754100
 CircleCollider2D:
   m_ObjectHideFlags: 0

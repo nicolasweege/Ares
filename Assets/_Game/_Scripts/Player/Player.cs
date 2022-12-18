@@ -92,7 +92,6 @@ public class Player : Singleton<Player> {
 
     private void Update()
     {
-        // TODO: rename the methods without "Handle"
         HandleMove();
         HandleAim();
         HandleTurbineFlame();

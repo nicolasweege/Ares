@@ -83,7 +83,7 @@ public class Afrodite : Singleton<Afrodite> {
     }
 
     private void Update() {
-        Debug.Log($"Health: {Health} / Current State: {CurrentState}");
+        // Debug.Log($"Health: {Health} / Current State: {CurrentState}");
         
         IsFlashing = _flashHitEffect.IsFlashing;
         HandleAI();

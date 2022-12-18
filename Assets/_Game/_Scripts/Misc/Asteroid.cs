@@ -14,7 +14,7 @@ public class Asteroid : MonoBehaviour
     {
         transform.position += Direction * Time.deltaTime * Speed; // move asteroid
 
-        // destroy asteroid when outside the screen
+        // destroys the asteroid when outside the screen
         if (transform.position.y < 7)
         {
             if (transform.position.x > 14 || transform.position.x < -14) Destroy(gameObject);
